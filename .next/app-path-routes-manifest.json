@@ -1,0 +1,12 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/icon/route": "/icon",
+  "/opengraph-image/route": "/opengraph-image",
+  "/page": "/",
+  "/projects/[slug]/page": "/projects/[slug]",
+  "/projects/page": "/projects",
+  "/resume/page": "/resume",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml"
+}

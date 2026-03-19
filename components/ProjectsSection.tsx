@@ -1,0 +1,32 @@
+import Link from "next/link";
+import { Section } from "@/components/Section";
+import { projects } from "@/content/projects";
+import { ProjectCard } from "@/components/ProjectCard";
+
+export function ProjectsSection() {
+  const featured = projects.slice(0, 3);
+
+  return (
+    <Section
+      title="Projects"
+      eyebrow={
+        <span className="inline-flex items-center gap-2">
+          Featured work{" "}
+          <Link
+            href="/projects"
+            className="rounded-md underline decoration-white/15 underline-offset-4 hover:text-text hover:decoration-white/30 focus:outline-none focus:ring-2 focus:ring-accent"
+          >
+            View all
+          </Link>
+        </span>
+      }
+    >
+      <div className="grid gap-4 md:grid-cols-2">
+        {featured.map((p) => (
+          <ProjectCard key={p.slug} project={p} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
