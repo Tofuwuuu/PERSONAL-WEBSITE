@@ -17,20 +17,32 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "project-two",
-    title: "Project Two",
-    summary: "Another concise summary with a clear value proposition.",
-    stack: ["React", "Node.js", "PostgreSQL"],
+    slug: "hyperledger-blockchain-verification",
+    title: "Hyperledger Blockchain Verification",
+    summary:
+      "A blockchain-based verification system that secures and validates academic documents.",
+    stack: ["JavaScript", "Hyperledger", "Blockchain"],
     highlights: [
-      "Highlight a user-centered feature or workflow.",
-      "Mention reliability, observability, or performance work.",
-      "Mention integrations, security, or data modeling."
+      "Built for tamper-resistant and transparent document verification.",
+      "Streamlined verification workflow for administrators and end users.",
+      "Focused on data integrity, trust, and auditability."
     ],
-    links: [{ kind: "repo", label: "Repo", href: "https://github.com/your-handle/project-two" }]
+    links: [
+      {
+        kind: "repo",
+        label: "Repo",
+        href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-"
+      }
+    ]
   }
 ];
 
 export function getProjectBySlug(slug: string) {
+  if (slug === "project-two") {
+    return projects.find(
+      (p) => p.slug === "hyperledger-blockchain-verification"
+    );
+  }
   return projects.find((p) => p.slug === slug);
 }
 

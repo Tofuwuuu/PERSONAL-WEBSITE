@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "6c6a6c3326a235cd509d73d9e373904d",
-    "previewModeSigningKey": "236a4a8d565666f5b551bda623373a381f3e08796b9f5f1d935f5c90625d7c25",
-    "previewModeEncryptionKey": "bd8072c70dbd69d2e87d253f2b17b40d35aac7013311b939f43f53e7a5c7d2b5"
-  }
-}
+{"version":4,"routes":{"/projects/project-one":{},"/projects/project-two":{},"/projects/hyperledger-blockchain-verification":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"a8cad5ca144417311377cc25a8aa7308","previewModeSigningKey":"3e2ec2a6c0afd17c957543237bab4bb81588df8eb4af08ff09fc4d2eeded906e","previewModeEncryptionKey":"db7ea57cbd9b253558dc3312fba35f2de3f0398967f74791030ab0d91de151dc"}}

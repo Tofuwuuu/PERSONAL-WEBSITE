@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { projects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/Badge";
+import hyperledgerHomeImage from "@/src/hyperledger/1.jpg";
+import hyperledgerAboutImage from "@/src/hyperledger/2.jpg";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const project = getProjectBySlug(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -21,12 +25,13 @@ export function generateMetadata({
   };
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) notFound();
 
   return (
@@ -80,6 +85,41 @@ export default function ProjectDetailPage({
           ))}
         </ul>
       </section>
+
+      {project.slug === "hyperledger-blockchain-verification" ? (
+        <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
+          <h2 className="text-lg font-semibold tracking-tight text-text">
+            Project Screens
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Key views from the Hyperledger blockchain verification project.
+          </p>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
+              <Image
+                src={hyperledgerHomeImage}
+                alt="Hyperledger blockchain verification home page"
+                className="h-auto w-full object-cover"
+                priority
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Home page
+              </figcaption>
+            </figure>
+
+            <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
+              <Image
+                src={hyperledgerAboutImage}
+                alt="Hyperledger blockchain verification about page"
+                className="h-auto w-full object-cover"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                About
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

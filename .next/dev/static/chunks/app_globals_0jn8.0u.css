@@ -381,6 +381,10 @@ img, video {
   height: .375rem;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .min-h-dvh {
   min-height: 100dvh;
 }
@@ -453,6 +457,10 @@ img, video {
   gap: 1rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
 .gap-8 {
   gap: 2rem;
 }
@@ -503,6 +511,10 @@ img, video {
   border-radius: .375rem;
 }
 
+.rounded-xl {
+  border-radius: .75rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -530,6 +542,10 @@ img, video {
 
 .bg-bg\/80 {
   background-color: #0b0d12cc;
+}
+
+.bg-black\/20 {
+  background-color: #0003;
 }
 
 .bg-card {
