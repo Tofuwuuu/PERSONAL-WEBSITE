@@ -33,8 +33,7 @@ export default function ResumePage() {
         </div>
 
         <p className="mt-5 text-xs text-muted">
-          Replace <span className="font-medium text-text">public/resume.pdf</span>{" "}
-          with your real resume to update the download.
+          Resume source: <span className="font-medium text-text">src/Mark_Resume.pdf</span>
         </p>
       </header>
     </div>

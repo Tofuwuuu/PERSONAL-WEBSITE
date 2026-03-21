@@ -7,19 +7,19 @@ __turbopack_context__.s([
     ()=>profile
 ]);
 const profile = {
-    name: "Your Name",
+    name: "Mark Roderick I. Salise",
     role: "Full‑stack Developer",
     tagline: "I build clean, fast, user-focused web experiences.",
-    location: "City, Country",
-    email: "you@example.com",
+    location: "Philippines",
+    email: "rodericksalise813@gmail.com",
     links: [
         {
             label: "GitHub",
-            href: "https://github.com/your-handle"
+            href: "https://github.com/Tofuwuuu"
         },
         {
             label: "LinkedIn",
-            href: "https://linkedin.com/in/your-handle"
+            href: "https://www.linkedin.com/in/mark-roderick-salise-8ab9161a4/"
         }
     ]
 };
