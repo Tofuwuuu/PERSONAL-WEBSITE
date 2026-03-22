@@ -6,6 +6,7 @@ import { projects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/Badge";
 import hyperledgerHomeImage from "@/src/hyperledger/1.jpg";
 import hyperledgerAboutImage from "@/src/hyperledger/2.jpg";
+import todoListScreenshot from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -85,6 +86,28 @@ export default async function ProjectDetailPage({
           ))}
         </ul>
       </section>
+
+      {project.slug === "vanilla-js-todo-list-app" ? (
+        <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
+          <h2 className="text-lg font-semibold tracking-tight text-text">
+            Preview
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            Screenshot of the deployed app.
+          </p>
+          <figure className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
+            <Image
+              src={todoListScreenshot}
+              alt="Vanilla JavaScript To-Do List App — interface preview"
+              className="h-auto w-full object-cover object-top"
+              priority
+            />
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+              To-Do List app
+            </figcaption>
+          </figure>
+        </section>
+      ) : null}
 
       {project.slug === "hyperledger-blockchain-verification" ? (
         <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
