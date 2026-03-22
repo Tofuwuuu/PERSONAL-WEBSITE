@@ -3,9 +3,9 @@ import type { Project } from "./types";
 export const projects: Project[] = [
   {
     slug: "vanilla-js-todo-list-app",
-    title: "Vanilla JavaScript To-Do List App",
+    title: "To-Do List App",
     summary:
-      "Single-page task manager that supports add, edit, complete, filter (all/active/completed), clear completed, and localStorage persistence.",
+      "Single-page tasks: add, edit, complete, filter, and persist with localStorage.",
     stack: ["HTML", "CSS", "JavaScript", "localStorage"],
     highlights: [
       "Demonstrates practical UI behavior: form handling, event delegation, accessible controls, optimistic rendering, and persistent client-side storage with validation.",
@@ -43,7 +43,37 @@ export const projects: Project[] = [
         href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-"
       }
     ]
-  }
+  },
+  {
+    slug: "vanilla-js-calculator",
+    title: "Calculator",
+    summary:
+      "Keypad and keyboard input, expression display, and error handling responsive layout, deployed on Render.",
+    stack: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+      "render.yaml",
+    ],
+    highlights: [
+      "Arithmetic (add, subtract, multiply, divide) with clear, backspace, and decimal input.",
+      "Keyboard shortcuts for digits, operators, equals, clear, and backspace—mirrors the on-screen controls.",
+      "Division by zero surfaces an error state and resets cleanly on the next input.",
+      "Static-site friendly: no build step; Render blueprint (`render.yaml`) documents repeatable deployment.",
+    ],
+    links: [
+      {
+        kind: "demo",
+        label: "Live demo",
+        href: "https://calculator-ht64.onrender.com/",
+      },
+      {
+        kind: "repo",
+        label: "Repo",
+        href: "https://github.com/Tofuwuuu/Calculator",
+      },
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string) {
