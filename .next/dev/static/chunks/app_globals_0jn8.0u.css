@@ -581,6 +581,11 @@ img, video {
   object-fit: cover;
 }
 
+.object-top {
+  -o-object-position: top;
+  object-position: top;
+}
+
 .p-6 {
   padding: 1.5rem;
 }
@@ -743,6 +748,11 @@ img, video {
 
 .shadow-black\/30 {
   --tw-shadow-color: #0000004d;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.shadow-black\/40 {
+  --tw-shadow-color: #0006;
   --tw-shadow: var(--tw-shadow-colored);
 }
 

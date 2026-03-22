@@ -16,29 +16,30 @@ __turbopack_context__.s([
 ]);
 const projects = [
     {
-        slug: "project-one",
-        title: "Project One",
-        summary: "A short one-line summary that explains the outcome and impact.",
+        slug: "vanilla-js-todo-list-app",
+        title: "Vanilla JavaScript To-Do List App",
+        summary: "Single-page task manager that supports add, edit, complete, filter (all/active/completed), clear completed, and localStorage persistence.",
         stack: [
-            "Next.js",
-            "TypeScript",
-            "Tailwind"
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "localStorage"
         ],
         highlights: [
-            "What problem it solved and why it matters.",
-            "A measurable result or key feature (performance, UX, automation).",
-            "A technical detail you’re proud of (architecture, testing, DX)."
+            "Demonstrates practical UI behavior: form handling, event delegation, accessible controls, optimistic rendering, and persistent client-side storage with validation.",
+            "Add, edit, complete, and delete tasks; filter by all, active, or completed; clear completed in one action.",
+            "Remaining and total counts, empty state messaging, and accessible semantics (ARIA states, labels)."
         ],
         links: [
             {
-                kind: "repo",
-                label: "Repo",
-                href: "https://github.com/your-handle/project-one"
-            },
-            {
                 kind: "demo",
                 label: "Live demo",
-                href: "https://example.com"
+                href: "https://to-do-list-app-vanilla-js.onrender.com/"
+            },
+            {
+                kind: "repo",
+                label: "Repo",
+                href: "https://github.com/Tofuwuuu/To-Do-List-App-Vanilla-JS-"
             }
         ]
     },
@@ -68,6 +69,9 @@ const projects = [
 function getProjectBySlug(slug) {
     if (slug === "project-two") {
         return projects.find((p)=>p.slug === "hyperledger-blockchain-verification");
+    }
+    if (slug === "project-one") {
+        return projects.find((p)=>p.slug === "vanilla-js-todo-list-app");
     }
     return projects.find((p)=>p.slug === slug);
 }
