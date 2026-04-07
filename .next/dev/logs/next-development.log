@@ -1,7 +1,7 @@
-{"timestamp":"00:00:18.563","source":"Server","level":"WARN","message":"⚠ Slow filesystem detected. The benchmark took 322ms. If E:\\Projects\\PERSONAL WEBSITE\\.next/dev is a network drive, consider moving it to a local folder.\nSee more: https://nextjs.org/docs/app/guides/local-development"}
-{"timestamp":"00:00:33.229","source":"Server","level":"LOG","message":""}
-{"timestamp":"00:00:36.248","source":"Server","level":"LOG","message":"○ Compiling / ..."}
-{"timestamp":"00:00:49.713","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
-{"timestamp":"00:14:42.503","source":"Server","level":"LOG","message":"✓ Compiled in 5.4s"}
-{"timestamp":"00:16:09.574","source":"Server","level":"LOG","message":"✓ Compiled in 38ms"}
-{"timestamp":"00:16:09.885","source":"Server","level":"LOG","message":"✓ Compiled in 34ms"}
+{"timestamp":"00:00:07.436","source":"Server","level":"WARN","message":"⚠ Slow filesystem detected. The benchmark took 589ms. If E:\\Projects\\PERSONAL WEBSITE\\.next/dev is a network drive, consider moving it to a local folder.\nSee more: https://nextjs.org/docs/app/guides/local-development"}
+{"timestamp":"00:00:14.920","source":"Server","level":"LOG","message":""}
+{"timestamp":"00:00:16.168","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:16.423","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}
+{"timestamp":"00:00:19.736","source":"Server","level":"LOG","message":"○ Compiling /icon ..."}
+{"timestamp":"00:02:49.166","source":"Server","level":"LOG","message":"✓ Compiled in 6.8s"}
+{"timestamp":"00:03:00.324","source":"Browser","level":"INFO","message":"%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"}

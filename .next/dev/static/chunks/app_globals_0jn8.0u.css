@@ -272,6 +272,10 @@ img, video {
   overflow: hidden;
 }
 
+.static {
+  position: static;
+}
+
 .absolute {
   position: absolute;
 }

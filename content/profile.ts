@@ -2,8 +2,9 @@ import type { ExternalLink } from "./types";
 
 export const profile = {
   name: "Mark Roderick I. Salise",
-  role: "Full‑stack Developer",
-  tagline: "I build clean, fast, user-focused web experiences.",
+  role: "Full‑stack Engineer",
+  tagline:
+    "I build reliable web apps and the systems behind them, from polished UIs to APIs, queues, and blockchain-backed verification.",
   location: "Philippines",
   email: "rodericksalise813@gmail.com",
   links: [

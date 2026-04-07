@@ -73,7 +73,7 @@ function About() {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-pretty leading-relaxed",
-                    children: "Write a short intro that connects your strengths to the kind of work you want. Keep it skimmable: what you build, what you care about, and how you work with people."
+                    children: "I’m Mark Roderick I. Salise, a developer based in the Philippines. I enjoy shipping complete projects end-to-end—everything from small, fast static sites to more complex workflows that need clear UX and dependable behavior under the hood."
                 }, void 0, false, {
                     fileName: "[project]/components/About.tsx",
                     lineNumber: 7,
@@ -81,10 +81,10 @@ function About() {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "mt-4 text-pretty leading-relaxed",
-                    children: "You can also mention a few focus areas: performance, design systems, accessibility, backend reliability, or shipping end-to-end features."
+                    children: "My work spans polished vanilla JavaScript frontends (deployed on Render) and systems-style projects on GitHub—document verification with Hyperledger, API gateway / rate-limiting patterns, and distributed job queues. I care about clear structure, practical error handling, accessibility where it matters, and repos that are easy for others to run and deploy."
                 }, void 0, false, {
                     fileName: "[project]/components/About.tsx",
-                    lineNumber: 12,
+                    lineNumber: 13,
                     columnNumber: 9
                 }, this)
             ]
