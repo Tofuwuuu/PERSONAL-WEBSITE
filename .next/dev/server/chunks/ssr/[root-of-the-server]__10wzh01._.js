@@ -687,17 +687,18 @@ const skills = [
     {
         title: "Frontend",
         items: [
-            "React",
-            "Next.js",
+            "React 18",
             "TypeScript",
-            "Tailwind CSS"
+            "React Router",
+            "Bootstrap 5"
         ]
     },
     {
         title: "Backend",
         items: [
-            "Node.js",
+            "FastAPI",
             "REST APIs",
+            "MongoDB / motor",
             "PostgreSQL"
         ]
     },
@@ -706,7 +707,7 @@ const skills = [
         items: [
             "Git",
             "CI/CD",
-            "Testing"
+            "Jest + Testing Library"
         ]
     }
 ];

@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/projects/vanilla-js-todo-list-app":{},"/projects/hyperledger-blockchain-verification":{},"/projects/vanilla-js-calculator":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"549305d15cbd5bd7606c0ea0b62c243f","previewModeSigningKey":"e54a5e3eacbe67423df62a27778a2bbcbbab7738a5d38404419c0650200fb60e","previewModeEncryptionKey":"20d9752d0cea9331d00d48f1388f3c47272d7776b046fd58c72c5950d54cb73f"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "432588c7025c710856a43113c993a263",
+    "previewModeSigningKey": "855eb1379ed5ad21e328f5e261ca0c241b7d83a1247aab0c92ea66cf127d7012",
+    "previewModeEncryptionKey": "5ff5907cede8e243a2fddd6fc7aa6dbca5b4b657af217e9564bb455a4e98d551"
+  }
+}
