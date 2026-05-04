@@ -27,14 +27,14 @@ export const projects: Project[] = [
   },
   {
     slug: "hyperledger-blockchain-verification",
-    title: "Hyperledger Blockchain Verification",
+    title: "Hyperledger Blockchain System - Alumni Document Verification",
     summary:
-      "A blockchain-based verification system that secures and validates academic documents.",
-    stack: ["JavaScript", "Hyperledger", "Blockchain"],
+      "Permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
+    stack: ["Hyperledger Fabric", "Go/Chaincode", "FastAPI", "Node.js", "Docker", "MongoDB"],
     highlights: [
-      "Built for tamper-resistant and transparent document verification.",
-      "Streamlined verification workflow for administrators and end users.",
-      "Focused on data integrity, trust, and auditability."
+      "Designed and implemented a permissioned Hyperledger Fabric network and chaincode to store tamper-proof alumni records.",
+      "Built RESTful APIs for credential issuance and verification, integrating smart contracts with backend services.",
+      "Implemented admin tooling and deployment scripts to provision the network and nodes.",
     ],
     links: [
       {
@@ -43,6 +43,45 @@ export const projects: Project[] = [
         href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-"
       }
     ]
+  },
+  {
+    slug: "procurement-blockchain-system",
+    title: "Procurement Blockchain System - Freelance Client Project",
+    summary:
+      "Full procurement workflow on Hyperledger Fabric covering purchase orders, approvals, and audit trails.",
+    stack: ["Hyperledger Fabric", "Go/Chaincode", "FastAPI", "Docker", "PostgreSQL"],
+    highlights: [
+      "Built for a graduate-level client with end-to-end workflow support from procurement request to approval.",
+      "Implemented role-based access control and chaincode business logic for every procurement stage.",
+      "Focused on tamper-proof records, auditability, and data integrity across transactions.",
+    ],
+    links: [],
+  },
+  {
+    slug: "collaborative-realtime-document-editor",
+    title: "Collaborative Real-Time Document Editor",
+    summary:
+      "Multi-user document editing platform with live synchronization and conflict handling.",
+    stack: ["React", "TypeScript", "WebSockets", "FastAPI", "PostgreSQL", "Docker"],
+    highlights: [
+      "Built simultaneous multi-user editing with real-time updates.",
+      "Implemented WebSocket communication and conflict-resolution logic for concurrent edits.",
+      "Designed a clean React and TypeScript interface with intuitive document management.",
+    ],
+    links: [],
+  },
+  {
+    slug: "ai-powered-personal-dashboard",
+    title: "AI-Powered Personal Dashboard",
+    summary:
+      "Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
+    stack: ["React", "TypeScript", "FastAPI", "PyTorch", "Transformers", "PostgreSQL", "Docker"],
+    highlights: [
+      "Integrated transformer-based models for natural language summarization and classification features.",
+      "Built modular, dynamic widgets with a responsive dashboard layout.",
+      "Designed the app architecture for scalable full-stack data and inference flows.",
+    ],
+    links: [],
   },
   {
     slug: "vanilla-js-calculator",
