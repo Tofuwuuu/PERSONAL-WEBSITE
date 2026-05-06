@@ -75,6 +75,12 @@
       "namedRegex": "^/resume(?:/)?$"
     },
     {
+      "page": "/resume.pdf",
+      "regex": "^/resume\\.pdf(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/resume\\.pdf(?:/)?$"
+    },
+    {
       "page": "/robots.txt",
       "regex": "^/robots\\.txt(?:/)?$",
       "routeKeys": {},

@@ -10,9 +10,14 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <div className="py-10">
-      <header className="rounded-2xl border border-white/10 bg-card p-8">
-        <h1 className="text-3xl font-semibold tracking-tight text-text md:text-4xl">
+    <div className="py-8 md:py-12">
+      <header className="surface relative overflow-hidden rounded-3xl p-6 md:p-8">
+        <div className="absolute right-0 top-0 h-44 w-44 translate-x-12 -translate-y-20 rounded-full bg-accent/10 blur-3xl" />
+        <div className="relative">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
+          Resume
+        </p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-text md:text-5xl">
           Resume
         </h1>
         <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-muted md:text-base">
@@ -26,7 +31,7 @@ export default function ResumePage() {
           </ButtonLink>
           <Link
             href="/projects"
-            className="inline-flex items-center justify-center rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+            className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
           >
             View projects
           </Link>
@@ -35,8 +40,8 @@ export default function ResumePage() {
         <p className="mt-5 text-xs text-muted">
           Resume source: <span className="font-medium text-text">src/Mark_Resume.pdf</span>
         </p>
+        </div>
       </header>
     </div>
   );
 }
-

@@ -156,7 +156,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/projects/project-one": {
+    "/projects/ai-powered-personal-dashboard": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -170,7 +170,7 @@
       ],
       "initialRevalidateSeconds": false,
       "srcRoute": "/projects/[slug]",
-      "dataRoute": "/projects/project-one.rsc",
+      "dataRoute": "/projects/ai-powered-personal-dashboard.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -180,7 +180,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/projects/project-two": {
+    "/projects/collaborative-realtime-document-editor": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -194,7 +194,103 @@
       ],
       "initialRevalidateSeconds": false,
       "srcRoute": "/projects/[slug]",
-      "dataRoute": "/projects/project-two.rsc",
+      "dataRoute": "/projects/collaborative-realtime-document-editor.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/projects/hyperledger-blockchain-verification": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/projects/[slug]",
+      "dataRoute": "/projects/hyperledger-blockchain-verification.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/projects/procurement-blockchain-system": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/projects/[slug]",
+      "dataRoute": "/projects/procurement-blockchain-system.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/projects/vanilla-js-calculator": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/projects/[slug]",
+      "dataRoute": "/projects/vanilla-js-calculator.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/projects/vanilla-js-todo-list-app": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/projects/[slug]",
+      "dataRoute": "/projects/vanilla-js-todo-list-app.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -319,8 +415,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "329c1b9523aea13362539081003b897b",
-    "previewModeSigningKey": "c6135ddd7a0e99ab56014cedeb700c028b307fef91d99c15d5c021aebf6f9d81",
-    "previewModeEncryptionKey": "50a6d0dad554fd8181b5da5c046cb9dc98545a6ad92f156a763d8a77e8de027b"
+    "previewModeId": "3ab47359cb18c7d8fa9b2ce5154c4d12",
+    "previewModeSigningKey": "8823f4bfc90c8aaa45c7f589a843690ab7683aea168095da0beba4ab704a2e13",
+    "previewModeEncryptionKey": "b9054c069d8acddf2a27000191af4c28f347193b17b1e302346b215a9292ecb1"
   }
 }

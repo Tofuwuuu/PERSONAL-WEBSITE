@@ -30,7 +30,14 @@ export const projects: Project[] = [
     title: "Hyperledger Blockchain System - Alumni Document Verification",
     summary:
       "Permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
-    stack: ["Hyperledger Fabric", "Go/Chaincode", "FastAPI", "Node.js", "Docker", "MongoDB"],
+    stack: [
+      "Hyperledger Fabric",
+      "Go/Chaincode",
+      "FastAPI",
+      "Node.js",
+      "Docker",
+      "MongoDB",
+    ],
     highlights: [
       "Designed and implemented a permissioned Hyperledger Fabric network and chaincode to store tamper-proof alumni records.",
       "Built RESTful APIs for credential issuance and verification, integrating smart contracts with backend services.",
@@ -40,16 +47,22 @@ export const projects: Project[] = [
       {
         kind: "repo",
         label: "Repo",
-        href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-"
-      }
-    ]
+        href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-",
+      },
+    ],
   },
   {
     slug: "procurement-blockchain-system",
     title: "Procurement Blockchain System - Freelance Client Project",
     summary:
       "Full procurement workflow on Hyperledger Fabric covering purchase orders, approvals, and audit trails.",
-    stack: ["Hyperledger Fabric", "Go/Chaincode", "FastAPI", "Docker", "PostgreSQL"],
+    stack: [
+      "Hyperledger Fabric",
+      "Go/Chaincode",
+      "FastAPI",
+      "Docker",
+      "PostgreSQL",
+    ],
     highlights: [
       "Built for a graduate-level client with end-to-end workflow support from procurement request to approval.",
       "Implemented role-based access control and chaincode business logic for every procurement stage.",
@@ -62,7 +75,14 @@ export const projects: Project[] = [
     title: "Collaborative Real-Time Document Editor",
     summary:
       "Multi-user document editing platform with live synchronization and conflict handling.",
-    stack: ["React", "TypeScript", "WebSockets", "FastAPI", "PostgreSQL", "Docker"],
+    stack: [
+      "React",
+      "TypeScript",
+      "WebSockets",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+    ],
     highlights: [
       "Built simultaneous multi-user editing with real-time updates.",
       "Implemented WebSocket communication and conflict-resolution logic for concurrent edits.",
@@ -75,7 +95,15 @@ export const projects: Project[] = [
     title: "AI-Powered Personal Dashboard",
     summary:
       "Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
-    stack: ["React", "TypeScript", "FastAPI", "PyTorch", "Transformers", "PostgreSQL", "Docker"],
+    stack: [
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "PyTorch",
+      "Transformers",
+      "PostgreSQL",
+      "Docker",
+    ],
     highlights: [
       "Integrated transformer-based models for natural language summarization and classification features.",
       "Built modular, dynamic widgets with a responsive dashboard layout.",
@@ -88,15 +116,10 @@ export const projects: Project[] = [
     title: "Calculator",
     summary:
       "Keypad and keyboard input, expression display, and error handling responsive layout, deployed on Render.",
-    stack: [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "render.yaml",
-    ],
+    stack: ["HTML5", "CSS3", "JavaScript (ES6+)", "render.yaml"],
     highlights: [
       "Arithmetic (add, subtract, multiply, divide) with clear, backspace, and decimal input.",
-      "Keyboard shortcuts for digits, operators, equals, clear, and backspace—mirrors the on-screen controls.",
+      "Keyboard shortcuts for digits, operators, equals, clear, and backspace mirrors the on-screen controls.",
       "Division by zero surfaces an error state and resets cleanly on the next input.",
       "Static-site friendly: no build step; Render blueprint (`render.yaml`) documents repeatable deployment.",
     ],
@@ -126,4 +149,3 @@ export function getProjectBySlug(slug: string) {
   }
   return projects.find((p) => p.slug === slug);
 }
-

@@ -6,6 +6,7 @@
   "/page": "/",
   "/projects/[slug]/page": "/projects/[slug]",
   "/projects/page": "/projects",
+  "/resume.pdf/route": "/resume.pdf",
   "/resume/page": "/resume",
   "/robots.txt/route": "/robots.txt",
   "/sitemap.xml/route": "/sitemap.xml"

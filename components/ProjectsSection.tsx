@@ -14,7 +14,7 @@ export function ProjectsSection() {
           Featured work{" "}
           <Link
             href="/projects"
-            className="rounded-md underline decoration-white/15 underline-offset-4 hover:text-text hover:decoration-white/30 focus:outline-none focus:ring-2 focus:ring-accent"
+            className="rounded-md text-text underline decoration-white/15 underline-offset-4 hover:decoration-accent/70 focus:outline-none focus:ring-2 focus:ring-accent"
           >
             View all
           </Link>
@@ -29,4 +29,3 @@ export function ProjectsSection() {
     </Section>
   );
 }
-

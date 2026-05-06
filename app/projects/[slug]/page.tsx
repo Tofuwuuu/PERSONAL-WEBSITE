@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -37,18 +38,21 @@ export default async function ProjectDetailPage({
   if (!project) notFound();
 
   return (
-    <div className="py-10">
-      <div className="mb-8">
+    <div className="py-8 md:py-12">
+      <div className="mb-6">
         <Link
           href="/projects"
-          className="rounded-md text-sm text-muted underline decoration-white/10 underline-offset-4 hover:text-text hover:decoration-white/20 focus:outline-none focus:ring-2 focus:ring-accent"
+          className="rounded-md text-sm text-muted underline decoration-white/10 underline-offset-4 hover:text-text hover:decoration-accent/60 focus:outline-none focus:ring-2 focus:ring-accent"
         >
           ← Back to projects
         </Link>
       </div>
 
-      <header className="rounded-2xl border border-white/10 bg-card p-8">
-        <h1 className="text-balance text-3xl font-semibold tracking-tight text-text md:text-4xl">
+      <header className="surface rounded-3xl p-6 md:p-8">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
+          Case study
+        </p>
+        <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-text md:text-5xl">
           {project.title}
         </h1>
         <p className="mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-muted md:text-base">
@@ -59,22 +63,24 @@ export default async function ProjectDetailPage({
             <Badge key={s}>{s}</Badge>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          {project.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
+        {project.links.length ? (
+          <div className="mt-6 flex flex-wrap gap-3">
+            {project.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
       </header>
 
-      <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
+      <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
         <h2 className="text-lg font-semibold tracking-tight text-text">
           Highlights
         </h2>
@@ -89,17 +95,11 @@ export default async function ProjectDetailPage({
       </section>
 
       {project.slug === "vanilla-js-todo-list-app" ? (
-        <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
-          <h2 className="text-lg font-semibold tracking-tight text-text">
-            Preview
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Screenshot of the deployed app.
-          </p>
-          <figure className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
+        <PreviewSection title="Preview" description="Screenshot of the deployed app.">
+          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
             <Image
               src={todoListScreenshot}
-              alt="To-Do List App — interface preview"
+              alt="To-Do List App interface preview"
               className="h-auto w-full object-cover object-top"
               priority
             />
@@ -107,40 +107,31 @@ export default async function ProjectDetailPage({
               To-Do List app
             </figcaption>
           </figure>
-        </section>
+        </PreviewSection>
       ) : null}
 
       {project.slug === "vanilla-js-calculator" ? (
-        <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
-          <h2 className="text-lg font-semibold tracking-tight text-text">
-            Preview
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Screenshot of the deployed calculator.
-          </p>
-          <figure className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
+        <PreviewSection title="Preview" description="Screenshot of the deployed calculator.">
+          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
             <Image
               src={calculatorScreenshot}
-              alt="Calculator — interface preview"
+              alt="Calculator interface preview"
               className="h-auto w-full object-cover object-top"
             />
             <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
               Calculator
             </figcaption>
           </figure>
-        </section>
+        </PreviewSection>
       ) : null}
 
       {project.slug === "hyperledger-blockchain-verification" ? (
-        <section className="mt-8 rounded-2xl border border-white/10 bg-card p-8">
-          <h2 className="text-lg font-semibold tracking-tight text-text">
-            Project Screens
-          </h2>
-          <p className="mt-2 text-sm text-muted">
-            Key views from the Hyperledger blockchain verification project.
-          </p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
+        <PreviewSection
+          title="Project Screens"
+          description="Key views from the Hyperledger blockchain verification project."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
               <Image
                 src={hyperledgerHomeImage}
                 alt="Hyperledger blockchain verification home page"
@@ -152,7 +143,7 @@ export default async function ProjectDetailPage({
               </figcaption>
             </figure>
 
-            <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/20">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
               <Image
                 src={hyperledgerAboutImage}
                 alt="Hyperledger blockchain verification about page"
@@ -163,9 +154,26 @@ export default async function ProjectDetailPage({
               </figcaption>
             </figure>
           </div>
-        </section>
+        </PreviewSection>
       ) : null}
     </div>
   );
 }
 
+function PreviewSection({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
+      <h2 className="text-lg font-semibold tracking-tight text-text">{title}</h2>
+      <p className="mt-2 text-sm text-muted">{description}</p>
+      <div className="mt-6">{children}</div>
+    </section>
+  );
+}

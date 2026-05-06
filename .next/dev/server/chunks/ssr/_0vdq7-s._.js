@@ -12,9 +12,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5
 ;
 function Footer() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-        className: "mt-16 border-t border-white/10",
+        className: "mt-20 border-t border-white/10",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "mx-auto flex w-full max-w-5xl flex-col gap-2 px-4 py-10 text-sm text-muted md:flex-row md:items-center md:justify-between",
+            className: "mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-10 text-sm text-muted sm:px-6 md:flex-row md:items-center md:justify-between",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     children: [
@@ -38,12 +38,12 @@ function Footer() {
                             children: l.label
                         }, l.href, false, {
                             fileName: "[project]/components/Footer.tsx",
-                            lineNumber: 12,
+                            lineNumber: 10,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/components/Footer.tsx",
-                    lineNumber: 10,
+                    lineNumber: 8,
                     columnNumber: 9
                 }, this)
             ]
@@ -96,13 +96,13 @@ const navItems = [
 ];
 function Navbar() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-        className: "sticky top-0 z-40 border-b border-white/10 bg-bg/80 backdrop-blur",
+        className: "sticky top-0 z-40 border-b border-white/10 bg-bg/75 backdrop-blur-xl",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3",
+            className: "mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 md:flex-row md:items-center md:justify-between",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                     href: "/",
-                    className: "font-semibold tracking-tight text-text hover:text-white",
+                    className: "text-sm font-semibold tracking-tight text-text hover:text-white md:text-base",
                     children: __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name
                 }, void 0, false, {
                     fileName: "[project]/components/Navbar.tsx",
@@ -110,10 +110,10 @@ function Navbar() {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-                    className: "flex items-center gap-4 text-sm text-muted",
+                    className: "flex flex-wrap items-center gap-1 text-sm text-muted md:gap-2",
                     children: navItems.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
                             href: item.href,
-                            className: "rounded-md px-2 py-1 hover:text-text focus:outline-none focus:ring-2 focus:ring-accent",
+                            className: "rounded-full px-3 py-1.5 transition hover:bg-white/5 hover:text-text focus:outline-none focus:ring-2 focus:ring-accent",
                             children: item.label
                         }, item.href, false, {
                             fileName: "[project]/components/Navbar.tsx",
@@ -158,13 +158,13 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5
 ;
 const metadata = {
     title: {
-        default: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} · ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
-        template: `%s · ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name}`
+        default: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} | ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
+        template: `%s | ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name}`
     },
     description: __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].tagline,
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
     openGraph: {
-        title: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} · ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
+        title: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} | ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
         description: __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].tagline,
         url: "/",
         siteName: __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name,
@@ -173,7 +173,7 @@ const metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} · ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
+        title: `${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].name} | ${__TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].role}`,
         description: __TURBOPACK__imported__module__$5b$project$5d2f$content$2f$profile$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["profile"].tagline
     }
 };
@@ -199,7 +199,7 @@ function RootLayout({ children }) {
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
                     id: "content",
-                    className: "mx-auto w-full max-w-5xl px-4",
+                    className: "mx-auto w-full max-w-6xl px-4 sm:px-6",
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/app/layout.tsx",

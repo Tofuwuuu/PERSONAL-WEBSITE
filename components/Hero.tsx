@@ -6,21 +6,24 @@ import profileImage from "@/src/image.png";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-white/10 bg-card p-8 shadow-sm shadow-black/30 md:p-10">
-      <div className="absolute inset-0 bg-gradient-to-tr from-accent/15 via-transparent to-white/5" />
-      <div className="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
-        <div>
+    <section className="surface relative overflow-hidden rounded-[1.75rem] p-6 sm:p-8 md:p-10 lg:p-12">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
+      <div className="absolute right-0 top-0 h-64 w-64 translate-x-16 -translate-y-24 rounded-full bg-accent/10 blur-3xl" />
+      <div className="absolute bottom-0 left-1/3 h-56 w-56 translate-y-24 rounded-full bg-violet/10 blur-3xl" />
+
+      <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_320px]">
+        <div className="max-w-3xl">
           <div className="flex flex-wrap items-center gap-2">
             <Badge>{profile.role}</Badge>
             <Badge>{profile.location}</Badge>
           </div>
-          <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-text md:text-5xl">
+          <h1 className="mt-5 text-balance text-4xl font-semibold tracking-tight text-text sm:text-5xl md:text-6xl">
             {profile.name}
           </h1>
-          <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted md:text-lg">
+          <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-muted md:text-lg">
             {profile.tagline}
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/projects">View projects</ButtonLink>
             <ButtonLink href="/resume" variant="secondary">
               Download resume
@@ -29,6 +32,20 @@ export function Hero() {
               Contact
             </ButtonLink>
           </div>
+          <dl className="mt-9 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
+            {[
+              ["Focus", "Full-stack systems"],
+              ["Strength", "Reliable UX"],
+              ["Projects", "Fabric, APIs, apps"],
+            ].map(([label, value]) => (
+              <div key={label} className="surface-soft rounded-2xl px-4 py-3">
+                <dt className="text-xs uppercase tracking-[0.16em] text-muted">
+                  {label}
+                </dt>
+                <dd className="mt-1 text-sm font-semibold text-text">{value}</dd>
+              </div>
+            ))}
+          </dl>
           <div className="mt-8 flex flex-wrap items-center gap-4 text-sm text-muted">
             {profile.links.map((l) => (
               <a
@@ -43,16 +60,21 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className="mx-auto w-full max-w-[220px] md:mx-0 md:max-w-[260px]">
-          <Image
-            src={profileImage}
-            alt={`${profile.name} profile picture`}
-            className="aspect-square w-full rounded-2xl border border-white/10 object-cover shadow-lg shadow-black/30"
-            priority
-          />
+        <div className="mx-auto w-full max-w-[280px] lg:mx-0 lg:max-w-none">
+          <div className="relative">
+            <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-accent/25 via-white/5 to-violet/20 blur-xl" />
+            <Image
+              src={profileImage}
+              alt={`${profile.name} profile picture`}
+              className="relative aspect-[4/5] w-full rounded-[1.5rem] border border-white/10 object-cover shadow-2xl shadow-black/40"
+              priority
+            />
+            <div className="surface-soft absolute -bottom-5 left-1/2 w-[calc(100%-2rem)] -translate-x-1/2 rounded-2xl px-4 py-3 text-center text-sm font-medium text-text backdrop-blur">
+              Available for frontend and full-stack work
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

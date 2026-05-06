@@ -8,9 +8,9 @@ export function Section({
 }: PropsWithChildren<{ id?: string; title: string; eyebrow?: ReactNode }>) {
   return (
     <section id={id} className="scroll-mt-24">
-      <div className="mb-6">
+      <div className="mb-6 md:mb-8">
         {eyebrow ? (
-          <div className="mb-2 text-xs font-medium uppercase tracking-wider text-muted">
+          <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
             {eyebrow}
           </div>
         ) : null}
@@ -22,4 +22,3 @@ export function Section({
     </section>
   );
 }
-

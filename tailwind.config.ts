@@ -5,14 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#0b0d12",
-        card: "#101521",
-        text: "#e6e9f2",
-        muted: "#a5adbf",
-        accent: "#7c5cff"
+        bg: "#080b10",
+        card: "#101722",
+        panel: "#141b28",
+        text: "#f3f6fb",
+        muted: "#9da8ba",
+        accent: "#6ee7d8",
+        violet: "#8b7cff",
+        amber: "#f7c56b"
       }
     }
   },
   plugins: []
 } satisfies Config;
-

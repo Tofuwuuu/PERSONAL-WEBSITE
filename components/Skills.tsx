@@ -8,15 +8,15 @@ export function Skills() {
         {skills.map((group) => (
           <div
             key={group.title}
-            className="rounded-2xl border border-white/10 bg-card p-6"
+            className="surface-soft rounded-2xl p-6 transition hover:-translate-y-1 hover:border-accent/30 hover:bg-white/[0.055]"
           >
-            <h3 className="text-sm font-semibold tracking-tight text-text">
+            <h3 className="text-base font-semibold tracking-tight text-text">
               {group.title}
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-muted">
               {group.items.map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent/80" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -27,4 +27,3 @@ export function Skills() {
     </Section>
   );
 }
-

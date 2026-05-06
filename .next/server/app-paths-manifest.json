@@ -6,6 +6,7 @@
   "/page": "app/page.js",
   "/projects/[slug]/page": "app/projects/[slug]/page.js",
   "/projects/page": "app/projects/page.js",
+  "/resume.pdf/route": "app/resume.pdf/route.js",
   "/resume/page": "app/resume/page.js",
   "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js"
