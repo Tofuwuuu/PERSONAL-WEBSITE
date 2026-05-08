@@ -579,6 +579,7 @@ const projects = [
     {
         slug: "vanilla-js-todo-list-app",
         title: "To-Do List App",
+        category: "Frontend",
         summary: "Single-page tasks: add, edit, complete, filter, and persist with localStorage.",
         stack: [
             "HTML",
@@ -607,6 +608,7 @@ const projects = [
     {
         slug: "hyperledger-blockchain-verification",
         title: "Hyperledger Blockchain System - Alumni Document Verification",
+        category: "Blockchain",
         summary: "Permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
         stack: [
             "Hyperledger Fabric",
@@ -632,6 +634,7 @@ const projects = [
     {
         slug: "procurement-blockchain-system",
         title: "Procurement Blockchain System - Freelance Client Project",
+        category: "Blockchain",
         summary: "Full procurement workflow on Hyperledger Fabric covering purchase orders, approvals, and audit trails.",
         stack: [
             "Hyperledger Fabric",
@@ -650,6 +653,7 @@ const projects = [
     {
         slug: "collaborative-realtime-document-editor",
         title: "Collaborative Real-Time Document Editor",
+        category: "Full-stack",
         summary: "Multi-user document editing platform with live synchronization and conflict handling.",
         stack: [
             "React",
@@ -669,6 +673,8 @@ const projects = [
     {
         slug: "fashion-ecommerce-platform",
         title: "Fashion E-Commerce Platform",
+        category: "Full-stack",
+        featured: true,
         summary: "Full-stack fashion storefront with product browsing, variant carts, checkout, orders, and admin tools.",
         stack: [
             "React",
@@ -693,6 +699,7 @@ const projects = [
     {
         slug: "ai-powered-personal-dashboard",
         title: "AI-Powered Personal Dashboard",
+        category: "AI",
         summary: "Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
         stack: [
             "React",
@@ -713,6 +720,7 @@ const projects = [
     {
         slug: "vanilla-js-calculator",
         title: "Calculator",
+        category: "Frontend",
         summary: "Keypad and keyboard input, expression display, and error handling responsive layout, deployed on Render.",
         stack: [
             "HTML5",

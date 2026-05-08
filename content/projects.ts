@@ -4,6 +4,7 @@ export const projects: Project[] = [
   {
     slug: "vanilla-js-todo-list-app",
     title: "To-Do List App",
+    category: "Frontend",
     summary:
       "Single-page tasks: add, edit, complete, filter, and persist with localStorage.",
     stack: ["HTML", "CSS", "JavaScript", "localStorage"],
@@ -28,6 +29,7 @@ export const projects: Project[] = [
   {
     slug: "hyperledger-blockchain-verification",
     title: "Hyperledger Blockchain System - Alumni Document Verification",
+    category: "Blockchain",
     summary:
       "Permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
     stack: [
@@ -54,6 +56,7 @@ export const projects: Project[] = [
   {
     slug: "procurement-blockchain-system",
     title: "Procurement Blockchain System - Freelance Client Project",
+    category: "Blockchain",
     summary:
       "Full procurement workflow on Hyperledger Fabric covering purchase orders, approvals, and audit trails.",
     stack: [
@@ -73,6 +76,7 @@ export const projects: Project[] = [
   {
     slug: "collaborative-realtime-document-editor",
     title: "Collaborative Real-Time Document Editor",
+    category: "Full-stack",
     summary:
       "Multi-user document editing platform with live synchronization and conflict handling.",
     stack: [
@@ -93,6 +97,8 @@ export const projects: Project[] = [
   {
     slug: "fashion-ecommerce-platform",
     title: "Fashion E-Commerce Platform",
+    category: "Full-stack",
+    featured: true,
     summary:
       "Full-stack fashion storefront with product browsing, variant carts, checkout, orders, and admin tools.",
     stack: [
@@ -118,6 +124,7 @@ export const projects: Project[] = [
   {
     slug: "ai-powered-personal-dashboard",
     title: "AI-Powered Personal Dashboard",
+    category: "AI",
     summary:
       "Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
     stack: [
@@ -139,6 +146,7 @@ export const projects: Project[] = [
   {
     slug: "vanilla-js-calculator",
     title: "Calculator",
+    category: "Frontend",
     summary:
       "Keypad and keyboard input, expression display, and error handling responsive layout, deployed on Render.",
     stack: ["HTML5", "CSS3", "JavaScript (ES6+)", "render.yaml"],

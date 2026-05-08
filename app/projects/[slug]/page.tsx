@@ -9,6 +9,8 @@ import hyperledgerHomeImage from "@/src/hyperledger/1.jpg";
 import hyperledgerAboutImage from "@/src/hyperledger/2.jpg";
 import todoListScreenshot from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 import calculatorScreenshot from "@/src/calculator/calculator.jpg";
+import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
+import ecommerceAdminImage from "@/src/Ecommerce/2.jpg";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -151,6 +153,37 @@ export default async function ProjectDetailPage({
               />
               <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
                 About
+              </figcaption>
+            </figure>
+          </div>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "fashion-ecommerce-platform" ? (
+        <PreviewSection
+          title="Project Screens"
+          description="Key views from the fashion e-commerce platform."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={ecommerceStorefrontImage}
+                alt="Fashion e-commerce storefront preview"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Storefront
+              </figcaption>
+            </figure>
+
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={ecommerceAdminImage}
+                alt="Fashion e-commerce admin dashboard preview"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Admin dashboard
               </figcaption>
             </figure>
           </div>

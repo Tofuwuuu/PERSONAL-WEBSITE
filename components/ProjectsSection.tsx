@@ -4,7 +4,10 @@ import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/ProjectCard";
 
 export function ProjectsSection() {
-  const featured = projects.slice(0, 3);
+  const featured = [
+    ...projects.filter((p) => p.featured),
+    ...projects.filter((p) => !p.featured),
+  ].slice(0, 3);
 
   return (
     <Section

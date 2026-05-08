@@ -10,10 +10,12 @@ export type ProjectLink = ExternalLink & {
 export type Project = {
   slug: string;
   title: string;
+  category: string;
   summary: string;
   stack: string[];
   highlights: string[];
   links: ProjectLink[];
+  featured?: boolean;
   cover?: {
     alt: string;
     src: string;
@@ -21,4 +23,3 @@ export type Project = {
     height: number;
   };
 };
-

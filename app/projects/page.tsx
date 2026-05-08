@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { projects } from "@/content/projects";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectsGrid } from "@/components/ProjectsGrid";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -23,11 +23,7 @@ export default function ProjectsPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
-        ))}
-      </div>
+      <ProjectsGrid projects={projects} />
     </div>
   );
 }
