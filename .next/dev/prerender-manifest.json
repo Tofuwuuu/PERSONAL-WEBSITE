@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "422a13d0c9a0fe7ab053b78edd9cc917",
-    "previewModeSigningKey": "d69a1c6babe04d32c55424599b2c73fa80de324ebfd797e5aefa8ac6fc515da8",
-    "previewModeEncryptionKey": "d4999b725b96b3cc65dc9a4b9ffc47f3ac353c438d9fff353e9f1f3ceaacca40"
-  }
-}
+{"version":4,"routes":{"/projects/vanilla-js-todo-list-app":{},"/projects/hyperledger-blockchain-verification":{},"/projects/procurement-blockchain-system":{},"/projects/collaborative-realtime-document-editor":{},"/projects/fashion-ecommerce-platform":{},"/projects/ai-powered-personal-dashboard":{},"/projects/vanilla-js-calculator":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"06a06253b6fb951f61ee575b6ef661b7","previewModeSigningKey":"28537629e6460c75949cb32a3a73444bcd729c152e77727a58d4b6c730a06261","previewModeEncryptionKey":"b5780885dc6f5aff326c1a68161fc93d57b6ea5bcb111db96dff97acc24624a5"}}

@@ -91,6 +91,31 @@ export const projects: Project[] = [
     links: [],
   },
   {
+    slug: "fashion-ecommerce-platform",
+    title: "Fashion E-Commerce Platform",
+    summary:
+      "Full-stack fashion storefront with product browsing, variant carts, checkout, orders, and admin tools.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "FastAPI",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "JWT",
+      "Cloudinary",
+      "Docker",
+      "PayMongo",
+    ],
+    highlights: [
+      "Built a full-stack fashion e-commerce platform with a React, TypeScript, Tailwind CSS, and Zustand frontend connected to a FastAPI backend.",
+      "Implemented product browsing, category filters, variant-based carts, checkout flow, order history, and JWT authentication.",
+      "Designed admin dashboard workflows for managing products and orders, with Cloudinary media uploads, SQLAlchemy models, PostgreSQL persistence, Dockerized services, and PayMongo sandbox payments.",
+    ],
+    links: [],
+  },
+  {
     slug: "ai-powered-personal-dashboard",
     title: "AI-Powered Personal Dashboard",
     summary:
