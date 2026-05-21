@@ -9,9 +9,9 @@ export default function HomePage() {
     <div className="py-8 md:py-12">
       <Hero />
       <div className="mt-14 space-y-20 md:mt-20 md:space-y-24">
-        <About />
-        <Skills />
         <ProjectsSection />
+        <Skills />
+        <About />
         <Contact />
       </div>
     </div>

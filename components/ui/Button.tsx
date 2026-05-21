@@ -9,7 +9,7 @@ const base =
 const variants: Record<ButtonVariant, string> = {
   primary:
     "bg-accent text-bg shadow-sm shadow-accent/20 hover:bg-accent/90 active:brightness-95",
-  secondary: "bg-white/5 text-text hover:bg-white/10",
+  secondary: "bg-white/[0.045] text-text hover:bg-white/[0.08]",
 };
 
 export function ButtonLink({

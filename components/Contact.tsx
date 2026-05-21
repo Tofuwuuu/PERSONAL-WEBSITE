@@ -5,8 +5,8 @@ import { ButtonLink } from "@/components/ui/Button";
 export function Contact() {
   return (
     <Section id="contact" title="Contact">
-      <div className="surface relative overflow-hidden rounded-3xl p-6 md:p-8">
-        <div className="absolute right-0 top-0 h-40 w-40 translate-x-10 -translate-y-16 rounded-full bg-accent/10 blur-3xl" />
+      <div className="surface relative overflow-hidden rounded-2xl p-6 md:p-8">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
         <div className="relative">
           <p className="max-w-2xl text-pretty text-sm leading-relaxed text-muted md:text-base">
             Want to collaborate or have an opportunity in mind? Send me a

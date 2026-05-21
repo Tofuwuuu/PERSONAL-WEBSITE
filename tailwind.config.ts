@@ -5,14 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#080b10",
-        card: "#101722",
-        panel: "#141b28",
+        bg: "#070a0f",
+        card: "#0e141c",
+        panel: "#121a24",
         text: "#f3f6fb",
-        muted: "#9da8ba",
-        accent: "#6ee7d8",
-        violet: "#8b7cff",
-        amber: "#f7c56b"
+        muted: "#a5b0c1",
+        accent: "#5eead4",
+        violet: "#7dd3fc",
+        amber: "#94a3b8"
       }
     }
   },

@@ -3,7 +3,7 @@ import { Section } from "@/components/Section";
 export function About() {
   return (
     <Section id="about" title="About">
-      <div className="surface grid gap-6 rounded-3xl p-6 text-muted md:grid-cols-[0.9fr_1.1fr] md:p-8">
+      <div className="grid gap-8 border-y border-white/10 py-8 text-muted md:grid-cols-[0.85fr_1.15fr]">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-accent/80">
             Builder mindset

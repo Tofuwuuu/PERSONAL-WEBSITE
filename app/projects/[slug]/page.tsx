@@ -46,7 +46,7 @@ export default async function ProjectDetailPage({
           href="/projects"
           className="rounded-md text-sm text-muted underline decoration-white/10 underline-offset-4 hover:text-text hover:decoration-accent/60 focus:outline-none focus:ring-2 focus:ring-accent"
         >
-          ← Back to projects
+          &larr; Back to projects
         </Link>
       </div>
 

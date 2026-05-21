@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="py-8 md:py-12">
-      <header className="surface mb-8 rounded-3xl p-6 md:p-8">
+      <header className="surface mb-8 rounded-2xl p-6 md:p-8">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
           Selected work
         </p>

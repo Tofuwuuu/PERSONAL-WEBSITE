@@ -14,7 +14,7 @@ export function ProjectsSection() {
       title="Projects"
       eyebrow={
         <span className="inline-flex items-center gap-2">
-          Featured work{" "}
+          Selected proof{" "}
           <Link
             href="/projects"
             className="rounded-md text-text underline decoration-white/15 underline-offset-4 hover:decoration-accent/70 focus:outline-none focus:ring-2 focus:ring-accent"
@@ -24,7 +24,7 @@ export function ProjectsSection() {
         </span>
       }
     >
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {featured.map((p) => (
           <ProjectCard key={p.slug} project={p} />
         ))}

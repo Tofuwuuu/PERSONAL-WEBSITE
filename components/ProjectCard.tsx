@@ -29,14 +29,23 @@ const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
 export function ProjectCard({ project }: { project: Project }) {
   const image = projectImages[project.slug];
   const isFeatured = project.featured;
+  const proofLabels = [
+    isFeatured ? "Featured" : null,
+    ...project.links.map((link) => {
+      if (link.kind === "demo") return "Live demo";
+      if (link.kind === "repo") return "Repo";
+      return "Case study";
+    }),
+    project.links.length ? null : "Case study",
+  ].filter(Boolean) as string[];
 
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group surface-soft relative overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:border-accent/30 hover:bg-white/[0.055] focus:outline-none focus:ring-2 focus:ring-accent ${
+      className={`group surface-soft relative overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.045] focus:outline-none focus:ring-2 focus:ring-accent ${
         isFeatured
-          ? "grid min-h-[360px] md:col-span-2 md:grid-cols-[1.15fr_0.85fr]"
-          : "flex min-h-[280px] flex-col"
+          ? "grid min-h-[360px] md:col-span-2 md:grid-cols-[1.08fr_0.92fr]"
+          : "flex min-h-[300px] flex-col"
       }`}
     >
       <div className="absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition group-hover:opacity-100" />
@@ -66,29 +75,32 @@ export function ProjectCard({ project }: { project: Project }) {
       ) : null}
 
       <div className="flex flex-1 flex-col p-6">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
+            {project.category}
+          </span>
+          {proofLabels.map((label) => (
+            <span
+              key={label}
+              className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted"
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
-                {project.category}
-              </span>
-              {isFeatured ? (
-                <span className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted">
-                  Featured
-                </span>
-              ) : null}
-            </div>
-            <h3 className="text-base font-semibold tracking-tight text-text md:text-lg">
-              {project.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
-              {project.summary}
-            </p>
-          </div>
-          <span className="mt-1 text-sm text-muted transition group-hover:translate-x-1 group-hover:text-accent">
+          <h3 className="max-w-[28rem] text-lg font-semibold tracking-tight text-text md:text-xl">
+            {project.title}
+          </h3>
+          <span className="mt-1 shrink-0 text-sm font-medium text-muted transition group-hover:translate-x-1 group-hover:text-accent">
             View
           </span>
         </div>
+
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          {project.summary}
+        </p>
 
         <div className="mt-auto flex flex-wrap gap-2 pt-6">
           {project.stack.slice(0, isFeatured ? 6 : 4).map((s) => (
