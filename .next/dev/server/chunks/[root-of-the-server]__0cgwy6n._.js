@@ -75,7 +75,7 @@ function Icon() {
             fontWeight: 800,
             borderRadius: 16
         },
-        children: "P"
+        children: "MR"
     }, void 0, false, {
         fileName: "[project]/app/icon.tsx",
         lineNumber: 13,

@@ -30,6 +30,7 @@ export const projects: Project[] = [
     slug: "hyperledger-blockchain-verification",
     title: "Hyperledger Blockchain System - Alumni Document Verification",
     category: "Blockchain",
+    featured: true,
     summary:
       "Permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
     stack: [
@@ -98,7 +99,6 @@ export const projects: Project[] = [
     slug: "fashion-ecommerce-platform",
     title: "Fashion E-Commerce Platform",
     category: "Full-stack",
-    featured: true,
     summary:
       "Full-stack fashion storefront with product browsing, variant carts, checkout, orders, and admin tools.",
     stack: [
@@ -172,13 +172,5 @@ export const projects: Project[] = [
 ];
 
 export function getProjectBySlug(slug: string) {
-  if (slug === "project-two") {
-    return projects.find(
-      (p) => p.slug === "hyperledger-blockchain-verification"
-    );
-  }
-  if (slug === "project-one") {
-    return projects.find((p) => p.slug === "vanilla-js-todo-list-app");
-  }
   return projects.find((p) => p.slug === slug);
 }

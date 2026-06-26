@@ -33,7 +33,7 @@ function Icon() {
             fontWeight: 800,
             borderRadius: 16
         },
-        children: "P"
+        children: "MR"
     }, void 0, false, {
         fileName: "[project]/app/icon.tsx",
         lineNumber: 13,
@@ -63,7 +63,7 @@ async function __TURBOPACK__default__export__(props) {
         const data = {
             alt: imageMetadata.alt,
             type: imageMetadata.contentType || 'image/png',
-            url: imageUrl + (idParam ? '/' + idParam : '') + '?' + "c2ef18b1866de7c1"
+            url: imageUrl + (idParam ? '/' + idParam : '') + '?' + "3f22a3f44ee6011d"
         };
         const { size } = imageMetadata;
         if (size) {

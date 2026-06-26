@@ -27,15 +27,3 @@ export function ButtonLink({
   );
 }
 
-export function Button({
-  variant = "primary",
-  className,
-  ...props
-}: ComponentProps<"button"> & { variant?: ButtonVariant }) {
-  return (
-    <button
-      className={[base, variants[variant], className].filter(Boolean).join(" ")}
-      {...props}
-    />
-  );
-}

@@ -24,7 +24,7 @@ export default function Icon() {
           borderRadius: 16,
         }}
       >
-        P
+        MR
       </div>
     ),
     size

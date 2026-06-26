@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/projects/vanilla-js-todo-list-app":{},"/projects/hyperledger-blockchain-verification":{},"/projects/procurement-blockchain-system":{},"/projects/collaborative-realtime-document-editor":{},"/projects/fashion-ecommerce-platform":{},"/projects/ai-powered-personal-dashboard":{},"/projects/vanilla-js-calculator":{}},"dynamicRoutes":{"/projects/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/projects/[slug]","routeRegex":"^\\/projects\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"16bcf23eda83a896d7d899eb25f26182","previewModeSigningKey":"c5be8ce00875168bbe9232d688cb2f5b8271c3ec54479157bf0e73fb91ce911d","previewModeEncryptionKey":"3187369fa45eb71df25bbaa15a4aa1a5e6f3793da0c75ebd911379ab125c096d"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "ee8f0027bb9b5b686938002659fffb0e",
+    "previewModeSigningKey": "df3d36be6338a61a0646fa0452bc9c3e7678625b40916a6da589325ed00daf48",
+    "previewModeEncryptionKey": "aa7c98651008101498c7853c7297333ab7a9d47f9353f2e4dfc461286809b433"
+  }
+}
