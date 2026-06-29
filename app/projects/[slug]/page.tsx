@@ -5,8 +5,18 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { projects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/Badge";
-import hyperledgerHomeImage from "@/src/hyperledger/1.jpg";
-import hyperledgerAboutImage from "@/src/hyperledger/2.jpg";
+import hyperledgerHomeImage from "@/src/hyperledger/1.png";
+import hyperledgerAboutImage from "@/src/hyperledger/2.png";
+import hyperledgerLoginImage from "@/src/hyperledger/login.png";
+import hyperledgerStudentDashboardImage from "@/src/hyperledger/Student dashboard.png";
+import hyperledgerAlumniProfileImage from "@/src/hyperledger/Alumni profile.png";
+import hyperledgerMyDocumentsImage from "@/src/hyperledger/My Document.png";
+import hyperledgerUploadDocumentImage from "@/src/hyperledger/Upload document.png";
+import hyperledgerDocumentRequestImage from "@/src/hyperledger/Document request + download.png";
+import hyperledgerAdminDashboardImage from "@/src/hyperledger/Admin Dashboard.png";
+import hyperledgerAdminUserVerificationImage from "@/src/hyperledger/Admin User verification.png";
+import hyperledgerAdminDocumentVerificationImage from "@/src/hyperledger/Admin Document Verication.png";
+import hyperledgerAdminManageDocumentRequestsImage from "@/src/hyperledger/Admin Manage Document requests.png";
 import todoListScreenshot from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 import calculatorScreenshot from "@/src/calculator/calculator.jpg";
 import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
@@ -133,28 +143,83 @@ export default async function ProjectDetailPage({
           description="Key views from the Hyperledger blockchain verification project."
         >
           <div className="grid gap-6 md:grid-cols-2">
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={hyperledgerHomeImage}
-                alt="Hyperledger blockchain verification home page"
-                className="h-auto w-full object-cover"
-                priority
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Home page
-              </figcaption>
-            </figure>
-
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={hyperledgerAboutImage}
-                alt="Hyperledger blockchain verification about page"
-                className="h-auto w-full object-cover"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                About
-              </figcaption>
-            </figure>
+            {[
+              {
+                src: hyperledgerHomeImage,
+                alt: "Hyperledger blockchain verification home page",
+                caption: "Home page",
+              },
+              {
+                src: hyperledgerAboutImage,
+                alt: "Hyperledger blockchain verification about page",
+                caption: "About",
+              },
+              {
+                src: hyperledgerLoginImage,
+                alt: "Hyperledger blockchain verification login page",
+                caption: "Login",
+              },
+              {
+                src: hyperledgerStudentDashboardImage,
+                alt: "Hyperledger blockchain verification student dashboard",
+                caption: "Student dashboard",
+              },
+              {
+                src: hyperledgerAlumniProfileImage,
+                alt: "Hyperledger blockchain verification alumni profile",
+                caption: "Alumni profile",
+              },
+              {
+                src: hyperledgerMyDocumentsImage,
+                alt: "Hyperledger blockchain verification my documents page",
+                caption: "My Document",
+              },
+              {
+                src: hyperledgerUploadDocumentImage,
+                alt: "Hyperledger blockchain verification upload document page",
+                caption: "Upload document",
+              },
+              {
+                src: hyperledgerDocumentRequestImage,
+                alt: "Hyperledger blockchain verification document request and download",
+                caption: "Document request + download",
+              },
+              {
+                src: hyperledgerAdminDashboardImage,
+                alt: "Hyperledger blockchain verification admin dashboard",
+                caption: "Admin Dashboard",
+              },
+              {
+                src: hyperledgerAdminUserVerificationImage,
+                alt: "Hyperledger blockchain verification admin user verification",
+                caption: "Admin User verification",
+              },
+              {
+                src: hyperledgerAdminDocumentVerificationImage,
+                alt: "Hyperledger blockchain verification admin document verification",
+                caption: "Admin Document Verication",
+              },
+              {
+                src: hyperledgerAdminManageDocumentRequestsImage,
+                alt: "Hyperledger blockchain verification admin manage document requests",
+                caption: "Admin Manage Document requests",
+              },
+            ].map((screen) => (
+              <figure
+                key={screen.caption}
+                className="overflow-hidden rounded-2xl border border-white/10 bg-black/20"
+              >
+                <Image
+                  src={screen.src}
+                  alt={screen.alt}
+                  className="h-auto w-full object-cover object-top"
+                  priority={screen.caption === "Home page"}
+                />
+                <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                  {screen.caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </PreviewSection>
       ) : null}
