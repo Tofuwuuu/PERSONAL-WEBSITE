@@ -3,6 +3,7 @@ import Image, { type StaticImageData } from "next/image";
 import type { Project } from "@/content/types";
 import { Badge } from "@/components/ui/Badge";
 import hyperledgerImage from "@/src/hyperledger/1.png";
+import procurementImage from "@/src/procurement/Admin dashboard.png";
 import todoListImage from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 import calculatorImage from "@/src/calculator/calculator.jpg";
 import ecommerceImage from "@/src/Ecommerce/1.jpg";
@@ -15,6 +16,10 @@ const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
   "hyperledger-blockchain-verification": {
     src: hyperledgerImage,
     alt: "Hyperledger blockchain verification preview",
+  },
+  "procurement-blockchain-system": {
+    src: procurementImage,
+    alt: "Procurement blockchain system admin dashboard preview",
   },
   "vanilla-js-todo-list-app": {
     src: todoListImage,

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///E:/Projects/PERSONAL%20WEBSITE/app/not-found.tsx"],"sourcesContent":["import Link from \"next/link\";\n\nexport default function NotFound() {\n  return (\n    <div className=\"py-16\">\n      <div className=\"rounded-2xl border border-white/10 bg-card p-8\">\n        <h1 className=\"text-2xl font-semibold tracking-tight text-text\">\n          Page not found\n        </h1>\n        <p className=\"mt-3 text-sm text-muted\">\n          The page you’re looking for doesn’t exist.\n        </p>\n        <div className=\"mt-6\">\n          <Link\n            href=\"/\"\n            className=\"inline-flex items-center rounded-lg bg-white/5 px-4 py-2 text-sm font-medium text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent\"\n          >\n            Go home\n          </Link>\n        </div>\n      </div>\n    </div>\n  );\n}\n\n"],"names":["NotFound","className","href"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,qBACE,8OAAC;QAAIC,WAAU;kBACb,cAAA,8OAAC;YAAIA,WAAU;;8BACb,8OAAC;oBAAGA,WAAU;8BAAkD;;;;;;8BAGhE,8OAAC;oBAAEA,WAAU;8BAA0B;;;;;;8BAGvC,8OAAC;oBAAIA,WAAU;8BACb,cAAA,8OAAC,0LAAI;wBACHC,MAAK;wBACLD,WAAU;kCACX;;;;;;;;;;;;;;;;;;;;;;AAOX"}}]
-}
