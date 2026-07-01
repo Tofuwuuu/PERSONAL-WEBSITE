@@ -73,9 +73,14 @@ export default async function ProjectDetailPage({
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+                className={[
+                  "inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-accent",
+                  l.kind === "demo"
+                    ? "bg-accent/15 text-accent ring-1 ring-accent/45 hover:bg-accent/20"
+                    : "bg-white/5 text-text ring-1 ring-white/10 hover:bg-white/10",
+                ].join(" ")}
               >
-                {l.label}
+                {l.kind === "demo" ? `${l.label} ↗` : l.label}
               </a>
             ))}
           </div>

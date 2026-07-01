@@ -50,6 +50,11 @@ export const projects: Project[] = [
     ],
     links: [
       {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://hyperledger-document-verification.vercel.app/",
+      },
+      {
         kind: "repo",
         label: "Repo",
         href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-",
