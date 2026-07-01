@@ -3,12 +3,18 @@
 import Image, { type StaticImageData } from "next/image";
 import type { KeyboardEvent } from "react";
 import { useId, useState } from "react";
+import hyperledgerHomeImage from "@/src/hyperledger/1.png";
+import hyperledgerAboutImage from "@/src/hyperledger/2.png";
 import hyperledgerLoginImage from "@/src/hyperledger/login.png";
+import hyperledgerStudentDashboardImage from "@/src/hyperledger/Student dashboard.png";
+import hyperledgerAlumniProfileImage from "@/src/hyperledger/Alumni profile.png";
+import hyperledgerMyDocumentsImage from "@/src/hyperledger/My Document.png";
 import hyperledgerUploadDocumentImage from "@/src/hyperledger/Upload document.png";
 import hyperledgerDocumentRequestImage from "@/src/hyperledger/Document request + download.png";
 import hyperledgerAdminDashboardImage from "@/src/hyperledger/Admin Dashboard.png";
 import hyperledgerAdminUserVerificationImage from "@/src/hyperledger/Admin User verification.png";
 import hyperledgerAdminDocumentVerificationImage from "@/src/hyperledger/Admin Document Verication.png";
+import hyperledgerAdminRequestManagementImage from "@/src/hyperledger/Admin Manage Document requests.png";
 
 type FeatureScreen = {
   id: string;
@@ -20,12 +26,52 @@ type FeatureScreen = {
 
 const featureScreens: FeatureScreen[] = [
   {
+    id: "landing-page",
+    label: "Home",
+    src: hyperledgerHomeImage,
+    alt: "Home page for the CvSU-Carmona alumni portal",
+    caption:
+      "The public landing page introduces the alumni portal and directs users toward document requests and verification.",
+  },
+  {
+    id: "about-portal",
+    label: "About",
+    src: hyperledgerAboutImage,
+    alt: "About page for the CvSU-Carmona alumni portal",
+    caption:
+      "The about page frames the portal around alumni services, admin-reviewed records, and trusted academic credentials.",
+  },
+  {
     id: "login-auth",
     label: "Login & Auth",
     src: hyperledgerLoginImage,
     alt: "Login screen for the Hyperledger alumni document verification system",
     caption:
       "Role-based login separates alumni and administrative workflows, keeping verification actions tied to authenticated users.",
+  },
+  {
+    id: "student-dashboard",
+    label: "Student Dashboard",
+    src: hyperledgerStudentDashboardImage,
+    alt: "Student dashboard showing profile, document status, and document journey steps",
+    caption:
+      "Alumni can see profile status, document shortcuts, and the full document journey from profile completion to released downloads.",
+  },
+  {
+    id: "alumni-profile",
+    label: "Alumni Profile",
+    src: hyperledgerAlumniProfileImage,
+    alt: "Alumni profile page with profile completion and personal information",
+    caption:
+      "The profile workspace keeps personal, educational, eligibility, employment, and skills records organized for verification.",
+  },
+  {
+    id: "my-documents",
+    label: "My Documents",
+    src: hyperledgerMyDocumentsImage,
+    alt: "Alumni documents page with uploaded verified documents",
+    caption:
+      "Alumni can manage uploaded credentials, review verification status, and access document actions from a single documents table.",
   },
   {
     id: "upload-hashing",
@@ -50,6 +96,14 @@ const featureScreens: FeatureScreen[] = [
     alt: "Admin dashboard for the Hyperledger alumni document verification system",
     caption:
       "The dashboard gives registrar staff a single view of verification volume, pending work, and system activity for faster day-to-day review.",
+  },
+  {
+    id: "request-management",
+    label: "Request Management",
+    src: hyperledgerAdminRequestManagementImage,
+    alt: "Admin document requests management page with request status filters",
+    caption:
+      "Registrar staff can filter and review document requests by status before approving, rejecting, or releasing credentials.",
   },
   {
     id: "audit-trail",
