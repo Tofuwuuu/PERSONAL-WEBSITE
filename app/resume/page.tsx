@@ -21,11 +21,11 @@ export default function ResumePage() {
           Resume
         </h1>
         <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-muted md:text-base">
-          Download a PDF copy, or reach out directly.
+          Download a DOCX copy, or reach out directly.
         </p>
 
         <div className="mt-7 flex flex-wrap gap-3">
-          <ButtonLink href="/resume.pdf">Download PDF</ButtonLink>
+          <ButtonLink href="/resume.pdf">Download Resume</ButtonLink>
           <ButtonLink href={`mailto:${profile.email}`} variant="secondary">
             Email {profile.name.split(" ")[0] ?? "me"}
           </ButtonLink>
@@ -38,7 +38,7 @@ export default function ResumePage() {
         </div>
 
         <p className="mt-5 text-xs text-muted">
-          Resume source: <span className="font-medium text-text">src/Mark_Resume.pdf</span>
+          Resume source: <span className="font-medium text-text">src/Mark_Salise_Resume_FINAL.docx</span>
         </p>
         </div>
       </header>
