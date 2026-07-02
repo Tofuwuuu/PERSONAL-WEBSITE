@@ -135,28 +135,6 @@ export const projects: Project[] = [
     links: [],
   },
   {
-    slug: "ai-powered-personal-dashboard",
-    title: "AI-Powered Personal Dashboard",
-    category: "AI",
-    summary:
-      "Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
-    stack: [
-      "React",
-      "TypeScript",
-      "FastAPI",
-      "PyTorch",
-      "Transformers",
-      "PostgreSQL",
-      "Docker",
-    ],
-    highlights: [
-      "Integrated transformer-based models for natural language summarization and classification features.",
-      "Built modular, dynamic widgets with a responsive dashboard layout.",
-      "Designed the app architecture for scalable full-stack data and inference flows.",
-    ],
-    links: [],
-  },
-  {
     slug: "vanilla-js-calculator",
     title: "Calculator",
     category: "Frontend",
