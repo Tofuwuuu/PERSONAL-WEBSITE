@@ -100,7 +100,13 @@ export const projects: Project[] = [
       "Implemented WebSocket communication and conflict-resolution logic for concurrent edits.",
       "Designed a clean React and TypeScript interface with intuitive document management.",
     ],
-    links: [],
+    links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://collaborative-real-time-document-ed.vercel.app/docs/doc-85e8ea89",
+      },
+    ],
   },
   {
     slug: "fashion-ecommerce-platform",

@@ -38,7 +38,7 @@ export default function ResumePage() {
         </div>
 
         <p className="mt-5 text-xs text-muted">
-          Resume source: <span className="font-medium text-text">src/Mark_Salise_Resume_FINAL.docx</span>
+          Resume source: <span className="font-medium text-text">src/Mark_Salise_Resume.docx</span>
         </p>
         </div>
       </header>

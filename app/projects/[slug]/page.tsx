@@ -7,6 +7,7 @@ import { projects, getProjectBySlug } from "@/content/projects";
 import { Badge } from "@/components/ui/Badge";
 import { HyperledgerCaseStudy } from "@/components/HyperledgerCaseStudy";
 import { ProcurementCaseStudy } from "@/components/ProcurementCaseStudy";
+import { CollaborativeCaseStudy } from "@/components/CollaborativeCaseStudy";
 import todoListScreenshot from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 import calculatorScreenshot from "@/src/calculator/calculator.jpg";
 import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
@@ -138,6 +139,10 @@ export default async function ProjectDetailPage({
 
       {project.slug === "procurement-blockchain-system" ? (
         <ProcurementCaseStudy />
+      ) : null}
+
+      {project.slug === "collaborative-realtime-document-editor" ? (
+        <CollaborativeCaseStudy />
       ) : null}
 
       {project.slug === "fashion-ecommerce-platform" ? (

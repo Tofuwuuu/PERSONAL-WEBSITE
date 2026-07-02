@@ -7,6 +7,7 @@ import procurementImage from "@/src/procurement/Admin dashboard.png";
 import todoListImage from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
 import calculatorImage from "@/src/calculator/calculator.jpg";
 import ecommerceImage from "@/src/Ecommerce/1.jpg";
+import collaborativeImage from "@/src/collaborative Real-Time Document Editor/Main page.png";
 
 const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
   "fashion-ecommerce-platform": {
@@ -28,6 +29,10 @@ const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
   "vanilla-js-calculator": {
     src: calculatorImage,
     alt: "Calculator preview",
+  },
+  "collaborative-realtime-document-editor": {
+    src: collaborativeImage,
+    alt: "Collaborative real-time document editor preview",
   },
 };
 
