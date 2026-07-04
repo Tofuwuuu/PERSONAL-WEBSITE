@@ -132,7 +132,13 @@ export const projects: Project[] = [
       "Implemented product browsing, category filters, variant-based carts, checkout flow, order history, and JWT authentication.",
       "Designed admin dashboard workflows for managing products and orders, with Cloudinary media uploads, SQLAlchemy models, PostgreSQL persistence, Dockerized services, and PayMongo sandbox payments.",
     ],
-    links: [],
+    links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://fecommercefashion.vercel.app/",
+      },
+    ],
   },
   {
     slug: "vanilla-js-calculator",
