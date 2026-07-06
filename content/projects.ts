@@ -32,7 +32,7 @@ export const projects: Project[] = [
     category: "Blockchain",
     featured: true,
     summary:
-      "A Capstone Thesis commissioned by Cavite State University - Carmona. Built a permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
+      "A capstone thesis project built for Cavite State University - Carmona. Built a permissioned Hyperledger Fabric system for tamper-proof alumni document verification and credential checks.",
     stack: [
       "Hyperledger Fabric",
       "Go/Chaincode",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
       "MongoDB",
     ],
     highlights: [
-      "Assigned to deliver end-to-end for Cavite State University - Carmona as the client, my earliest real-world stakeholder work alongside my thesis requirements.",
+      "Worked on an end-to-end capstone project for Cavite State University - Carmona, including stakeholder feedback, implementation, and delivery.",
       "Stayed adaptable and responsive to the needs of Cavite State University - Carmona throughout the engagement, adjusting to feedback and priorities to get the project committed and delivered.",
       "Designed and implemented a permissioned Hyperledger Fabric network and chaincode to store tamper-proof alumni records.",
       "Built RESTful APIs for credential issuance and verification, integrating smart contracts with backend services.",

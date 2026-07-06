@@ -58,8 +58,6 @@ export function ProjectCard({ project }: { project: Project }) {
           : "flex min-h-[300px] flex-col"
       }`}
     >
-      <div className="absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 transition group-hover:opacity-100" />
-
       {image ? (
         <div
           className={`relative overflow-hidden bg-black/30 ${

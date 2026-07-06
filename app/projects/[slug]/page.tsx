@@ -81,7 +81,7 @@ export default async function ProjectDetailPage({
                     : "bg-white/5 text-text ring-1 ring-white/10 hover:bg-white/10",
                 ].join(" ")}
               >
-                {l.kind === "demo" ? `${l.label} ↗` : l.label}
+                {l.kind === "demo" ? `${l.label} ->` : l.label}
               </a>
             ))}
           </div>

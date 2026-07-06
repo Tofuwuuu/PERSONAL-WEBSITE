@@ -11,7 +11,7 @@ const navItems = [
 
 export function Navbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-bg/75 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 bg-black/80 shadow-[0_1px_0_rgb(255_255_255_/_0.04)] backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 md:flex-row md:items-center md:justify-between">
         <Link
           href="/"
