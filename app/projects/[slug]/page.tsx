@@ -8,8 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { HyperledgerCaseStudy } from "@/components/HyperledgerCaseStudy";
 import { ProcurementCaseStudy } from "@/components/ProcurementCaseStudy";
 import { CollaborativeCaseStudy } from "@/components/CollaborativeCaseStudy";
-import todoListScreenshot from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
-import calculatorScreenshot from "@/src/calculator/calculator.jpg";
+import { PlaceholderCaseStudy } from "@/components/PlaceholderCaseStudy";
 import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
 import ecommerceAdminImage from "@/src/Ecommerce/2.jpg";
 
@@ -61,6 +60,11 @@ export default async function ProjectDetailPage({
         <p className="mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-muted md:text-base">
           {project.summary}
         </p>
+        {project.placeholder ? (
+          <p className="mt-4 text-sm font-semibold text-accent">
+            Placeholder case study — content and links will be updated soon.
+          </p>
+        ) : null}
         <div className="mt-6 flex flex-wrap gap-2">
           {project.stack.map((s) => (
             <Badge key={s}>{s}</Badge>
@@ -68,22 +72,31 @@ export default async function ProjectDetailPage({
         </div>
         {project.links.length ? (
           <div className="mt-6 flex flex-wrap gap-3">
-            {project.links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                target="_blank"
-                rel="noreferrer"
-                className={[
-                  "inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-accent",
-                  l.kind === "demo"
-                    ? "bg-accent/15 text-accent ring-1 ring-accent/45 hover:bg-accent/20"
-                    : "bg-white/5 text-text ring-1 ring-white/10 hover:bg-white/10",
-                ].join(" ")}
-              >
-                {l.kind === "demo" ? `${l.label} ->` : l.label}
-              </a>
-            ))}
+            {project.links.map((l) =>
+              project.placeholder ? (
+                <span
+                  key={l.href + l.label}
+                  className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
+                >
+                  {l.label} (soon)
+                </span>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={[
+                    "inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-accent",
+                    l.kind === "demo"
+                      ? "bg-accent/15 text-accent ring-1 ring-accent/45 hover:bg-accent/20"
+                      : "bg-white/5 text-text ring-1 ring-white/10 hover:bg-white/10",
+                  ].join(" ")}
+                >
+                  {l.kind === "demo" ? `${l.label} ↗` : l.label}
+                </a>
+              )
+            )}
           </div>
         ) : null}
       </header>
@@ -102,35 +115,8 @@ export default async function ProjectDetailPage({
         </ul>
       </section>
 
-      {project.slug === "vanilla-js-todo-list-app" ? (
-        <PreviewSection title="Preview" description="Screenshot of the deployed app.">
-          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
-            <Image
-              src={todoListScreenshot}
-              alt="To-Do List App interface preview"
-              className="h-auto w-full object-cover object-top"
-              priority
-            />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              To-Do List app
-            </figcaption>
-          </figure>
-        </PreviewSection>
-      ) : null}
-
-      {project.slug === "vanilla-js-calculator" ? (
-        <PreviewSection title="Preview" description="Screenshot of the deployed calculator.">
-          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 shadow-lg shadow-black/40">
-            <Image
-              src={calculatorScreenshot}
-              alt="Calculator interface preview"
-              className="h-auto w-full object-cover object-top"
-            />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              Calculator
-            </figcaption>
-          </figure>
-        </PreviewSection>
+      {project.placeholder ? (
+        <PlaceholderCaseStudy title={project.title} />
       ) : null}
 
       {project.slug === "hyperledger-blockchain-verification" ? (

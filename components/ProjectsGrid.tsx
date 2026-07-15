@@ -3,14 +3,32 @@
 import { useMemo, useState } from "react";
 import type { Project } from "@/content/types";
 import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectsCarousel } from "@/components/ProjectsCarousel";
 
-export function ProjectsGrid({ projects }: { projects: Project[] }) {
+const CATEGORY_ORDER = ["Blockchain", "Full-stack", "Web Development"];
+
+export function ProjectsGrid({
+  projects,
+  compact = false,
+  carousel = false,
+}: {
+  projects: Project[];
+  compact?: boolean;
+  carousel?: boolean;
+}) {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = useMemo(
-    () => ["All", ...Array.from(new Set(projects.map((p) => p.category)))],
-    [projects]
-  );
+  const categories = useMemo(() => {
+    const fromProjects = Array.from(new Set(projects.map((p) => p.category)));
+    const ordered = CATEGORY_ORDER.filter((category) =>
+      fromProjects.includes(category)
+    );
+    const rest = fromProjects.filter(
+      (category) => !CATEGORY_ORDER.includes(category)
+    );
+
+    return ["All", ...ordered, ...rest];
+  }, [projects]);
 
   const visibleProjects = useMemo(() => {
     const filtered =
@@ -25,7 +43,7 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
 
   return (
     <div>
-      <div className="mb-6 flex flex-wrap gap-2">
+      <div className={`flex flex-wrap gap-2 ${compact ? "mb-4" : "mb-6"}`}>
         {categories.map((category) => {
           const isActive = category === activeCategory;
 
@@ -46,11 +64,19 @@ export function ProjectsGrid({ projects }: { projects: Project[] }) {
         })}
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        {visibleProjects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
-        ))}
-      </div>
+      {carousel ? (
+        <ProjectsCarousel projects={visibleProjects} />
+      ) : (
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ${
+            compact ? "gap-3" : "gap-4"
+          }`}
+        >
+          {visibleProjects.map((p) => (
+            <ProjectCard key={p.slug} project={p} compact={compact} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

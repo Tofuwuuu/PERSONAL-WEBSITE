@@ -2,31 +2,6 @@ import type { Project } from "./types";
 
 export const projects: Project[] = [
   {
-    slug: "vanilla-js-todo-list-app",
-    title: "To-Do List App",
-    category: "Frontend",
-    summary:
-      "Single-page tasks: add, edit, complete, filter, and persist with localStorage.",
-    stack: ["HTML", "CSS", "JavaScript", "localStorage"],
-    highlights: [
-      "Demonstrates practical UI behavior: form handling, event delegation, accessible controls, optimistic rendering, and persistent client-side storage with validation.",
-      "Add, edit, complete, and delete tasks; filter by all, active, or completed; clear completed in one action.",
-      "Remaining and total counts, empty state messaging, and accessible semantics (ARIA states, labels).",
-    ],
-    links: [
-      {
-        kind: "demo",
-        label: "Live demo",
-        href: "https://to-do-list-app-vanilla-js.onrender.com/",
-      },
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/To-Do-List-App-Vanilla-JS-",
-      },
-    ],
-  },
-  {
     slug: "hyperledger-blockchain-verification",
     title: "Hyperledger Blockchain System - Alumni Document Verification",
     category: "Blockchain",
@@ -141,29 +116,85 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "vanilla-js-calculator",
-    title: "Calculator",
-    category: "Frontend",
+    slug: "ai-powered-personal-dashboard",
+    title: "AI-Powered Personal Dashboard",
+    category: "Web Development",
+    placeholder: true,
     summary:
-      "Keypad and keyboard input, expression display, and error handling responsive layout, deployed on Render.",
-    stack: ["HTML5", "CSS3", "JavaScript (ES6+)", "render.yaml"],
+      "Placeholder project. Full-stack AI dashboard that aggregates user data and surfaces intelligent insights.",
+    stack: ["React", "TypeScript", "FastAPI", "TBD"],
     highlights: [
-      "Arithmetic (add, subtract, multiply, divide) with clear, backspace, and decimal input.",
-      "Keyboard shortcuts for digits, operators, equals, clear, and backspace mirrors the on-screen controls.",
-      "Division by zero surfaces an error state and resets cleanly on the next input.",
-      "Static-site friendly: no build step; Render blueprint (`render.yaml`) documents repeatable deployment.",
+      "Placeholder highlight — project overview and key outcomes will be added soon.",
+      "Placeholder highlight — technical implementation details coming soon.",
+      "Placeholder highlight — results and impact summary coming soon.",
     ],
     links: [
-      {
-        kind: "demo",
-        label: "Live demo",
-        href: "https://calculator-ht64.onrender.com/",
-      },
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Calculator",
-      },
+      { kind: "demo", label: "Live Site", href: "#" },
+      { kind: "repo", label: "Repo", href: "#" },
+    ],
+  },
+  {
+    slug: "portal",
+    title: "Portal",
+    category: "Web Development",
+    placeholder: true,
+    summary:
+      "Placeholder project. Web portal for centralized access, workflows, and user-facing services.",
+    stack: ["React", "TypeScript", "TBD"],
+    highlights: [
+      "Placeholder highlight — portal scope and user flows will be documented soon.",
+      "Placeholder highlight — authentication and role-based views coming soon.",
+      "Placeholder highlight — deployment and integration notes coming soon.",
+    ],
+    links: [
+      { kind: "demo", label: "Live Site", href: "#" },
+      { kind: "repo", label: "Repo", href: "#" },
+    ],
+  },
+  {
+    slug: "pc-website",
+    title: "PC Website",
+    category: "Web Development",
+    placeholder: true,
+    summary:
+      "Placeholder project. Marketing and product website for PC-related services or hardware offerings.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "TBD"],
+    highlights: [
+      "Placeholder highlight — site structure and content strategy coming soon.",
+      "Placeholder highlight — responsive layout and performance goals coming soon.",
+      "Placeholder highlight — launch details and analytics plan coming soon.",
+    ],
+    links: [
+      { kind: "demo", label: "Live Site", href: "#" },
+      { kind: "repo", label: "Repo", href: "#" },
+    ],
+  },
+  {
+    slug: "employee-inventory-management-system",
+    title: "Employee & Inventory Management System",
+    category: "Full-stack",
+    placeholder: true,
+    summary:
+      "Placeholder project. Full-stack employee and inventory management system with role-based access, CRUD workflows, and reporting.",
+    stack: [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Blade",
+      "Bootstrap",
+      "JavaScript",
+      "REST API",
+      "Git",
+      "Laravel Breeze",
+    ],
+    highlights: [
+      "Placeholder highlight — employee records, roles, and inventory tracking workflows coming soon.",
+      "Placeholder highlight — Laravel backend, MySQL persistence, and REST API integration coming soon.",
+      "Placeholder highlight — Blade UI, Bootstrap layout, and Laravel Breeze authentication coming soon.",
+    ],
+    links: [
+      { kind: "demo", label: "Live Site", href: "#" },
+      { kind: "repo", label: "Repo", href: "#" },
     ],
   },
 ];

@@ -101,6 +101,19 @@ body {
   }
 }
 
+.projects-carousel-track {
+  scrollbar-width: none;
+  touch-action: pan-y;
+}
+
+.projects-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-carousel-track a {
+  -webkit-user-drag: none;
+}
+
 ::selection {
   background: color-mix(in oklab, theme(colors.accent) 35%, transparent);
 }

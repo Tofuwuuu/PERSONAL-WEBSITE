@@ -16,4 +16,5 @@ export type Project = {
   highlights: string[];
   links: ProjectLink[];
   featured?: boolean;
+  placeholder?: boolean;
 };

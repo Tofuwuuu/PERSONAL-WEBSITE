@@ -2,10 +2,9 @@ import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import type { Project } from "@/content/types";
 import { Badge } from "@/components/ui/Badge";
+import { PlaceholderScreenshot } from "@/components/PlaceholderScreenshot";
 import hyperledgerImage from "@/src/hyperledger/1.png";
 import procurementImage from "@/src/procurement/Admin dashboard.png";
-import todoListImage from "@/src/todolist/a62c4d0b-1bc1-4d6c-a125-c106b53c1a55.jpg";
-import calculatorImage from "@/src/calculator/calculator.jpg";
 import ecommerceImage from "@/src/Ecommerce/1.jpg";
 import collaborativeImage from "@/src/collaborative Real-Time Document Editor/Main page.png";
 
@@ -22,25 +21,26 @@ const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
     src: procurementImage,
     alt: "Procurement blockchain system admin dashboard preview",
   },
-  "vanilla-js-todo-list-app": {
-    src: todoListImage,
-    alt: "To-Do List App preview",
-  },
-  "vanilla-js-calculator": {
-    src: calculatorImage,
-    alt: "Calculator preview",
-  },
   "collaborative-realtime-document-editor": {
     src: collaborativeImage,
     alt: "Collaborative real-time document editor preview",
   },
 };
 
-export function ProjectCard({ project }: { project: Project }) {
-  const image = projectImages[project.slug];
-  const isFeatured = project.featured;
+export function ProjectCard({
+  project,
+  compact = false,
+  equalSize = false,
+}: {
+  project: Project;
+  compact?: boolean;
+  equalSize?: boolean;
+}) {
+  const image = project.placeholder ? null : projectImages[project.slug];
+  const isFeaturedLayout = project.featured && !equalSize;
   const proofLabels = [
-    isFeatured ? "Featured" : null,
+    project.featured ? "Featured" : null,
+    project.placeholder ? "Coming soon" : null,
     ...project.links.map((link) => {
       if (link.kind === "demo") return "Live demo";
       if (link.kind === "repo") return "Repo";
@@ -53,37 +53,57 @@ export function ProjectCard({ project }: { project: Project }) {
     <Link
       href={`/projects/${project.slug}`}
       className={`group surface-soft relative overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.045] focus:outline-none focus:ring-2 focus:ring-accent ${
-        isFeatured
-          ? "grid min-h-[360px] md:col-span-2 md:grid-cols-[1.08fr_0.92fr]"
-          : "flex min-h-[300px] flex-col"
+        isFeaturedLayout
+          ? compact
+            ? "grid md:col-span-2 md:grid-cols-[1fr_1.05fr] xl:col-span-3 xl:grid-cols-[1.15fr_1fr]"
+            : "grid min-h-[360px] md:col-span-2 md:grid-cols-[1.08fr_0.92fr]"
+          : compact || equalSize
+            ? "flex h-full flex-col"
+            : "flex min-h-[300px] flex-col"
       }`}
     >
-      {image ? (
+      {image || project.placeholder ? (
         <div
           className={`relative overflow-hidden bg-black/30 ${
-            isFeatured
-              ? "min-h-[220px] border-b border-white/10 md:min-h-full md:border-b-0 md:border-r"
-              : "aspect-[16/7] border-b border-white/10"
+            isFeaturedLayout
+              ? compact
+                ? "aspect-[16/9] border-b border-white/10 md:aspect-auto md:h-[200px] md:self-center md:border-b-0 md:border-r"
+                : "min-h-[220px] border-b border-white/10 md:min-h-full md:border-b-0 md:border-r"
+              : compact || equalSize
+                ? "aspect-[16/8] border-b border-white/10"
+                : "aspect-[16/7] border-b border-white/10"
           }`}
         >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes={
-              isFeatured
-                ? "(min-width: 768px) 58vw, 100vw"
-                : "(min-width: 768px) 50vw, 100vw"
+          {image ? (
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes={
+                isFeaturedLayout
+                  ? "(min-width: 768px) 58vw, 100vw"
+                  : "(min-width: 768px) 50vw, 100vw"
+              }
+              className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+              priority={project.featured}
+            />
+          ) : (
+            <PlaceholderScreenshot title={project.title} />
+          )}
+          <div
+            className={
+              equalSize
+                ? "pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-card/80 to-transparent"
+                : "absolute inset-0 bg-gradient-to-t from-bg/35 via-transparent to-transparent"
             }
-            className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
-            priority={isFeatured}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg/35 via-transparent to-transparent" />
         </div>
       ) : null}
 
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex flex-wrap items-center gap-2">
+      <div
+        className={`flex flex-1 flex-col ${compact || equalSize ? "p-4 md:p-5" : "p-6"}`}
+      >
+        <div className={`flex flex-wrap items-center gap-2 ${compact || equalSize ? "mb-2.5" : "mb-4"}`}>
           <span className="rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent">
             {project.category}
           </span>
@@ -98,7 +118,11 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="flex items-start justify-between gap-4">
-          <h3 className="max-w-[28rem] text-lg font-semibold tracking-tight text-text md:text-xl">
+          <h3
+            className={`max-w-[28rem] font-semibold tracking-tight text-text ${
+              compact || equalSize ? "text-base md:text-lg" : "text-lg md:text-xl"
+            }`}
+          >
             {project.title}
           </h3>
           <span className="mt-1 shrink-0 text-sm font-medium text-muted transition group-hover:translate-x-1 group-hover:text-accent">
@@ -106,17 +130,27 @@ export function ProjectCard({ project }: { project: Project }) {
           </span>
         </div>
 
-        <p className="mt-3 text-sm leading-relaxed text-muted">
+        <p
+          className={`text-sm leading-relaxed text-muted ${
+            compact || equalSize ? "mt-2 line-clamp-2" : "mt-3"
+          }`}
+        >
           {project.summary}
         </p>
 
-        <div className="mt-auto flex flex-wrap gap-2 pt-6">
-          {project.stack.slice(0, isFeatured ? 6 : 4).map((s) => (
+        <div
+          className={`mt-auto flex flex-wrap gap-2 ${compact || equalSize ? "pt-3" : "pt-6"}`}
+        >
+          {project.stack.slice(0, project.featured ? 6 : 4).map((s) => (
             <Badge key={s}>{s}</Badge>
           ))}
         </div>
 
-        <span className="mt-5 inline-flex text-sm font-semibold text-accent opacity-80 transition group-hover:opacity-100">
+        <span
+          className={`inline-flex text-sm font-semibold text-accent opacity-80 transition group-hover:opacity-100 ${
+            compact || equalSize ? "mt-3" : "mt-5"
+          }`}
+        >
           View case study
         </span>
       </div>
