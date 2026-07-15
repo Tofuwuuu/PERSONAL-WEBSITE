@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
+import { SiteBackground } from "@/components/SiteBackground";
 import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
@@ -33,7 +34,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-dvh antialiased">
+      <body className="relative min-h-dvh antialiased">
+        <SiteBackground />
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-card focus:px-3 focus:py-2 focus:text-sm focus:ring-2 focus:ring-accent"
@@ -41,7 +43,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Navbar />
-        <main id="content" className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+        <main id="content" className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
           {children}
         </main>
         <Footer />
