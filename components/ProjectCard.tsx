@@ -42,7 +42,14 @@ export function ProjectCard({
     project.featured ? "Featured" : null,
     project.placeholder ? "Coming soon" : null,
     ...project.links.map((link) => {
-      if (link.kind === "demo") return "Live demo";
+      if (
+        link.kind === "demo" &&
+        link.href &&
+        link.href !== "#" &&
+        !link.href.startsWith("#")
+      ) {
+        return "Live demo";
+      }
       if (link.kind === "repo") return "Repo";
       return "Case study";
     }),

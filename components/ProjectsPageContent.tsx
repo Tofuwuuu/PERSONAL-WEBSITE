@@ -43,7 +43,13 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
   }, [activeCategory, projects]);
 
   const liveCount = projects.filter((p) =>
-    p.links.some((link) => link.kind === "demo")
+    p.links.some(
+      (link) =>
+        link.kind === "demo" &&
+        link.href.length > 0 &&
+        link.href !== "#" &&
+        !link.href.startsWith("#")
+    )
   ).length;
   const featuredCount = projects.filter((p) => p.featured).length;
 
