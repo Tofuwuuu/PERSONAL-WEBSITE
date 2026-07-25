@@ -7,8 +7,6 @@ import {
   useRef,
   useState,
   type KeyboardEvent,
-  type MouseEvent,
-  type PointerEvent,
 } from "react";
 import type { Project } from "@/content/types";
 import { ProjectCard } from "@/components/ProjectCard";
@@ -25,13 +23,6 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
-  const pointerStartX = useRef<number | null>(null);
-  const pointerStartY = useRef<number | null>(null);
-  const scrollStartLeft = useRef(0);
-  const isDragging = useRef(false);
-  const didDrag = useRef(false);
-  const [isGrabbing, setIsGrabbing] = useState(false);
-
   const maxIndex = Math.max(0, projects.length - visibleCount);
   const pageCount = maxIndex + 1;
 
@@ -117,98 +108,6 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
     }
   }
 
-  function nearestIndexFromScroll(scrollLeft: number) {
-    const offsets = itemRefs.current
-      .map((item) => item?.offsetLeft ?? 0)
-      .filter((_, index) => index <= maxIndex);
-
-    let nearest = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-
-    offsets.forEach((offset, index) => {
-      const distance = Math.abs(scrollLeft - offset);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearest = index;
-      }
-    });
-
-    return nearest;
-  }
-
-  function handlePointerDown(event: PointerEvent<HTMLDivElement>) {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-
-    const track = trackRef.current;
-    if (!track) return;
-
-    pointerStartX.current = event.clientX;
-    pointerStartY.current = event.clientY;
-    scrollStartLeft.current = track.scrollLeft;
-    isDragging.current = false;
-    didDrag.current = false;
-    track.setPointerCapture(event.pointerId);
-  }
-
-  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
-    if (pointerStartX.current === null || pointerStartY.current === null) return;
-
-    const track = trackRef.current;
-    if (!track) return;
-
-    const deltaX = event.clientX - pointerStartX.current;
-    const deltaY = event.clientY - pointerStartY.current;
-
-    if (!isDragging.current) {
-      if (Math.abs(deltaX) < 6) return;
-      if (Math.abs(deltaY) > Math.abs(deltaX)) {
-        pointerStartX.current = null;
-        pointerStartY.current = null;
-        return;
-      }
-
-      isDragging.current = true;
-      didDrag.current = true;
-      setIsGrabbing(true);
-      track.classList.remove("scroll-smooth");
-    }
-
-    event.preventDefault();
-    track.scrollLeft = scrollStartLeft.current - deltaX;
-  }
-
-  function handlePointerUp(event: PointerEvent<HTMLDivElement>) {
-    const track = trackRef.current;
-
-    if (track?.hasPointerCapture(event.pointerId)) {
-      track.releasePointerCapture(event.pointerId);
-    }
-
-    if (pointerStartX.current === null) return;
-
-    if (isDragging.current && track) {
-      const nextIndex = nearestIndexFromScroll(track.scrollLeft);
-      track.classList.add("scroll-smooth");
-      scrollToIndex(nextIndex);
-    }
-
-    pointerStartX.current = null;
-    pointerStartY.current = null;
-    isDragging.current = false;
-    setIsGrabbing(false);
-
-    // Keep didDrag true briefly so the release click does not open a card.
-    window.setTimeout(() => {
-      didDrag.current = false;
-    }, 0);
-  }
-
-  function handleTrackClickCapture(event: MouseEvent<HTMLDivElement>) {
-    if (!didDrag.current) return;
-    event.preventDefault();
-    event.stopPropagation();
-  }
-
   if (!projects.length) {
     return (
       <p className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-6 text-sm text-muted">
@@ -242,15 +141,7 @@ export function ProjectsCarousel({ projects }: { projects: Project[] }) {
           ref={trackRef}
           tabIndex={0}
           onKeyDown={handleKeyDown}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerUp}
-          onClickCapture={handleTrackClickCapture}
-          className={[
-            "projects-carousel-track min-w-0 flex-1 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1 pt-1 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[#04060a] md:gap-4",
-            isGrabbing ? "cursor-grabbing select-none" : "cursor-grab",
-          ].join(" ")}
+          className="projects-carousel-track min-w-0 flex-1 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-1 pt-1 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[#04060a] md:gap-4"
         >
           {projects.map((project, index) => (
             <div
