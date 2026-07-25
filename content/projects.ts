@@ -279,7 +279,6 @@ export const projects: Project[] = [
     slug: "smartdoc-analyzer",
     title: "SmartDoc Analyzer",
     category: "Full-stack",
-    placeholder: true,
     summary:
       "AI document analysis pipeline: upload PDFs or images, extract text (PyMuPDF / Tesseract), run spaCy NER and insights, cache by file hash in Redis, and store results in PostgreSQL. Optional contract compliance risk flags.",
     stack: [
@@ -296,9 +295,14 @@ export const projects: Project[] = [
       "SHA-256 deduplication skips reprocessing when the same file is uploaded again.",
       "Rule-based contract risk scan for missing clauses, auto-renewal, payment terms, and jurisdiction conflicts.",
       "Optional JWT auth scopes uploads to registered users.",
-      "Deploy paths documented for Vercel (frontend) and Railway (API, Postgres, Redis).",
+      "Live demo on Vercel with backend deployment documented for Railway (API, Postgres, Redis).",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://smart-doc-analyzer-murex.vercel.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -582,7 +586,6 @@ export const projects: Project[] = [
     slug: "todo-list-vanilla-js",
     title: "To-Do List App (Vanilla JS)",
     category: "Web Development",
-    placeholder: true,
     summary:
       "Browser to-do list: add tasks, mark complete, and remove items using vanilla JavaScript with no framework or build pipeline.",
     stack: ["HTML", "CSS", "JavaScript"],

@@ -11,6 +11,9 @@ import { CollaborativeCaseStudy } from "@/components/CollaborativeCaseStudy";
 import { PlaceholderCaseStudy } from "@/components/PlaceholderCaseStudy";
 import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
 import ecommerceAdminImage from "@/src/Ecommerce/2.jpg";
+import smartdocUploadImage from "@/src/SmartDocAnalyzer/1.png";
+import smartdocInsightsImage from "@/src/SmartDocAnalyzer/2.png";
+import todoListPreviewImage from "@/src/todolist/1.jpg";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -159,6 +162,55 @@ export default async function ProjectDetailPage({
               </figcaption>
             </figure>
           </div>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "smartdoc-analyzer" ? (
+        <PreviewSection
+          title="Project Screens"
+          description="Upload flow and document insights from SmartDoc Analyzer."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={smartdocUploadImage}
+                alt="SmartDoc Analyzer dashboard and upload"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Dashboard & upload
+              </figcaption>
+            </figure>
+
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={smartdocInsightsImage}
+                alt="SmartDoc Analyzer document insights and entities"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Document insights
+              </figcaption>
+            </figure>
+          </div>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "todo-list-vanilla-js" ? (
+        <PreviewSection
+          title="Project Screen"
+          description="Main view of the vanilla JavaScript to-do list."
+        >
+          <figure className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+            <Image
+              src={todoListPreviewImage}
+              alt="Vanilla JavaScript to-do list app"
+              className="h-auto w-full object-cover object-top"
+            />
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+              Task list UI
+            </figcaption>
+          </figure>
         </PreviewSection>
       ) : null}
     </div>

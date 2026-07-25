@@ -7,6 +7,8 @@ import hyperledgerImage from "@/src/hyperledger/1.png";
 import procurementImage from "@/src/procurement/Admin dashboard.png";
 import ecommerceImage from "@/src/Ecommerce/1.jpg";
 import collaborativeImage from "@/src/collaborative Real-Time Document Editor/Main page.png";
+import smartdocImage from "@/src/SmartDocAnalyzer/1.png";
+import todoListImage from "@/src/todolist/1.jpg";
 
 const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
   "fashion-ecommerce-platform": {
@@ -24,6 +26,14 @@ const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
   "collaborative-realtime-document-editor": {
     src: collaborativeImage,
     alt: "Collaborative real-time document editor preview",
+  },
+  "smartdoc-analyzer": {
+    src: smartdocImage,
+    alt: "SmartDoc Analyzer upload dashboard preview",
+  },
+  "todo-list-vanilla-js": {
+    src: todoListImage,
+    alt: "To-do list app vanilla JavaScript preview",
   },
 };
 
