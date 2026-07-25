@@ -116,9 +116,14 @@ export const projects: Project[] = [
       "On-chain state machine with platform fees, pull payments, and arbiter resolution paths.",
       "OpenZeppelin ReentrancyGuard, Ownable, and Pausable for contract hardening.",
       "Event indexer with checkpointed backfill and idempotent log storage.",
-      "Docker Compose local stack: Hardhat, deploy, DB, API, indexer, and UI.",
+      "Live React UI on Vercel with Sepolia MetaMask flows.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://escrowmarketplace.vercel.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -130,7 +135,6 @@ export const projects: Project[] = [
     slug: "on-chain-wallet-risk-analyzer",
     title: "On-Chain Wallet Risk Analyzer",
     category: "Blockchain",
-    placeholder: true,
     summary:
       "Ethereum wallet risk analyzer producing a 0–100 score, shareable reports, side-by-side comparison, blacklist checks, and printable exports. Educational demo with deterministic heuristics when API keys are absent.",
     stack: [
@@ -146,9 +150,14 @@ export const projects: Project[] = [
       "Weighted scoring factors for mixer exposure, scam tokens, mixing patterns, and wallet behavior.",
       "Saved reports, history, compare endpoint, and PDF/HTML export for shareable output.",
       "Provider clients scaffolded for Etherscan, Alchemy, Moralis, and Covalent.",
-      "Runs locally via Docker Compose (frontend :5173, API :8000).",
+      "Production API on Railway; interactive docs at `/docs` when the service is running.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live API",
+        href: "https://api-production-487c.up.railway.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -430,29 +439,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "pams-procurement-asset-management",
-    title: "PAMS — Procurement & Asset Management System",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Web-based procurement and asset management for the full PR → canvass → PO lifecycle, property transactions (IAR, ICS, PAR, PTR), suppliers, and user roles — FastAPI backend with Jinja2 SSR UI and MongoDB.",
-    stack: [
-      "FastAPI",
-      "MongoDB",
-      "Motor",
-      "Jinja2",
-      "Uvicorn",
-      "Python",
-    ],
-    highlights: [
-      "Modules for purchase requests, abstract of canvass, purchase orders, suppliers, and property listings.",
-      "Async MongoDB access via Motor; role-based validators and user activity logs.",
-      "Transaction types cover inspection, issuance, property transfer/return, and waste material reports.",
-      "Local deployment via batch scripts and Uvicorn (default port 8877) — no public demo URL.",
-    ],
-    links: [],
-  },
-  {
     slug: "portal-school-portal",
     title: "School Portal",
     category: "Full-stack",
@@ -564,7 +550,6 @@ export const projects: Project[] = [
     slug: "calculator",
     title: "Calculator",
     category: "Web Development",
-    placeholder: true,
     summary:
       "Classic calculator built with plain HTML, CSS, and JavaScript — no build step. Supports keyboard input, division-by-zero handling, and static hosting on Render.",
     stack: ["HTML", "CSS", "JavaScript"],

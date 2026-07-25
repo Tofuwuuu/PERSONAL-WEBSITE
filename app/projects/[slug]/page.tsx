@@ -14,6 +14,11 @@ import ecommerceAdminImage from "@/src/Ecommerce/2.jpg";
 import smartdocUploadImage from "@/src/SmartDocAnalyzer/1.png";
 import smartdocInsightsImage from "@/src/SmartDocAnalyzer/2.png";
 import todoListPreviewImage from "@/src/todolist/1.jpg";
+import calculatorPreviewImage from "@/src/calculator/calculator.jpg";
+import onChainWallet1Image from "@/src/OnChainWallet/1.png";
+import onChainWallet2Image from "@/src/OnChainWallet/2.png";
+import onChainWallet3Image from "@/src/OnChainWallet/3.png";
+import { getProjectCardImage } from "@/content/projectImages";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -42,6 +47,14 @@ export default async function ProjectDetailPage({
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
+  const hasCardScreenshot = Boolean(getProjectCardImage(slug));
+  const hasWorkingLinks = project.links.some(
+    (link) =>
+      link.href.length > 0 && link.href !== "#" && !link.href.startsWith("#")
+  );
+  const showPlaceholderCaseStudy = project.placeholder && !hasCardScreenshot;
+  const disableHeaderLinks = showPlaceholderCaseStudy && !hasWorkingLinks;
+
   return (
     <div className="py-8 md:py-12">
       <div className="mb-6">
@@ -63,7 +76,7 @@ export default async function ProjectDetailPage({
         <p className="mt-4 max-w-3xl text-pretty text-sm leading-relaxed text-muted md:text-base">
           {project.summary}
         </p>
-        {project.placeholder ? (
+        {showPlaceholderCaseStudy ? (
           <p className="mt-4 text-sm font-semibold text-accent">
             Placeholder case study — content and links will be updated soon.
           </p>
@@ -76,7 +89,7 @@ export default async function ProjectDetailPage({
         {project.links.length ? (
           <div className="mt-6 flex flex-wrap gap-3">
             {project.links.map((l) =>
-              project.placeholder ? (
+              disableHeaderLinks ? (
                 <span
                   key={l.href + l.label}
                   className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
@@ -118,7 +131,7 @@ export default async function ProjectDetailPage({
         </ul>
       </section>
 
-      {project.placeholder ? (
+      {showPlaceholderCaseStudy ? (
         <PlaceholderCaseStudy title={project.title} />
       ) : null}
 
@@ -209,6 +222,64 @@ export default async function ProjectDetailPage({
             />
             <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
               Task list UI
+            </figcaption>
+          </figure>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "on-chain-wallet-risk-analyzer" ? (
+        <PreviewSection
+          title="Project Screens"
+          description="Wallet analysis, scoring, and report views from the risk analyzer."
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 md:col-span-2">
+              <Image
+                src={onChainWallet1Image}
+                alt="On-chain wallet risk analyzer home"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Analyze wallet
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={onChainWallet2Image}
+                alt="Wallet risk score breakdown"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Risk score & factors
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <Image
+                src={onChainWallet3Image}
+                alt="Shareable wallet risk report"
+                className="h-auto w-full object-cover object-top"
+              />
+              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+                Report view
+              </figcaption>
+            </figure>
+          </div>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "calculator" ? (
+        <PreviewSection
+          title="Project Screen"
+          description="Calculator UI built with HTML, CSS, and JavaScript."
+        >
+          <figure className="mx-auto max-w-md overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+            <Image
+              src={calculatorPreviewImage}
+              alt="Calculator web app"
+              className="h-auto w-full object-cover object-top"
+            />
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+              Calculator
             </figcaption>
           </figure>
         </PreviewSection>

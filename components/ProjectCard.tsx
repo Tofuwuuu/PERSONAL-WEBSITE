@@ -1,41 +1,9 @@
 import Link from "next/link";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 import type { Project } from "@/content/types";
 import { Badge } from "@/components/ui/Badge";
 import { PlaceholderScreenshot } from "@/components/PlaceholderScreenshot";
-import hyperledgerImage from "@/src/hyperledger/1.png";
-import procurementImage from "@/src/procurement/Admin dashboard.png";
-import ecommerceImage from "@/src/Ecommerce/1.jpg";
-import collaborativeImage from "@/src/collaborative Real-Time Document Editor/Main page.png";
-import smartdocImage from "@/src/SmartDocAnalyzer/1.png";
-import todoListImage from "@/src/todolist/1.jpg";
-
-const projectImages: Record<string, { src: StaticImageData; alt: string }> = {
-  "fashion-ecommerce-platform": {
-    src: ecommerceImage,
-    alt: "Fashion e-commerce storefront preview",
-  },
-  "hyperledger-blockchain-verification": {
-    src: hyperledgerImage,
-    alt: "Hyperledger blockchain verification preview",
-  },
-  "procurement-blockchain-system": {
-    src: procurementImage,
-    alt: "Procurement blockchain system admin dashboard preview",
-  },
-  "collaborative-realtime-document-editor": {
-    src: collaborativeImage,
-    alt: "Collaborative real-time document editor preview",
-  },
-  "smartdoc-analyzer": {
-    src: smartdocImage,
-    alt: "SmartDoc Analyzer upload dashboard preview",
-  },
-  "todo-list-vanilla-js": {
-    src: todoListImage,
-    alt: "To-do list app vanilla JavaScript preview",
-  },
-};
+import { getProjectCardImage } from "@/content/projectImages";
 
 export function ProjectCard({
   project,
@@ -46,11 +14,11 @@ export function ProjectCard({
   compact?: boolean;
   equalSize?: boolean;
 }) {
-  const image = project.placeholder ? null : projectImages[project.slug];
+  const cardImage = getProjectCardImage(project.slug);
   const isFeaturedLayout = project.featured && !equalSize;
   const proofLabels = [
     project.featured ? "Featured" : null,
-    project.placeholder ? "Coming soon" : null,
+    project.placeholder && !cardImage ? "Coming soon" : null,
     ...project.links.map((link) => {
       if (
         link.kind === "demo" &&
@@ -79,7 +47,7 @@ export function ProjectCard({
             : "flex min-h-[300px] flex-col"
       }`}
     >
-      {image || project.placeholder ? (
+      {cardImage || project.placeholder ? (
         <div
           className={`relative overflow-hidden bg-black/30 ${
             isFeaturedLayout
@@ -91,10 +59,10 @@ export function ProjectCard({
                 : "aspect-[16/7] border-b border-white/10"
           }`}
         >
-          {image ? (
+          {cardImage ? (
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={cardImage.src}
+              alt={cardImage.alt}
               fill
               sizes={
                 isFeaturedLayout
