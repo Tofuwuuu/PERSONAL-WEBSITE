@@ -518,35 +518,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "dota-tournament-bracket-maker",
-    title: "Dota Tournament Bracket Maker",
-    category: "Web Development",
-    placeholder: true,
-    summary:
-      "Flask web app for organizing Dota 2 tournaments with organizer and player roles, registration, session auth, and tournament creation with inline editing.",
-    stack: [
-      "Flask",
-      "SQLAlchemy",
-      "Flask-Login",
-      "Flask-WTF",
-      "SQLite",
-      "Jinja2",
-    ],
-    highlights: [
-      "Organizers create and manage tournaments; players register and view events.",
-      "Dark-themed responsive UI with role-specific dashboards.",
-      "WTForms validation and CSRF protection via Flask-WTF.",
-      "SQLite for lightweight local development.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/dota-maker.git",
-      },
-    ],
-  },
-  {
     slug: "calculator",
     title: "Calculator",
     category: "Web Development",
