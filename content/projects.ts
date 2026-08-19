@@ -66,36 +66,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "crypto-payments-gateway",
-    title: "Crypto Payments Gateway",
-    category: "Blockchain",
-    placeholder: true,
-    summary:
-      "Merchant invoicing and Sepolia testnet ETH payment gateway with on-chain listeners, webhook delivery, and a React merchant dashboard backed by FastAPI and PostgreSQL.",
-    stack: [
-      "Solidity",
-      "Sepolia",
-      "FastAPI",
-      "PostgreSQL",
-      "React",
-      "TypeScript",
-      "Docker Compose",
-    ],
-    highlights: [
-      "Merchants create invoices; customers pay with real Sepolia testnet ETH.",
-      "Background listener and webhook worker process chain events and notify merchants.",
-      "Docker Compose orchestrates Postgres, API, listener, worker, and frontend for one-command local demos.",
-      "Alembic migrations and OpenAPI docs at `/docs` for API exploration.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/-Crypto-Payments-Gateway.git",
-      },
-    ],
-  },
-  {
     slug: "smart-contract-escrow-marketplace",
     title: "Smart Contract Escrow Marketplace",
     category: "Blockchain",
