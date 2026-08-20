@@ -18,6 +18,8 @@ import calculatorPreviewImage from "@/src/calculator/calculator.jpg";
 import onChainWallet1Image from "@/src/OnChainWallet/1.png";
 import onChainWallet2Image from "@/src/OnChainWallet/2.png";
 import onChainWallet3Image from "@/src/OnChainWallet/3.png";
+import defiTrackerPreviewImage from "@/src/defiTracker/Screenshot 2026-08-20 142908.png";
+import todoListDappPreviewImage from "@/src/toDoListD/Screenshot 2026-08-19 204344.png";
 import { getProjectCardImage } from "@/content/projectImages";
 
 export function generateStaticParams() {
@@ -222,6 +224,42 @@ export default async function ProjectDetailPage({
             />
             <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
               Task list UI
+            </figcaption>
+          </figure>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "defi-portfolio-tracker" ? (
+        <PreviewSection
+          title="Project Screen"
+          description="DeFi portfolio tracker dashboard."
+        >
+          <figure className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+            <Image
+              src={defiTrackerPreviewImage}
+              alt="DeFi portfolio tracker dashboard"
+              className="h-auto w-full object-cover object-top"
+            />
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+              Portfolio dashboard
+            </figcaption>
+          </figure>
+        </PreviewSection>
+      ) : null}
+
+      {project.slug === "todo-list-dapp" ? (
+        <PreviewSection
+          title="Project Screen"
+          description="Calendar to-do DApp with on-chain task storage."
+        >
+          <figure className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+            <Image
+              src={todoListDappPreviewImage}
+              alt="To-do list DApp calendar view"
+              className="h-auto w-full object-cover object-top"
+            />
+            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
+              Calendar to-do view
             </figcaption>
           </figure>
         </PreviewSection>

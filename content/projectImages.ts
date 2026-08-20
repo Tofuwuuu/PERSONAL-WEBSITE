@@ -7,6 +7,8 @@ import smartdocCardImage from "@/src/SmartDocAnalyzer/1.png";
 import todoListCardImage from "@/src/todolist/1.jpg";
 import calculatorCardImage from "@/src/calculator/calculator.jpg";
 import onChainWalletCardImage from "@/src/OnChainWallet/1.png";
+import defiTrackerCardImage from "@/src/defiTracker/Screenshot 2026-08-20 142908.png";
+import todoListDappCardImage from "@/src/toDoListD/Screenshot 2026-08-19 204344.png";
 
 /** Card thumbnail per project slug (folder names under `src/`). */
 export const projectCardImages: Record<
@@ -44,6 +46,14 @@ export const projectCardImages: Record<
   "on-chain-wallet-risk-analyzer": {
     src: onChainWalletCardImage,
     alt: "On-chain wallet risk analyzer preview",
+  },
+  "defi-portfolio-tracker": {
+    src: defiTrackerCardImage,
+    alt: "DeFi portfolio tracker dashboard preview",
+  },
+  "todo-list-dapp": {
+    src: todoListDappCardImage,
+    alt: "To-do list DApp calendar view preview",
   },
 };
 

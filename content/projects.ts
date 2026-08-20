@@ -66,42 +66,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "smart-contract-escrow-marketplace",
-    title: "Smart Contract Escrow Marketplace",
-    category: "Blockchain",
-    placeholder: true,
-    summary:
-      "Decentralized escrow marketplace: buyers lock ETH in Solidity, sellers confirm delivery, buyers release payment, and arbiters resolve disputes. FastAPI indexes events into PostgreSQL; React handles MetaMask flows.",
-    stack: [
-      "Solidity",
-      "OpenZeppelin",
-      "Hardhat",
-      "FastAPI",
-      "PostgreSQL",
-      "web3.py",
-      "React",
-      "Sepolia",
-    ],
-    highlights: [
-      "On-chain state machine with platform fees, pull payments, and arbiter resolution paths.",
-      "OpenZeppelin ReentrancyGuard, Ownable, and Pausable for contract hardening.",
-      "Event indexer with checkpointed backfill and idempotent log storage.",
-      "Live React UI on Vercel with Sepolia MetaMask flows.",
-    ],
-    links: [
-      {
-        kind: "demo",
-        label: "Live Site",
-        href: "https://escrowmarketplace.vercel.app/",
-      },
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/-Smart-Contract-Escrow-Marketplace.git",
-      },
-    ],
-  },
-  {
     slug: "on-chain-wallet-risk-analyzer",
     title: "On-Chain Wallet Risk Analyzer",
     category: "Blockchain",
@@ -139,9 +103,8 @@ export const projects: Project[] = [
     slug: "todo-list-dapp",
     title: "To-Do List DApp",
     category: "Blockchain",
-    placeholder: true,
     summary:
-      "On-chain task list on Sepolia: each wallet owns its tasks on a TodoList Solidity contract, with a React + Web3.js frontend and Hardhat toolchain.",
+      "Calendar-style to-do app with on-chain task storage on Sepolia: connect a wallet, add and manage tasks, and persist them via a TodoList Solidity contract with a React frontend.",
     stack: [
       "Solidity",
       "Hardhat",
@@ -152,12 +115,17 @@ export const projects: Project[] = [
       "MetaMask",
     ],
     highlights: [
-      "Add, complete, and delete tasks persisted on-chain per connected address.",
-      "Compile step copies ABI to the frontend; tests run under Hardhat.",
-      "Deploy scripts write `deployments/sepolia.json` and configure `VITE_CONTRACT_ADDRESS`.",
-      "Sepolia testnet deployment workflow documented in the repo README.",
+      "Calendar UI for adding, completing, and deleting tasks tied to the connected wallet.",
+      "Tasks persisted on-chain per address through a deployed Sepolia contract.",
+      "Hardhat toolchain with compile, test, and deploy scripts documented in the repo.",
+      "Live demo on Vercel with MetaMask wallet connection.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://calendar-todo-template.vercel.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -169,15 +137,21 @@ export const projects: Project[] = [
     slug: "defi-portfolio-tracker",
     title: "DeFi Portfolio Tracker",
     category: "Blockchain",
-    placeholder: true,
     summary:
-      "Planned DeFi portfolio tracking project — GitHub repository is initialized for future wallet and protocol aggregation work (no application code committed yet).",
-    stack: ["Planned: React", "TypeScript", "Web3", "FastAPI"],
+      "DeFi portfolio dashboard for viewing wallet positions and protocol exposure in one place, built with React and Web3 tooling and deployed on Vercel.",
+    stack: ["React", "TypeScript", "Web3", "Vite", "Vercel"],
     highlights: [
-      "Repository reserved for portfolio-grade DeFi position tracking and analytics.",
-      "Implementation pending — case study and visuals will be added when the build lands.",
+      "Portfolio overview UI for tracking DeFi wallet positions and holdings.",
+      "Wallet-connect flow for loading on-chain balance and position data.",
+      "Responsive dashboard layout optimized for demo and portfolio review.",
+      "Live deployment on Vercel with GitHub source available.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://defi-portfolio-tracker.vercel.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -286,204 +260,6 @@ export const projects: Project[] = [
         kind: "repo",
         label: "Repo",
         href: "https://github.com/Tofuwuuu/SmartDoc-Analyzer.git",
-      },
-    ],
-  },
-  {
-    slug: "consultation-system-for-teachers",
-    title: "Consultation System for Teachers",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Laravel monolith where students book consultation slots with teachers, teachers manage availability and approve or reject requests, and admins oversee users and bookings with email and in-app notifications.",
-    stack: [
-      "Laravel 11",
-      "PHP 8.2",
-      "Blade",
-      "Tailwind CSS",
-      "MySQL",
-      "Laravel Breeze",
-      "Docker Sail",
-    ],
-    highlights: [
-      "Role-based flows for students, teachers, and admins.",
-      "Database notifications plus queued email for booking lifecycle events.",
-      "Laravel Sail (Docker) for reproducible local setup on Windows via `sail.ps1`.",
-      "Seeded demo accounts documented in the README for quick walkthroughs.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Consultation-System-for-Teachers.git",
-      },
-    ],
-  },
-  {
-    slug: "crypto-exchange-order-book-simulator",
-    title: "Crypto Exchange Order Book Simulator",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Simulated crypto exchange matching engine with limit and market orders, price-time priority, PostgreSQL trade history, Redis-backed live depth, WebSocket market data, and a React dashboard.",
-    stack: [
-      "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "WebSockets",
-      "React",
-      "Docker Compose",
-    ],
-    highlights: [
-      "Pure domain matching engine isolated from API and persistence for testability.",
-      "Partial fills, cancellation, resting limits, and FIFO matching at each price level.",
-      "REST order entry plus WebSocket feed for book and trade updates.",
-      "Health checks across API, Postgres, and Redis in Docker Compose.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Crypto-Exchange-Order-Book-Simulator.git",
-      },
-    ],
-  },
-  {
-    slug: "cryptosense-crypto-analysis-platform",
-    title: "CryptoSense — Crypto Analysis & Paper Trading",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Cryptocurrency analysis platform (Phase 1): FastAPI backend with DDD-style layers, async SQLAlchemy, JWT auth, Celery workers, PostgreSQL, Redis, and MailHog for local email testing.",
-    stack: [
-      "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "Celery",
-      "Docker Compose",
-      "JWT",
-      "Alembic",
-    ],
-    highlights: [
-      "Register, login, refresh, and logout with JWT access and refresh tokens.",
-      "Docker Compose stack for API, worker, Postgres, Redis, and MailHog.",
-      "Integration and k6 benchmark scripts for load testing auth endpoints.",
-      "Roadmap includes signals, paper trading, and Binance integration beyond Phase 1.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Crypto-analyzing-buy-and-sell-test.git",
-      },
-    ],
-  },
-  {
-    slug: "ai-powered-personal-dashboard",
-    title: "AI-Powered Personal Dashboard",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Personal dashboard with JWT auth, text entry submission, async AI analysis via Gemini (structured JSON outputs), aggregated insights, trend endpoints, and a data-driven React UI with live polling.",
-    stack: [
-      "React",
-      "TypeScript",
-      "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "Celery",
-      "Gemini",
-    ],
-    highlights: [
-      "AI pipeline returns summary, classification, sentiment, topics, action items, and confidence scores.",
-      "Celery-backed async processing for analysis jobs.",
-      "Docker Compose for API, worker, database, cache, and frontend.",
-      "Local demo at http://localhost:5173 with API docs at :8000/docs when running Compose.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/AI-Powered-Personal-Dashboard.git",
-      },
-    ],
-  },
-  {
-    slug: "portal-school-portal",
-    title: "School Portal",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "School portal with FastAPI backend and React frontend: student and teacher roles, activities and assignments, and teacher tools to publish class content. PostgreSQL with Docker Compose.",
-    stack: [
-      "FastAPI",
-      "React",
-      "Vite",
-      "Tailwind CSS",
-      "PostgreSQL",
-      "Docker Compose",
-    ],
-    highlights: [
-      "Registration and login with seeded teacher and student demo accounts.",
-      "Teachers create activities and assignments; students view school content.",
-      "Blue-and-white themed UI; API docs at `/docs` when the stack is running.",
-      "Frontend served on port 80 in Docker to mirror production nginx routing.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Portal.git",
-      },
-    ],
-  },
-  {
-    slug: "pc-website",
-    title: "PC Website",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Open-source PC parts / build site: React frontend and FastAPI backend with JWT auth via fastapi-users, async SQLAlchemy, Alembic migrations, and PostgreSQL.",
-    stack: [
-      "React",
-      "FastAPI",
-      "fastapi-users",
-      "PostgreSQL",
-      "SQLAlchemy",
-      "Alembic",
-      "Docker",
-    ],
-    highlights: [
-      "JWT login with form-encoded credentials (email as username).",
-      "Separate Render deployment notes for backend Dockerfile and frontend `VITE_API_BASE_URL`.",
-      "Migrations via `alembic upgrade head` required for Postgres deployments.",
-      "Local dev: Docker Postgres, uvicorn API, and Vite frontend.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/PC-WEBSITE.git",
-      },
-    ],
-  },
-  {
-    slug: "realtime-app",
-    title: "Real-Time App",
-    category: "Full-stack",
-    placeholder: true,
-    summary:
-      "Portfolio project focused on WebSockets and live data — repository is initialized; application source is not committed yet.",
-    stack: ["Planned: WebSockets", "React", "FastAPI"],
-    highlights: [
-      "Reserved repo for demonstrating real-time updates and live data feeds.",
-      "Implementation pending — screenshots and case study will follow the first working build.",
-    ],
-    links: [
-      {
-        kind: "repo",
-        label: "Repo",
-        href: "https://github.com/Tofuwuuu/Real-Time-App.git",
       },
     ],
   },
