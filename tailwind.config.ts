@@ -5,16 +5,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: "#000000",
-        card: "#0b0f14",
-        panel: "#111821",
-        text: "#f8fafc",
-        muted: "#9ca8b7",
-        accent: "#22d3ee",
-        violet: "#60a5fa",
-        amber: "#cbd5e1"
-      }
-    }
+        navy: "#0a192f",
+        "navy-light": "#112240",
+        "navy-lighter": "#233554",
+        slate: "#8892b0",
+        "slate-light": "#a8b2d1",
+        heading: "#ccd6f1",
+        green: "#64ffda",
+        bg: "#0a192f",
+        card: "#112240",
+        panel: "#233554",
+        text: "#ccd6f1",
+        muted: "#8892b0",
+        accent: "#64ffda",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      maxWidth: {
+        content: "52rem",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 } satisfies Config;

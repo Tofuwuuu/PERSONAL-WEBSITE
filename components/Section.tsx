@@ -1,24 +1,30 @@
-import type { PropsWithChildren, ReactNode } from "react";
+import { FadeIn } from "@/components/FadeIn";
+import type { PropsWithChildren } from "react";
 
 export function Section({
   id,
+  number,
   title,
-  eyebrow,
   children,
-}: PropsWithChildren<{ id?: string; title: string; eyebrow?: ReactNode }>) {
+}: PropsWithChildren<{
+  id?: string;
+  number?: string;
+  title: string;
+}>) {
   return (
-    <section id={id} className="scroll-mt-24">
-      <div className="mb-6 md:mb-8">
-        {eyebrow ? (
-          <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
-            {eyebrow}
-          </div>
-        ) : null}
-        <h2 className="text-pretty text-2xl font-semibold tracking-tight text-text md:text-3xl">
-          {title}
-        </h2>
-      </div>
-      {children}
-    </section>
+    <FadeIn>
+      <section id={id} className="scroll-mt-24 py-12 first:pt-0 md:py-16">
+        <div className="mb-8 flex items-center gap-4">
+          <h2 className="whitespace-nowrap font-mono text-2xl font-semibold text-heading md:text-3xl">
+            {number ? <span className="text-green">{number} </span> : null}
+            <span>{title}</span>
+          </h2>
+          {number ? (
+            <div className="hidden h-px max-w-xs flex-1 bg-navy-lighter sm:block" />
+          ) : null}
+        </div>
+        {children}
+      </section>
+    </FadeIn>
   );
 }

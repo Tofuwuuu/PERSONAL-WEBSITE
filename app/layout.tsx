@@ -1,9 +1,22 @@
 import type { Metadata } from "next";
+import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import { Navbar } from "@/components/Navbar";
-import { SiteBackground } from "@/components/SiteBackground";
+import { Sidebar } from "@/components/Sidebar";
+import { Spotlight } from "@/components/Spotlight";
 import { profile } from "@/content/profile";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -33,20 +46,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="relative min-h-dvh antialiased">
-        <SiteBackground />
-        <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-card focus:px-3 focus:py-2 focus:text-sm focus:ring-2 focus:ring-accent"
-        >
-          Skip to content
-        </a>
-        <Navbar />
-        <main id="content" className="relative mx-auto w-full max-w-6xl px-4 sm:px-6">
-          {children}
-        </main>
-        <Footer />
+    <html lang="en" className={`${inter.variable} ${firaCode.variable} scroll-smooth`}>
+      <body className="min-h-dvh font-sans antialiased">
+        <Spotlight>
+          <a
+            href="#content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-navy-light focus:px-3 focus:py-2 focus:text-sm focus:ring-2 focus:ring-green"
+          >
+            Skip to content
+          </a>
+          <div className="mx-auto flex min-h-dvh w-full max-w-[90rem] flex-col px-6 sm:px-8 md:px-12 lg:flex-row lg:justify-between lg:gap-8 lg:px-16 xl:px-24">
+            <Sidebar />
+            <div className="flex min-h-dvh w-full flex-col lg:w-[52%] lg:py-24">
+              <main id="content" className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </div>
+        </Spotlight>
       </body>
     </html>
   );

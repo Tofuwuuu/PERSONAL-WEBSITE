@@ -18,3 +18,13 @@ export type Project = {
   featured?: boolean;
   placeholder?: boolean;
 };
+
+export type Experience = {
+  id: string;
+  company: string;
+  role: string;
+  start: string;
+  end: string;
+  bullets: string[];
+  tech: string[];
+};

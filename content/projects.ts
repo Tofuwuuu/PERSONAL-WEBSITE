@@ -55,9 +55,14 @@ export const projects: Project[] = [
       "Modeled multi-stage procurement from PR through disbursement with role-based access (admin, canvasser, validator, finance, auditor, custodian).",
       "Integrated Fabric chaincode for inspection reports and an in-app blockchain explorer for on-chain verification.",
       "Captured workflow audit logs in MongoDB with dashboard analytics across procurement stages.",
-      "Docker Compose stack for Fabric peers, API, and React SPA — local demo; no public production URL yet.",
+      "Live demo deployed on Vercel; Docker Compose stack for Fabric peers, API, and React SPA.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://pams-pied.vercel.app/login",
+      },
       {
         kind: "repo",
         label: "Repo",
