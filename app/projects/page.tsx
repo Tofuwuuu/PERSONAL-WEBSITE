@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="py-8 md:py-12">
+    <div className="mx-auto max-w-5xl py-8 md:py-12">
       <ProjectsPageContent projects={projects} />
     </div>
   );

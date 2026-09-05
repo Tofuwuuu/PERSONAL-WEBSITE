@@ -24,13 +24,13 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
       </h1>
 
       <div className="mt-10 overflow-x-auto">
-        <table className="w-full min-w-[720px] border-collapse text-left">
+        <table className="w-full min-w-[640px] border-collapse text-left">
           <thead>
             <tr className="border-b border-navy-lighter text-xs font-bold uppercase tracking-wider text-slate">
-              <th scope="col" className="w-20 py-3 pr-4 font-bold">
+              <th scope="col" className="w-16 py-3 pr-4 font-bold">
                 Year
               </th>
-              <th scope="col" className="py-3 pr-4 font-bold">
+              <th scope="col" className="w-64 py-3 pr-4 font-bold">
                 Project
               </th>
               <th scope="col" className="w-40 py-3 pr-4 font-bold">
@@ -55,24 +55,21 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
                   key={project.slug}
                   className="group border-b border-navy-lighter/60 transition-colors hover:bg-navy-light/40"
                 >
-                  <td className="whitespace-nowrap py-5 pr-4 align-top font-mono text-sm text-slate">
+                  <td className="whitespace-nowrap py-3.5 pr-4 align-top font-mono text-sm text-slate">
                     {project.year}
                   </td>
-                  <td className="py-5 pr-4 align-top">
+                  <td className="py-3.5 pr-4 align-top">
                     <Link
                       href={`/projects/${project.slug}`}
                       className="font-semibold text-heading transition-colors group-hover:text-green"
                     >
                       {project.title}
                     </Link>
-                    <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-slate">
-                      {project.summary}
-                    </p>
                   </td>
-                  <td className="whitespace-nowrap py-5 pr-4 align-top text-sm text-slate">
+                  <td className="whitespace-nowrap py-3.5 pr-4 align-top text-sm text-slate">
                     {project.madeAt ?? "Personal Project"}
                   </td>
-                  <td className="py-5 pr-4 align-top">
+                  <td className="py-3.5 pr-4 align-top">
                     <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
                       {project.stack.map((tech) => (
                         <li key={tech} className="bc-tech-tag whitespace-nowrap">
@@ -81,7 +78,7 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
                       ))}
                     </ul>
                   </td>
-                  <td className="py-5 align-top">
+                  <td className="py-3.5 align-top">
                     {externalLink ? (
                       <a
                         href={externalLink.href}

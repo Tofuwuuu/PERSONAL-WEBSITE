@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
-import { Footer } from "@/components/Footer";
-import { Sidebar } from "@/components/Sidebar";
 import { Spotlight } from "@/components/Spotlight";
+import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 
 const inter = Inter({
@@ -55,15 +54,7 @@ export default function RootLayout({
           >
             Skip to content
           </a>
-          <div className="mx-auto flex min-h-dvh w-full max-w-[90rem] flex-col px-6 sm:px-8 md:px-12 lg:flex-row lg:justify-between lg:gap-8 lg:px-16 xl:px-24">
-            <Sidebar />
-            <div className="flex min-h-dvh w-full flex-col lg:w-[52%] lg:py-24">
-              <main id="content" className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </div>
+          <SiteShell>{children}</SiteShell>
         </Spotlight>
       </body>
     </html>
