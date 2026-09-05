@@ -3,38 +3,52 @@
 import { useEffect, useState } from "react";
 import { navItems } from "@/content/navigation";
 
+const SECTION_IDS = navItems.map((item) => item.sectionId);
+
+function getSectionFromScroll() {
+  const scrollOffset = window.innerHeight * 0.28;
+  let current = SECTION_IDS[0] ?? "about";
+
+  for (const id of SECTION_IDS) {
+    const section = document.getElementById(id);
+    if (!section) continue;
+
+    const top = section.getBoundingClientRect().top;
+    if (top - scrollOffset <= 0) {
+      current = id;
+    }
+  }
+
+  return current;
+}
+
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState<string>(
     navItems[0]?.sectionId ?? "about",
   );
 
   useEffect(() => {
-    const sections = navItems
-      .map((item) => document.getElementById(item.sectionId))
-      .filter((section): section is HTMLElement => section !== null);
+    let frame = 0;
 
-    if (sections.length === 0) return;
+    const update = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        setActiveSection(getSectionFromScroll());
+      });
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    window.addEventListener("hashchange", update);
 
-        if (visible[0]?.target.id) {
-          setActiveSection(visible[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      window.removeEventListener("hashchange", update);
+    };
   }, []);
 
-  return activeSection;
+  return [activeSection, setActiveSection] as const;
 }

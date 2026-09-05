@@ -17,7 +17,7 @@ export function Sidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const activeSection = useActiveSection();
+  const [activeSection, setActiveSection] = useActiveSection();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -46,7 +46,10 @@ export function Sidebar() {
               <Link
                 href={item.href}
                 className={`bc-nav-item ${isActive ? "is-active" : ""}`}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  setActiveSection(item.sectionId);
+                  setMenuOpen(false);
+                }}
               >
                 <span className="bc-nav-line" aria-hidden />
                 <span>{item.label}</span>
