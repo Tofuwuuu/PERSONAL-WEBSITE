@@ -11,6 +11,8 @@ export type Project = {
   slug: string;
   title: string;
   category: string;
+  year: string;
+  madeAt?: string;
   summary: string;
   stack: string[];
   highlights: string[];
