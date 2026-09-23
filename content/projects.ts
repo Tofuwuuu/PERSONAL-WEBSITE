@@ -56,7 +56,7 @@ export const projects: Project[] = [
       "Delivered end-to-end for CVSU Carmona stakeholders, from requirements through deployment and handoff.",
       "Implemented Fabric chaincode and network tooling for immutable alumni credential records.",
       "Built REST APIs for issuance and verification, connecting the ledger to application services.",
-      "Deployed the public demo on Vercel; backend and Fabric integration documented for Render/local setups.",
+      "Vercel hosts the public UI. The hosted API is unavailable, so Fabric and the backend run from the local Docker setup documented in the repo.",
     ],
     links: [
       {
@@ -128,14 +128,9 @@ export const projects: Project[] = [
       "Weighted scoring factors for mixer exposure, scam tokens, mixing patterns, and wallet behavior.",
       "Saved reports, history, compare endpoint, and PDF/HTML export for shareable output.",
       "Provider clients scaffolded for Etherscan, Alchemy, Moralis, and Covalent.",
-      "Production API on Railway; interactive docs at `/docs` when the service is running.",
+      "Educational demo that runs locally with Docker; interactive docs at `/docs` when the service is running.",
     ],
     links: [
-      {
-        kind: "demo",
-        label: "Live API",
-        href: "https://api-production-487c.up.railway.app/",
-      },
       {
         kind: "repo",
         label: "Repo",
@@ -302,7 +297,7 @@ export const projects: Project[] = [
       "SHA-256 deduplication skips reprocessing when the same file is uploaded again.",
       "Rule-based contract risk scan for missing clauses, auto-renewal, payment terms, and jurisdiction conflicts.",
       "Optional JWT auth scopes uploads to registered users.",
-      "Live demo on Vercel with backend deployment documented for Railway (API, Postgres, Redis).",
+      "Vercel hosts the frontend. Document analysis runs from the local Docker Compose stack (API, Postgres, Redis); the Railway API the site calls is unavailable.",
     ],
     links: [
       {
