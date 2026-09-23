@@ -1,54 +1,111 @@
-# Personal Website
+# Mark Roderick I. Salise
 
-Portfolio site built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS.
+Software engineer portfolio: home-page sections for about, experience, projects, and contact, a projects archive with case studies, and a resume download.
 
-## Getting Started
+**Live:** [https://markroderick.vercel.app](https://markroderick.vercel.app)
+
+## Features
+
+Home (`app/page.tsx`) is a single page. The sidebar (`content/navigation.ts`) links to these anchors.
+
+| Section | Route | What it uses |
+| --- | --- | --- |
+| About | [`/#about`](https://markroderick.vercel.app/#about) | `components/About.tsx`, intro copy in `content/profile.ts` |
+| Experience | [`/#experience`](https://markroderick.vercel.app/#experience) | `components/Experience.tsx`, roles in `content/experience.ts`; links to `/resume` |
+| Projects | [`/#projects`](https://markroderick.vercel.app/#projects) | `components/ProjectsSection.tsx` lists four projects and links each to `/projects/[slug]` |
+| Contact | [`/#contact`](https://markroderick.vercel.app/#contact) | `components/Contact.tsx` mailto using `profile.email` |
+
+Also on the home page: a mobile hero (`components/Hero.tsx`) with name, role, and tagline. On large screens that intro is in the sidebar, with GitHub and LinkedIn from `profile.links`.
+
+| Route | Purpose |
+| --- | --- |
+| `/projects` | Full project archive (`app/projects/page.tsx`) |
+| `/projects/[slug]` | Case study (`app/projects/[slug]/page.tsx`, `getProjectBySlug`) |
+| `/resume` | Resume page with a download button (`app/resume/page.tsx`) |
+| `/resume.pdf` | Download handler (`app/resume.pdf/route.ts`). Reads `src/Mark_Salise_Resume.docx` and returns that Word file (`Content-Disposition: attachment; filename="Mark_Salise_Resume.docx"`) |
+| `/sitemap.xml`, `/robots.txt` | Generated from `NEXT_PUBLIC_SITE_URL` (`app/sitemap.ts`, `app/robots.ts`) |
+
+## Stack
+
+Ranges match `package.json`. `npm run dev` is `next dev` with no `-p` flag and no port in `next.config.ts`, so the dev server uses Next.js’s default port **3000**.
+
+| Package | Range | Role |
+| --- | --- | --- |
+| `next` | `^16.2.0` | App Router (`app/`), metadata, sitemap, route handlers |
+| `react`, `react-dom` | `^19.1.1` | UI |
+| `typescript` | `^5.8.0` | Types (`strict` in `tsconfig.json`) |
+| `tailwindcss` | `^3.4.17` | Utility CSS (`tailwind.config.ts`) |
+| `postcss` | `^8.4.38` | CSS pipeline |
+| `autoprefixer` | `^10.4.20` | Vendor prefixes |
+| `eslint` | `^9.0.0` | Lint (`eslint.config.mjs`) |
+| `eslint-config-next` | `^16.2.0` | Next.js ESLint rules |
+
+Type packages: `@types/node` `^24.0.0`, `@types/react` `^19.0.0`, `@types/react-dom` `^19.0.0`.
+
+## Getting started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Environment Variables
+| Script | Command |
+| --- | --- |
+| Dev server | `npm run dev` |
+| Production build | `npm run build` |
+| Serve the production build | `npm run start` |
+| Lint | `npm run lint` |
 
-Create a `.env.local` file at the project root:
+## Editing content
 
-```
-NEXT_PUBLIC_SITE_URL=https://your-domain.com
-```
+Site copy is typed constants in `content/`. Shared shapes are in `content/types.ts`.
 
-This is required for the sitemap, robots.txt, and Open Graph metadata to use the correct base URL.
+| File | Edit this |
+| --- | --- |
+| `content/profile.ts` | `name`, `role`, `tagline`, `location`, `email`, `intro` paragraphs, `links` |
+| `content/experience.ts` | Each job: `id`, `company`, `role`, `start`, `end`, `bullets`, `tech` |
+| `content/projects.ts` | Project list and `getProjectBySlug`. Fields: `slug`, `title`, `category`, `year`, `summary`, `stack`, `highlights`, `links` (`kind`: `repo`, `demo`, or `case-study`), plus optional `featured`, `madeAt`, `placeholder` |
+| `content/navigation.ts` | Sidebar labels and section ids (`about`, `experience`, `projects`, `contact`) |
+| `content/projectImages.ts` | Card image per slug. Files live under `src/` and must be imported here |
+| `content/skills.ts` | Skill groups. `components/Skills.tsx` is not rendered by `app/page.tsx`, so this file does not show on the site until that section is mounted |
 
-## Project Structure
+Case-study images are imported inside the matching component (`components/HyperledgerCaseStudy.tsx`, `ProcurementCaseStudy.tsx`, `CollaborativeCaseStudy.tsx`, and the image imports in `app/projects/[slug]/page.tsx`) from folders under `src/`.
 
-| Path | Purpose |
-|------|---------|
-| `app/` | Routes, layout, metadata, PDF route handler |
-| `components/` | UI components |
-| `content/` | Static site data (profile, projects, skills) |
-| `src/` | Images and resume PDF |
+### Resume file
 
-## Content
+Replace `src/Mark_Salise_Resume.docx`. Both `app/resume/page.tsx` and `app/resume.pdf/route.ts` refer to that path. If you rename the file, update those two references together.
 
-All copy lives as typed TypeScript constants in `content/`:
+## Environment variables
 
-- `content/profile.ts` — name, role, tagline, links
-- `content/projects.ts` — project list and `getProjectBySlug`
-- `content/skills.ts` — skill groups
-- `content/types.ts` — shared types
-
-## Resume
-
-The resume PDF is served from `src/Mark_Resume.pdf` via the route handler at `/resume.pdf`. Replace that file to update the downloadable resume.
-
-## Build & Deploy
+`.env*` files are gitignored. For local metadata, sitemap, and robots, create `.env.local`:
 
 ```bash
-npm run build   # production build
-npm run start   # serve production build locally
-npm run lint    # lint check
+NEXT_PUBLIC_SITE_URL=https://markroderick.vercel.app
 ```
 
-Deploy to [Vercel](https://vercel.com) by importing the repository. Set `NEXT_PUBLIC_SITE_URL` in the Vercel project environment variables.
+`app/layout.tsx` uses it as `metadataBase`. `app/sitemap.ts` and `app/robots.ts` use it as the site origin. When the variable is unset, those three fall back to `https://example.com`.
+
+## Build and deploy
+
+```bash
+npm run build
+npm run start
+```
+
+Import the repository on [Vercel](https://vercel.com) and set:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://markroderick.vercel.app
+```
+
+Production: [https://markroderick.vercel.app](https://markroderick.vercel.app).
+
+## Screenshots
+
+This README does not embed screenshots. Put any future doc images in `docs/screenshots/`. Images the site itself renders stay in `src/`.
+
+## License
+
+[MIT](LICENSE)
