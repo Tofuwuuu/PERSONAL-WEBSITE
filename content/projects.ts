@@ -56,14 +56,9 @@ export const projects: Project[] = [
       "Delivered end-to-end for CVSU Carmona stakeholders, from requirements through deployment and handoff.",
       "Implemented Fabric chaincode and network tooling for immutable alumni credential records.",
       "Built REST APIs for issuance and verification, connecting the ledger to application services.",
-      "Vercel hosts the public UI. The hosted API is unavailable, so Fabric and the backend run from the local Docker setup documented in the repo.",
+      "Full stack (Fabric, backend, and UI) runs from the local Docker setup in the repo.",
     ],
     links: [
-      {
-        kind: "demo",
-        label: "Live Site",
-        href: "https://hyperledger-document-verification.vercel.app/",
-      },
       {
         kind: "repo",
         label: "Repo",
@@ -297,14 +292,9 @@ export const projects: Project[] = [
       "SHA-256 deduplication skips reprocessing when the same file is uploaded again.",
       "Rule-based contract risk scan for missing clauses, auto-renewal, payment terms, and jurisdiction conflicts.",
       "Optional JWT auth scopes uploads to registered users.",
-      "Vercel hosts the frontend. Document analysis runs from the local Docker Compose stack (API, Postgres, Redis); the Railway API the site calls is unavailable.",
+      "Document analysis is local Docker Compose only (API, Postgres, Redis); no public live demo.",
     ],
     links: [
-      {
-        kind: "demo",
-        label: "Live Site",
-        href: "https://smart-doc-analyzer-murex.vercel.app/",
-      },
       {
         kind: "repo",
         label: "Repo",
