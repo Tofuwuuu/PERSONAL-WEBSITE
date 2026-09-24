@@ -126,7 +126,7 @@ export const projects: Project[] = [
       "Docker Compose",
     ],
     highlights: [
-      "No live demo. There is no Vercel project for this app — repo only.",
+      "No live demo. There is no Vercel project for this app. Repo only.",
       "Docker Compose starts the Next.js app and Postgres. Auth.js handles email and password sign-in.",
       "You can log a workout with a rest timer, reuse routine templates, and open past sessions.",
       "From the repo: `docker compose up --build`, then open localhost:3000. Prisma applies migrations on boot.",
