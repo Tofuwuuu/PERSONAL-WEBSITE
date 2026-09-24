@@ -10,10 +10,7 @@ import { projects } from "@/content/projects";
 export function ProjectsSection() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
 
-  const featured = [
-    ...projects.filter((project) => project.featured),
-    ...projects.filter((project) => !project.featured),
-  ].slice(0, 4);
+  const featured = projects.filter((project) => project.featured);
 
   const hoveredProject = featured.find((project) => project.slug === hoveredSlug);
   const hoveredImage = hoveredProject

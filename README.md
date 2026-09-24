@@ -12,7 +12,7 @@ Home (`app/page.tsx`) is a single page. The sidebar (`content/navigation.ts`) li
 | --- | --- | --- |
 | About | [`/#about`](https://markroderick.vercel.app/#about) | `components/About.tsx`, intro copy in `content/profile.ts` |
 | Experience | [`/#experience`](https://markroderick.vercel.app/#experience) | `components/Experience.tsx`, roles in `content/experience.ts`; links to `/resume` |
-| Projects | [`/#projects`](https://markroderick.vercel.app/#projects) | `components/ProjectsSection.tsx` lists four projects and links each to `/projects/[slug]` |
+| Projects | [`/#projects`](https://markroderick.vercel.app/#projects) | `components/ProjectsSection.tsx` lists projects with `featured: true` in `content/projects.ts` and links each to `/projects/[slug]` |
 | Contact | [`/#contact`](https://markroderick.vercel.app/#contact) | `components/Contact.tsx` mailto using `profile.email` |
 
 Also on the home page: a mobile hero (`components/Hero.tsx`) with name, role, and tagline. On large screens that intro is in the sidebar, with GitHub and LinkedIn from `profile.links`.
