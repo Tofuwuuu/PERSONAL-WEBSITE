@@ -86,7 +86,7 @@ export function Sidebar() {
   return (
     <>
       <div className="sticky top-0 z-40 flex items-center justify-between bg-navy/85 px-6 py-4 backdrop-blur-md lg:hidden">
-        <Link href="/" className="text-sm font-bold tracking-tight text-heading">
+        <Link href="/" className="text-sm font-bold tracking-tight text-bright">
           {profile.name.split(" ")[0]}
         </Link>
         <button
@@ -112,11 +112,11 @@ export function Sidebar() {
         {social}
       </div>
 
-      <header className="hidden lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24 lg:pr-16">
+      <header className="hidden lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-center lg:py-12 lg:pr-8">
         <div>
           <Link href="/" className="block">
             <h1
-              className={`text-5xl font-bold tracking-tight text-heading ${
+              className={`text-5xl font-bold tracking-tight text-bright ${
                 mounted ? "animate-fade-up" : "opacity-0"
               }`}
             >
@@ -138,19 +138,19 @@ export function Sidebar() {
             </p>
           </Link>
           <div
-            className={`mt-16 ${
+            className={`mt-12 ${
               mounted ? "animate-fade-up animation-delay-300" : "opacity-0"
             }`}
           >
             {nav}
           </div>
-        </div>
-        <div
-          className={
-            mounted ? "animate-fade-up animation-delay-500" : "opacity-0"
-          }
-        >
-          {social}
+          <div
+            className={`mt-10 ${
+              mounted ? "animate-fade-up animation-delay-500" : "opacity-0"
+            }`}
+          >
+            {social}
+          </div>
         </div>
       </header>
     </>

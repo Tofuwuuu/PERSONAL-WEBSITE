@@ -4,14 +4,13 @@ export const profile = {
   name: "Mark Roderick I. Salise",
   role: "Software Engineer",
   tagline:
-    "I build accessible, production-ready web applications with clean interfaces, reliable APIs, and thoughtful engineering.",
-  location: "Philippines",
+    "Junior software engineer. TypeScript, Python, and full-stack apps I can run and explain.",
+  location: "San Pedro, Laguna, Philippines",
   email: "rodericksalise812@gmail.com",
   intro: [
-    "I'm Mark, and I like building things that work. I'm a software engineer focused on full-stack delivery — from React interfaces and TypeScript front ends to Python APIs, databases, and containerized deployments.",
-    "My work includes AI document processing pipelines, blockchain-backed verification systems, procurement workflow platforms, and deployed demos used in real stakeholder contexts. I care about clear structure, practical error handling, and code that teammates can pick up and extend.",
-    "I graduated with a BS in Computer Science from Cavite State University and I'm looking for opportunities where I can ship features end to end, learn from strong engineers, and grow in cloud-native and AI-enabled product development.",
-    "I'm proficient with AI-assisted development tools — Claude (Sonnet, Opus), Fable, and others — using them daily to explore approaches, accelerate refactoring, and ship production code faster without sacrificing quality.",
+    "I'm Mark, a junior software engineer in San Pedro, Laguna. I studied Computer Science at Cavite State University, and I'm looking for a role where I can ship full-stack work with a team.",
+    "I build React and TypeScript front ends, Python and FastAPI backends, and Docker setups I can start on my own machine. Capstone was a Hyperledger Fabric system for alumni document checks at CvSU Carmona. I also shipped a procurement platform for a paying freelance client.",
+    "A few projects below have a live site. The rest run locally with Docker — each write-up says which.",
   ],
   links: [
     { label: "GitHub", href: "https://github.com/Tofuwuuu" },

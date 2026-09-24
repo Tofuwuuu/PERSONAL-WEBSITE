@@ -72,7 +72,25 @@ a {
 
 @layer components {
   .bc-link {
-    @apply inline-flex items-center gap-1 text-green transition-colors hover:text-green/80;
+    @apply inline-flex items-center gap-1 text-green transition-colors;
+  }
+
+  .bc-link:hover,
+  .bc-link:focus-visible {
+    @apply text-heading outline-none;
+  }
+
+  .bc-link:focus-visible {
+    @apply rounded-sm ring-2 ring-green ring-offset-2 ring-offset-navy;
+  }
+
+  .bc-chip {
+    @apply inline-flex items-center rounded border border-green/55 bg-green/10 px-2 py-1 font-mono text-[0.7rem] font-medium tracking-wide text-green transition-colors;
+  }
+
+  .bc-chip:hover,
+  .bc-chip:focus-visible {
+    @apply border-green bg-green/20 text-green outline-none ring-2 ring-green ring-offset-2 ring-offset-navy;
   }
 
   .bc-link::after {
@@ -85,8 +103,9 @@ a {
   }
 
   .bc-nav-item:hover,
+  .bc-nav-item:focus-visible,
   .bc-nav-item.is-active {
-    @apply text-heading;
+    @apply text-heading outline-none;
   }
 
   .bc-nav-line {
@@ -94,12 +113,27 @@ a {
   }
 
   .bc-nav-item:hover .bc-nav-line,
+  .bc-nav-item:focus-visible .bc-nav-line,
   .bc-nav-item.is-active .bc-nav-line {
     @apply w-16 bg-green;
   }
 
   .bc-tech-tag {
     @apply font-mono text-xs text-slate-light;
+  }
+
+  .bc-cta {
+    @apply inline-flex min-h-11 items-center gap-2 rounded-md border border-green/60 bg-green/10 px-4 py-2 font-mono text-sm text-green transition-colors;
+  }
+
+  .bc-cta::after {
+    content: "↗";
+    @apply text-xs leading-none;
+  }
+
+  .bc-cta:hover,
+  .bc-cta:focus-visible {
+    @apply border-green bg-green/20 text-green outline-none ring-2 ring-green ring-offset-2 ring-offset-navy;
   }
 }
 

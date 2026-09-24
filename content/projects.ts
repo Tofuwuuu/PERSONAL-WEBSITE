@@ -3,13 +3,13 @@ import type { Project } from "./types";
 export const projects: Project[] = [
   {
     slug: "ai-ops-assistant",
-    title: "AI Ops Assistant — Archivist",
+    title: "AI Ops Archivist",
     category: "AI & Automation",
     year: "2026",
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "Operational intelligence agent that turns raw requests into safe, reviewable drafts: classifies intent, retrieves relevant context, drafts a response with an LLM, and logs every step before a human approves it.",
+      "A React dashboard where you submit a support request, a FastAPI agent drafts a reply, and nothing goes out until a person approves it.",
     stack: [
       "React",
       "TypeScript",
@@ -21,10 +21,10 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Agent pipeline: classify → retrieve context → generate draft → validate → log, with human approval before any reply is sent.",
-      "n8n orchestrates webhooks, retries, and notifications around the FastAPI agent service.",
-      "Dashboard shows ticket status, AI draft, and confidence so a human stays in the loop.",
-      "Open-sourced with a documented setup and `.env.example` so anyone can run the demo.",
+      "Live site is the React UI on Vercel. The login screen includes a seeded demo account.",
+      "The agent classifies the request, pulls matching notes, writes a draft, and waits. Approve or reject is a manual step.",
+      "Postgres, Redis, the worker, and n8n run together with Docker Compose. That is the full local setup.",
+      "With no LLM API key, the same pipeline uses a mock adapter and still finishes a draft.",
     ],
     links: [
       {
@@ -32,17 +32,22 @@ export const projects: Project[] = [
         label: "Live Site",
         href: "https://ai-ops-assistant-wheat.vercel.app/",
       },
+      {
+        kind: "repo",
+        label: "Repo",
+        href: "https://github.com/Tofuwuuu/AI-Ops-Assistant",
+      },
     ],
   },
   {
     slug: "hyperledger-blockchain-verification",
-    title: "Hyperledger Blockchain System — Alumni Document Verification",
+    title: "Alumni Document Verification",
     category: "Blockchain",
     year: "2025",
-    madeAt: "Capstone — CvSU Carmona",
+    madeAt: "Capstone, CvSU Carmona",
     featured: true,
     summary:
-      "Capstone thesis for Cavite State University — Carmona: permissioned Hyperledger Fabric network for tamper-proof alumni document verification and credential checks, with a React frontend and FastAPI backend.",
+      "Capstone for CvSU Carmona: a Hyperledger Fabric network that stores alumni document records, with a React app and a FastAPI API in front of it.",
     stack: [
       "Hyperledger Fabric",
       "Go/Chaincode",
@@ -53,10 +58,10 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Delivered end-to-end for CVSU Carmona stakeholders, from requirements through deployment and handoff.",
-      "Implemented Fabric chaincode and network tooling for immutable alumni credential records.",
-      "Built REST APIs for issuance and verification, connecting the ledger to application services.",
-      "Full stack (Fabric, backend, and UI) runs from the local Docker setup in the repo.",
+      "Repo only. The hosted API is down, so there is no live site.",
+      "Chaincode writes alumni credential records. The API issues documents and checks them against the ledger.",
+      "The React (Vite) app talks to FastAPI. MongoDB holds the application data.",
+      "Fabric, the API, and the UI start from the Docker setup in the repo.",
     ],
     links: [
       {
@@ -68,12 +73,13 @@ export const projects: Project[] = [
   },
   {
     slug: "procurement-blockchain-system",
-    title: "Procurement Blockchain System — Freelance Client Project",
+    title: "Procurement Platform",
     category: "Blockchain",
     year: "2025",
     madeAt: "Freelance Client",
+    featured: true,
     summary:
-      "Full-stack Philippine government procurement platform with purchase requests, canvassing, POs, inspections, and inventory/property workflows. Hyperledger Fabric records inspection events for tamper-evident audit trails.",
+      "Paid client work: a Philippine procurement app for purchase requests, canvassing, purchase orders, inspections, and inventory. Inspection events are written to Hyperledger Fabric.",
     stack: [
       "Hyperledger Fabric",
       "Go/Chaincode",
@@ -84,10 +90,10 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Modeled multi-stage procurement from PR through disbursement with role-based access (admin, canvasser, validator, finance, auditor, custodian).",
-      "Integrated Fabric chaincode for inspection reports and an in-app blockchain explorer for on-chain verification.",
-      "Captured workflow audit logs in MongoDB with dashboard analytics across procurement stages.",
-      "Live demo deployed on Vercel; Docker Compose stack for Fabric peers, API, and React SPA.",
+      "Live site is on Vercel. It opens on the login page.",
+      "Roles in the app include admin, canvasser, validator, finance, auditor, and custodian.",
+      "Inspection reports go on Fabric. The other workflow records sit in MongoDB, with a simple stage dashboard.",
+      "The repo has a Docker Compose stack for the Fabric peers, the API, and the React app.",
     ],
     links: [
       {
@@ -103,13 +109,44 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "gym-app-tracker",
+    title: "Gym App Tracker",
+    category: "Full-stack",
+    year: "2026",
+    madeAt: "Personal Project",
+    featured: true,
+    summary:
+      "A Strong/Hevy-style workout logger: log sets, save routines, and look back at history. Dark UI. It runs on your machine, not on a public URL.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Auth.js",
+      "Docker Compose",
+    ],
+    highlights: [
+      "No live demo. There is no Vercel project for this app. Repo only.",
+      "Docker Compose starts the Next.js app and Postgres. Auth.js handles email and password sign-in.",
+      "You can log a workout with a rest timer, reuse routine templates, and open past sessions.",
+      "From the repo: `docker compose up --build`, then open localhost:3000. Prisma applies migrations on boot.",
+    ],
+    links: [
+      {
+        kind: "repo",
+        label: "Repo",
+        href: "https://github.com/Tofuwuuu/Gym-App-Tracker",
+      },
+    ],
+  },
+  {
     slug: "on-chain-wallet-risk-analyzer",
-    title: "On-Chain Wallet Risk Analyzer",
+    title: "Wallet Risk Analyzer",
     category: "Blockchain",
     year: "2025",
     madeAt: "Personal Project",
     summary:
-      "Ethereum wallet risk analyzer producing a 0–100 score, shareable reports, side-by-side comparison, blacklist checks, and printable exports. Educational demo with deterministic heuristics when API keys are absent.",
+      "Paste an Ethereum address and get a 0–100 risk score plus a report you can compare or export. Local Docker only.",
     stack: [
       "FastAPI",
       "PostgreSQL",
@@ -120,10 +157,10 @@ export const projects: Project[] = [
       "Etherscan",
     ],
     highlights: [
-      "Weighted scoring factors for mixer exposure, scam tokens, mixing patterns, and wallet behavior.",
-      "Saved reports, history, compare endpoint, and PDF/HTML export for shareable output.",
-      "Provider clients scaffolded for Etherscan, Alchemy, Moralis, and Covalent.",
-      "Educational demo that runs locally with Docker; interactive docs at `/docs` when the service is running.",
+      "Repo only. No live site.",
+      "The score weighs mixer exposure, scam tokens, and transfer patterns.",
+      "You can save a report, compare two wallets, and export PDF or HTML.",
+      "It still runs with Docker when API keys are missing, using fixed heuristics. Interactive docs are at `/docs` once the API is up.",
     ],
     links: [
       {
@@ -140,7 +177,7 @@ export const projects: Project[] = [
     year: "2025",
     madeAt: "Personal Project",
     summary:
-      "Calendar-style to-do app with on-chain task storage on Sepolia: connect a wallet, add and manage tasks, and persist them via a TodoList Solidity contract with a React frontend.",
+      "A calendar to-do list that stores tasks on Sepolia. Connect MetaMask, add a task, and the Solidity contract keeps it.",
     stack: [
       "Solidity",
       "Hardhat",
@@ -151,10 +188,10 @@ export const projects: Project[] = [
       "MetaMask",
     ],
     highlights: [
-      "Calendar UI for adding, completing, and deleting tasks tied to the connected wallet.",
-      "Tasks persisted on-chain per address through a deployed Sepolia contract.",
-      "Hardhat toolchain with compile, test, and deploy scripts documented in the repo.",
-      "Live demo on Vercel with MetaMask wallet connection.",
+      "Calendar UI for adding, completing, and deleting tasks for the connected wallet.",
+      "Tasks are stored per address on a Sepolia contract.",
+      "Hardhat scripts in the repo cover compile, test, and deploy.",
+      "The front end is on Vercel and expects MetaMask.",
     ],
     links: [
       {
@@ -176,13 +213,12 @@ export const projects: Project[] = [
     year: "2025",
     madeAt: "Personal Project",
     summary:
-      "DeFi portfolio dashboard for viewing wallet positions and protocol exposure in one place, built with React and Web3 tooling and deployed on Vercel.",
+      "A React dashboard that connects a wallet and shows DeFi positions in one view. The site is on Vercel.",
     stack: ["React", "TypeScript", "Web3", "Vite", "Vercel"],
     highlights: [
-      "Portfolio overview UI for tracking DeFi wallet positions and holdings.",
-      "Wallet-connect flow for loading on-chain balance and position data.",
-      "Responsive dashboard layout optimized for demo and portfolio review.",
-      "Live deployment on Vercel with GitHub source available.",
+      "Connect a wallet and load balances and positions.",
+      "One dashboard page for the holdings it can read.",
+      "Live site is on Vercel. Source is in the repo.",
     ],
     links: [
       {
@@ -199,12 +235,13 @@ export const projects: Project[] = [
   },
   {
     slug: "collaborative-realtime-document-editor",
-    title: "Collaborative Real-Time Document Editor",
+    title: "Collaborative Doc Editor",
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
+    featured: true,
     summary:
-      "Multi-user document editor with live WebSocket sync, Redis-backed persistence, conflict handling, and a React + TypeScript UI on a FastAPI backend.",
+      "Two people can edit one document at the same time. The React page syncs over WebSockets to FastAPI, and Redis stores the document.",
     stack: [
       "React",
       "TypeScript",
@@ -215,10 +252,10 @@ export const projects: Project[] = [
       "Vercel",
     ],
     highlights: [
-      "Simultaneous editing with real-time updates and operational-transform-style conflict handling.",
-      "Production frontend on Vercel; backend and Redis hosted on Render.",
-      "Environment-driven API and WebSocket base URLs for local and deployed setups.",
-      "Docker and blueprint docs for reproducing the full stack.",
+      "Live site is on Vercel. The API and Redis are on Render and can cold-start, so the first request after idle time may take a few seconds.",
+      "Edits show up for the other person while you type, with conflict handling when you change the same spot.",
+      "API and WebSocket URLs come from env vars, so local and deployed setups use the same code.",
+      "The repo includes Docker notes if you want to run the stack yourself.",
     ],
     links: [
       {
@@ -235,12 +272,12 @@ export const projects: Project[] = [
   },
   {
     slug: "fashion-ecommerce-platform",
-    title: "Fashion E-Commerce Platform (Atelier Commerce)",
+    title: "Atelier Commerce",
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
     summary:
-      "Full-stack fashion storefront: product browsing, variant carts, PayMongo sandbox checkout, order history, JWT auth, and an admin dashboard with Cloudinary media uploads.",
+      "A small fashion store: browse products, add a size to the cart, check out with the PayMongo sandbox, and manage products in an admin page.",
     stack: [
       "React",
       "TypeScript",
@@ -252,10 +289,10 @@ export const projects: Project[] = [
       "Cloudinary",
     ],
     highlights: [
-      "Customer flows from catalog through checkout; admin CRUD for products and orders.",
-      "PayMongo sandbox with mock fallback when keys are unset so demos stay usable.",
-      "SQLAlchemy + Alembic, JWT auth, and Dockerized Postgres for local development.",
-      "Live storefront on Vercel with Railway-oriented backend deployment notes.",
+      "Shoppers can browse, cart, and check out. The admin page creates and edits products and orders.",
+      "PayMongo sandbox is used when keys are set. Without keys, checkout falls back to a mock payment so the flow still finishes.",
+      "Auth is JWT. Postgres runs in Docker for local work, with SQLAlchemy and Alembic.",
+      "The storefront is on Vercel. Backend deploy notes in the repo point at Railway.",
     ],
     links: [
       {
@@ -276,8 +313,9 @@ export const projects: Project[] = [
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
+    featured: true,
     summary:
-      "AI document analysis pipeline: upload PDFs or images, extract text (PyMuPDF / Tesseract), run spaCy NER and insights, cache by file hash in Redis, and store results in PostgreSQL. Optional contract compliance risk flags.",
+      "Upload a PDF or image, extract the text, and save entities plus a short read of the file. An optional pass flags risky contract clauses.",
     stack: [
       "React",
       "TypeScript",
@@ -289,10 +327,10 @@ export const projects: Project[] = [
       "Docker Compose",
     ],
     highlights: [
-      "SHA-256 deduplication skips reprocessing when the same file is uploaded again.",
-      "Rule-based contract risk scan for missing clauses, auto-renewal, payment terms, and jurisdiction conflicts.",
-      "Optional JWT auth scopes uploads to registered users.",
-      "Document analysis is local Docker Compose only (API, Postgres, Redis); no public live demo.",
+      "No public demo. This one is local Docker Compose only (API, Postgres, Redis).",
+      "PyMuPDF reads PDFs. Tesseract reads images. spaCy pulls out names and other entities.",
+      "Uploading the same file again is skipped. The API hashes the bytes with SHA-256 and caches the result in Redis.",
+      "Optional JWT login so uploads belong to the signed-in user.",
     ],
     links: [
       {
@@ -309,13 +347,12 @@ export const projects: Project[] = [
     year: "2024",
     madeAt: "Personal Project",
     summary:
-      "Classic calculator built with plain HTML, CSS, and JavaScript — no build step. Supports keyboard input, division-by-zero handling, and static hosting on Render.",
+      "A calculator in plain HTML, CSS, and JavaScript. Keyboard input works, and dividing by zero does not break it. No build step.",
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
-      "Arithmetic, clear, backspace, and decimal operations.",
-      "Keyboard shortcuts for digits, operators, Enter, Escape, and Backspace.",
-      "Render static site blueprint via included `render.yaml`.",
-      "Open `index.html` directly or serve the folder with any static server.",
+      "Add, subtract, multiply, divide, clear, backspace, and decimals.",
+      "Keyboard: digits, operators, Enter, Escape, and Backspace.",
+      "Open `index.html` directly, or use the included `render.yaml` for a static Render site.",
     ],
     links: [
       {
@@ -327,17 +364,16 @@ export const projects: Project[] = [
   },
   {
     slug: "todo-list-vanilla-js",
-    title: "To-Do List App (Vanilla JS)",
+    title: "Vanilla JS Todo",
     category: "Web Development",
     year: "2024",
     madeAt: "Personal Project",
     summary:
-      "Browser to-do list: add tasks, mark complete, and remove items using vanilla JavaScript with no framework or build pipeline.",
+      "A to-do list in HTML, CSS, and JavaScript. Add a task, check it off, delete it. No framework and no build.",
     stack: ["HTML", "CSS", "JavaScript"],
     highlights: [
-      "Client-side task list with DOM manipulation only.",
-      "Configured for Render static hosting (publish directory = repo root).",
-      "Optional `render.yaml` Blueprint for one-click static deploy setup.",
+      "The list is updated in the DOM. Nothing is sent to a server.",
+      "Can be hosted as a static site. The repo includes an optional `render.yaml`.",
     ],
     links: [
       {
