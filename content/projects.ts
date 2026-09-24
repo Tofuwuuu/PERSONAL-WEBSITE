@@ -3,7 +3,7 @@ import type { Project } from "./types";
 export const projects: Project[] = [
   {
     slug: "ai-ops-assistant",
-    title: "AI Ops Assistant",
+    title: "AI Ops Archivist",
     category: "AI & Automation",
     year: "2026",
     madeAt: "Personal Project",
@@ -41,10 +41,10 @@ export const projects: Project[] = [
   },
   {
     slug: "hyperledger-blockchain-verification",
-    title: "Hyperledger Document Verification",
+    title: "Alumni Document Verification",
     category: "Blockchain",
     year: "2025",
-    madeAt: "Capstone — CvSU Carmona",
+    madeAt: "Capstone, CvSU Carmona",
     featured: true,
     summary:
       "Capstone for CvSU Carmona: a Hyperledger Fabric network that stores alumni document records, with a React app and a FastAPI API in front of it.",
@@ -235,7 +235,7 @@ export const projects: Project[] = [
   },
   {
     slug: "collaborative-realtime-document-editor",
-    title: "Collaborative Document Editor",
+    title: "Collaborative Doc Editor",
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
@@ -364,7 +364,7 @@ export const projects: Project[] = [
   },
   {
     slug: "todo-list-vanilla-js",
-    title: "To-Do List App (Vanilla JS)",
+    title: "Vanilla JS Todo",
     category: "Web Development",
     year: "2024",
     madeAt: "Personal Project",
