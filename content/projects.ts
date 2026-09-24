@@ -90,17 +90,12 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Live site is on Vercel. It opens on the login page.",
+      "Repo only. There is no live site. The Vercel page is a UI shell because the API is still a placeholder, so login and workflows do not run.",
       "Roles in the app include admin, canvasser, validator, finance, auditor, and custodian.",
       "Inspection reports go on Fabric. The other workflow records sit in MongoDB, with a simple stage dashboard.",
-      "The repo has a Docker Compose stack for the Fabric peers, the API, and the React app.",
+      "Fabric, the API, and the React app run from the Docker Compose setup in the repo.",
     ],
     links: [
-      {
-        kind: "demo",
-        label: "Live Site",
-        href: "https://pams-pied.vercel.app/login",
-      },
       {
         kind: "repo",
         label: "Repo",
