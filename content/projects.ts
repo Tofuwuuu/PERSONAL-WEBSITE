@@ -3,7 +3,7 @@ import type { Project } from "./types";
 export const projects: Project[] = [
   {
     slug: "ai-ops-assistant",
-    title: "AI Ops Assistant — Archivist",
+    title: "AI Ops Assistant",
     category: "AI & Automation",
     year: "2026",
     madeAt: "Personal Project",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   },
   {
     slug: "hyperledger-blockchain-verification",
-    title: "Hyperledger Blockchain System — Alumni Document Verification",
+    title: "Hyperledger Document Verification",
     category: "Blockchain",
     year: "2025",
     madeAt: "Capstone — CvSU Carmona",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   },
   {
     slug: "procurement-blockchain-system",
-    title: "Procurement Blockchain System — Freelance Client Project",
+    title: "Procurement Platform",
     category: "Blockchain",
     year: "2025",
     madeAt: "Freelance Client",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
   },
   {
     slug: "on-chain-wallet-risk-analyzer",
-    title: "On-Chain Wallet Risk Analyzer",
+    title: "Wallet Risk Analyzer",
     category: "Blockchain",
     year: "2025",
     madeAt: "Personal Project",
@@ -235,7 +235,7 @@ export const projects: Project[] = [
   },
   {
     slug: "collaborative-realtime-document-editor",
-    title: "Collaborative Real-Time Document Editor",
+    title: "Collaborative Document Editor",
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
@@ -272,7 +272,7 @@ export const projects: Project[] = [
   },
   {
     slug: "fashion-ecommerce-platform",
-    title: "Fashion E-Commerce Platform (Atelier Commerce)",
+    title: "Atelier Commerce",
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
