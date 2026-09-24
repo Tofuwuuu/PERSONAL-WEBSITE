@@ -5,7 +5,7 @@ import { experience } from "@/content/experience";
 export function Experience() {
   return (
     <Section id="experience" number="02." title="Experience">
-      <div className="space-y-8">
+      <div className="space-y-12">
         {experience.map((job) => (
           <article
             key={job.id}
@@ -38,11 +38,8 @@ export function Experience() {
           </article>
         ))}
       </div>
-      <div className="mt-6">
-        <Link
-          href="/resume"
-          className="bc-link font-mono text-sm"
-        >
+      <div className="mt-8">
+        <Link href="/resume" className="bc-cta">
           View Full Résumé
         </Link>
       </div>

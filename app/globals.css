@@ -121,6 +121,20 @@ a {
   .bc-tech-tag {
     @apply font-mono text-xs text-slate-light;
   }
+
+  .bc-cta {
+    @apply inline-flex min-h-11 items-center gap-2 rounded-md border border-green/60 bg-green/10 px-4 py-2 font-mono text-sm text-green transition-colors;
+  }
+
+  .bc-cta::after {
+    content: "↗";
+    @apply text-xs leading-none;
+  }
+
+  .bc-cta:hover,
+  .bc-cta:focus-visible {
+    @apply border-green bg-green/20 text-green outline-none ring-2 ring-green ring-offset-2 ring-offset-navy;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
