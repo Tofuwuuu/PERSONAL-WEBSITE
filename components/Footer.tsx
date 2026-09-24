@@ -2,7 +2,7 @@ import { profile } from "@/content/profile";
 
 export function Footer() {
   return (
-    <footer className="mt-16 pb-8 text-center font-mono text-xs text-slate lg:pb-16">
+    <footer className="mt-10 pb-8 text-center font-mono text-xs text-slate lg:pb-10">
       <p>
         Loosely inspired by{" "}
         <a

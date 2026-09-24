@@ -13,7 +13,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="mx-auto flex min-h-dvh w-full max-w-[90rem] flex-col px-6 sm:px-8 md:px-12 lg:flex-row lg:justify-between lg:gap-8 lg:px-16 xl:px-24">
       {isArchive ? null : <Sidebar />}
       <div
-        className={`flex min-h-dvh w-full flex-col lg:py-24 ${
+        className={`flex min-h-dvh w-full flex-col lg:py-16 ${
           isArchive ? "" : "lg:w-[52%]"
         }`}
       >

@@ -112,7 +112,7 @@ export function Sidebar() {
         {social}
       </div>
 
-      <header className="hidden lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-24 lg:pr-16">
+      <header className="hidden lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-between lg:py-16 lg:pr-16">
         <div>
           <Link href="/" className="block">
             <h1
