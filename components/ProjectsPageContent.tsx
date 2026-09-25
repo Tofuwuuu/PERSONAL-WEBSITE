@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import type { Project } from "@/content/types";
 
 function sortByYearDesc(projects: Project[]) {
@@ -39,17 +40,13 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
               <th scope="col" className="py-3 pr-4 font-bold">
                 Built with
               </th>
-              <th scope="col" className="w-32 py-3 font-bold">
+              <th scope="col" className="py-3 font-bold">
                 Link
               </th>
             </tr>
           </thead>
           <tbody>
             {sorted.map((project) => {
-              const externalLink =
-                project.links.find((link) => link.kind === "demo") ??
-                project.links.find((link) => link.kind === "repo");
-
               return (
                 <tr
                   key={project.slug}
@@ -79,21 +76,7 @@ export function ProjectsPageContent({ projects }: { projects: Project[] }) {
                     </ul>
                   </td>
                   <td className="py-3.5 align-top">
-                    {externalLink ? (
-                      <a
-                        href={externalLink.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-sm text-slate transition-colors hover:text-green"
-                      >
-                        {externalLink.href
-                          .replace(/^https?:\/\//, "")
-                          .replace(/\/$/, "")}
-                        <span aria-hidden>&#8599;</span>
-                      </a>
-                    ) : (
-                      <span className="font-mono text-sm text-slate/50">—</span>
-                    )}
+                    <ProjectStatusChip project={project} />
                   </td>
                 </tr>
               );

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
 import { navItems } from "@/content/navigation";
 import { profile } from "@/content/profile";
@@ -13,20 +13,26 @@ const socialIcons = {
   LinkedIn: LinkedInIcon,
 } as const;
 
+function subscribeToNothing() {
+  return () => {};
+}
+
+function useIsClient() {
+  return useSyncExternalStore(subscribeToNothing, () => true, () => false);
+}
+
 export function Sidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const pathname = usePathname();
+  const [menuPathname, setMenuPathname] = useState(pathname);
   const [activeSection, setActiveSection] = useActiveSection();
   const isHome = pathname === "/";
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
+  if (pathname !== menuPathname) {
+    setMenuPathname(pathname);
     setMenuOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";

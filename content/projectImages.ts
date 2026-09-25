@@ -1,4 +1,6 @@
 import type { StaticImageData } from "next/image";
+import aiOpsCardImage from "@/src/ai-ops-assistant/dashboard.png";
+import gymCardImage from "@/src/gym-app-tracker/overview.png";
 import hyperledgerCardImage from "@/src/hyperledger/1.png";
 import procurementCardImage from "@/src/procurement/Admin dashboard.png";
 import ecommerceCardImage from "@/src/Ecommerce/1.jpg";
@@ -15,6 +17,14 @@ export const projectCardImages: Record<
   string,
   { src: StaticImageData; alt: string }
 > = {
+  "ai-ops-assistant": {
+    src: aiOpsCardImage,
+    alt: "AI Ops Archivist dashboard preview",
+  },
+  "gym-app-tracker": {
+    src: gymCardImage,
+    alt: "Gym App Tracker overview preview",
+  },
   "hyperledger-blockchain-verification": {
     src: hyperledgerCardImage,
     alt: "Hyperledger blockchain verification preview",

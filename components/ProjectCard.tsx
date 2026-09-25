@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/content/types";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { Badge } from "@/components/ui/Badge";
 import { PlaceholderScreenshot } from "@/components/PlaceholderScreenshot";
 import { getProjectCardImage } from "@/content/projectImages";
@@ -19,25 +20,11 @@ export function ProjectCard({
   const proofLabels = [
     project.featured ? "Featured" : null,
     project.placeholder && !cardImage ? "Coming soon" : null,
-    ...project.links.map((link) => {
-      if (
-        link.kind === "demo" &&
-        link.href &&
-        link.href !== "#" &&
-        !link.href.startsWith("#")
-      ) {
-        return "Live demo";
-      }
-      if (link.kind === "repo") return "Repo";
-      return "Case study";
-    }),
-    project.links.length ? null : "Case study",
   ].filter(Boolean) as string[];
 
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className={`group surface-soft relative overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.045] focus:outline-none focus:ring-2 focus:ring-accent ${
+    <article
+      className={`group surface-soft relative overflow-hidden rounded-2xl transition hover:-translate-y-1 hover:border-accent/35 hover:bg-white/[0.045] ${
         isFeaturedLayout
           ? compact
             ? "grid md:col-span-2 md:grid-cols-[1fr_1.05fr] xl:col-span-3 xl:grid-cols-[1.15fr_1fr]"
@@ -108,7 +95,12 @@ export function ProjectCard({
               compact || equalSize ? "text-base md:text-lg" : "text-lg md:text-xl"
             }`}
           >
-            {project.title}
+            <Link
+              href={`/projects/${project.slug}`}
+              className="rounded-sm after:absolute after:inset-0 after:z-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              {project.title}
+            </Link>
           </h3>
           <span className="mt-1 shrink-0 text-sm font-medium text-muted transition group-hover:translate-x-1 group-hover:text-accent">
             View
@@ -130,6 +122,9 @@ export function ProjectCard({
             <Badge key={s}>{s}</Badge>
           ))}
         </div>
+        <div className={`flex justify-start ${compact || equalSize ? "pt-3" : "pt-4"}`}>
+          <ProjectStatusChip project={project} />
+        </div>
 
         <span
           className={`inline-flex text-sm font-semibold text-accent opacity-80 transition group-hover:opacity-100 ${
@@ -139,6 +134,6 @@ export function ProjectCard({
           View case study
         </span>
       </div>
-    </Link>
+    </article>
   );
 }

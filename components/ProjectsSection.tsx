@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
 import { projects } from "@/content/projects";
@@ -11,9 +12,6 @@ export function ProjectsSection() {
     <Section id="projects" number="03." title="Projects">
       <ul className="space-y-6">
         {featured.map((project) => {
-          const externalLink =
-            project.links.find((link) => link.kind === "demo") ??
-            project.links.find((link) => link.kind === "repo");
           const cardImage = getProjectCardImage(project.slug);
 
           return (
@@ -52,24 +50,15 @@ export function ProjectsSection() {
                   <p className="mt-2 text-sm leading-relaxed text-slate">
                     {project.summary}
                   </p>
-                  <div className="mt-4 flex flex-wrap items-end justify-between gap-x-3 gap-y-2">
-                    <ul className="flex flex-wrap gap-x-3 gap-y-1">
-                      {project.stack.slice(0, 6).map((tech) => (
-                        <li key={tech} className="bc-tech-tag">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                    {externalLink ? (
-                      <a
-                        href={externalLink.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bc-chip shrink-0"
-                      >
-                        {externalLink.label}
-                      </a>
-                    ) : null}
+                  <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
+                    {project.stack.slice(0, 6).map((tech) => (
+                      <li key={tech} className="bc-tech-tag">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex justify-start">
+                    <ProjectStatusChip project={project} />
                   </div>
                 </div>
               </div>
