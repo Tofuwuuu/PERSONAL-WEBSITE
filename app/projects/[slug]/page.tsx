@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { projects, getProjectBySlug } from "@/content/projects";
+import { getProjectStatus } from "@/content/projectStatus";
 import { Badge } from "@/components/ui/Badge";
 import { HyperledgerCaseStudy } from "@/components/HyperledgerCaseStudy";
 import { ProcurementCaseStudy } from "@/components/ProcurementCaseStudy";
@@ -50,10 +52,12 @@ export default async function ProjectDetailPage({
   if (!project) notFound();
 
   const hasCardScreenshot = Boolean(getProjectCardImage(slug));
+  const status = getProjectStatus(project);
   const hasWorkingLinks = project.links.some(
     (link) =>
       link.href.length > 0 && link.href !== "#" && !link.href.startsWith("#")
   );
+  const secondaryLinks = project.links.filter((link) => link.href !== status?.href);
   const showPlaceholderCaseStudy = project.placeholder && !hasCardScreenshot;
   const disableHeaderLinks = showPlaceholderCaseStudy && !hasWorkingLinks;
 
@@ -89,31 +93,31 @@ export default async function ProjectDetailPage({
           ))}
         </div>
         {project.links.length ? (
-          <div className="mt-6 flex flex-wrap gap-3">
-            {project.links.map((l) =>
-              disableHeaderLinks ? (
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            {disableHeaderLinks ? (
+              project.links.map((l) => (
                 <span
                   key={l.href + l.label}
                   className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
                 >
                   {l.label} (soon)
                 </span>
-              ) : (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={[
-                    "inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-accent",
-                    l.kind === "demo"
-                      ? "bg-accent/15 text-accent ring-1 ring-accent/45 hover:bg-accent/20"
-                      : "bg-white/5 text-text ring-1 ring-white/10 hover:bg-white/10",
-                  ].join(" ")}
-                >
-                  {l.kind === "demo" ? `${l.label} ↗` : l.label}
-                </a>
-              )
+              ))
+            ) : (
+              <>
+                <ProjectStatusChip project={project} />
+                {secondaryLinks.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+                  >
+                    {l.label}
+                  </a>
+                ))}
+              </>
             )}
           </div>
         ) : null}

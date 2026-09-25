@@ -111,7 +111,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "A Strong/Hevy-style workout logger: log sets, save routines, and look back at history. Dark UI. It runs on your machine, not on a public URL.",
+      "A Strong/Hevy-style workout logger: log sets, save routines, and look back at history. Dark UI. Try it with the demo account. Data resets every night.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -121,12 +121,17 @@ export const projects: Project[] = [
       "Docker Compose",
     ],
     highlights: [
-      "No live demo. There is no Vercel project for this app. Repo only.",
+      "Try it with the demo account. Data resets every night.",
       "Docker Compose starts the Next.js app and Postgres. Auth.js handles email and password sign-in.",
       "You can log a workout with a rest timer, reuse routine templates, and open past sessions.",
       "From the repo: `docker compose up --build`, then open localhost:3000. Prisma applies migrations on boot.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://gym-app-tracker-gamma.vercel.app",
+      },
       {
         kind: "repo",
         label: "Repo",

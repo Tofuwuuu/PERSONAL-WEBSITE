@@ -6,6 +6,7 @@ import {
   useId,
   useRef,
   useState,
+  useSyncExternalStore,
   type KeyboardEvent,
 } from "react";
 import type { Project } from "@/content/types";
@@ -17,33 +18,39 @@ function getVisibleCount(width: number) {
   return 1;
 }
 
+function subscribeToViewport(onStoreChange: () => void) {
+  window.addEventListener("resize", onStoreChange);
+  return () => window.removeEventListener("resize", onStoreChange);
+}
+
+function getViewportVisibleCount() {
+  return getVisibleCount(window.innerWidth);
+}
+
 export function ProjectsCarousel({ projects }: { projects: Project[] }) {
   const carouselId = useId();
   const trackRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const visibleCount = useSyncExternalStore(
+    subscribeToViewport,
+    getViewportVisibleCount,
+    () => 3,
+  );
   const maxIndex = Math.max(0, projects.length - visibleCount);
   const pageCount = maxIndex + 1;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [trackedProjects, setTrackedProjects] = useState(projects);
 
-  const syncVisibleCount = useCallback(() => {
-    setVisibleCount(getVisibleCount(window.innerWidth));
-  }, []);
-
-  useEffect(() => {
-    syncVisibleCount();
-    window.addEventListener("resize", syncVisibleCount);
-    return () => window.removeEventListener("resize", syncVisibleCount);
-  }, [syncVisibleCount]);
-
-  useEffect(() => {
+  if (projects !== trackedProjects) {
+    setTrackedProjects(projects);
     setActiveIndex(0);
+  } else if (activeIndex > maxIndex) {
+    setActiveIndex(maxIndex);
+  }
+
+  useEffect(() => {
     trackRef.current?.scrollTo({ left: 0, behavior: "auto" });
   }, [projects]);
-
-  useEffect(() => {
-    setActiveIndex((current) => Math.min(current, maxIndex));
-  }, [maxIndex, projects.length]);
 
   const scrollToIndex = useCallback((index: number) => {
     const clamped = Math.max(0, Math.min(index, maxIndex));

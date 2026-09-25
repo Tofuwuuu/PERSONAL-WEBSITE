@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
 import { projects } from "@/content/projects";
@@ -11,9 +12,6 @@ export function ProjectsSection() {
     <Section id="projects" number="03." title="Projects">
       <ul className="space-y-6">
         {featured.map((project) => {
-          const externalLink =
-            project.links.find((link) => link.kind === "demo") ??
-            project.links.find((link) => link.kind === "repo");
           const cardImage = getProjectCardImage(project.slug);
 
           return (
@@ -60,16 +58,7 @@ export function ProjectsSection() {
                         </li>
                       ))}
                     </ul>
-                    {externalLink ? (
-                      <a
-                        href={externalLink.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="bc-chip shrink-0"
-                      >
-                        {externalLink.label}
-                      </a>
-                    ) : null}
+                    <ProjectStatusChip project={project} />
                   </div>
                 </div>
               </div>

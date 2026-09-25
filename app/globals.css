@@ -84,15 +84,6 @@ a {
     @apply rounded-sm ring-2 ring-green ring-offset-2 ring-offset-navy;
   }
 
-  .bc-chip {
-    @apply inline-flex items-center rounded border border-green/55 bg-green/10 px-2 py-1 font-mono text-[0.7rem] font-medium tracking-wide text-green transition-colors;
-  }
-
-  .bc-chip:hover,
-  .bc-chip:focus-visible {
-    @apply border-green bg-green/20 text-green outline-none ring-2 ring-green ring-offset-2 ring-offset-navy;
-  }
-
   .bc-link::after {
     content: "↗";
     @apply text-xs leading-none;

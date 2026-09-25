@@ -1,19 +1,24 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, useSyncExternalStore, type ReactNode } from "react";
+
+function subscribeToFinePointer(onStoreChange: () => void) {
+  const media = window.matchMedia("(pointer: fine)");
+  media.addEventListener("change", onStoreChange);
+  return () => media.removeEventListener("change", onStoreChange);
+}
+
+function getFinePointerSnapshot() {
+  return window.matchMedia("(pointer: fine)").matches;
+}
 
 export function Spotlight({ children }: { children: ReactNode }) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: fine)");
-    setEnabled(media.matches);
-
-    const onChange = () => setEnabled(media.matches);
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
-  }, []);
+  const enabled = useSyncExternalStore(
+    subscribeToFinePointer,
+    getFinePointerSnapshot,
+    () => false,
+  );
 
   return (
     <div
