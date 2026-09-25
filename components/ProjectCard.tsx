@@ -87,7 +87,6 @@ export function ProjectCard({
               {label}
             </span>
           ))}
-          <ProjectStatusChip project={project} />
         </div>
 
         <div className="flex items-start justify-between gap-4">
@@ -122,6 +121,9 @@ export function ProjectCard({
           {project.stack.slice(0, project.featured ? 6 : 4).map((s) => (
             <Badge key={s}>{s}</Badge>
           ))}
+        </div>
+        <div className={`flex justify-start ${compact || equalSize ? "pt-3" : "pt-4"}`}>
+          <ProjectStatusChip project={project} />
         </div>
 
         <span

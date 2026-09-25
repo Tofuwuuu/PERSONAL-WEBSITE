@@ -50,14 +50,14 @@ export function ProjectsSection() {
                   <p className="mt-2 text-sm leading-relaxed text-slate">
                     {project.summary}
                   </p>
-                  <div className="mt-4 flex flex-wrap items-end justify-between gap-x-3 gap-y-2">
-                    <ul className="flex flex-wrap gap-x-3 gap-y-1">
-                      {project.stack.slice(0, 6).map((tech) => (
-                        <li key={tech} className="bc-tech-tag">
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
+                  <ul className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
+                    {project.stack.slice(0, 6).map((tech) => (
+                      <li key={tech} className="bc-tech-tag">
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-3 flex justify-start">
                     <ProjectStatusChip project={project} />
                   </div>
                 </div>

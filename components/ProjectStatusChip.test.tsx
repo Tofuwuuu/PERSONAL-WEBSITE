@@ -112,10 +112,13 @@ describe("project data", () => {
       kind: "live",
       href: "https://gym-app-tracker-gamma.vercel.app",
     });
-    expect(gym!.summary).toContain(
-      "Try it with the demo account. Data resets every night.",
+    expect(gym!.summary).toBe(
+      "A workout logger modeled on Strong and Hevy. Log sets, save routines, and look back at your history. Try it with the demo account. Data resets every night.",
     );
     expect(gym!.highlights[0]).toBe(
+      "Live on Vercel with a Neon Postgres database. Sign in with the demo account on the sign-in page.",
+    );
+    expect(gym!.highlights.slice(1).join(" ")).not.toContain(
       "Try it with the demo account. Data resets every night.",
     );
     expect(gym!.summary.toLowerCase()).not.toContain("no live demo");
