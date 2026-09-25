@@ -315,24 +315,19 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "Upload a PDF or image, extract the text, and save entities plus a short read of the file. An optional pass flags risky contract clauses.",
-    stack: [
-      "React",
-      "TypeScript",
-      "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "spaCy",
-      "PyMuPDF",
-      "Docker Compose",
-    ],
+      "Upload a PDF or image and get the text, names, keywords, and contract risk flags back. It all runs in your browser, and your file stays on your device.",
+    stack: ["React", "TypeScript", "pdf.js", "Tesseract.js", "FastAPI"],
     highlights: [
-      "No public demo. This one is local Docker Compose only (API, Postgres, Redis).",
-      "PyMuPDF reads PDFs. Tesseract reads images. spaCy pulls out names and other entities.",
-      "Uploading the same file again is skipped. The API hashes the bytes with SHA-256 and caches the result in Redis.",
-      "Optional JWT login so uploads belong to the signed-in user.",
+      "Live on Vercel. Try the sample document, or upload your own PDF or image.",
+      "In the browser, pdf.js reads PDFs, Tesseract.js reads scanned images, and the contract rules come from one shared JSON file.",
+      "The repo also has a FastAPI backend for local use, with PyMuPDF, spaCy, Redis caching, and optional JWT login. The same rules file drives both, and parity tests keep them in sync.",
     ],
     links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://smartdoc-analyzer.vercel.app",
+      },
       {
         kind: "repo",
         label: "Repo",
