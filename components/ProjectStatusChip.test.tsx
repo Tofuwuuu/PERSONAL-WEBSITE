@@ -138,6 +138,51 @@ describe("project data", () => {
   });
 });
 
+describe("SmartDoc Analyzer", () => {
+  it("is live at the browser demo and never links the old hosts", () => {
+    const bannedHosts = [
+      "smart-doc-analyzer-murex.vercel.app",
+      "smart-doc-analyzer-nine.vercel.app",
+    ];
+    const smartDoc = projects.find((project) => project.slug === "smartdoc-analyzer");
+
+    expect(smartDoc).toBeTruthy();
+    expect(getProjectStatus(smartDoc!)).toEqual({
+      kind: "live",
+      href: "https://smartdoc-analyzer.vercel.app",
+    });
+    expect(smartDoc!.links.find((link) => link.kind === "demo")).toEqual({
+      kind: "demo",
+      label: "Live Site",
+      href: "https://smartdoc-analyzer.vercel.app",
+    });
+    expect(smartDoc!.summary).toBe(
+      "Upload a PDF or image and get the text, names, keywords, and contract risk flags back. It all runs in your browser, and your file stays on your device.",
+    );
+    expect(smartDoc!.stack).toEqual([
+      "React",
+      "TypeScript",
+      "pdf.js",
+      "Tesseract.js",
+      "FastAPI",
+    ]);
+    expect(smartDoc!.highlights[0]).toBe(
+      "Live on Vercel. Try the sample document, or upload your own PDF or image.",
+    );
+    expect(smartDoc!.highlights.join(" ").toLowerCase()).not.toContain("no public demo");
+    expect(smartDoc!.highlights.join(" ").toLowerCase()).not.toContain("repo only");
+    expect(`${smartDoc!.summary} ${smartDoc!.highlights.join(" ")}`).not.toMatch(/[—–]/);
+
+    for (const project of projects) {
+      for (const link of project.links) {
+        for (const host of bannedHosts) {
+          expect(link.href.includes(host)).toBe(false);
+        }
+      }
+    }
+  });
+});
+
 describe("status chip contrast", () => {
   it("meets WCAG AA for text and non-text pairs used by the chips", () => {
     const classNames = [chipLayoutClass, liveChipClass, videoChipClass, repoChipClass].join(" ");
