@@ -166,9 +166,11 @@ describe("SmartDoc Analyzer", () => {
       "Tesseract.js",
       "FastAPI",
     ]);
-    expect(smartDoc!.highlights[0]).toBe(
+    expect(smartDoc!.highlights).toEqual([
       "Live on Vercel. Try the sample document, or upload your own PDF or image.",
-    );
+      "In the browser, pdf.js reads PDFs, Tesseract.js reads scanned images, and the contract rules come from one shared JSON file.",
+      "The repo also has a FastAPI backend for local use, with PyMuPDF, spaCy, Redis caching, and optional JWT login. The same rules file drives both, and parity tests keep them in sync.",
+    ]);
     expect(smartDoc!.highlights.join(" ").toLowerCase()).not.toContain("no public demo");
     expect(smartDoc!.highlights.join(" ").toLowerCase()).not.toContain("repo only");
     expect(`${smartDoc!.summary} ${smartDoc!.highlights.join(" ")}`).not.toMatch(/[—–]/);

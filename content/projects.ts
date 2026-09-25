@@ -319,9 +319,8 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "pdf.js", "Tesseract.js", "FastAPI"],
     highlights: [
       "Live on Vercel. Try the sample document, or upload your own PDF or image.",
-      "PyMuPDF reads PDFs. Tesseract reads images. spaCy pulls out names and other entities.",
-      "Uploading the same file again is skipped. The API hashes the bytes with SHA-256 and caches the result in Redis.",
-      "Optional JWT login so uploads belong to the signed-in user.",
+      "In the browser, pdf.js reads PDFs, Tesseract.js reads scanned images, and the contract rules come from one shared JSON file.",
+      "The repo also has a FastAPI backend for local use, with PyMuPDF, spaCy, Redis caching, and optional JWT login. The same rules file drives both, and parity tests keep them in sync.",
     ],
     links: [
       {
