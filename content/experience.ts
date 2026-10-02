@@ -22,8 +22,8 @@ export const experience: Experience[] = [
     end: "2024",
     bullets: [
       "Built and maintained WordPress pages across several client sites.",
-      "Audited five client WordPress sites and wrote a report for each, covering on-page SEO, page speed, accessibility, and security.",
-      "Found UX bugs like broken links and a contact form that sent with empty fields, and fixed client-facing bugs after checking each change with the team.",
+      "Audited five client WordPress sites, wrote a report for each covering on-page SEO, page speed, accessibility, and security, then made the fixes.",
+      "Found and fixed UX bugs like broken links and a contact form that sent with empty fields, checking each change with the team before it went out.",
     ],
     tech: ["WordPress", "On-page SEO", "Site audits", "GTmetrix", "JavaScript", "HTML", "CSS", "Git"],
     links: [
