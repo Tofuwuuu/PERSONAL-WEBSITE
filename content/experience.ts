@@ -27,11 +27,11 @@ export const experience: Experience[] = [
     ],
     tech: ["WordPress", "On-page SEO", "Site audits", "GTmetrix", "JavaScript", "HTML", "CSS", "Git"],
     links: [
-      { label: "Mount Studio", href: "https://mountstudio.com.sg" },
-      { label: "Winning at Love", href: "https://winningatlove.com" },
-      { label: "My Tires 4 Less", href: "https://mytires4less.com" },
-      { label: "Fred Earl Stevens", href: "https://fredearlstevens.com" },
-      { label: "Band-ITS Fitness", href: "https://band-itsfitness.com" },
+      { label: "mountstudio.com.sg", href: "https://mountstudio.com.sg" },
+      { label: "winningatlove.com", href: "https://winningatlove.com" },
+      { label: "mytires4less.com", href: "https://mytires4less.com" },
+      { label: "fredearlstevens.com", href: "https://fredearlstevens.com" },
+      { label: "band-itsfitness.com", href: "https://band-itsfitness.com" },
     ],
   },
 ];
