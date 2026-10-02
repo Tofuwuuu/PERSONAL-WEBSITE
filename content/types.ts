@@ -29,4 +29,5 @@ export type Experience = {
   end: string;
   bullets: string[];
   tech: string[];
+  links?: { label: string; href: string }[];
 };

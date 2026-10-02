@@ -27,6 +27,24 @@ export function Experience() {
                   </li>
                 ))}
               </ul>
+              {job.links && job.links.length > 0 && (
+                <p className="mt-3 text-sm leading-relaxed text-slate">
+                  <span className="font-mono text-xs uppercase tracking-wide">Sites worked on: </span>
+                  {job.links.map((link, i, all) => (
+                    <span key={link.href}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green underline-offset-4 hover:underline"
+                      >
+                        {link.label}
+                      </a>
+                      {i < all.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
+                </p>
+              )}
               <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
                 {job.tech.map((tech) => (
                   <li key={tech} className="bc-tech-tag">
