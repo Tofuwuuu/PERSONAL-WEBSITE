@@ -21,10 +21,10 @@ export const experience: Experience[] = [
     start: "2024",
     end: "2024",
     bullets: [
-      "Fixed client-facing bugs and checked the change with the team before it went out.",
-      "Updated sites and followed issues across more than one account.",
-      "Replied to clients while other requests were still in progress.",
+      "Built and maintained WordPress pages across several client sites.",
+      "Helped with on-page SEO: meta tags, page structure, and content formatting so pages read better to search engines.",
+      "Fixed client-facing bugs and checked each change with the team before it went out.",
     ],
-    tech: ["JavaScript", "HTML", "CSS", "Git"],
+    tech: ["WordPress", "On-page SEO", "JavaScript", "HTML", "CSS", "Git"],
   },
 ];
