@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "UI preview. The screens load on Vercel, but the server is offline right now, so login does not work yet.",
+      "UI preview. The screens load, but login is turned off while the server is rebuilt.",
       "Chaincode writes alumni credential records. The API issues documents and checks them against the ledger.",
       "The React (Vite) app talks to FastAPI. MongoDB holds the application data.",
       "Fabric, the API, and the UI start from the Docker setup in the repo.",
