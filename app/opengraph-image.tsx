@@ -17,7 +17,9 @@ export default function OpenGraphImage() {
           height: "630px",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
           padding: "72px",
           background:
             "radial-gradient(800px circle at 88% 12%, rgba(100,255,218,0.16), rgba(10,25,47,0) 62%), #0a192f",
