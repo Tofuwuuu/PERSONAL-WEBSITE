@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
 
@@ -8,7 +10,12 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const [interBold, interRegular] = await Promise.all([
+    readFile(join(process.cwd(), "assets/fonts/Inter-Bold.ttf")),
+    readFile(join(process.cwd(), "assets/fonts/Inter-Regular.ttf")),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -17,33 +24,38 @@ export default function OpenGraphImage() {
           height: "630px",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
           padding: "72px",
           background:
-            "radial-gradient(900px circle at 18% 18%, rgba(124,92,255,0.35), rgba(0,0,0,0) 60%), radial-gradient(900px circle at 85% 10%, rgba(255,255,255,0.12), rgba(0,0,0,0) 60%), #0b0d12",
-          color: "#e6e9f2",
+            "radial-gradient(800px circle at 88% 12%, rgba(100,255,218,0.16), rgba(10,25,47,0) 62%), #0a192f",
+          color: "#eef3f8",
+          fontFamily: "Inter",
         }}
       >
-        <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1 }}>
+        <div style={{ fontSize: 77, fontWeight: 700, lineHeight: 1.1 }}>
           {profile.name}
         </div>
         <div
           style={{
             marginTop: 20,
             fontSize: 34,
-            color: "#a5adbf",
-            maxWidth: 980,
+            color: "#d5dce6",
+            maxWidth: 760,
             lineHeight: 1.3,
           }}
         >
           {profile.tagline}
         </div>
-        <div style={{ marginTop: 34, fontSize: 28, color: "#c7cce0" }}>
-          {profile.role}
-        </div>
       </div>
     ),
-    size
+    {
+      ...size,
+      fonts: [
+        { name: "Inter", data: interBold, weight: 700, style: "normal" },
+        { name: "Inter", data: interRegular, weight: 400, style: "normal" },
+      ],
+    }
   );
 }
-

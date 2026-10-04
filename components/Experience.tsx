@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { Section } from "@/components/Section";
 import { experience } from "@/content/experience";
 
 export function Experience() {
   return (
-    <Section id="experience" number="02." title="Experience">
+    <Section id="experience" number="03." title="Experience">
       <div className="space-y-12">
         {experience.map((job) => (
           <article
@@ -13,7 +12,7 @@ export function Experience() {
           >
             <div className="font-mono text-xs uppercase tracking-wide text-slate">
               <span>
-                {job.start} — {job.end}
+                {job.start} to {job.end}
               </span>
             </div>
             <div>
@@ -56,11 +55,6 @@ export function Experience() {
             </div>
           </article>
         ))}
-      </div>
-      <div className="mt-8">
-        <Link href="/resume" className="bc-cta">
-          View Full Résumé
-        </Link>
       </div>
     </Section>
   );

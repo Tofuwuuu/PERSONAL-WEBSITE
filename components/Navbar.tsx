@@ -6,7 +6,6 @@ const navItems = [
   { href: "/#skills", label: "Skills" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
-  { href: "/resume", label: "Resume" },
 ] as const;
 
 export function Navbar() {
@@ -24,11 +23,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3 py-1.5 transition focus:outline-none focus:ring-2 focus:ring-accent ${
-                item.label === "Resume"
-                  ? "border border-accent/25 bg-accent/10 text-accent hover:bg-accent/15"
-                  : "hover:bg-white/5 hover:text-text"
-              }`}
+              className="rounded-full px-3 py-1.5 transition hover:bg-white/5 hover:text-text focus:outline-none focus:ring-2 focus:ring-accent"
             >
               {item.label}
             </Link>

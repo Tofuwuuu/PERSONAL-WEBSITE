@@ -4,7 +4,7 @@ import { projects } from "@/content/projects";
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://markroderick.vercel.app";
 
-  const staticRoutes = ["", "/projects", "/resume"].map((path) => ({
+  const staticRoutes = ["", "/projects"].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),
   }));

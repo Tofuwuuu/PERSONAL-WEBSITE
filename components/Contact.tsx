@@ -8,7 +8,7 @@ export function Contact() {
         <p className="text-sm leading-relaxed text-slate md:text-base">
           I&apos;m currently open to software engineering opportunities and
           interesting project work. Whether you have a question, an opportunity,
-          or just want to say hi — my inbox is always open.
+          or just want to say hi, my inbox is always open.
         </p>
         <a
           href={`mailto:${profile.email}`}
