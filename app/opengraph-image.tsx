@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { profile } from "@/content/profile";
 
@@ -8,7 +10,12 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const [interBold, interRegular] = await Promise.all([
+    readFile(join(process.cwd(), "assets/fonts/Inter-Bold.ttf")),
+    readFile(join(process.cwd(), "assets/fonts/Inter-Regular.ttf")),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -24,9 +31,10 @@ export default function OpenGraphImage() {
           background:
             "radial-gradient(800px circle at 88% 12%, rgba(100,255,218,0.16), rgba(10,25,47,0) 62%), #0a192f",
           color: "#eef3f8",
+          fontFamily: "Inter",
         }}
       >
-        <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1 }}>
+        <div style={{ fontSize: 77, fontWeight: 700, lineHeight: 1.1 }}>
           {profile.name}
         </div>
         <div
@@ -34,7 +42,7 @@ export default function OpenGraphImage() {
             marginTop: 20,
             fontSize: 34,
             color: "#d5dce6",
-            maxWidth: 980,
+            maxWidth: 760,
             lineHeight: 1.3,
           }}
         >
@@ -42,6 +50,12 @@ export default function OpenGraphImage() {
         </div>
       </div>
     ),
-    size
+    {
+      ...size,
+      fonts: [
+        { name: "Inter", data: interBold, weight: 700, style: "normal" },
+        { name: "Inter", data: interRegular, weight: 400, style: "normal" },
+      ],
+    }
   );
 }

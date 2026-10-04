@@ -4,7 +4,7 @@ export const profile = {
   name: "Mark Roderick I. Salise",
   role: "Junior Software Engineer",
   tagline:
-    "Junior software engineer. TypeScript, Python, and full-stack apps I can run and explain.",
+    "TypeScript, Python, and full-stack apps I can run and explain.",
   location: "San Pedro, Laguna, Philippines",
   email: "rodericksalise812@gmail.com",
   intro: [
