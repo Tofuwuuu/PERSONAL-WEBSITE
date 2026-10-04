@@ -20,8 +20,8 @@ export default function OpenGraphImage() {
           justifyContent: "center",
           padding: "72px",
           background:
-            "radial-gradient(900px circle at 18% 18%, rgba(124,92,255,0.35), rgba(0,0,0,0) 60%), radial-gradient(900px circle at 85% 10%, rgba(255,255,255,0.12), rgba(0,0,0,0) 60%), #0b0d12",
-          color: "#e6e9f2",
+            "radial-gradient(800px circle at 88% 12%, rgba(100,255,218,0.16), rgba(10,25,47,0) 62%), #0a192f",
+          color: "#eef3f8",
         }}
       >
         <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1 }}>
@@ -31,19 +31,15 @@ export default function OpenGraphImage() {
           style={{
             marginTop: 20,
             fontSize: 34,
-            color: "#a5adbf",
+            color: "#d5dce6",
             maxWidth: 980,
             lineHeight: 1.3,
           }}
         >
           {profile.tagline}
         </div>
-        <div style={{ marginTop: 34, fontSize: 28, color: "#c7cce0" }}>
-          {profile.role}
-        </div>
       </div>
     ),
     size
   );
 }
-

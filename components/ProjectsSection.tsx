@@ -9,7 +9,7 @@ export function ProjectsSection() {
   const featured = projects.filter((project) => project.featured);
 
   return (
-    <Section id="projects" number="03." title="Projects">
+    <Section id="projects" number="02." title="Projects">
       <ul className="space-y-6">
         {featured.map((project) => {
           const cardImage = getProjectCardImage(project.slug);
