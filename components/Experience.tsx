@@ -12,7 +12,7 @@ export function Experience() {
           >
             <div className="font-mono text-xs uppercase tracking-wide text-slate">
               <span>
-                {job.start} — {job.end}
+                {job.start} to {job.end}
               </span>
             </div>
             <div>

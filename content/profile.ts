@@ -10,7 +10,7 @@ export const profile = {
   intro: [
     "I'm Mark, a Junior Software Engineer in San Pedro, Laguna. I studied Computer Science at Cavite State University, and I'm looking for a role where I can ship full-stack work with a team.",
     "I build React and TypeScript front ends, Python and FastAPI backends, and Docker setups I can start on my own machine. Capstone was a Hyperledger Fabric system for alumni document checks at CvSU Carmona. I also shipped a procurement platform for a paying freelance client.",
-    "A few projects below have a live site. The rest run locally with Docker — each write-up says which.",
+    "A few projects below have a live site. The rest run locally with Docker, and each write-up says which.",
   ],
   links: [
     { label: "GitHub", href: "https://github.com/Tofuwuuu" },
