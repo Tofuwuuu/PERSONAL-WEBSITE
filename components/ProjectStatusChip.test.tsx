@@ -6,6 +6,7 @@ import {
   chipContrastPairs,
   chipLayoutClass,
   liveChipClass,
+  previewChipClass,
   repoChipClass,
   videoChipClass,
 } from "@/components/statusChipStyles";
@@ -133,7 +134,8 @@ describe("project data", () => {
 
       const status = getProjectStatus(project);
       const hasDemo = project.links.some((link) => link.kind === "demo");
-      expect(status?.kind).toBe(hasDemo ? "live" : "repo");
+      const hasPreview = project.links.some((link) => link.kind === "preview");
+      expect(status?.kind).toBe(hasDemo ? "live" : hasPreview ? "preview" : "repo");
     }
   });
 });
@@ -187,7 +189,7 @@ describe("SmartDoc Analyzer", () => {
 
 describe("status chip contrast", () => {
   it("meets WCAG AA for text and non-text pairs used by the chips", () => {
-    const classNames = [chipLayoutClass, liveChipClass, videoChipClass, repoChipClass].join(" ");
+    const classNames = [chipLayoutClass, liveChipClass, videoChipClass, previewChipClass, repoChipClass].join(" ");
     const pageSurfaces = new Set(["#0a192f", "#112240"]);
 
     for (const [foreground, background, minimum] of chipContrastPairs) {

@@ -11,6 +11,7 @@ function findLink(links: ProjectLink[], kind: ProjectLink["kind"]) {
 export type ProjectStatus =
   | { kind: "live"; href: string }
   | { kind: "video"; href: string }
+  | { kind: "preview"; href: string }
   | { kind: "repo"; href: string };
 
 export function getProjectStatus(project: Project): ProjectStatus | null {
@@ -19,6 +20,9 @@ export function getProjectStatus(project: Project): ProjectStatus | null {
 
   const video = findLink(project.links, "video");
   if (video) return { kind: "video", href: video.href };
+
+  const preview = findLink(project.links, "preview");
+  if (preview) return { kind: "preview", href: preview.href };
 
   const repo = findLink(project.links, "repo");
   if (repo) return { kind: "repo", href: repo.href };
