@@ -6,6 +6,7 @@ import { VideoWalkthroughDialog } from "@/components/VideoWalkthroughDialog";
 import {
   chipLayoutClass,
   liveChipClass,
+  previewChipClass,
   repoChipClass,
   videoChipClass,
 } from "@/components/statusChipStyles";
@@ -49,6 +50,22 @@ export function ProjectStatusChip({ project }: { project: Project }) {
           />
         ) : null}
       </>
+    );
+  }
+
+  if (status.kind === "preview") {
+    return (
+      <a
+        href={status.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${chipLayoutClass} ${previewChipClass}`}
+        title="The screens load, but the server is offline, so login does not work yet."
+      >
+        <span aria-hidden className="h-1.5 w-1.5 shrink-0 rounded-full border border-current" />
+        UI preview
+        <span className="sr-only"> (server offline, opens in a new tab)</span>
+      </a>
     );
   }
 

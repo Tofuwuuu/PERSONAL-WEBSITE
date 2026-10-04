@@ -58,12 +58,17 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Repo only. The hosted API is down, so there is no live site.",
+      "UI preview. The screens load on Vercel, but the server is offline right now, so login does not work yet.",
       "Chaincode writes alumni credential records. The API issues documents and checks them against the ledger.",
       "The React (Vite) app talks to FastAPI. MongoDB holds the application data.",
       "Fabric, the API, and the UI start from the Docker setup in the repo.",
     ],
     links: [
+      {
+        kind: "preview",
+        label: "UI Preview",
+        href: "https://hyperledger-document-verification.vercel.app/",
+      },
       {
         kind: "repo",
         label: "Repo",
@@ -90,12 +95,17 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "Repo only. There is no live site. The Vercel page is a UI shell because the API is still a placeholder, so login and workflows do not run.",
+      "UI preview. The screens load on Vercel, but the server is not connected yet, so login and workflows do not run.",
       "Roles in the app include admin, canvasser, validator, finance, auditor, and custodian.",
       "Inspection reports go on Fabric. The other workflow records sit in MongoDB, with a simple stage dashboard.",
       "Fabric, the API, and the React app run from the Docker Compose setup in the repo.",
     ],
     links: [
+      {
+        kind: "preview",
+        label: "UI Preview",
+        href: "https://pams-pied.vercel.app/login",
+      },
       {
         kind: "repo",
         label: "Repo",

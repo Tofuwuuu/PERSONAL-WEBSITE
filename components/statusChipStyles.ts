@@ -10,6 +10,9 @@ export const videoChipClass =
 export const repoChipClass =
   "border-[#9aa8ba] bg-[#6b7280] text-[#ffffff] hover:border-[#e8eef6]";
 
+export const previewChipClass =
+  "border-[#9aa8ba] bg-transparent text-[#eef3f8] hover:border-[#e8eef6] hover:bg-[#112240]";
+
 export const chipContrastPairs: Array<[string, string, number]> = [
   ["#0a192f", "#64ffda", 4.5],
   ["#0a192f", "#8dffe4", 4.5],
@@ -17,6 +20,8 @@ export const chipContrastPairs: Array<[string, string, number]> = [
   ["#64ffda", "#112240", 4.5],
   ["#64ffda", "#10342e", 4.5],
   ["#ffffff", "#6b7280", 4.5],
+  ["#eef3f8", "#0a192f", 4.5],
+  ["#eef3f8", "#112240", 4.5],
   ["#eef3f8", "#0a192f", 3],
   ["#64ffda", "#0a192f", 3],
   ["#9aa8ba", "#0a192f", 3],

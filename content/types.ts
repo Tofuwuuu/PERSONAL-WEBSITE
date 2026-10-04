@@ -4,7 +4,7 @@ export type ExternalLink = {
 };
 
 export type ProjectLink = ExternalLink & {
-  kind: "repo" | "demo" | "video" | "case-study";
+  kind: "repo" | "demo" | "preview" | "video" | "case-study";
 };
 
 export type Project = {
