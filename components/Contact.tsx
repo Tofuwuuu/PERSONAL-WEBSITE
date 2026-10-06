@@ -3,7 +3,7 @@ import { profile } from "@/content/profile";
 
 export function Contact() {
   return (
-    <Section id="contact" number="04." title="Contact">
+    <Section id="contact" number="03." title="Contact">
       <div className="max-w-xl">
         <p className="text-sm leading-relaxed text-slate md:text-base">
           I&apos;m currently open to software engineering opportunities and
