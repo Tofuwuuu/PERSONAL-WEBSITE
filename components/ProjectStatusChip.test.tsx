@@ -250,3 +250,23 @@ describe("ProjectStatusChip video dialog", () => {
     expect(document.activeElement).toBe(trigger);
   });
 });
+
+describe("UI preview copy", () => {
+  const demoLine = "UI preview. The screens load, but login is turned off in this demo.";
+
+  it("uses the demo wording on the Alumni and Procurement cards", () => {
+    for (const slug of ["hyperledger-blockchain-verification", "procurement-blockchain-system"]) {
+      const project = projects.find((p) => p.slug === slug)!;
+      expect(project.highlights[0]).toBe(demoLine);
+      expect(project.highlights.join(" ")).not.toMatch(/rebuilt|offline|not connected/);
+    }
+  });
+
+  it("preview chip explains the demo without offline wording", () => {
+    const project = projects.find((p) => p.slug === "procurement-blockchain-system")!;
+    render(<ProjectStatusChip project={project} />);
+    const chip = screen.getByRole("link", { name: /UI preview/ });
+    expect(chip.getAttribute("title")).toBe(demoLine);
+    expect(chip.textContent).not.toMatch(/offline/);
+  });
+});
