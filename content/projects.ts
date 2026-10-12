@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "UI preview. The screens load, but login is turned off while the server is rebuilt.",
+      "UI preview. The screens load, but login is turned off in this demo.",
       "Chaincode writes alumni credential records. The API issues documents and checks them against the ledger.",
       "The React (Vite) app talks to FastAPI. MongoDB holds the application data.",
       "Fabric, the API, and the UI start from the Docker setup in the repo.",
@@ -95,7 +95,7 @@ export const projects: Project[] = [
       "Docker",
     ],
     highlights: [
-      "UI preview. The screens load on Vercel, but the server is not connected yet, so login and workflows do not run.",
+      "UI preview. The screens load, but login is turned off in this demo.",
       "Roles in the app include admin, canvasser, validator, finance, auditor, and custodian.",
       "Inspection reports go on Fabric. The other workflow records sit in MongoDB, with a simple stage dashboard.",
       "Fabric, the API, and the React app run from the Docker Compose setup in the repo.",
