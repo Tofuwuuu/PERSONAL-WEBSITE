@@ -6,8 +6,9 @@ export const SITE_URL = "https://markroderick.vercel.app/";
 export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Mark Roderick Salise",
+  name: profile.name,
   url: SITE_URL,
   jobTitle: profile.role,
+  description: profile.tagline,
   sameAs: profile.links.map((link) => link.href),
 } as const;
