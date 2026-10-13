@@ -1,6 +1,7 @@
 import type { StaticImageData } from "next/image";
 import aiOpsCardImage from "@/src/ai-ops-assistant/dashboard.png";
 import gymCardImage from "@/src/gym-app-tracker/overview.png";
+import expenseTrackerCardImage from "@/src/expense-tracker/live-light.png";
 import hyperledgerCardImage from "@/src/hyperledger/1.png";
 import procurementCardImage from "@/src/procurement/Admin dashboard.png";
 import ecommerceCardImage from "@/src/Ecommerce/1.jpg";
@@ -24,6 +25,10 @@ export const projectCardImages: Record<
   "gym-app-tracker": {
     src: gymCardImage,
     alt: "Gym App Tracker overview preview",
+  },
+  "expense-tracker": {
+    src: expenseTrackerCardImage,
+    alt: "Expense Tracker month view with total and category bar",
   },
   "hyperledger-blockchain-verification": {
     src: hyperledgerCardImage,

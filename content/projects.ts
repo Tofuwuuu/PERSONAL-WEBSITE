@@ -150,6 +150,28 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "expense-tracker",
+    title: "Expense Tracker",
+    category: "Web Development",
+    year: "2026",
+    madeAt: "Personal Project",
+    summary:
+      "Track spending by day, month and category, with totals in pesos. Everything saves in your browser, so there's no account and no server.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
+    highlights: [
+      "Add, edit, and delete expenses with a category, date, and optional note. Deleting shows an Undo button for a few seconds.",
+      "Each month shows the total, a bar of the top three categories, and a list grouped by day with day totals.",
+      "Data stays in localStorage under one versioned key. There are no accounts and no sync between devices.",
+    ],
+    links: [
+      {
+        kind: "demo",
+        label: "Live Site",
+        href: "https://expense-tracker-brown-zeta-75.vercel.app",
+      },
+    ],
+  },
+  {
     slug: "on-chain-wallet-risk-analyzer",
     title: "Wallet Risk Analyzer",
     category: "Blockchain",
