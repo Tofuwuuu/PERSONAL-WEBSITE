@@ -270,3 +270,18 @@ describe("UI preview copy", () => {
     expect(chip.textContent).not.toMatch(/offline/);
   });
 });
+
+describe("Expense Tracker card", () => {
+  it("has the exact copy, a live link, and no repo link", () => {
+    const p = projects.find((x) => x.slug === "expense-tracker")!;
+    expect(p.summary).toBe(
+      "Track spending by day, month and category, with totals in pesos. Everything saves in your browser, so there's no account and no server.",
+    );
+    expect(p.links).toEqual([
+      { kind: "demo", label: "Live Site", href: "https://expense-tracker-brown-zeta-75.vercel.app" },
+    ]);
+    const text = `${p.summary} ${p.highlights.join(" ")}`;
+    expect(text).not.toMatch(/github|code is on/i);
+    expect(text).not.toMatch(/[—–]/);
+  });
+});
