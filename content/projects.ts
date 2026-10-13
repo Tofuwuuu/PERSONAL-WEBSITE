@@ -155,6 +155,7 @@ export const projects: Project[] = [
     category: "Web Development",
     year: "2026",
     madeAt: "Personal Project",
+    featured: true,
     summary:
       "Track spending by day, month and category, with totals in pesos. Everything saves in your browser, so there's no account and no server.",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
