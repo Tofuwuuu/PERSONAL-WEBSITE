@@ -72,7 +72,7 @@ export const projects: Project[] = [
       {
         kind: "repo",
         label: "Repo",
-        href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification-",
+        href: "https://github.com/Tofuwuuu/Hyperledger-Document-Verification",
       },
     ],
   },
