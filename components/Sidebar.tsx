@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
 import { navItems } from "@/content/navigation";
 import { profile } from "@/content/profile";
@@ -13,22 +13,13 @@ const socialIcons = {
   LinkedIn: LinkedInIcon,
 } as const;
 
-function subscribeToNothing() {
-  return () => {};
-}
-
-function useIsClient() {
-  return useSyncExternalStore(subscribeToNothing, () => true, () => false);
-}
-
 export function Sidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const mounted = useIsClient();
   const pathname = usePathname();
   const [menuPathname, setMenuPathname] = useState(pathname);
   const [activeSection, setActiveSection] = useActiveSection();
   const isHome = pathname === "/";
-  // Phone: the header name hides while the intro (which shows the full name) is on screen.
+  // The header name hides while the intro (which shows the full name) is on screen.
   const [introInView, setIntroInView] = useState(false);
 
   useEffect(() => {
@@ -60,30 +51,32 @@ export function Sidebar() {
     };
   }, [menuOpen]);
 
-  const nav = (
-    <nav aria-label="Primary">
-      <ul className="space-y-1">
-        {navItems.map((item) => {
-          const isActive = isHome && activeSection === item.sectionId;
-
-          return (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`bc-nav-item ${isActive ? "is-active" : ""}`}
-                onClick={() => {
-                  setActiveSection(item.sectionId);
-                  setMenuOpen(false);
-                }}
-              >
-                <span className="bc-nav-line" aria-hidden />
-                <span>{item.label}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+  const links = (
+    <>
+      {navItems.map((item) => {
+        const isActive = isHome && activeSection === item.sectionId;
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              aria-current={isActive ? "location" : undefined}
+              className={`top-nav-link ${isActive ? "text-heading" : ""}`}
+              onClick={() => {
+                setActiveSection(item.sectionId);
+                setMenuOpen(false);
+              }}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
+      <li>
+        <a href={`mailto:${profile.email}`} className="top-nav-link">
+          Contact
+        </a>
+      </li>
+    </>
   );
 
   const social = (
@@ -97,7 +90,7 @@ export function Sidebar() {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="text-slate transition-transform duration-200 hover:-translate-y-1 hover:text-green"
+              className="text-slate transition-colors hover:text-green"
               aria-label={link.label}
             >
               {Icon ? <Icon className="h-5 w-5" /> : link.label}
@@ -110,82 +103,45 @@ export function Sidebar() {
 
   return (
     <>
-      <div className="sticky top-0 z-40 flex items-center justify-between bg-navy/85 px-6 py-4 backdrop-blur-md lg:hidden">
-        <Link
-          href="/"
-          aria-hidden={hideHeaderName || undefined}
-          tabIndex={hideHeaderName ? -1 : undefined}
-          data-testid="header-name"
-          className={`text-sm font-bold tracking-tight text-bright transition-opacity duration-200 motion-reduce:transition-none ${
-            hideHeaderName ? "pointer-events-none opacity-0" : "opacity-100"
-          }`}
-        >
-          {profile.name.split(" ")[0]}
-        </Link>
-        <button
-          type="button"
-          className="rounded border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10"
-          onClick={() => setMenuOpen((open) => !open)}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav"
-        >
-          Menu
-        </button>
-      </div>
+      <header className="sticky top-0 z-40 bg-navy/85 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-[72rem] items-center justify-between px-6 sm:px-10 lg:h-20">
+          <Link
+            href="/"
+            aria-hidden={hideHeaderName || undefined}
+            tabIndex={hideHeaderName ? -1 : undefined}
+            data-testid="header-name"
+            className={`text-sm font-bold tracking-tight text-heading transition-opacity duration-200 motion-reduce:transition-none ${
+              hideHeaderName ? "pointer-events-none opacity-0" : "opacity-100"
+            }`}
+          >
+            {profile.name.split(" ")[0]}
+          </Link>
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center gap-8">{links}</ul>
+          </nav>
+          <button
+            type="button"
+            className="rounded border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+          >
+            Menu
+          </button>
+        </div>
+      </header>
 
       <div
         id="mobile-nav"
-        className={`fixed inset-0 z-30 bg-navy px-6 pb-8 pt-20 transition-all duration-300 lg:hidden ${
-          menuOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-30 bg-navy px-6 pb-8 pt-24 transition-opacity duration-300 motion-reduce:transition-none lg:hidden ${
+          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        {nav}
+        <nav aria-label="Mobile">
+          <ul className="space-y-4 text-2xl">{links}</ul>
+        </nav>
         {social}
       </div>
-
-      <header className="hidden lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-[48%] lg:flex-col lg:justify-start lg:pb-12 lg:pt-24 lg:pr-8">
-        <div>
-          <Link href="/" className="block">
-            <h1
-              className={`text-5xl font-bold tracking-tight text-bright ${
-                mounted ? "animate-fade-up" : "opacity-0"
-              }`}
-            >
-              {profile.name}
-            </h1>
-            <h2
-              className={`mt-3 text-lg font-medium text-heading ${
-                mounted ? "animate-fade-up animation-delay-100" : "opacity-0"
-              }`}
-            >
-              {profile.role}
-            </h2>
-            <p
-              className={`mt-5 max-w-xs text-sm leading-relaxed text-slate ${
-                mounted ? "animate-fade-up animation-delay-200" : "opacity-0"
-              }`}
-            >
-              {profile.tagline}
-            </p>
-          </Link>
-          <div
-            className={`mt-12 ${
-              mounted ? "animate-fade-up animation-delay-300" : "opacity-0"
-            }`}
-          >
-            {nav}
-          </div>
-          <div
-            className={`mt-10 ${
-              mounted ? "animate-fade-up animation-delay-500" : "opacity-0"
-            }`}
-          >
-            {social}
-          </div>
-        </div>
-      </header>
     </>
   );
 }

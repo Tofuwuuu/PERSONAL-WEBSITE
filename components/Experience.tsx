@@ -4,11 +4,11 @@ import { experience } from "@/content/experience";
 export function Experience() {
   return (
     <Section id="experience" number="03." title="Experience">
-      <div className="space-y-6">
+      <div className="space-y-10">
         {experience.map((job) => (
           <article
             key={job.id}
-            className="group relative grid gap-2 rounded-lg border border-navy-lighter bg-navy-light p-5 sm:grid-cols-[8rem_1fr] sm:gap-6"
+            className="grid gap-2 sm:grid-cols-[8rem_1fr] sm:gap-6"
           >
             <div className="font-mono text-xs uppercase tracking-wide text-slate">
               <span>
@@ -16,7 +16,7 @@ export function Experience() {
               </span>
             </div>
             <div>
-              <h3 className="font-medium text-heading transition-colors group-hover:text-green">
+              <h3 className="font-medium text-heading">
                 {job.role} · {job.company}
               </h3>
               <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-slate">
@@ -36,7 +36,7 @@ export function Experience() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block py-1.5 text-green underline-offset-4 hover:underline"
+                          className="inline-block py-1.5 text-green underline-offset-4 hover:underline focus-visible:underline"
                         >
                           {link.label}
                         </a>

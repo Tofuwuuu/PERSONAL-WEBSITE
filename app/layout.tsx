@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
-import { Spotlight } from "@/components/Spotlight";
 import { SiteShell } from "@/components/SiteShell";
 import { profile } from "@/content/profile";
 
@@ -47,7 +46,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${firaCode.variable} scroll-smooth`}>
       <body className="min-h-dvh font-sans antialiased">
-        <Spotlight>
           <a
             href="#content"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-navy-light focus:px-3 focus:py-2 focus:text-sm focus:ring-2 focus:ring-green"
@@ -55,7 +53,6 @@ export default function RootLayout({
             Skip to content
           </a>
           <SiteShell>{children}</SiteShell>
-        </Spotlight>
       </body>
     </html>
   );

@@ -12,6 +12,10 @@ body {
 }
 
 body {
+  overflow-x: clip;
+}
+
+body {
   background-color: theme(colors.navy);
   color: theme(colors.slate);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -54,6 +58,23 @@ a {
   animation: fadeUp 0.7s ease forwards;
 }
 
+/* Hero name: slides up once on load. */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
 .animation-delay-100 {
   animation-delay: 0.1s;
 }
@@ -77,7 +98,7 @@ a {
 
   .bc-link:hover,
   .bc-link:focus-visible {
-    @apply text-heading outline-none;
+    @apply underline underline-offset-4 outline-none;
   }
 
   .bc-link:focus-visible {
@@ -107,6 +128,10 @@ a {
   .bc-nav-item:focus-visible .bc-nav-line,
   .bc-nav-item.is-active .bc-nav-line {
     @apply w-16 bg-green;
+  }
+
+  .top-nav-link {
+    @apply text-sm text-slate underline-offset-4 transition-colors hover:text-heading hover:underline focus-visible:underline focus-visible:outline-none;
   }
 
   .bc-tech-tag {
@@ -171,9 +196,11 @@ a {
     transition-duration: 0.01ms !important;
   }
 
-  .animate-fade-up {
+  .animate-fade-up,
+  .animate-slide-up {
     opacity: 1;
     transform: none;
+    animation: none !important;
   }
 }
 

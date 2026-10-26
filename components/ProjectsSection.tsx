@@ -6,7 +6,7 @@ import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
 import { projects } from "@/content/projects";
 
-/** Gym App Tracker leads and spans both columns on PC. */
+/** Gym App Tracker leads the list. */
 const LEAD = "gym-app-tracker";
 
 export function ProjectsSection() {
@@ -18,53 +18,66 @@ export function ProjectsSection() {
 
   return (
     <Section id="projects" number="02." title="Projects">
-      <ul className="grid gap-6 lg:grid-cols-2">
+      <ul className="border-t border-navy-lighter">
         {ordered.map((project) => {
           const cardImage = getProjectCardImage(project.slug);
-          const lead = project.slug === LEAD;
 
           return (
-            <li key={project.slug} className={lead ? "lg:col-span-2" : undefined}>
-              <FadeIn className="h-full">
-                <div className="project-card group flex h-full flex-col gap-4 rounded-lg border border-navy-lighter bg-navy-light p-4">
+            <li key={project.slug} className="border-b border-navy-lighter">
+              <FadeIn>
+                <div className="group relative py-6">
                   {cardImage ? (
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-navy-lighter">
-                      <Image
-                        src={cardImage.src}
-                        alt={cardImage.alt}
-                        fill
-                        className="object-cover object-top"
-                        sizes={lead ? "(min-width: 1024px) 600px, 100vw" : "(min-width: 1024px) 300px, 100vw"}
-                      />
-                    </div>
-                  ) : null}
-                  <div className="flex min-w-0 flex-1 flex-col">
-                    <h3 className="text-base font-medium text-heading transition-colors group-hover:text-green">
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className="inline-flex items-start gap-1.5 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                    <>
+                      {/* Phone and tablet: screenshot sits inline above the text. */}
+                      <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-md border border-navy-lighter lg:hidden">
+                        <Image
+                          src={cardImage.src}
+                          alt={cardImage.alt}
+                          fill
+                          className="object-cover object-top"
+                          sizes="(min-width: 680px) 632px, 100vw"
+                        />
+                      </div>
+                      {/* PC: screenshot appears beside the list on hover or focus. */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute left-full top-6 ml-10 hidden aspect-[16/10] w-72 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
                       >
-                        <span>{project.title}</span>
-                        <span aria-hidden className="mt-0.5 inline-block">
-                          ↗
-                        </span>
-                      </Link>
-                    </h3>
-                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate">
-                      {project.summary}
-                    </p>
-                    {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
-                    <ul className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4" data-testid="tag-row">
-                      {project.stack.slice(0, 6).map((tech) => (
-                        <li key={tech} className="bc-tech-tag">
-                          {tech}
-                        </li>
-                      ))}
-                      <li className="flex">
-                        <ProjectStatusChip project={project} />
+                        <Image
+                          src={cardImage.src}
+                          alt=""
+                          fill
+                          className="object-cover object-top"
+                          sizes="288px"
+                        />
+                      </div>
+                    </>
+                  ) : null}
+                  <h3 className="text-lg font-semibold text-heading">
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                    >
+                      <span>{project.title}</span>
+                      <span aria-hidden className="text-slate">
+                        ↗
+                      </span>
+                    </Link>
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
+                    {project.summary}
+                  </p>
+                  {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                  <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
+                    {project.stack.slice(0, 6).map((tech) => (
+                      <li key={tech} className="bc-tech-tag">
+                        {tech}
                       </li>
-                    </ul>
-                  </div>
+                    ))}
+                    <li className="flex">
+                      <ProjectStatusChip project={project} />
+                    </li>
+                  </ul>
                 </div>
               </FadeIn>
             </li>
