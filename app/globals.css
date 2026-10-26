@@ -128,7 +128,41 @@ a {
   }
 }
 
+/* Phone intro: faint mint grid behind the name and buttons. */
+.hero-grid {
+  position: relative;
+  isolation: isolate;
+}
+.hero-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(100 255 218 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(100 255 218 / 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+
+/* Project cards: lift 2px and mint border on hover. */
+.project-card {
+  transition: transform 200ms ease-out, border-color 200ms ease-out;
+}
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-2px);
+  border-color: theme(colors.green);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: none;
+  }
+
   *,
   *::before,
   *::after {

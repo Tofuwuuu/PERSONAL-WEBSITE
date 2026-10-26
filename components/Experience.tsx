@@ -4,11 +4,11 @@ import { experience } from "@/content/experience";
 export function Experience() {
   return (
     <Section id="experience" number="03." title="Experience">
-      <div className="space-y-12">
+      <div className="space-y-6">
         {experience.map((job) => (
           <article
             key={job.id}
-            className="group relative grid gap-2 pb-1 sm:grid-cols-[8rem_1fr] sm:gap-6"
+            className="group relative grid gap-2 rounded-lg border border-navy-lighter bg-navy-light p-5 sm:grid-cols-[8rem_1fr] sm:gap-6"
           >
             <div className="font-mono text-xs uppercase tracking-wide text-slate">
               <span>
