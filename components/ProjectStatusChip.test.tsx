@@ -114,7 +114,7 @@ describe("project data", () => {
       href: "https://gym-app-tracker-gamma.vercel.app",
     });
     expect(gym!.summary).toBe(
-      "A workout logger modeled on Strong and Hevy. Log sets, save routines, and look back at your history. Try it with the demo account. Data resets every night.",
+      "Log sets, save routines and check your history. The demo account resets every night.",
     );
     expect(gym!.highlights[0]).toBe(
       "Live on Vercel with a Neon Postgres database. Sign in with the demo account on the sign-in page.",
@@ -159,7 +159,7 @@ describe("SmartDoc Analyzer", () => {
       href: "https://smartdoc-analyzer.vercel.app",
     });
     expect(smartDoc!.summary).toBe(
-      "Upload a PDF or image and get the text, names, keywords, and contract risk flags back. It all runs in your browser, and your file stays on your device.",
+      "Pull text, names and contract risks from a PDF or image. Your file never leaves your device.",
     );
     expect(smartDoc!.stack).toEqual([
       "React",
@@ -275,7 +275,7 @@ describe("Expense Tracker card", () => {
   it("has the exact copy, a live link, and no repo link", () => {
     const p = projects.find((x) => x.slug === "expense-tracker")!;
     expect(p.summary).toBe(
-      "Track spending by day, month and category, with totals in pesos. Everything saves in your browser, so there's no account and no server.",
+      "Track spending by day and category, in pesos. It saves in your browser, with no account needed.",
     );
     expect(p.links).toEqual([
       { kind: "demo", label: "Live Site", href: "https://expense-tracker-brown-zeta-75.vercel.app" },

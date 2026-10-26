@@ -9,7 +9,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "A React dashboard where you submit a support request, a FastAPI agent drafts a reply, and nothing goes out until a person approves it.",
+      "A support dashboard where an agent drafts each reply and a person approves it before it goes out.",
     stack: [
       "React",
       "TypeScript",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     madeAt: "Capstone, CvSU Carmona",
     featured: true,
     summary:
-      "Capstone for CvSU Carmona: a Hyperledger Fabric network that stores alumni document records, with a React app and a FastAPI API in front of it.",
+      "My CvSU Carmona capstone. Alumni document records live on a Hyperledger Fabric network.",
     stack: [
       "Hyperledger Fabric",
       "Go/Chaincode",
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     madeAt: "Freelance Client",
     featured: true,
     summary:
-      "Paid client work: a Philippine procurement app for purchase requests, canvassing, purchase orders, inspections, and inventory. Inspection events are written to Hyperledger Fabric.",
+      "Paid client work covering purchase requests through inventory, with inspections logged on Hyperledger Fabric.",
     stack: [
       "Hyperledger Fabric",
       "Go/Chaincode",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "A workout logger modeled on Strong and Hevy. Log sets, save routines, and look back at your history. Try it with the demo account. Data resets every night.",
+      "Log sets, save routines and check your history. The demo account resets every night.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "Track spending by day, month and category, with totals in pesos. Everything saves in your browser, so there's no account and no server.",
+      "Track spending by day and category, in pesos. It saves in your browser, with no account needed.",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
     highlights: [
       "Add, edit, and delete expenses with a category, date, and optional note. Deleting shows an Undo button for a few seconds.",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "Two people can edit one document at the same time. The React page syncs over WebSockets to FastAPI, and Redis stores the document.",
+      "Two people edit one document at the same time, synced live over WebSockets.",
     stack: [
       "React",
       "TypeScript",
@@ -348,7 +348,7 @@ export const projects: Project[] = [
     madeAt: "Personal Project",
     featured: true,
     summary:
-      "Upload a PDF or image and get the text, names, keywords, and contract risk flags back. It all runs in your browser, and your file stays on your device.",
+      "Pull text, names and contract risks from a PDF or image. Your file never leaves your device.",
     stack: ["React", "TypeScript", "pdf.js", "Tesseract.js", "FastAPI"],
     highlights: [
       "Live on Vercel. Try the sample document, or upload your own PDF or image.",
