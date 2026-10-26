@@ -4,9 +4,9 @@ export function Hero() {
   return (
     <section
       id="intro"
-      className="relative left-1/2 flex min-h-[calc(100svh-4rem)] w-screen max-w-[72rem] -translate-x-1/2 flex-col justify-center px-6 pb-16 pt-10 sm:px-10 lg:min-h-[calc(100svh-5rem)]"
+      className="flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-16 pt-10 lg:min-h-[calc(100svh-5rem)]"
     >
-      <h1 className="hero-name animate-slide-up text-[14vw] font-bold leading-[0.95] tracking-tight text-heading lg:text-[120px]">
+      <h1 className="hero-name animate-slide-up whitespace-nowrap text-[clamp(56px,10vw,128px)] font-bold leading-[0.95] tracking-tight text-heading">
         Mark Salise
       </h1>
       <p className="mt-6 text-2xl font-medium text-green">{profile.role}</p>

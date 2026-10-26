@@ -41,14 +41,14 @@ export function ProjectsSection() {
                       {/* PC: screenshot appears beside the list on hover or focus. */}
                       <div
                         aria-hidden
-                        className="pointer-events-none absolute left-full top-6 ml-10 hidden aspect-[16/10] w-72 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
+                        className="pointer-events-none absolute left-full top-6 ml-8 hidden aspect-[16/10] w-64 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
                       >
                         <Image
                           src={cardImage.src}
                           alt=""
                           fill
                           className="object-cover object-top"
-                          sizes="288px"
+                          sizes="256px"
                         />
                       </div>
                     </>

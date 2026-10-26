@@ -13,12 +13,14 @@ function getSectionFromScroll() {
   // If we've hit (or nearly hit) the bottom of the page, force the last
   // section active. Short trailing sections (like Contact) may never cross
   // the reference line below because the page can't scroll far enough.
-  if (scrollY + viewportHeight >= docHeight - 4) {
+  if (scrollY > 0 && scrollY + viewportHeight >= docHeight - 4) {
     return SECTION_IDS[SECTION_IDS.length - 1] ?? SECTION_IDS[0] ?? "about";
   }
 
-  const referenceLine = viewportHeight * 0.35;
-  let current = SECTION_IDS[0] ?? "about";
+  // A section counts once its top reaches the sticky top bar (80px tall on PC).
+  // Nothing is active while the hero is on screen.
+  const referenceLine = 96;
+  let current = "";
 
   for (const id of SECTION_IDS) {
     const section = document.getElementById(id);
@@ -34,9 +36,7 @@ function getSectionFromScroll() {
 }
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>(
-    navItems[0]?.sectionId ?? "about",
-  );
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     let frame = 0;
