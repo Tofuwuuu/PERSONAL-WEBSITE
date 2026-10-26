@@ -53,16 +53,17 @@ export function ProjectsSection() {
                     <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate">
                       {project.summary}
                     </p>
-                    <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4">
-                      <ul className="flex flex-wrap gap-x-3 gap-y-1">
-                        {project.stack.slice(0, 6).map((tech) => (
-                          <li key={tech} className="bc-tech-tag">
-                            {tech}
-                          </li>
-                        ))}
-                      </ul>
-                      <ProjectStatusChip project={project} />
-                    </div>
+                    {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                    <ul className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-2 pt-4" data-testid="tag-row">
+                      {project.stack.slice(0, 6).map((tech) => (
+                        <li key={tech} className="bc-tech-tag">
+                          {tech}
+                        </li>
+                      ))}
+                      <li className="flex">
+                        <ProjectStatusChip project={project} />
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </FadeIn>

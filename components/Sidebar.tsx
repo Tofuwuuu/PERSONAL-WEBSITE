@@ -28,6 +28,25 @@ export function Sidebar() {
   const [menuPathname, setMenuPathname] = useState(pathname);
   const [activeSection, setActiveSection] = useActiveSection();
   const isHome = pathname === "/";
+  // Phone: the header name hides while the intro (which shows the full name) is on screen.
+  const [introInView, setIntroInView] = useState(false);
+
+  useEffect(() => {
+    if (!isHome) return;
+    const intro = document.getElementById("intro");
+    if (!intro || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIntroInView(Boolean(entry?.isIntersecting)),
+      // The sticky header covers the top 64px, so the intro counts as gone once it slides under it.
+      { rootMargin: "-64px 0px 0px 0px" },
+    );
+    observer.observe(intro);
+    return () => {
+      observer.disconnect();
+      setIntroInView(false);
+    };
+  }, [isHome]);
+  const hideHeaderName = isHome && introInView;
 
   if (pathname !== menuPathname) {
     setMenuPathname(pathname);
@@ -92,7 +111,15 @@ export function Sidebar() {
   return (
     <>
       <div className="sticky top-0 z-40 flex items-center justify-between bg-navy/85 px-6 py-4 backdrop-blur-md lg:hidden">
-        <Link href="/" className="text-sm font-bold tracking-tight text-bright">
+        <Link
+          href="/"
+          aria-hidden={hideHeaderName || undefined}
+          tabIndex={hideHeaderName ? -1 : undefined}
+          data-testid="header-name"
+          className={`text-sm font-bold tracking-tight text-bright transition-opacity duration-200 motion-reduce:transition-none ${
+            hideHeaderName ? "pointer-events-none opacity-0" : "opacity-100"
+          }`}
+        >
           {profile.name.split(" ")[0]}
         </Link>
         <button
