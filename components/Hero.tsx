@@ -2,7 +2,7 @@ import { profile } from "@/content/profile";
 
 export function Hero() {
   return (
-    <section className="hero-grid relative -mx-6 mb-6 animate-fade-up px-6 pb-10 pt-8 sm:-mx-8 sm:px-8 md:-mx-12 md:px-12 lg:hidden">
+    <section id="intro" className="hero-grid relative -mx-6 mb-6 animate-fade-up px-6 pb-10 pt-8 sm:-mx-8 sm:px-8 md:-mx-12 md:px-12 lg:hidden">
       <h1 className="text-4xl font-bold tracking-tight text-bright">
         {profile.name}
       </h1>
