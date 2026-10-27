@@ -14,7 +14,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       {isArchive ? null : <Sidebar />}
       <div
         className={`mx-auto flex w-full flex-1 flex-col px-6 ${
-          isArchive ? "max-w-[90rem] sm:px-8 md:px-12 lg:px-16 lg:py-24" : "max-w-[680px]"
+          isArchive ? "max-w-[90rem] sm:px-8 md:px-12 lg:px-16 lg:py-24" : "max-w-[680px] lg:max-w-[760px]"
         }`}
       >
         <main id="content" className="flex-1">

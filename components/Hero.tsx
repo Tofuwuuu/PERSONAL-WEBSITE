@@ -29,7 +29,7 @@ export function Hero() {
       className="hero-band relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-b border-navy-lighter"
     >
       <NeonHorizon />
-      <div className="relative mx-auto max-w-[680px] px-6 pb-72 pt-14 sm:pb-64 lg:pt-20">
+      <div className="relative mx-auto max-w-[680px] px-6 lg:max-w-[760px] pb-72 pt-14 sm:pb-64 lg:pt-20">
         <h1 className="hero-glitch animate-slide-up text-[clamp(44px,8vw,72px)] font-extrabold leading-[1.02] tracking-tight text-heading">
           <Sparkles>
             <span className="hero-name">Mark Salise</span>

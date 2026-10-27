@@ -19,7 +19,7 @@ export function Experience() {
               <h3 className="font-medium text-heading">
                 {job.role} · {job.company}
               </h3>
-              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-slate">
+              <ul className="mt-2 space-y-1.5 text-base leading-relaxed text-slate">
                 {job.bullets.map((bullet) => (
                   <li key={bullet} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-slate">
                     {bullet}

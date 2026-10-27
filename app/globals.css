@@ -18,8 +18,13 @@ body {
 body {
   background-color: theme(colors.navy);
   /* Faint crimson glow at the top of the page. */
-  background-image: radial-gradient(ellipse 80% 420px at 50% 0, rgb(220 20 60 / 0.14), transparent 70%);
-  background-repeat: no-repeat;
+  /* Faint crimson glow at the top, then a faint (4%) teal grid behind the lower sections. */
+  background-image:
+    radial-gradient(ellipse 80% 420px at 50% 0, rgb(220 20 60 / 0.14), transparent 70%),
+    linear-gradient(rgb(47 211 196 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(47 211 196 / 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-repeat: no-repeat, repeat, repeat;
   color: theme(colors.slate);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
@@ -355,6 +360,54 @@ a:not(.neon-btn):focus-visible {
 @keyframes gridMove {
   from { background-position: 0 0; }
   to { background-position: 0 48px; }
+}
+
+/* Project cards: chamfered top-right corner (as in Expense Tracker), 1px teal border at 25%, full teal on hover.
+   The shape lives on ::before so the PC hover screenshot beside the card is not clipped. */
+.chamfer-card {
+  --chamfer: 16px;
+  --edge: rgb(47 211 196 / 0.25);
+}
+
+.chamfer-card::before,
+.chamfer-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  transition: border-color 200ms ease, background 200ms ease;
+}
+
+.chamfer-card::before {
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+  background: theme(colors.navy-light);
+  clip-path: polygon(0 0, calc(100% - var(--chamfer)) 0, 100% var(--chamfer), 100% 100%, 0 100%);
+}
+
+.chamfer-card::after {
+  top: 0;
+  right: 0;
+  width: var(--chamfer);
+  height: var(--chamfer);
+  background: linear-gradient(
+    to top right,
+    transparent calc(50% - 0.75px),
+    var(--edge) calc(50% - 0.75px),
+    var(--edge) calc(50% + 0.75px),
+    transparent calc(50% + 0.75px)
+  );
+}
+
+.chamfer-card:hover,
+.chamfer-card:focus-within {
+  --edge: #2fd3c4;
+}
+
+.project-row.chamfer-card:hover,
+.project-row.chamfer-card:focus-within {
+  box-shadow: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

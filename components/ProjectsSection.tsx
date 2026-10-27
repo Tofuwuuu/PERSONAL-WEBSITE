@@ -25,7 +25,7 @@ export function ProjectsSection() {
           return (
             <li key={project.slug}>
               <FadeIn>
-                <div className="project-row spring group relative rounded-2xl border border-navy-lighter bg-navy-light p-5 sm:p-6">
+                <div className="project-row chamfer-card spring group relative isolate p-5 sm:p-6">
                   {cardImage ? (
                     <>
                       {/* Phone and tablet: screenshot sits inline above the text. */}
@@ -35,25 +35,25 @@ export function ProjectsSection() {
                           alt={cardImage.alt}
                           fill
                           className="object-cover object-top"
-                          sizes="(min-width: 680px) 632px, 100vw"
+                          sizes="(min-width: 1024px) 712px, (min-width: 680px) 632px, 100vw"
                         />
                       </div>
                       {/* PC: screenshot appears beside the list on hover or focus. */}
                       <div
                         aria-hidden
-                        className="pointer-events-none absolute left-full top-6 ml-8 rounded-xl hidden aspect-[16/10] w-64 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
+                        className="pointer-events-none absolute left-full top-6 ml-6 rounded-xl hidden aspect-[16/10] w-56 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
                       >
                         <Image
                           src={cardImage.src}
                           alt=""
                           fill
                           className="object-cover object-top"
-                          sizes="256px"
+                          sizes="224px"
                         />
                       </div>
                     </>
                   ) : null}
-                  <h3 className="text-xl font-bold text-heading">
+                  <h3 className="text-lg font-semibold text-heading">
                     <Link
                       href={`/projects/${project.slug}`}
                       className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
