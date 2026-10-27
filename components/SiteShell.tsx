@@ -10,11 +10,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const isArchive = pathname?.startsWith("/projects") ?? false;
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[90rem] flex-col px-6 sm:px-8 md:px-12 lg:flex-row lg:justify-between lg:gap-16 lg:px-16 xl:gap-20 xl:px-24">
+    <div className="flex min-h-dvh w-full flex-col">
       {isArchive ? null : <Sidebar />}
       <div
-        className={`flex min-h-dvh w-full flex-col lg:py-24 ${
-          isArchive ? "" : "lg:w-[52%]"
+        className={`mx-auto flex w-full flex-1 flex-col px-6 ${
+          isArchive ? "max-w-[90rem] sm:px-8 md:px-12 lg:px-16 lg:py-24" : "max-w-[680px]"
         }`}
       >
         <main id="content" className="flex-1">
