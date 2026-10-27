@@ -121,7 +121,7 @@ export function Sidebar() {
           </nav>
           <button
             type="button"
-            className="rounded border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
+            className="neon-btn rounded border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"

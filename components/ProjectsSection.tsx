@@ -25,7 +25,7 @@ export function ProjectsSection() {
           return (
             <li key={project.slug} className="border-b border-navy-lighter">
               <FadeIn>
-                <div className="group relative py-6">
+                <div className="project-row group relative py-6">
                   {cardImage ? (
                     <>
                       {/* Phone and tablet: screenshot sits inline above the text. */}
