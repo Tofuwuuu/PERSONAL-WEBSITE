@@ -20,8 +20,15 @@ export default function HomePage() {
       <Hero />
       <About />
       <ProjectsSection />
-      <Experience />
-      <Contact />
+      <div className="relative">
+        {/* Decorative: blurred magenta striped sun and horizon lines behind Experience and Contact. */}
+        <div aria-hidden className="lower-band">
+          <div className="lower-band-sun" />
+          <div className="lower-band-lines" />
+        </div>
+        <Experience />
+        <Contact />
+      </div>
     </>
   );
 }

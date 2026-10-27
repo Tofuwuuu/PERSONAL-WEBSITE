@@ -209,8 +209,7 @@ a {
 
 /* Soft teal neon glow on hover and keyboard focus. */
 a:not(.neon-btn),
-.neon-btn,
-.project-row {
+.neon-btn {
   transition-property: color, background-color, border-color, text-shadow, box-shadow, opacity;
   transition-duration: 200ms;
 }
@@ -225,14 +224,6 @@ a:not(.neon-btn):focus-visible {
   box-shadow: 0 0 14px rgb(47 211 196 / 0.45);
 }
 
-.project-row {
-  border-radius: 0.375rem;
-}
-
-.project-row:hover,
-.project-row:focus-within {
-  box-shadow: 0 0 0 1px rgb(47 211 196 / 0.25), 0 0 24px rgb(47 211 196 / 0.12);
-}
 
 /* Spring physics (Josh Comeau style) as a CSS linear() easing. */
 :root {
@@ -362,54 +353,6 @@ a:not(.neon-btn):focus-visible {
   to { background-position: 0 48px; }
 }
 
-/* Project cards: chamfered top-right corner (as in Expense Tracker), 1px teal border at 25%, full teal on hover.
-   The shape lives on ::before so the PC hover screenshot beside the card is not clipped. */
-.chamfer-card {
-  --chamfer: 16px;
-  --edge: rgb(47 211 196 / 0.25);
-}
-
-.chamfer-card::before,
-.chamfer-card::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  transition: border-color 200ms ease, background 200ms ease;
-}
-
-.chamfer-card::before {
-  inset: 0;
-  z-index: -1;
-  border: 1px solid var(--edge);
-  border-radius: 4px;
-  background: theme(colors.navy-light);
-  clip-path: polygon(0 0, calc(100% - var(--chamfer)) 0, 100% var(--chamfer), 100% 100%, 0 100%);
-}
-
-.chamfer-card::after {
-  top: 0;
-  right: 0;
-  width: var(--chamfer);
-  height: var(--chamfer);
-  background: linear-gradient(
-    to top right,
-    transparent calc(50% - 0.75px),
-    var(--edge) calc(50% - 0.75px),
-    var(--edge) calc(50% + 0.75px),
-    transparent calc(50% + 0.75px)
-  );
-}
-
-.chamfer-card:hover,
-.chamfer-card:focus-within {
-  --edge: #2fd3c4;
-}
-
-.project-row.chamfer-card:hover,
-.project-row.chamfer-card:focus-within {
-  box-shadow: none;
-}
-
 /* About: terminal window panel. Frame is quiet at rest and glows on hover. */
 .terminal-panel {
   position: relative;
@@ -492,28 +435,6 @@ a:not(.neon-btn):focus-visible {
   opacity: 0;
 }
 
-/* Neon corner brackets on project cards: faint at rest, bright on hover. */
-.corner-brackets {
-  position: absolute;
-  inset: -1px;
-  pointer-events: none;
-  opacity: 0.35;
-  transition: opacity 200ms ease, filter 200ms ease;
-  background:
-    linear-gradient(#2fd3c4, #2fd3c4) top left / 14px 2px no-repeat,
-    linear-gradient(#2fd3c4, #2fd3c4) top left / 2px 14px no-repeat,
-    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 14px 2px no-repeat,
-    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 2px 14px no-repeat,
-    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 14px 2px no-repeat,
-    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 2px 14px no-repeat;
-}
-
-.project-row:hover .corner-brackets,
-.project-row:focus-within .corner-brackets {
-  opacity: 1;
-  filter: drop-shadow(0 0 4px rgb(47 211 196 / 0.8));
-}
-
 /* Soft crimson and teal glow blobs behind the projects list. */
 .projects-glow {
   position: absolute;
@@ -522,6 +443,126 @@ a:not(.neon-btn):focus-visible {
   background:
     radial-gradient(closest-side, rgb(220 20 60 / 0.12), transparent) 0 10% / 420px 420px no-repeat,
     radial-gradient(closest-side, rgb(47 211 196 / 0.1), transparent) 100% 60% / 460px 460px no-repeat;
+}
+
+/* Project screenshots: cut-corner frame with a thin teal edge. Glow only on hover. */
+.project-frame {
+  --cut: 22px;
+  position: relative;
+  padding: 1px;
+  background: rgb(47 211 196 / 0.3);
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+  transition: background-color 200ms ease;
+}
+
+.project-frame .project-thumb {
+  clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, var(--cut) 100%, 0 calc(100% - var(--cut)));
+}
+
+.project-row .project-frame {
+  transition: background-color 200ms ease, filter 200ms ease;
+}
+
+.project-row:hover .project-frame,
+.project-row:focus-within .project-frame {
+  background: #2fd3c4;
+}
+
+.project-row:hover > div:first-child,
+.project-row:focus-within > div:first-child {
+  filter: drop-shadow(0 0 14px rgb(47 211 196 / 0.35));
+}
+
+/* Section labels: big outlined number, solid label, and small corner brackets framing the section. */
+.section-number {
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(47 211 196 / 0.8);
+}
+
+.section-brackets {
+  position: absolute;
+  inset: 0 -12px;
+  pointer-events: none;
+  opacity: 0.4;
+  background:
+    linear-gradient(#2fd3c4, #2fd3c4) top left / 12px 1px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top left / 1px 12px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top right / 12px 1px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top right / 1px 12px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 12px 1px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 1px 12px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 12px 1px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 1px 12px no-repeat;
+}
+
+/* Band behind Experience and Contact: blurred magenta striped sun and horizon lines. */
+.lower-band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.lower-band-sun {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: min(80vw, 560px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, #ff2e88, #dc143c 75%);
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 16px, transparent 16px 24px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 16px, transparent 16px 24px);
+  filter: blur(18px);
+  opacity: 0.16;
+}
+
+.lower-band-lines {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(18% + min(40vw, 280px));
+  height: 260px;
+  background: repeating-linear-gradient(to bottom, rgb(255 46 136 / 0.14) 0 1px, transparent 1px 26px);
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+/* Experience: vertical teal timeline with glowing dots. */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(to bottom, rgb(47 211 196 / 0.7), rgb(47 211 196 / 0.15));
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -28px;
+  top: 3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 9999px;
+  background: #2fd3c4;
+  box-shadow: 0 0 10px rgb(47 211 196 / 0.8);
 }
 
 @media (prefers-reduced-motion: reduce) {

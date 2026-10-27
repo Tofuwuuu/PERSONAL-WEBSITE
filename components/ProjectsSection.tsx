@@ -20,65 +20,69 @@ export function ProjectsSection() {
     <Section id="projects" number="02." title="Projects">
       <div className="relative">
         <div aria-hidden className="projects-glow" />
-        <ul className="relative space-y-5">
-          {ordered.map((project) => {
+        <ul className="relative space-y-14 lg:space-y-16">
+          {ordered.map((project, index) => {
             const cardImage = getProjectCardImage(project.slug);
+            // PC: big feature rows, screenshot about 60% wide, alternating sides.
+            const flip = index % 2 === 1;
 
             return (
               <li key={project.slug}>
-                <FadeIn>
-                  <div className="project-row chamfer-card spring group relative isolate p-5 sm:p-6 lg:grid lg:grid-cols-[200px_1fr] lg:items-start lg:gap-6">
-                    <span aria-hidden className="corner-brackets" />
-                    {cardImage ? (
-                      <div className="project-thumb relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-md border border-green/20 lg:mb-0">
-                        <Image
-                          src={cardImage.src}
-                          alt={cardImage.alt}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(min-width: 1024px) 200px, (min-width: 680px) 632px, 100vw"
-                        />
-                        <span aria-hidden className="project-thumb-tint" />
+                <div
+                  className={`project-row group relative lg:grid lg:items-center lg:gap-8 ${
+                    flip ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-[3fr_2fr]"
+                  }`}
+                >
+                  {cardImage ? (
+                    <FadeIn className={flip ? "lg:order-2" : undefined}>
+                      <div className="project-frame mb-5 lg:mb-0">
+                        <div className="project-thumb relative aspect-[16/10] w-full overflow-hidden">
+                          <Image
+                            src={cardImage.src}
+                            alt={cardImage.alt}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(min-width: 1024px) 430px, (min-width: 680px) 632px, 100vw"
+                          />
+                          <span aria-hidden className="project-thumb-tint" />
+                        </div>
                       </div>
-                    ) : null}
-                    <div className="min-w-0">
-                      <h3 className="text-lg font-semibold text-heading">
-                        <Link
-                          href={`/projects/${project.slug}`}
-                          className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
-                        >
-                          <span>{project.title}</span>
-                          <span aria-hidden className="arrow text-slate">
-                            ↗
-                          </span>
-                        </Link>
-                      </h3>
-                      <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
-                        {project.summary}
-                      </p>
-                      {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
-                      <ul
-                        className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2"
-                        data-testid="tag-row"
+                    </FadeIn>
+                  ) : null}
+                  <div className={`min-w-0 ${flip ? "lg:order-1" : ""}`}>
+                    <h3 className="text-lg font-semibold text-heading">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
                       >
-                        {project.stack.slice(0, 6).map((tech) => (
-                          <li key={tech} className="bc-tech-tag">
-                            {tech}
-                          </li>
-                        ))}
-                        <li className="flex">
-                          <ProjectStatusChip project={project} />
+                        <span>{project.title}</span>
+                        <span aria-hidden className="arrow text-slate">
+                          ↗
+                        </span>
+                      </Link>
+                    </h3>
+                    <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
+                      {project.summary}
+                    </p>
+                    {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                    <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
+                      {project.stack.slice(0, 6).map((tech) => (
+                        <li key={tech} className="bc-tech-tag">
+                          {tech}
                         </li>
-                      </ul>
-                    </div>
+                      ))}
+                      <li className="flex">
+                        <ProjectStatusChip project={project} />
+                      </li>
+                    </ul>
                   </div>
-                </FadeIn>
+                </div>
               </li>
             );
           })}
         </ul>
       </div>
-      <div className="mt-6">
+      <div className="mt-10">
         <Link href="/projects" className="bc-link font-mono text-sm">
           View Full Project Archive
         </Link>
