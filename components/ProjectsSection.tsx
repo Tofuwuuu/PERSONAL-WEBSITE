@@ -18,72 +18,66 @@ export function ProjectsSection() {
 
   return (
     <Section id="projects" number="02." title="Projects">
-      <ul className="space-y-5">
-        {ordered.map((project) => {
-          const cardImage = getProjectCardImage(project.slug);
+      <div className="relative">
+        <div aria-hidden className="projects-glow" />
+        <ul className="relative space-y-5">
+          {ordered.map((project) => {
+            const cardImage = getProjectCardImage(project.slug);
 
-          return (
-            <li key={project.slug}>
-              <FadeIn>
-                <div className="project-row chamfer-card spring group relative isolate p-5 sm:p-6">
-                  {cardImage ? (
-                    <>
-                      {/* Phone and tablet: screenshot sits inline above the text. */}
-                      <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-navy-lighter lg:hidden">
+            return (
+              <li key={project.slug}>
+                <FadeIn>
+                  <div className="project-row chamfer-card spring group relative isolate p-5 sm:p-6 lg:grid lg:grid-cols-[200px_1fr] lg:items-start lg:gap-6">
+                    <span aria-hidden className="corner-brackets" />
+                    {cardImage ? (
+                      <div className="project-thumb relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-md border border-green/20 lg:mb-0">
                         <Image
                           src={cardImage.src}
                           alt={cardImage.alt}
                           fill
                           className="object-cover object-top"
-                          sizes="(min-width: 1024px) 712px, (min-width: 680px) 632px, 100vw"
+                          sizes="(min-width: 1024px) 200px, (min-width: 680px) 632px, 100vw"
                         />
+                        <span aria-hidden className="project-thumb-tint" />
                       </div>
-                      {/* PC: screenshot appears beside the list on hover or focus. */}
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute left-full top-6 ml-6 rounded-xl hidden aspect-[16/10] w-56 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
+                    ) : null}
+                    <div className="min-w-0">
+                      <h3 className="text-lg font-semibold text-heading">
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                        >
+                          <span>{project.title}</span>
+                          <span aria-hidden className="arrow text-slate">
+                            ↗
+                          </span>
+                        </Link>
+                      </h3>
+                      <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
+                        {project.summary}
+                      </p>
+                      {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                      <ul
+                        className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2"
+                        data-testid="tag-row"
                       >
-                        <Image
-                          src={cardImage.src}
-                          alt=""
-                          fill
-                          className="object-cover object-top"
-                          sizes="224px"
-                        />
-                      </div>
-                    </>
-                  ) : null}
-                  <h3 className="text-lg font-semibold text-heading">
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
-                    >
-                      <span>{project.title}</span>
-                      <span aria-hidden className="arrow text-slate">
-                        ↗
-                      </span>
-                    </Link>
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
-                    {project.summary}
-                  </p>
-                  {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
-                  <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
-                    {project.stack.slice(0, 6).map((tech) => (
-                      <li key={tech} className="bc-tech-tag">
-                        {tech}
-                      </li>
-                    ))}
-                    <li className="flex">
-                      <ProjectStatusChip project={project} />
-                    </li>
-                  </ul>
-                </div>
-              </FadeIn>
-            </li>
-          );
-        })}
-      </ul>
+                        {project.stack.slice(0, 6).map((tech) => (
+                          <li key={tech} className="bc-tech-tag">
+                            {tech}
+                          </li>
+                        ))}
+                        <li className="flex">
+                          <ProjectStatusChip project={project} />
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </FadeIn>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
       <div className="mt-6">
         <Link href="/projects" className="bc-link font-mono text-sm">
           View Full Project Archive
