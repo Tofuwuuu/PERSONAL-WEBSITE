@@ -17,6 +17,9 @@ body {
 
 body {
   background-color: theme(colors.navy);
+  /* Faint crimson glow at the top of the page. */
+  background-image: radial-gradient(ellipse 80% 420px at 50% 0, rgb(220 20 60 / 0.14), transparent 70%);
+  background-repeat: no-repeat;
   color: theme(colors.slate);
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
@@ -135,7 +138,7 @@ a {
   }
 
   .bc-tech-tag {
-    @apply font-mono text-xs text-slate-light;
+    @apply font-mono text-xs text-green;
   }
 
   .bc-cta {
