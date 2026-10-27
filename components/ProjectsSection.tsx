@@ -23,15 +23,13 @@ export function ProjectsSection() {
         <ul className="relative space-y-14 lg:space-y-16">
           {ordered.map((project, index) => {
             const cardImage = getProjectCardImage(project.slug);
-            // PC: big feature rows, screenshot about 60% wide, alternating sides.
+            // PC: feature rows, screenshot half the row, alternating sides.
             const flip = index % 2 === 1;
 
             return (
               <li key={project.slug}>
                 <div
-                  className={`project-row group relative lg:grid lg:items-center lg:gap-8 ${
-                    flip ? "lg:grid-cols-[2fr_3fr]" : "lg:grid-cols-[3fr_2fr]"
-                  }`}
+                  className="project-row group relative lg:grid lg:grid-cols-2 lg:items-center lg:gap-8"
                 >
                   {cardImage ? (
                     <FadeIn className={flip ? "lg:order-2" : undefined}>
@@ -42,7 +40,7 @@ export function ProjectsSection() {
                             alt={cardImage.alt}
                             fill
                             className="object-cover object-top"
-                            sizes="(min-width: 1024px) 430px, (min-width: 680px) 632px, 100vw"
+                            sizes="(min-width: 1024px) 345px, (min-width: 680px) 632px, 100vw"
                           />
                           <span aria-hidden className="project-thumb-tint" />
                         </div>
@@ -61,7 +59,7 @@ export function ProjectsSection() {
                         </span>
                       </Link>
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
+                    <p className="mt-2 line-clamp-2 text-base leading-relaxed lg:line-clamp-none text-slate">
                       {project.summary}
                     </p>
                     {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
