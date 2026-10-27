@@ -1,29 +1,58 @@
+import { Sparkles } from "@/components/Sparkles";
 import { profile } from "@/content/profile";
+
+/** Decorative neon sunset: striped sun, mountain line and a moving grid floor. */
+function NeonHorizon() {
+  return (
+    <div aria-hidden className="neon-horizon pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="neon-sun" />
+      <svg className="neon-mountains" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <polyline
+          points="0,120 90,70 170,95 260,40 350,88 430,60 520,100 610,30 700,85 790,55 880,98 960,45 1050,90 1130,62 1200,100"
+          fill="none"
+          stroke="#2fd3c4"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+      <div className="neon-floor">
+        <div className="neon-grid" />
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
     <section
       id="intro"
-      className="flex min-h-[calc(100svh-4rem)] flex-col justify-center pb-16 pt-10 lg:min-h-[calc(100svh-5rem)]"
+      className="hero-band relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-b border-navy-lighter"
     >
-      <h1 className="hero-name hero-glitch animate-slide-up whitespace-nowrap text-[clamp(56px,10vw,128px)] font-bold leading-[0.95] tracking-tight text-heading">
-        Mark Salise
-      </h1>
-      <p className="mt-6 text-2xl font-medium text-green">{profile.role}</p>
-      <p className="mt-4 max-w-xl text-base leading-relaxed text-slate">{profile.tagline}</p>
-      <div className="mt-10 flex flex-wrap gap-3">
-        <a
-          href="#projects"
-          className="neon-btn inline-flex min-h-11 items-center rounded-md bg-yellow px-5 font-mono text-sm font-semibold text-navy transition-colors hover:bg-yellow/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
-        >
-          View projects
-        </a>
-        <a
-          href={`mailto:${profile.email}`}
-          className="neon-btn inline-flex min-h-11 items-center rounded-md border border-green/70 px-5 font-mono text-sm text-green transition-colors hover:bg-green/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
-        >
-          Contact
-        </a>
+      <NeonHorizon />
+      <div className="relative mx-auto max-w-[680px] px-6 pb-72 pt-14 sm:pb-64 lg:pt-20">
+        <h1 className="hero-glitch animate-slide-up text-[clamp(44px,8vw,72px)] font-extrabold leading-[1.02] tracking-tight text-heading">
+          <Sparkles>
+            <span className="hero-name">Mark Salise</span>
+          </Sparkles>
+        </h1>
+        <p className="mt-4 text-xl font-semibold text-green sm:text-2xl">{profile.role}</p>
+        <p className="mt-3 max-w-md text-base leading-relaxed text-slate">{profile.tagline}</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Sparkles>
+            <a
+              href="#projects"
+              className="neon-btn spring inline-flex min-h-11 items-center rounded-xl bg-yellow px-5 font-mono text-sm font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+            >
+              View projects
+            </a>
+          </Sparkles>
+          <a
+            href={`mailto:${profile.email}`}
+            className="neon-btn spring inline-flex min-h-11 items-center rounded-xl border border-green/70 bg-navy/60 px-5 font-mono text-sm text-green hover:bg-green/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+          >
+            Contact
+          </a>
+        </div>
       </div>
     </section>
   );

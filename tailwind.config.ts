@@ -14,6 +14,7 @@ export default {
         bright: "#f1f0f5",
         green: "#2fd3c4",
         yellow: "#f5d90a",
+        magenta: "#ff2e88",
         bg: "#07070d",
         card: "#101019",
         panel: "#25252f",

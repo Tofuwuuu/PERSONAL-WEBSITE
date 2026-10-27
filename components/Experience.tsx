@@ -4,11 +4,11 @@ import { experience } from "@/content/experience";
 export function Experience() {
   return (
     <Section id="experience" number="03." title="Experience">
-      <div className="space-y-10">
+      <div className="space-y-5">
         {experience.map((job) => (
           <article
             key={job.id}
-            className="grid gap-2 sm:grid-cols-[8rem_1fr] sm:gap-6"
+            className="project-row spring grid gap-2 rounded-2xl border border-navy-lighter bg-navy-light p-5 sm:grid-cols-[8rem_1fr] sm:gap-6 sm:p-6"
           >
             <div className="font-mono text-xs uppercase tracking-wide text-slate">
               <span>
