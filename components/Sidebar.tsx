@@ -19,25 +19,6 @@ export function Sidebar() {
   const [menuPathname, setMenuPathname] = useState(pathname);
   const [activeSection, setActiveSection] = useActiveSection();
   const isHome = pathname === "/";
-  // The header name hides while the intro (which shows the full name) is on screen.
-  const [introInView, setIntroInView] = useState(false);
-
-  useEffect(() => {
-    if (!isHome) return;
-    const intro = document.getElementById("intro");
-    if (!intro || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setIntroInView(Boolean(entry?.isIntersecting)),
-      // The sticky header covers the top 64px, so the intro counts as gone once it slides under it.
-      { rootMargin: "-64px 0px 0px 0px" },
-    );
-    observer.observe(intro);
-    return () => {
-      observer.disconnect();
-      setIntroInView(false);
-    };
-  }, [isHome]);
-  const hideHeaderName = isHome && introInView;
 
   if (pathname !== menuPathname) {
     setMenuPathname(pathname);
@@ -103,17 +84,14 @@ export function Sidebar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-navy/85 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-navy-lighter bg-navy/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[72rem] items-center justify-between px-6 sm:px-10 lg:h-20">
           <Link
             href="/"
-            aria-hidden={hideHeaderName || undefined}
-            tabIndex={hideHeaderName ? -1 : undefined}
             data-testid="header-name"
-            className={`text-sm font-bold tracking-tight text-heading transition-opacity duration-200 motion-reduce:transition-none ${
-              hideHeaderName ? "pointer-events-none opacity-0" : "opacity-100"
-            }`}
+            className="logo spring inline-flex items-center gap-2 rounded-lg font-mono text-base font-bold tracking-tight text-heading"
           >
+            <span aria-hidden className="logo-mark">&gt;_</span>
             {profile.name.split(" ")[0]}
           </Link>
           <nav aria-label="Primary" className="hidden lg:block">
@@ -121,7 +99,7 @@ export function Sidebar() {
           </nav>
           <button
             type="button"
-            className="rounded border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
+            className="neon-btn spring rounded-lg border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"

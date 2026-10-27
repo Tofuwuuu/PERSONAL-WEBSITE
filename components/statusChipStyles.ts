@@ -1,5 +1,5 @@
 export const chipLayoutClass =
-  "relative z-20 inline-flex w-fit min-h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 font-mono text-xs font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1f0f5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07070d]";
+  "neon-btn relative z-20 inline-flex w-fit min-h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 font-mono text-xs font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1f0f5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07070d]";
 
 export const liveChipClass =
   "border-[#2fd3c4] bg-[#2fd3c4] text-[#07070d] hover:border-[#5fe0d4] hover:bg-[#5fe0d4]";

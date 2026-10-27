@@ -185,6 +185,178 @@ a {
   border-color: theme(colors.green);
 }
 
+/* Hero name: one short glitch on load (teal and crimson channel offset), plays once. */
+@keyframes heroGlitch {
+  0% { text-shadow: none; }
+  15% { text-shadow: -3px 0 rgb(47 211 196 / 0.85), 3px 0 rgb(220 20 60 / 0.85); }
+  30% { text-shadow: 4px 0 rgb(47 211 196 / 0.85), -4px 0 rgb(220 20 60 / 0.85); }
+  45% { text-shadow: -2px 1px rgb(47 211 196 / 0.8), 2px -1px rgb(220 20 60 / 0.8); }
+  60% { text-shadow: 3px 0 rgb(47 211 196 / 0.7), -3px 0 rgb(220 20 60 / 0.7); }
+  80% { text-shadow: -1px 0 rgb(47 211 196 / 0.5), 1px 0 rgb(220 20 60 / 0.5); }
+  100% { text-shadow: none; }
+}
+
+.hero-glitch.animate-slide-up {
+  animation:
+    slideUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both,
+    heroGlitch 0.5s steps(1, end) 0.2s 1 both;
+}
+
+/* Soft teal neon glow on hover and keyboard focus. */
+a:not(.neon-btn),
+.neon-btn,
+.project-row {
+  transition-property: color, background-color, border-color, text-shadow, box-shadow, opacity;
+  transition-duration: 200ms;
+}
+
+a:not(.neon-btn):hover,
+a:not(.neon-btn):focus-visible {
+  text-shadow: 0 0 8px rgb(47 211 196 / 0.55);
+}
+
+.neon-btn:hover,
+.neon-btn:focus-visible {
+  box-shadow: 0 0 14px rgb(47 211 196 / 0.45);
+}
+
+.project-row {
+  border-radius: 0.375rem;
+}
+
+.project-row:hover,
+.project-row:focus-within {
+  box-shadow: 0 0 0 1px rgb(47 211 196 / 0.25), 0 0 24px rgb(47 211 196 / 0.12);
+}
+
+/* Spring physics (Josh Comeau style) as a CSS linear() easing. */
+:root {
+  --spring: linear(0, 0.009, 0.035 2.1%, 0.141, 0.281 6.7%, 0.723 12.9%, 0.938 16.7%, 1.017, 1.077, 1.121, 1.149 24.3%, 1.159, 1.163, 1.161, 1.154 29.9%, 1.129 32.8%, 1.051 39.6%, 1.017 43.1%, 0.991, 0.977 51%, 0.974 53.8%, 0.975 57.1%, 0.997 69.8%, 1.003 76.9%, 1);
+}
+
+.spring {
+  transition:
+    transform 600ms var(--spring),
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease;
+}
+
+.neon-btn.spring:hover,
+.neon-btn.spring:focus-visible,
+.logo.spring:hover,
+.logo.spring:focus-visible {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.neon-btn.spring:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 100ms;
+}
+
+.project-row.spring:hover,
+.project-row.spring:focus-within {
+  transform: translateY(-4px);
+  border-color: rgb(47 211 196 / 0.45);
+}
+
+.link-arrow .arrow {
+  display: inline-block;
+  transition: transform 600ms var(--spring);
+}
+
+.link-arrow:hover .arrow,
+.link-arrow:focus-visible .arrow {
+  transform: translate(3px, -3px);
+}
+
+.logo-mark {
+  color: theme(colors.green);
+  text-shadow: 0 0 10px rgb(47 211 196 / 0.6);
+}
+
+/* Sparkles pop in, spin a little, and fade. */
+@keyframes sparkle {
+  0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+  50% { transform: translate(-50%, -50%) scale(1) rotate(90deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0) rotate(180deg); opacity: 0; }
+}
+
+.sparkle {
+  animation: sparkle 700ms ease-in-out forwards;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+/* Hero band: neon sunset with a grid floor. */
+.hero-band {
+  background: radial-gradient(ellipse 70% 60% at 70% 100%, rgb(255 46 136 / 0.16), transparent 70%), theme(colors.navy);
+}
+
+.neon-sun {
+  position: absolute;
+  right: max(4vw, calc(50vw - 520px));
+  bottom: 150px;
+  width: min(42vw, 300px);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom, #ff2e88, #dc143c 70%);
+  box-shadow: 0 0 60px rgb(255 46 136 / 0.45);
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 20px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 20px);
+  opacity: 0.55;
+}
+
+.neon-mountains {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 150px;
+  width: 100%;
+  height: 80px;
+  filter: drop-shadow(0 0 6px rgb(47 211 196 / 0.8));
+  opacity: 0.6;
+}
+
+.neon-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 150px;
+  perspective: 220px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent);
+  mask-image: linear-gradient(to top, #000 30%, transparent);
+}
+
+.neon-grid {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  top: 0;
+  height: 300%;
+  transform-origin: top center;
+  transform: rotateX(60deg);
+  background-image:
+    linear-gradient(rgb(47 211 196 / 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(47 211 196 / 0.55) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: gridMove 3s linear infinite;
+}
+
+@media (max-width: 639px) {
+  .neon-sun {
+    width: 34vw;
+    right: 8vw;
+  }
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0; }
+  to { background-position: 0 48px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-card:hover,
   .project-card:focus-within {
@@ -199,8 +371,41 @@ a {
     transition-duration: 0.01ms !important;
   }
 
+  a:not(.neon-btn):hover,
+  a:not(.neon-btn):focus-visible,
+  .neon-btn:hover,
+  .neon-btn:focus-visible,
+  .project-row:hover,
+  .project-row:focus-within {
+    text-shadow: none;
+    box-shadow: none;
+  }
+
+  .spring,
+  .link-arrow .arrow {
+    transition: none !important;
+  }
+
+  .neon-btn.spring:hover,
+  .neon-btn.spring:focus-visible,
+  .neon-btn.spring:active,
+  .logo.spring:hover,
+  .logo.spring:focus-visible,
+  .project-row.spring:hover,
+  .project-row.spring:focus-within,
+  .link-arrow:hover .arrow,
+  .link-arrow:focus-visible .arrow {
+    transform: none;
+  }
+
+  .sparkle,
+  .neon-grid {
+    animation: none !important;
+  }
+
   .animate-fade-up,
-  .animate-slide-up {
+  .animate-slide-up,
+  .hero-glitch.animate-slide-up {
     opacity: 1;
     transform: none;
     animation: none !important;

@@ -13,8 +13,8 @@ export function Section({
 }>) {
   return (
     <FadeIn>
-      <section id={id} className="scroll-mt-24 py-12 md:py-16">
-        <h2 className="mb-6 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-slate">
+      <section id={id} className="scroll-mt-24 py-10 md:py-12">
+        <h2 className="mb-5 font-mono text-sm font-bold uppercase tracking-[0.2em] text-magenta">
           {title}
         </h2>
         {children}

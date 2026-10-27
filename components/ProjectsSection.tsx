@@ -18,18 +18,18 @@ export function ProjectsSection() {
 
   return (
     <Section id="projects" number="02." title="Projects">
-      <ul className="border-t border-navy-lighter">
+      <ul className="space-y-5">
         {ordered.map((project) => {
           const cardImage = getProjectCardImage(project.slug);
 
           return (
-            <li key={project.slug} className="border-b border-navy-lighter">
+            <li key={project.slug}>
               <FadeIn>
-                <div className="group relative py-6">
+                <div className="project-row spring group relative rounded-2xl border border-navy-lighter bg-navy-light p-5 sm:p-6">
                   {cardImage ? (
                     <>
                       {/* Phone and tablet: screenshot sits inline above the text. */}
-                      <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-md border border-navy-lighter lg:hidden">
+                      <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-navy-lighter lg:hidden">
                         <Image
                           src={cardImage.src}
                           alt={cardImage.alt}
@@ -41,7 +41,7 @@ export function ProjectsSection() {
                       {/* PC: screenshot appears beside the list on hover or focus. */}
                       <div
                         aria-hidden
-                        className="pointer-events-none absolute left-full top-6 ml-8 hidden aspect-[16/10] w-64 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
+                        className="pointer-events-none absolute left-full top-6 ml-8 rounded-xl hidden aspect-[16/10] w-64 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
                       >
                         <Image
                           src={cardImage.src}
@@ -53,13 +53,13 @@ export function ProjectsSection() {
                       </div>
                     </>
                   ) : null}
-                  <h3 className="text-lg font-semibold text-heading">
+                  <h3 className="text-xl font-bold text-heading">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                      className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
                     >
                       <span>{project.title}</span>
-                      <span aria-hidden className="text-slate">
+                      <span aria-hidden className="arrow text-slate">
                         ↗
                       </span>
                     </Link>
