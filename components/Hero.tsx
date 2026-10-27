@@ -14,7 +14,7 @@ export function Hero() {
       <div className="mt-10 flex flex-wrap gap-3">
         <a
           href="#projects"
-          className="inline-flex min-h-11 items-center rounded-md bg-green px-5 font-mono text-sm font-semibold text-navy transition-colors hover:bg-green/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+          className="inline-flex min-h-11 items-center rounded-md bg-yellow px-5 font-mono text-sm font-semibold text-navy transition-colors hover:bg-yellow/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
         >
           View projects
         </a>
