@@ -4,22 +4,21 @@ import { experience } from "@/content/experience";
 export function Experience() {
   return (
     <Section id="experience" number="03." title="Experience">
-      <div className="space-y-5">
+      <div className="timeline space-y-10">
+        <span aria-hidden className="timeline-fill" />
         {experience.map((job) => (
-          <article
-            key={job.id}
-            className="project-row spring grid gap-2 rounded-2xl border border-navy-lighter bg-navy-light p-5 sm:grid-cols-[8rem_1fr] sm:gap-6 sm:p-6"
-          >
-            <div className="font-mono text-xs uppercase tracking-wide text-slate">
+          <article key={job.id} className="timeline-item relative">
+            <span aria-hidden className="timeline-dot" />
+            <div className="font-mono text-xs uppercase tracking-[0.18em] text-green/80">
               <span>
                 {job.start} to {job.end}
               </span>
             </div>
             <div>
-              <h3 className="font-medium text-heading">
+              <h3 className="mt-1 text-lg font-semibold text-heading">
                 {job.role} · {job.company}
               </h3>
-              <ul className="mt-2 space-y-1.5 text-sm leading-relaxed text-slate">
+              <ul className="mt-2 space-y-1.5 text-base leading-relaxed text-slate">
                 {job.bullets.map((bullet) => (
                   <li key={bullet} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-slate">
                     {bullet}

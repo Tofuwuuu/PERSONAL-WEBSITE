@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn } from "@/components/FadeIn";
 import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
@@ -18,73 +17,70 @@ export function ProjectsSection() {
 
   return (
     <Section id="projects" number="02." title="Projects">
-      <ul className="space-y-5">
-        {ordered.map((project) => {
-          const cardImage = getProjectCardImage(project.slug);
+      <div className="relative">
+        <div aria-hidden className="projects-glow" />
+        <ul className="relative space-y-14 lg:space-y-16">
+          {ordered.map((project, index) => {
+            const cardImage = getProjectCardImage(project.slug);
+            // PC: feature rows, screenshot half the row, alternating sides.
+            const flip = index % 2 === 1;
 
-          return (
-            <li key={project.slug}>
-              <FadeIn>
-                <div className="project-row spring group relative rounded-2xl border border-navy-lighter bg-navy-light p-5 sm:p-6">
+            return (
+              <li key={project.slug}>
+                <div
+                  data-reveal
+                  className="project-row group relative lg:grid lg:grid-cols-2 lg:items-center lg:gap-8"
+                >
                   {cardImage ? (
-                    <>
-                      {/* Phone and tablet: screenshot sits inline above the text. */}
-                      <div className="relative mb-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-navy-lighter lg:hidden">
-                        <Image
-                          src={cardImage.src}
-                          alt={cardImage.alt}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(min-width: 680px) 632px, 100vw"
-                        />
+                    <div className={`project-media ${flip ? "from-right lg:order-2" : "from-left"}`}>
+                      <div className="project-frame mb-5 lg:mb-0">
+                        <div className="project-thumb relative aspect-[16/10] w-full overflow-hidden">
+                          <Image
+                            src={cardImage.src}
+                            alt={cardImage.alt}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(min-width: 1024px) 345px, (min-width: 680px) 632px, 100vw"
+                          />
+                          <span aria-hidden className="project-thumb-tint" />
+                        </div>
                       </div>
-                      {/* PC: screenshot appears beside the list on hover or focus. */}
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute left-full top-6 ml-8 rounded-xl hidden aspect-[16/10] w-64 overflow-hidden rounded-md border border-navy-lighter opacity-0 transition-opacity duration-200 motion-reduce:transition-none group-focus-within:opacity-100 group-hover:opacity-100 lg:block"
-                      >
-                        <Image
-                          src={cardImage.src}
-                          alt=""
-                          fill
-                          className="object-cover object-top"
-                          sizes="256px"
-                        />
-                      </div>
-                    </>
+                    </div>
                   ) : null}
-                  <h3 className="text-xl font-bold text-heading">
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
-                    >
-                      <span>{project.title}</span>
-                      <span aria-hidden className="arrow text-slate">
-                        ↗
-                      </span>
-                    </Link>
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
-                    {project.summary}
-                  </p>
-                  {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
-                  <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
-                    {project.stack.slice(0, 6).map((tech) => (
-                      <li key={tech} className="bc-tech-tag">
-                        {tech}
+                  <div className={`project-text min-w-0 ${flip ? "lg:order-1" : ""}`}>
+                    <h3 className="text-lg font-semibold text-heading">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                      >
+                        <span>{project.title}</span>
+                        <span aria-hidden className="arrow text-slate">
+                          ↗
+                        </span>
+                      </Link>
+                    </h3>
+                    <p className="mt-2 line-clamp-2 text-base leading-relaxed lg:line-clamp-none text-slate">
+                      {project.summary}
+                    </p>
+                    {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                    <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
+                      {project.stack.slice(0, 6).map((tech) => (
+                        <li key={tech} className="bc-tech-tag">
+                          {tech}
+                        </li>
+                      ))}
+                      <li className="flex">
+                        <ProjectStatusChip project={project} />
                       </li>
-                    ))}
-                    <li className="flex">
-                      <ProjectStatusChip project={project} />
-                    </li>
-                  </ul>
+                    </ul>
+                  </div>
                 </div>
-              </FadeIn>
-            </li>
-          );
-        })}
-      </ul>
-      <div className="mt-6">
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className="mt-10">
         <Link href="/projects" className="bc-link font-mono text-sm">
           View Full Project Archive
         </Link>

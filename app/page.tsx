@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { ScrollMotion } from "@/components/ScrollMotion";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
 import { Hero } from "@/components/Hero";
@@ -17,11 +18,19 @@ export default function HomePage() {
           __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
         }}
       />
+      <ScrollMotion />
       <Hero />
       <About />
       <ProjectsSection />
-      <Experience />
-      <Contact />
+      <div className="relative">
+        {/* Decorative: blurred magenta striped sun and horizon lines behind Experience and Contact. */}
+        <div aria-hidden className="lower-band">
+          <div className="lower-band-sun" data-parallax="0.12" />
+          <div className="lower-band-lines" />
+        </div>
+        <Experience />
+        <Contact />
+      </div>
     </>
   );
 }
