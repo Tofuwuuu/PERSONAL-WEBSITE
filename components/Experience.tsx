@@ -5,6 +5,7 @@ export function Experience() {
   return (
     <Section id="experience" number="03." title="Experience">
       <div className="timeline space-y-10">
+        <span aria-hidden className="timeline-fill" />
         {experience.map((job) => (
           <article key={job.id} className="timeline-item relative">
             <span aria-hidden className="timeline-dot" />

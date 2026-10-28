@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FadeIn } from "@/components/FadeIn";
 import { ProjectStatusChip } from "@/components/ProjectStatusChip";
 import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
@@ -29,10 +28,11 @@ export function ProjectsSection() {
             return (
               <li key={project.slug}>
                 <div
+                  data-reveal
                   className="project-row group relative lg:grid lg:grid-cols-2 lg:items-center lg:gap-8"
                 >
                   {cardImage ? (
-                    <FadeIn className={flip ? "lg:order-2" : undefined}>
+                    <div className={`project-media ${flip ? "from-right lg:order-2" : "from-left"}`}>
                       <div className="project-frame mb-5 lg:mb-0">
                         <div className="project-thumb relative aspect-[16/10] w-full overflow-hidden">
                           <Image
@@ -45,9 +45,9 @@ export function ProjectsSection() {
                           <span aria-hidden className="project-thumb-tint" />
                         </div>
                       </div>
-                    </FadeIn>
+                    </div>
                   ) : null}
-                  <div className={`min-w-0 ${flip ? "lg:order-1" : ""}`}>
+                  <div className={`project-text min-w-0 ${flip ? "lg:order-1" : ""}`}>
                     <h3 className="text-lg font-semibold text-heading">
                       <Link
                         href={`/projects/${project.slug}`}
