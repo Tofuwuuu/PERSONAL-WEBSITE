@@ -289,20 +289,6 @@ a:not(.neon-btn):focus-visible {
   background: radial-gradient(ellipse 70% 60% at 70% 100%, rgb(255 46 136 / 0.16), transparent 70%), theme(colors.navy);
 }
 
-.neon-sun {
-  position: absolute;
-  right: max(4vw, calc(50vw - 520px));
-  bottom: 150px;
-  width: min(42vw, 300px);
-  aspect-ratio: 1;
-  border-radius: 9999px;
-  background: linear-gradient(to bottom, #ff2e88, #dc143c 70%);
-  box-shadow: 0 0 60px rgb(255 46 136 / 0.45);
-  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 20px);
-  mask-image: repeating-linear-gradient(to bottom, #000 0 14px, transparent 14px 20px);
-  opacity: 0.55;
-}
-
 .neon-mountains {
   position: absolute;
   left: 0;
@@ -311,7 +297,6 @@ a:not(.neon-btn):focus-visible {
   width: 100%;
   height: 80px;
   filter: drop-shadow(0 0 6px rgb(47 211 196 / 0.8));
-  opacity: 0.6;
 }
 
 .neon-floor {
@@ -338,19 +323,152 @@ a:not(.neon-btn):focus-visible {
     linear-gradient(rgb(47 211 196 / 0.55) 1px, transparent 1px),
     linear-gradient(90deg, rgb(47 211 196 / 0.55) 1px, transparent 1px);
   background-size: 48px 48px;
-  animation: gridMove 3s linear infinite;
+  animation: gridMove 5s linear infinite;
 }
 
-@media (max-width: 639px) {
-  .neon-sun {
-    width: 34vw;
-    right: 8vw;
-  }
-}
 
 @keyframes gridMove {
   from { background-position: 0 0; }
-  to { background-position: 0 48px; }
+  to { background-position: 0 240px; }
+}
+
+/* ---------- Neon city (hero) ---------- */
+.neon-city {
+  --mx: 0;
+  --my: 0;
+  --cx: -9999px;
+  --cy: -9999px;
+  --fy: -9999px;
+}
+
+.neon-city.is-paused *,
+.neon-city.is-paused *::before,
+.neon-city.is-paused *::after {
+  animation-play-state: paused !important;
+}
+
+.city-haze {
+  position: absolute;
+  right: -10%;
+  bottom: 120px;
+  width: 75%;
+  height: 340px;
+  background: radial-gradient(ellipse at 60% 80%, rgb(220 20 60 / 0.28), rgb(255 46 136 / 0.08) 45%, transparent 70%);
+  filter: blur(10px);
+}
+
+.city-star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #f1f0f5;
+  opacity: 0.35;
+  animation: starTwinkle 5s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.55; }
+}
+
+.city-skyline {
+  position: absolute;
+  right: 0;
+  bottom: 175px;
+  /* Right side, clear of the text column. */
+  width: max(45%, calc(100% - (50vw + 340px) - 24px));
+  height: 240px;
+}
+
+@media (max-width: 1023px) {
+  .city-skyline {
+    width: 100%;
+    height: 110px;
+    opacity: 0.85;
+  }
+}
+
+.city-layer-wrap {
+  position: absolute;
+  inset: 0 -30px;
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform;
+}
+
+.city-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.city-wrap-far { transform: translate(calc(var(--mx) * -6px), calc(var(--my) * -3px)) scale(0.96); transform-origin: bottom; opacity: 0.8; }
+.city-wrap-mid { transform: translate(calc(var(--mx) * -14px), calc(var(--my) * -5px)); }
+.city-wrap-near { transform: translate(calc(var(--mx) * -26px), calc(var(--my) * -8px)); }
+
+/* Phone and other touch screens: the layers drift slowly on their own. */
+.neon-city:not(.has-pointer) .city-wrap-far { animation: cityDrift 18s ease-in-out infinite alternate; }
+.neon-city:not(.has-pointer) .city-wrap-mid { animation: cityDrift 14s ease-in-out infinite alternate-reverse; }
+.neon-city:not(.has-pointer) .city-wrap-near { animation: cityDriftNear 11s ease-in-out infinite alternate; }
+
+@keyframes cityDrift {
+  from { transform: translateX(-8px); }
+  to { transform: translateX(8px); }
+}
+
+@keyframes cityDriftNear {
+  from { transform: translateX(14px); }
+  to { transform: translateX(-14px); }
+}
+
+.city-win-blink {
+  animation: winBlink 6s steps(1, end) infinite;
+}
+
+@keyframes winBlink {
+  0%, 62%, 100% { opacity: inherit; }
+  64%, 70% { opacity: 0; }
+  84% { opacity: 0.15; }
+}
+
+/* Hover cars: thin light streaks gliding between the buildings. */
+.city-car {
+  position: absolute;
+  left: 0;
+  width: 90px;
+  height: 2px;
+  border-radius: 9999px;
+  opacity: 0;
+  animation: carGlide 9s linear infinite;
+}
+.car-1 { top: 38%; background: linear-gradient(90deg, transparent, #2fd3c4); box-shadow: 0 0 8px #2fd3c4; }
+.car-2 { top: 55%; background: linear-gradient(270deg, transparent, #ff2e88); box-shadow: 0 0 8px #ff2e88; animation-name: carGlideBack; animation-duration: 12s; animation-delay: 3s; }
+.car-3 { top: 26%; width: 60px; background: linear-gradient(90deg, transparent, #f1f0f5); box-shadow: 0 0 6px #2fd3c4; animation-duration: 15s; animation-delay: 6s; }
+
+@keyframes carGlide {
+  0% { transform: translateX(-120px); opacity: 0; }
+  8% { opacity: 0.9; }
+  45% { transform: translateX(min(70vw, 820px)); opacity: 0.9; }
+  50%, 100% { transform: translateX(min(70vw, 820px)); opacity: 0; }
+}
+
+@keyframes carGlideBack {
+  0% { transform: translateX(min(70vw, 820px)); opacity: 0; }
+  8% { opacity: 0.9; }
+  45% { transform: translateX(-120px); opacity: 0.9; }
+  50%, 100% { transform: translateX(-120px); opacity: 0; }
+}
+
+/* Cursor glow on the floor: a brighter copy of the grid, revealed in a soft circle around the pointer. */
+.neon-floor-glow {
+  -webkit-mask-image: radial-gradient(circle 140px at var(--cx) var(--fy), #000, transparent 70%);
+  mask-image: radial-gradient(circle 140px at var(--cx) var(--fy), #000, transparent 70%);
+}
+
+.neon-grid-bright {
+  background-image:
+    linear-gradient(rgb(47 211 196 / 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(47 211 196 / 1) 1px, transparent 1px);
+  filter: drop-shadow(0 0 4px #2fd3c4);
 }
 
 /* About: terminal window panel. Frame is quiet at rest and glows on hover. */
@@ -740,6 +858,10 @@ a:not(.neon-btn):focus-visible {
 
   .sparkle,
   .neon-grid,
+  .city-star,
+  .city-win-blink,
+  .city-layer-wrap,
+  .city-car,
   .terminal-cursor {
     animation: none !important;
   }
