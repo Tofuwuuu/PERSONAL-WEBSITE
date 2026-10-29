@@ -1,26 +1,7 @@
+import { NeonCity } from "@/components/NeonCity";
+import { ScrambleName } from "@/components/ScrambleName";
 import { Sparkles } from "@/components/Sparkles";
 import { profile } from "@/content/profile";
-
-/** Decorative neon sunset: striped sun, mountain line and a moving grid floor. */
-function NeonHorizon() {
-  return (
-    <div aria-hidden className="neon-horizon pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="neon-sun" />
-      <svg className="neon-mountains" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <polyline
-          points="0,120 90,70 170,95 260,40 350,88 430,60 520,100 610,30 700,85 790,55 880,98 960,45 1050,90 1130,62 1200,100"
-          fill="none"
-          stroke="#2fd3c4"
-          strokeWidth="2"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-      <div className="neon-floor">
-        <div className="neon-grid" />
-      </div>
-    </div>
-  );
-}
 
 export function Hero() {
   return (
@@ -28,11 +9,13 @@ export function Hero() {
       id="intro"
       className="hero-band relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-b border-navy-lighter"
     >
-      <NeonHorizon />
+      <NeonCity />
       <div className="relative mx-auto max-w-[680px] px-6 lg:max-w-[760px] pb-72 pt-14 sm:pb-64 lg:pt-20">
         <h1 className="hero-glitch animate-slide-up text-[clamp(44px,8vw,72px)] font-extrabold leading-[1.02] tracking-tight text-heading">
           <Sparkles>
-            <span className="hero-name">Mark Salise</span>
+            <span className="hero-name">
+              <ScrambleName text="Mark Salise" />
+            </span>
           </Sparkles>
         </h1>
         <p className="mt-4 text-xl font-semibold text-green sm:text-2xl">{profile.role}</p>
