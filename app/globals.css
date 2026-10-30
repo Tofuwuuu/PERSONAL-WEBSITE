@@ -30,9 +30,19 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, theme(colors.green) 30%, transparent);
-  color: theme(colors.heading);
+  background: #2fd3c4;
+  color: #07070d;
 }
+
+/* Thin neon teal scrollbar. */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2fd3c4 #07070d;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #07070d; }
+::-webkit-scrollbar-thumb { background: rgb(47 211 196 / 0.7); border-radius: 9999px; box-shadow: 0 0 6px #2fd3c4; }
+::-webkit-scrollbar-thumb:hover { background: #2fd3c4; }
 
 a {
   color: inherit;
@@ -138,8 +148,20 @@ a {
     @apply w-16 bg-green;
   }
 
+  .top-nav-link:hover,
+  .top-nav-link:focus-visible {
+    background-size: 100% 1px;
+  }
+
   .top-nav-link {
-    @apply text-sm text-slate underline-offset-4 transition-colors hover:text-heading hover:underline focus-visible:underline focus-visible:outline-none;
+    @apply text-sm text-slate transition-colors hover:text-heading focus-visible:text-heading focus-visible:outline-none;
+    /* Teal scan underline that sweeps in on hover. */
+    background-image: linear-gradient(90deg, transparent, #2fd3c4 40%, #2fd3c4);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 1px;
+    padding-bottom: 2px;
+    transition: color 150ms ease, background-size 300ms ease-out;
   }
 
   .bc-tech-tag {
@@ -815,6 +837,248 @@ a:not(.neon-btn):focus-visible {
   100% { opacity: 0.55; }
 }
 
+/* ---------- Trinkets ---------- */
+/* Custom cursor (fine pointer, motion allowed): crosshair that becomes a glowing ring over links and buttons. */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transform: translate3d(-100px, -100px, 0);
+}
+.custom-cursor-cross {
+  position: absolute;
+  left: -9px;
+  top: -9px;
+  width: 18px;
+  height: 18px;
+  background:
+    linear-gradient(#2fd3c4, #2fd3c4) center / 2px 18px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) center / 18px 2px no-repeat;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+.custom-cursor-ring {
+  position: absolute;
+  left: -16px;
+  top: -16px;
+  width: 32px;
+  height: 32px;
+  border: 2px solid #2fd3c4;
+  border-radius: 9999px;
+  box-shadow: 0 0 12px rgb(47 211 196 / 0.7), inset 0 0 8px rgb(47 211 196 / 0.4);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 150ms ease, transform 200ms var(--spring);
+}
+.custom-cursor.is-ring .custom-cursor-ring { opacity: 1; transform: scale(1); }
+.custom-cursor.is-ring .custom-cursor-cross { opacity: 0.6; transform: scale(0.4); }
+
+/* Click spark burst. */
+.click-spark {
+  position: fixed;
+  z-index: 99;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.click-spark i {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: 2px;
+  height: 10px;
+  transform-origin: 1px 1px;
+}
+.click-spark i::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 8px;
+  border-radius: 2px;
+  background: #2fd3c4;
+  box-shadow: 0 0 6px #2fd3c4;
+  animation: sparkFly 500ms ease-out forwards;
+}
+@keyframes sparkFly {
+  from { transform: translateY(2px); opacity: 1; }
+  to { transform: translateY(20px); opacity: 0; }
+}
+
+/* Scroll progress bar. */
+.scroll-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  background: #2fd3c4;
+  box-shadow: 0 0 8px rgb(47 211 196 / 0.8);
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+}
+
+/* HUD scroll readout (PC) and TOP button, shown after the hero. */
+.hud-readout,
+.hud-top {
+  position: fixed;
+  z-index: 50;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+.hud-readout {
+  right: 20px;
+  bottom: 18px;
+  font-size: 11px;
+  color: rgb(47 211 196 / 0.6);
+}
+.hud-top {
+  right: 20px;
+  bottom: 44px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: #2fd3c4;
+  border: 1px solid rgb(47 211 196 / 0.5);
+  background: rgb(7 7 13 / 0.8);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+.hud-top:hover,
+.hud-top:focus-visible { border-color: #2fd3c4; background: rgb(47 211 196 / 0.12); outline: none; }
+.hud-readout.is-visible,
+.hud-top.is-visible { opacity: 1; transform: none; }
+.hud-top.is-visible { pointer-events: auto; }
+@media (max-width: 1023px) {
+  .hud-top { bottom: 18px; }
+}
+
+/* Logo types itself once on load, then a blinking cursor. Plain CSS, so it also ends visible without JS. */
+.logo-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  animation: logoType 600ms steps(4, end) 200ms both;
+}
+@keyframes logoType {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+.logo-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 2px;
+  margin-left: -4px;
+  align-self: flex-end;
+  margin-bottom: 4px;
+  background: #2fd3c4;
+  animation: cursorBlink 1s steps(1, end) infinite;
+}
+
+/* Block cursor after the hero name, shown once the scramble finishes. */
+.name-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.72em;
+  margin-left: 0.08em;
+  background: #2fd3c4;
+  box-shadow: 0 0 10px rgb(47 211 196 / 0.6);
+  animation: cursorBlink 1s steps(1, end) infinite;
+}
+
+/* Project titles: quick RGB split glitch, once per hover. */
+.project-title:hover > span:first-child,
+.project-title:focus-visible > span:first-child {
+  animation: titleGlitch 150ms steps(2, end) 1;
+}
+@keyframes titleGlitch {
+  0% { text-shadow: -2px 0 #ff2e88, 2px 0 #2fd3c4; transform: translateX(1px); }
+  50% { text-shadow: 2px 0 #ff2e88, -2px 0 #2fd3c4; transform: translateX(-1px); }
+  100% { text-shadow: none; transform: none; }
+}
+.project-title > span:first-child { display: inline-block; }
+
+/* Project screenshots: subtle scanlines on hover. */
+.project-thumb-scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(to bottom, rgb(7 7 13 / 0.35) 0 1px, transparent 1px 3px);
+  transition: opacity 200ms ease;
+}
+.project-row:hover .project-thumb-scan,
+.project-row:focus-within .project-thumb-scan { opacity: 1; }
+
+/* Corner brackets snap onto project rows on hover. */
+.row-brackets {
+  position: absolute;
+  inset: -12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.03);
+  transition: opacity 120ms steps(2, end), transform 180ms ease-out;
+  background:
+    linear-gradient(#2fd3c4, #2fd3c4) top left / 14px 2px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top left / 2px 14px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top right / 14px 2px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) top right / 2px 14px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 14px 2px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom left / 2px 14px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 14px 2px no-repeat,
+    linear-gradient(#2fd3c4, #2fd3c4) bottom right / 2px 14px no-repeat;
+}
+.project-row:hover .row-brackets,
+.project-row:focus-within .row-brackets { opacity: 1; transform: none; }
+
+/* View projects: neon flicker on hover (stays yellow). */
+.cta-flicker:hover,
+.cta-flicker:focus-visible {
+  animation: ctaFlicker 700ms steps(1, end) 1;
+}
+@keyframes ctaFlicker {
+  0%, 100% { opacity: 1; box-shadow: 0 0 16px rgb(245 217 10 / 0.55); }
+  10% { opacity: 0.55; box-shadow: none; }
+  20% { opacity: 1; box-shadow: 0 0 16px rgb(245 217 10 / 0.55); }
+  30% { opacity: 0.7; box-shadow: none; }
+  45% { opacity: 1; box-shadow: 0 0 20px rgb(245 217 10 / 0.6); }
+}
+
+/* Konami easter egg: night rain over the hero city. */
+.night-rain-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+html.night-rain .night-rain-layer { opacity: 1; }
+.rain-drop {
+  position: absolute;
+  top: -80px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgb(47 211 196 / 0.7));
+  animation: rainFall 900ms linear infinite;
+  animation-play-state: paused;
+}
+.rain-drop:nth-child(3n) { background: linear-gradient(to bottom, transparent, rgb(255 46 136 / 0.6)); }
+html.night-rain .rain-drop { animation-play-state: running; }
+@keyframes rainFall {
+  from { transform: translateY(0); }
+  to { transform: translateY(720px); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-card:hover,
   .project-card:focus-within {
@@ -858,6 +1122,13 @@ a:not(.neon-btn):focus-visible {
 
   .sparkle,
   .neon-grid,
+  .logo-type,
+  .logo-cursor,
+  .name-cursor,
+  .click-spark i::before,
+  .cta-flicker:hover,
+  .project-title:hover > span:first-child,
+  .rain-drop,
   .city-star,
   .city-win-blink,
   .city-layer-wrap,

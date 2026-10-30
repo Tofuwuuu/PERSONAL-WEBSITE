@@ -59,6 +59,16 @@ const STARS = (() => {
   }));
 })();
 
+const RAIN = (() => {
+  const rand = rng(91);
+  return Array.from({ length: 60 }, () => ({
+    left: Math.round(rand() * 1000) / 10,
+    len: 30 + Math.round(rand() * 50),
+    dur: 600 + Math.round(rand() * 600),
+    delay: Math.round(rand() * 1200),
+  }));
+})();
+
 function CityLayer({ layer }: { layer: (typeof LAYERS)[number] }) {
   return (
     <svg
@@ -160,6 +170,15 @@ export function NeonCity() {
   return (
     <div ref={ref} aria-hidden className="neon-city pointer-events-none absolute inset-0 overflow-hidden">
       <div className="city-haze" />
+      <div className="night-rain-layer">
+        {RAIN.map((r, i) => (
+          <span
+            key={i}
+            className="rain-drop"
+            style={{ left: `${r.left}%`, height: r.len, animationDuration: `${r.dur}ms`, animationDelay: `${r.delay}ms` }}
+          />
+        ))}
+      </div>
       <div className="city-stars">
         {STARS.map((s, i) => (
           <span

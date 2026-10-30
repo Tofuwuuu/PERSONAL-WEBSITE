@@ -31,6 +31,7 @@ export function ProjectsSection() {
                   data-reveal
                   className="project-row group relative lg:grid lg:grid-cols-2 lg:items-center lg:gap-8"
                 >
+                  <span aria-hidden className="row-brackets" />
                   {cardImage ? (
                     <div className={`project-media ${flip ? "from-right lg:order-2" : "from-left"}`}>
                       <div className="project-frame mb-5 lg:mb-0">
@@ -43,6 +44,7 @@ export function ProjectsSection() {
                             sizes="(min-width: 1024px) 345px, (min-width: 680px) 632px, 100vw"
                           />
                           <span aria-hidden className="project-thumb-tint" />
+                          <span aria-hidden className="project-thumb-scan" />
                         </div>
                       </div>
                     </div>
@@ -51,7 +53,7 @@ export function ProjectsSection() {
                     <h3 className="text-lg font-semibold text-heading">
                       <Link
                         href={`/projects/${project.slug}`}
-                        className="link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                        className="project-title link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
                       >
                         <span>{project.title}</span>
                         <span aria-hidden className="arrow text-slate">

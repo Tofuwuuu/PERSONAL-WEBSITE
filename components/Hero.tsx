@@ -24,7 +24,7 @@ export function Hero() {
           <Sparkles>
             <a
               href="#projects"
-              className="neon-btn spring inline-flex min-h-11 items-center rounded-xl bg-yellow px-5 font-mono text-sm font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              className="neon-btn cta-flicker spring inline-flex min-h-11 items-center rounded-xl bg-yellow px-5 font-mono text-sm font-semibold text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
             >
               View projects
             </a>
