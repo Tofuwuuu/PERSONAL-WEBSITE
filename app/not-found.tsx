@@ -10,9 +10,8 @@ export default function NotFound() {
         <polyline points={BUILDINGS} fill="none" stroke="#2fd3c4" strokeOpacity="0.4" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
       </svg>
       <div aria-hidden className="lost-street" />
-      <p className="lost-sign font-mono text-3xl font-bold uppercase tracking-[0.25em] sm:text-5xl">SIGNAL LOST</p>
-      <h1 className="mt-6 text-lg font-semibold text-heading">Page not found</h1>
-      <p className="mt-2 text-sm text-slate">The page you’re looking for doesn’t exist.</p>
+      <h1 className="lost-sign font-mono text-3xl font-bold uppercase tracking-[0.25em] sm:text-5xl">SIGNAL LOST</h1>
+      <p className="mt-6 text-base text-slate">This page doesn&apos;t exist, or it moved.</p>
       <Link href="/" className="neon-btn relative z-10 mt-8 inline-flex items-center rounded-sm border border-green px-5 py-2.5 font-mono text-sm text-green hover:bg-green/10">
         Back home
       </Link>

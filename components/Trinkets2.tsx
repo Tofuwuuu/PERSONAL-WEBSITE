@@ -22,7 +22,7 @@ export function Trinkets2() {
     if (!greeted) {
       greeted = true;
       console.log(`%c${LOGO}`, "color:#2fd3c4;font-family:monospace");
-      console.log("hey, fellow dev");
+      console.log("Hi, fellow dev. The code for this site is on GitHub: github.com/Tofuwuuu");
     }
 
     const root = document.documentElement;

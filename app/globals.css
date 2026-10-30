@@ -1233,16 +1233,16 @@ html.tod-night .city-haze {
 .sky-drone { display: none; }
 .js-motion .sky-drone {
   display: inline;
-  animation: droneFly 20s linear infinite;
+  animation: droneFly 60s linear infinite;
   transform: translate(-40px, 14px);
 }
 .js-motion .sky-drone-led { animation: droneLed 600ms steps(2, end) infinite; }
 @keyframes droneFly {
   0% { transform: translate(-40px, 14px); }
-  6% { transform: translate(120px, 10px); }
-  14% { transform: translate(420px, 16px); }
-  22% { transform: translate(760px, 8px); }
-  30% { transform: translate(1240px, 12px); }
+  2% { transform: translate(120px, 10px); }
+  4.7% { transform: translate(420px, 16px); }
+  7.3% { transform: translate(760px, 8px); }
+  10% { transform: translate(1240px, 12px); }
   100% { transform: translate(1240px, 12px); }
 }
 @keyframes droneLed { 50% { opacity: 0; } }

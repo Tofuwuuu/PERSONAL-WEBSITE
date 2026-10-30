@@ -2,16 +2,8 @@
 
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type ReactNode } from "react";
 import { profile } from "@/content/profile";
-import { projects } from "@/content/projects";
 
 type Line = { id: number; content: ReactNode };
-
-const LEAD = "gym-app-tracker";
-
-function projectHref(slug: string, links: { kind: string; href: string }[]) {
-  const live = links.find((l) => l.kind === "demo" || l.kind === "preview");
-  return live?.href ?? `/projects/${slug}`;
-}
 
 /** Hidden terminal: press ~ (outside text fields) to open. Esc closes. */
 export function HiddenTerminal() {
@@ -42,7 +34,7 @@ export function HiddenTerminal() {
   useEffect(() => {
     if (open) {
       inputRef.current?.focus();
-      if (lines.length === 0) push(<span className="text-slate">Type help to see commands.</span>);
+      if (lines.length === 0) push("Type help to see what I can do. Esc closes this.");
     } else {
       returnRef.current?.focus?.();
     }
@@ -56,31 +48,27 @@ export function HiddenTerminal() {
     push(<span><span className="text-magenta">&gt;</span> {raw}</span>);
     if (!cmd) return;
     if (cmd === "clear") return setLines([]);
-    if (cmd === "help") return push("help, projects, contact, rain, clear. Esc closes.");
+    if (cmd === "help") return push(<span className="whitespace-pre">projects  contact  rain  clear</span>);
     if (cmd === "projects") {
-      const featured = projects.filter((p) => p.featured);
-      const ordered = [...featured.filter((p) => p.slug === LEAD), ...featured.filter((p) => p.slug !== LEAD)];
-      return push(
-        ...ordered.map((p) => (
-          <a key={p.slug} href={projectHref(p.slug, p.links)} className="text-green underline-offset-4 hover:underline focus-visible:underline">
-            {p.title}
-          </a>
-        )),
-      );
+      push("Jumping to projects.");
+      window.setTimeout(() => {
+        close();
+        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 450);
+      return;
     }
     if (cmd === "contact") {
-      return push(
-        <a href={`mailto:${profile.email}`} className="text-green underline-offset-4 hover:underline focus-visible:underline">{profile.email}</a>,
-        ...profile.links.map((l) => (
-          <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="text-green underline-offset-4 hover:underline focus-visible:underline">{l.label}</a>
-        )),
-      );
+      push(profile.email);
+      const fail = () => push(`Couldn't copy. Email is ${profile.email}`);
+      if (!navigator.clipboard?.writeText) return fail();
+      navigator.clipboard.writeText(profile.email).then(() => push("Copied to clipboard."), fail);
+      return;
     }
     if (cmd === "rain") {
       const on = document.documentElement.classList.toggle("night-rain");
-      return push(on ? "rain on" : "rain off");
+      return push(on ? "Rain on." : "Rain off.");
     }
-    push(<span className="text-slate">command not found: {cmd}</span>);
+    push(`Command not found: ${raw.trim()}. Type help.`);
   };
 
   const onDialogKey = (event: ReactKeyboardEvent<HTMLDivElement>) => {
