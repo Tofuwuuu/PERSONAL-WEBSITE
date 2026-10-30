@@ -54,7 +54,7 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(location.pathname==='/'&&!sessionStorage.getItem('mark-booted')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var r=document.documentElement;r.classList.add('boot');setTimeout(function(){r.classList.remove('boot')},1500)}}catch(e){}",
+              "try{if(location.pathname==='/'&&!sessionStorage.getItem('mark-booted')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var r=document.documentElement;r.classList.add('boot');setTimeout(function(){r.classList.remove('boot')},1500)}}catch(e){}try{if(localStorage.getItem('mark-crt')==='1')document.documentElement.classList.add('crt')}catch(e){}",
           }}
         />
       </head>

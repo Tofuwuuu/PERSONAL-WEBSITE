@@ -1407,3 +1407,82 @@ html.boot-intro .neon-city { animation: cityPowerOn 1100ms ease-out both; }
   .crt-sweep, .boot-screen { display: none; }
   html.boot-intro .neon-city, .js-motion .section-framed.is-in::after { animation: none; }
 }
+
+/* ---------- Trinkets 3 ---------- */
+
+/* Light-speed streaks during the CRT turn-on (boot screen sessions only). */
+.warp {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  pointer-events: none;
+}
+.warp span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1.5px;
+  transform-origin: 0 50%;
+}
+.warp span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #2fd3c4);
+  box-shadow: 0 0 6px rgb(47 211 196 / 0.7);
+  opacity: 0;
+  animation: warpStreak 400ms cubic-bezier(0.5, 0, 0.9, 0.4) forwards;
+  animation-delay: inherit;
+}
+.warp span.is-white::before { background: linear-gradient(90deg, transparent, #f1f0f5); box-shadow: 0 0 6px rgb(241 240 245 / 0.6); }
+@keyframes warpStreak {
+  0% { opacity: 0; transform: translateX(20px) scaleX(0.2); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(70vmax) scaleX(1.4); }
+}
+
+/* Colour split on project screenshots: teal and magenta copies offset 3px for ~200ms, then settle. Image only. */
+.thumb-split {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: top;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+/* Image only loads on first hover. */
+.project-row:hover .thumb-split { background-image: var(--thumb); }
+.thumb-split-a { background-color: #2fd3c4; background-blend-mode: multiply; }
+.thumb-split-b { background-color: #ff2e88; background-blend-mode: multiply; }
+.project-row:hover .thumb-split-a { animation: splitA 220ms steps(4, end); }
+.project-row:hover .thumb-split-b { animation: splitB 220ms steps(4, end); }
+@keyframes splitA { 0% { opacity: 0.7; transform: translateX(-3px); } 60% { opacity: 0.5; transform: translateX(-2px); } 100% { opacity: 0; transform: none; } }
+@keyframes splitB { 0% { opacity: 0.7; transform: translateX(3px); } 60% { opacity: 0.5; transform: translateX(2px); } 100% { opacity: 0; transform: none; } }
+
+/* Card tilt (set inline by CardTilt); eases back on leave. */
+.project-row { transition: transform 450ms var(--spring, ease-out); will-change: auto; }
+.project-row.is-tilting { transition: transform 80ms linear; }
+
+/* CRT switch: faint scanlines and a slight colour fringe over the whole page. */
+html.crt body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.16) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 60%, rgb(0 0 0 / 0.25));
+}
+html.crt body { text-shadow: 0.6px 0 rgb(255 46 136 / 0.35), -0.6px 0 rgb(47 211 196 / 0.35); }
+html.crt.js-motion body::before { animation: crtRoll 8s linear infinite; }
+@keyframes crtRoll { to { background-position: 0 3px, 0 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .warp { display: none; }
+  .project-row:hover .thumb-split-a,
+  .project-row:hover .thumb-split-b,
+  html.crt body::before { animation: none; }
+  .project-row { transition: none; }
+}

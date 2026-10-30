@@ -5,6 +5,14 @@ import { useEffect, useState } from "react";
 const DURATION = 800; // count 0 to 100; total loader time stays under 900ms
 const SWEEP = 420;
 
+/** Light-speed streaks for the CRT turn-on: fixed angles so render is deterministic. */
+const STREAKS = Array.from({ length: 36 }, (_, i) => ({
+  angle: i * 10 + ((i * 37) % 7),
+  delay: (i * 53) % 90,
+  len: 90 + ((i * 71) % 140),
+  white: i % 3 === 0,
+}));
+
 /**
  * First-visit-per-session boot screen and CRT turn-on sweep.
  * The inline script in layout sets html.boot only when JS runs, motion is allowed,
@@ -61,7 +69,17 @@ export function BootLoader() {
 
   if (phase === "off") return null;
 
-  if (phase === "sweep") return <div aria-hidden className="crt-sweep" />;
+  if (phase === "sweep")
+    return (
+      <>
+        <div aria-hidden className="crt-sweep" />
+        <div aria-hidden className="warp">
+          {STREAKS.map((s, i) => (
+            <span key={i} className={s.white ? "is-white" : ""} style={{ transform: `rotate(${s.angle}deg)`, animationDelay: `${s.delay}ms`, width: s.len }} />
+          ))}
+        </div>
+      </>
+    );
 
   return (
     <div className="boot-screen" role="status" aria-live="off">

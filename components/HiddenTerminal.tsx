@@ -20,6 +20,13 @@ export function HiddenTerminal() {
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        if (open) return;
+        returnRef.current = document.activeElement as HTMLElement | null;
+        setOpen(true);
+        return;
+      }
       if (event.key !== "~" || open) return;
       const t = event.target as HTMLElement | null;
       if (t && (t.closest("input, textarea, select") || t.isContentEditable)) return;
