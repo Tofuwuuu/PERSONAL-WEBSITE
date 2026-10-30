@@ -38,6 +38,13 @@ function Skyline() {
             />
           ))}
         </g>
+        <g className="sky-drone">
+          <rect x="0" y="0" width="6" height="2" fill="#2fd3c4" />
+          <rect x="2" y="2" width="2" height="2" fill="#c4c3cf" />
+          <rect x="-1" y="-1" width="2" height="1" fill="#2fd3c4" />
+          <rect x="5" y="-1" width="2" height="1" fill="#2fd3c4" />
+          <rect x="2.5" y="4" width="1" height="1" fill="#ff2e88" className="sky-drone-led" />
+        </g>
         <polyline
           points={SKYLINE}
           fill="none"

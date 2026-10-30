@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { SiteShell } from "@/components/SiteShell";
+import { HiddenTerminal } from "@/components/HiddenTerminal";
 import { Trinkets } from "@/components/Trinkets";
+import { Trinkets2 } from "@/components/Trinkets2";
 import { profile } from "@/content/profile";
 
 const inter = Inter({
@@ -55,6 +57,8 @@ export default function RootLayout({
           </a>
           <SiteShell>{children}</SiteShell>
           <Trinkets />
+          <Trinkets2 />
+          <HiddenTerminal />
       </body>
     </html>
   );

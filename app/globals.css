@@ -748,7 +748,7 @@ a:not(.neon-btn):focus-visible {
 }
 .js-motion [data-reveal] .section-label {
   opacity: 0;
-  transition: opacity 400ms ease 150ms;
+  transition: opacity 300ms ease 380ms;
 }
 .js-motion [data-reveal] .section-brackets {
   opacity: 0;
@@ -1178,4 +1178,125 @@ html.night-rain .rain-drop { animation-play-state: running; }
     border: 1px solid theme(colors.navy-lighter);
     background: color-mix(in oklab, theme(colors.navy-light) 80%, transparent);
   }
+}
+
+/* ---------- Trinkets 2 ---------- */
+
+/* Section headers type "> loading" for ~300ms before the title. Hidden without JS or with reduced motion. */
+.section-loading { display: none; }
+.js-motion .section-loading {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  white-space: nowrap;
+  color: rgb(47 211 196 / 0.7);
+  opacity: 0;
+  pointer-events: none;
+}
+.js-motion [data-reveal].is-in .section-loading { animation: sectionLoading 380ms steps(1, end) forwards, sectionType 220ms steps(9, end) forwards; }
+@keyframes sectionLoading { 0%, 90% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes sectionType { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* The one dying-neon flicker: Projects label, a split second every 20 to 30s. */
+.section-label.is-flicker { animation: neonDie 450ms steps(1, end); }
+@keyframes neonDie {
+  0% { opacity: 1; }
+  12% { opacity: 0.15; }
+  20% { opacity: 1; }
+  34% { opacity: 0.3; text-shadow: none; }
+  42% { opacity: 1; text-shadow: 0 0 8px rgb(47 211 196 / 0.8); }
+  60% { opacity: 0.2; }
+  70%, 100% { opacity: 1; }
+}
+
+/* Time-of-day haze: tint only, kept faint and behind the text. */
+html.tod-sunset .city-haze {
+  background: radial-gradient(ellipse at 60% 80%, rgb(245 120 40 / 0.26), rgb(255 46 136 / 0.08) 45%, transparent 70%);
+}
+html.tod-night .city-haze {
+  background: radial-gradient(ellipse at 60% 80%, rgb(40 70 200 / 0.24), rgb(30 40 120 / 0.08) 45%, transparent 70%);
+}
+
+/* Copy email flash. */
+.copied-flash { opacity: 0; }
+.copied-flash.is-on { opacity: 1; }
+.js-motion .copied-flash.is-on { animation: copiedGlitch 260ms steps(2, end); }
+@keyframes copiedGlitch {
+  0% { transform: translateX(-3px); text-shadow: 2px 0 #ff2e88, -2px 0 #2fd3c4; clip-path: inset(0 0 45% 0); }
+  50% { transform: translateX(2px); text-shadow: -2px 0 #ff2e88, 2px 0 #2fd3c4; clip-path: inset(40% 0 0 0); }
+  100% { transform: none; text-shadow: none; clip-path: none; }
+}
+
+/* Footer skyline: hovered window and the pixel drone. */
+.skyline .sky-win.is-lit { opacity: 1 !important; fill: #f5d90a; filter: drop-shadow(0 0 3px #f5d90a); animation: none; }
+.sky-drone { display: none; }
+.js-motion .sky-drone {
+  display: inline;
+  animation: droneFly 60s linear infinite;
+  transform: translate(-40px, 14px);
+}
+.js-motion .sky-drone-led { animation: droneLed 600ms steps(2, end) infinite; }
+@keyframes droneFly {
+  0% { transform: translate(-40px, 14px); }
+  2% { transform: translate(120px, 10px); }
+  4.7% { transform: translate(420px, 16px); }
+  7.3% { transform: translate(760px, 8px); }
+  10% { transform: translate(1240px, 12px); }
+  100% { transform: translate(1240px, 12px); }
+}
+@keyframes droneLed { 50% { opacity: 0; } }
+
+/* Hidden terminal overlay. */
+.hidden-term-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  background: rgb(7 7 13 / 0.55);
+}
+.hidden-term {
+  width: min(560px, 100%);
+  max-height: min(420px, 70vh);
+  display: flex;
+  flex-direction: column;
+  background: #0b0b16;
+  margin-bottom: 8vh;
+}
+.hidden-term-body {
+  padding: 14px 16px;
+  overflow-y: auto;
+  line-height: 1.7;
+  color: #c4c3cf;
+}
+
+/* 404 street scene. */
+.lost-scene {
+  background:
+    linear-gradient(to bottom, transparent 55%, rgb(220 20 60 / 0.08)),
+    radial-gradient(ellipse at 50% 20%, rgb(47 211 196 / 0.08), transparent 60%),
+    #07070d;
+}
+.lost-street {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40px;
+  background: repeating-linear-gradient(90deg, rgb(245 217 10 / 0.35) 0 30px, transparent 30px 70px) center 18px / 100% 2px no-repeat, #0b0b16;
+}
+.lost-sign {
+  color: #ff2e88;
+  text-shadow: 0 0 6px rgb(255 46 136 / 0.8), 0 0 18px rgb(255 46 136 / 0.5);
+}
+.lost-sign { animation: signFlicker 4s steps(1, end) infinite; }
+@keyframes signFlicker {
+  0%, 18%, 22%, 60%, 63%, 100% { opacity: 1; }
+  20%, 61% { opacity: 0.25; text-shadow: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-loading, .sky-drone { display: none !important; }
+  .section-label.is-flicker, .lost-sign, .copied-flash.is-on { animation: none !important; }
 }
