@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { SiteShell } from "@/components/SiteShell";
+import { BootLoader } from "@/components/BootLoader";
 import { HiddenTerminal } from "@/components/HiddenTerminal";
 import { Trinkets } from "@/components/Trinkets";
 import { Trinkets2 } from "@/components/Trinkets2";
@@ -47,7 +48,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable} scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${firaCode.variable} scroll-smooth`}>
+      <head>
+        {/* Boot screen gate: only with JS, motion allowed, home page, first visit this session. Fails open after 1.5s. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(location.pathname==='/'&&!sessionStorage.getItem('mark-booted')&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var r=document.documentElement;r.classList.add('boot');setTimeout(function(){r.classList.remove('boot')},1500)}}catch(e){}",
+          }}
+        />
+      </head>
       <body className="min-h-dvh font-sans antialiased">
           <a
             href="#content"
@@ -59,6 +69,7 @@ export default function RootLayout({
           <Trinkets />
           <Trinkets2 />
           <HiddenTerminal />
+          <BootLoader />
       </body>
     </html>
   );

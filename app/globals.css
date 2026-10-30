@@ -1300,3 +1300,110 @@ html.tod-night .city-haze {
   .section-loading, .sky-drone { display: none !important; }
   .section-label.is-flicker, .lost-sign, .copied-flash.is-on { animation: none !important; }
 }
+
+/* ---------- Orion-inspired: boot screen, CRT turn-on, section scan ---------- */
+
+/* Covers the page while booting, even before React mounts (html.boot comes from the inline head script). */
+html.boot body { overflow: hidden; }
+html.boot body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  background: #07070d;
+}
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #07070d;
+  cursor: pointer;
+}
+.boot-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #2fd3c4;
+  box-shadow: 0 0 8px rgb(47 211 196 / 0.7);
+  transform-origin: left;
+}
+.boot-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  opacity: 0.7;
+}
+
+/* CRT turn-on: a teal line flashes across the middle, then opens to reveal the page. */
+.crt-sweep {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: #07070d;
+  animation: crtOpen 420ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+.crt-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #2fd3c4;
+  box-shadow: 0 0 12px #2fd3c4, 0 0 32px rgb(47 211 196 / 0.6);
+  animation: crtLine 420ms ease-out forwards;
+}
+@keyframes crtLine {
+  0% { transform: scaleX(0); opacity: 1; }
+  45% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1) scaleY(0.5); opacity: 0; }
+}
+@keyframes crtOpen {
+  0%, 45% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(50% 0 50% 0); }
+}
+
+/* City fades in after the sweep. */
+html.boot .neon-city { opacity: 0; }
+html.boot-intro .neon-city { animation: cityPowerOn 1100ms ease-out both; }
+@keyframes cityPowerOn {
+  0% { opacity: 0; filter: brightness(1.8); }
+  15% { opacity: 0.5; }
+  22% { opacity: 0.2; }
+  100% { opacity: 1; filter: none; }
+}
+
+/* Section reveal: a thin teal scan line passes down the section once. */
+.js-motion .section-framed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(47 211 196 / 0.8), transparent);
+  box-shadow: 0 0 10px rgb(47 211 196 / 0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+.js-motion .section-framed.is-in::after { animation: sectionScan 900ms cubic-bezier(0.3, 0, 0.3, 1) 1; }
+@keyframes sectionScan {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.boot body::after { display: none; }
+  .crt-sweep, .boot-screen { display: none; }
+  html.boot-intro .neon-city, .js-motion .section-framed.is-in::after { animation: none; }
+}
