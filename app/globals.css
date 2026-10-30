@@ -1079,6 +1079,15 @@ html.night-rain .rain-drop { animation-play-state: running; }
   to { transform: translateY(720px); }
 }
 
+/* PC experience: timeline runs down the left edge of the right column (280px left column + 40px gap). */
+@media (min-width: 1024px) {
+  .projects-glow { inset: -40px -48px; }
+  .timeline { padding-left: 0; }
+  .timeline::before,
+  .timeline-fill { left: 325px; }
+  .timeline-dot { left: 320px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .project-card:hover,
   .project-card:focus-within {
