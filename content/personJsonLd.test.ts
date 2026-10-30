@@ -10,7 +10,7 @@ describe("Person JSON-LD", () => {
       name: "Mark Roderick I. Salise",
       url: "https://markroderick.vercel.app/",
       jobTitle: "Junior Software Engineer",
-      description: "TypeScript, Python, and full-stack apps I can run and explain.",
+      description: "React, TypeScript and Python.",
       sameAs: [
         "https://github.com/Tofuwuuu",
         "https://www.linkedin.com/in/mark-roderick-salise-8ab9161a4/",
