@@ -1016,7 +1016,7 @@ html.has-custom-cursor * {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background: repeating-linear-gradient(to bottom, rgb(7 7 13 / 0.35) 0 1px, transparent 1px 3px);
+  background: repeating-linear-gradient(to bottom, rgb(7 7 13 / 0.08) 0 1px, transparent 1px 3px);
   transition: opacity 200ms ease;
 }
 .project-row:hover .project-thumb-scan,
