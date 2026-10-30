@@ -85,7 +85,7 @@ export function Sidebar() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-navy-lighter bg-navy/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-[72rem] items-center justify-between px-6 sm:px-10 lg:h-20">
+        <div className="mx-auto flex h-16 max-w-[72rem] items-center justify-between px-6 sm:px-10 lg:h-20 lg:max-w-[1200px] lg:px-12">
           <Link
             href="/"
             data-testid="header-name"

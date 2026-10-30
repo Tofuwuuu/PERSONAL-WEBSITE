@@ -4,7 +4,7 @@ import { profile } from "@/content/profile";
 export function About() {
   return (
     <Section id="about" number="01." title="About">
-      <div data-reveal className="terminal-panel">
+      <div data-reveal className="terminal-panel lg:max-w-[760px]">
         <div aria-hidden className="terminal-bar">
           <span className="terminal-dot bg-[#dc143c]" />
           <span className="terminal-dot bg-[#f0a500]" />

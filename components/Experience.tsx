@@ -7,18 +7,21 @@ export function Experience() {
       <div className="timeline space-y-10">
         <span aria-hidden className="timeline-fill" />
         {experience.map((job) => (
-          <article key={job.id} className="timeline-item relative">
+          <article key={job.id} className="timeline-item relative lg:grid lg:grid-cols-[280px_1fr] lg:gap-x-10">
             <span aria-hidden className="timeline-dot" />
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-green/80">
-              <span>
-                {job.start} to {job.end}
-              </span>
-            </div>
-            <div>
+            {/* PC: dates, role and company stay in a sticky left column. */}
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-green/80">
+                <span>
+                  {job.start} to {job.end}
+                </span>
+              </div>
               <h3 className="mt-1 text-lg font-semibold text-heading">
                 {job.role} · {job.company}
               </h3>
-              <ul className="mt-2 space-y-1.5 text-base leading-relaxed text-slate">
+            </div>
+            <div className="lg:max-w-[70ch] lg:pl-7">
+              <ul className="mt-2 space-y-1.5 lg:mt-0 text-base leading-relaxed text-slate">
                 {job.bullets.map((bullet) => (
                   <li key={bullet} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-slate">
                     {bullet}

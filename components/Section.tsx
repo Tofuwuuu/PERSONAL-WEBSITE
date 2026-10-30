@@ -14,7 +14,7 @@ export function Section({
 }>) {
   return (
     <FadeIn>
-      <section id={id} data-reveal className="section-framed relative scroll-mt-24 py-10 md:py-12">
+      <section id={id} data-reveal className="section-framed relative scroll-mt-24 py-10 md:py-12 lg:py-8">
         <span aria-hidden className="section-brackets" />
         <h2 className="mb-8 flex items-end gap-3 font-mono text-sm font-bold uppercase tracking-[0.2em] text-green">
           {number ? (
