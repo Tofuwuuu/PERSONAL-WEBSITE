@@ -1084,8 +1084,8 @@ html.night-rain .rain-drop { animation-play-state: running; }
   .projects-glow { inset: -40px -48px; }
   .timeline { padding-left: 0; }
   .timeline::before,
-  .timeline-fill { left: 325px; }
-  .timeline-dot { left: 320px; }
+  .timeline-fill { left: 320px; }
+  .timeline-dot { left: 315px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

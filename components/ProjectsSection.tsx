@@ -19,10 +19,10 @@ export function ProjectsSection() {
     <Section id="projects" number="02." title="Projects">
       <div className="relative">
         <div aria-hidden className="projects-glow" />
-        <ul className="relative space-y-14 lg:grid lg:grid-cols-2 lg:gap-8 lg:space-y-0">
+        <ul className="relative space-y-14 lg:grid lg:grid-cols-2 lg:gap-8 min-[1440px]:grid-cols-3 lg:space-y-0">
           {ordered.map((project, index) => {
             const cardImage = getProjectCardImage(project.slug);
-            // PC: two-column card grid; screenshots slide in from alternating sides.
+            // PC: card grid (2 columns, 3 from 1440px); screenshots slide in from alternating sides.
             const flip = index % 2 === 1;
 
             return (
@@ -34,14 +34,14 @@ export function ProjectsSection() {
                   <span aria-hidden className="row-brackets" />
                   {cardImage ? (
                     <div className={`project-media ${flip ? "from-right" : "from-left"}`}>
-                      <div className="project-frame mb-5">
-                        <div className="project-thumb relative aspect-[16/10] w-full overflow-hidden">
+                      <div className="project-frame mb-5 lg:mb-4">
+                        <div className="project-thumb relative aspect-[16/10] w-full lg:aspect-video lg:max-h-[240px] overflow-hidden">
                           <Image
                             src={cardImage.src}
                             alt={cardImage.alt}
                             fill
                             className="object-cover object-top"
-                            sizes="(min-width: 1024px) 552px, (min-width: 680px) 632px, 100vw"
+                            sizes="(min-width: 1440px) 360px, (min-width: 1024px) 552px, (min-width: 680px) 632px, 100vw"
                           />
                           <span aria-hidden className="project-thumb-tint" />
                           <span aria-hidden className="project-thumb-scan" />
