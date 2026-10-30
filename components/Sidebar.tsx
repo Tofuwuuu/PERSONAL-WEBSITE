@@ -92,7 +92,8 @@ export function Sidebar() {
             className="logo spring inline-flex items-center gap-2 rounded-lg font-mono text-base font-bold tracking-tight text-heading"
           >
             <span aria-hidden className="logo-mark">&gt;_</span>
-            {profile.name.split(" ")[0]}
+            <span className="logo-type">{profile.name.split(" ")[0]}</span>
+            <span aria-hidden className="logo-cursor" />
           </Link>
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-8">{links}</ul>
