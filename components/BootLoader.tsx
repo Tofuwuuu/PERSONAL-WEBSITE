@@ -70,7 +70,7 @@ export function BootLoader() {
         <p className="text-sm tracking-[0.2em] text-heading sm:text-base">&gt; BOOTING MARK.SYS</p>
         <p className="mt-3 text-3xl font-bold tabular-nums text-green">{String(pct).padStart(3, "0")}%</p>
       </div>
-      <p className="boot-hint font-mono text-xs text-slate">Press any key to skip</p>
+      <p className="boot-hint font-mono text-[12px] text-heading">Press any key to skip</p>
     </div>
   );
 }
