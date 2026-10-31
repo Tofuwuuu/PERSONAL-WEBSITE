@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CrtToggle } from "@/components/CrtToggle";
 import { useEffect, useState } from "react";
 import { GitHubIcon, LinkedInIcon } from "@/components/SocialIcons";
 import { navItems } from "@/content/navigation";
@@ -95,9 +96,11 @@ export function Sidebar() {
             <span className="logo-type">{profile.name.split(" ")[0]}</span>
             <span aria-hidden className="logo-cursor" />
           </Link>
+          <div className="flex items-center gap-4 lg:gap-6">
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-8">{links}</ul>
           </nav>
+          <CrtToggle />
           <button
             type="button"
             className="neon-btn spring rounded-lg border border-green/40 px-3 py-1.5 font-mono text-xs text-green transition hover:bg-green/10 lg:hidden"
@@ -107,6 +110,7 @@ export function Sidebar() {
           >
             Menu
           </button>
+          </div>
         </div>
       </header>
 

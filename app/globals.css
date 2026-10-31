@@ -1016,7 +1016,7 @@ html.has-custom-cursor * {
   inset: 0;
   pointer-events: none;
   opacity: 0;
-  background: repeating-linear-gradient(to bottom, rgb(7 7 13 / 0.35) 0 1px, transparent 1px 3px);
+  background: repeating-linear-gradient(to bottom, rgb(7 7 13 / 0.08) 0 1px, transparent 1px 3px);
   transition: opacity 200ms ease;
 }
 .project-row:hover .project-thumb-scan,
@@ -1299,4 +1299,190 @@ html.tod-night .city-haze {
 @media (prefers-reduced-motion: reduce) {
   .section-loading, .sky-drone { display: none !important; }
   .section-label.is-flicker, .lost-sign, .copied-flash.is-on { animation: none !important; }
+}
+
+/* ---------- Orion-inspired: boot screen, CRT turn-on, section scan ---------- */
+
+/* Covers the page while booting, even before React mounts (html.boot comes from the inline head script). */
+html.boot body { overflow: hidden; }
+html.boot body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  background: #07070d;
+}
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #07070d;
+  cursor: pointer;
+}
+.boot-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #2fd3c4;
+  box-shadow: 0 0 8px rgb(47 211 196 / 0.7);
+  transform-origin: left;
+}
+.boot-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  opacity: 0.55;
+}
+
+/* CRT turn-on: a teal line flashes across the middle, then opens to reveal the page. */
+.crt-sweep {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: #07070d;
+  animation: crtOpen 420ms cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+.crt-sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: #2fd3c4;
+  box-shadow: 0 0 12px #2fd3c4, 0 0 32px rgb(47 211 196 / 0.6);
+  animation: crtLine 420ms ease-out forwards;
+}
+@keyframes crtLine {
+  0% { transform: scaleX(0); opacity: 1; }
+  45% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1) scaleY(0.5); opacity: 0; }
+}
+@keyframes crtOpen {
+  0%, 45% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(50% 0 50% 0); }
+}
+
+/* City fades in after the sweep. */
+html.boot .neon-city { opacity: 0; }
+html.boot-intro .neon-city { animation: cityPowerOn 1100ms ease-out both; }
+@keyframes cityPowerOn {
+  0% { opacity: 0; filter: brightness(1.8); }
+  15% { opacity: 0.5; }
+  22% { opacity: 0.2; }
+  100% { opacity: 1; filter: none; }
+}
+
+/* Section reveal: a thin teal scan line passes down the section once. */
+.js-motion .section-framed::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(47 211 196 / 0.8), transparent);
+  box-shadow: 0 0 10px rgb(47 211 196 / 0.5);
+  opacity: 0;
+  pointer-events: none;
+}
+.js-motion .section-framed.is-in::after { animation: sectionScan 900ms cubic-bezier(0.3, 0, 0.3, 1) 1; }
+@keyframes sectionScan {
+  0% { top: 0; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.8; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.boot body::after { display: none; }
+  .crt-sweep, .boot-screen { display: none; }
+  html.boot-intro .neon-city, .js-motion .section-framed.is-in::after { animation: none; }
+}
+
+/* ---------- Trinkets 3 ---------- */
+
+/* Light-speed streaks during the CRT turn-on (boot screen sessions only). */
+.warp {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  pointer-events: none;
+}
+.warp span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1.5px;
+  transform-origin: 0 50%;
+}
+.warp span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, #2fd3c4);
+  box-shadow: 0 0 6px rgb(47 211 196 / 0.7);
+  opacity: 0;
+  animation: warpStreak 400ms cubic-bezier(0.5, 0, 0.9, 0.4) forwards;
+  animation-delay: inherit;
+}
+.warp span.is-white::before { background: linear-gradient(90deg, transparent, #f1f0f5); box-shadow: 0 0 6px rgb(241 240 245 / 0.6); }
+@keyframes warpStreak {
+  0% { opacity: 0; transform: translateX(20px) scaleX(0.2); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(70vmax) scaleX(1.4); }
+}
+
+/* Colour split on project screenshots: teal and magenta copies offset 3px for ~200ms, then settle. Image only. */
+.thumb-split {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: top;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+/* Image only loads on first hover. */
+.project-row:hover .thumb-split { background-image: var(--thumb); }
+.thumb-split-a { background-color: #2fd3c4; background-blend-mode: multiply; }
+.thumb-split-b { background-color: #ff2e88; background-blend-mode: multiply; }
+.project-row:hover .thumb-split-a { animation: splitA 220ms steps(4, end); }
+.project-row:hover .thumb-split-b { animation: splitB 220ms steps(4, end); }
+@keyframes splitA { 0% { opacity: 0.7; transform: translateX(-3px); } 60% { opacity: 0.5; transform: translateX(-2px); } 100% { opacity: 0; transform: none; } }
+@keyframes splitB { 0% { opacity: 0.7; transform: translateX(3px); } 60% { opacity: 0.5; transform: translateX(2px); } 100% { opacity: 0; transform: none; } }
+
+/* Card tilt (set inline by CardTilt); eases back on leave. */
+.project-row { transition: transform 450ms var(--spring, ease-out); will-change: auto; }
+.project-row.is-tilting { transition: transform 80ms linear; }
+
+/* CRT switch: faint scanlines and a slight colour fringe over the whole page. */
+html.crt body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgb(0 0 0 / 0.16) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 60%, rgb(0 0 0 / 0.25));
+}
+html.crt body { text-shadow: 0.6px 0 rgb(255 46 136 / 0.35), -0.6px 0 rgb(47 211 196 / 0.35); }
+html.crt.js-motion body::before { animation: crtRoll 8s linear infinite; }
+@keyframes crtRoll { to { background-position: 0 3px, 0 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .warp { display: none; }
+  .project-row:hover .thumb-split-a,
+  .project-row:hover .thumb-split-b,
+  html.crt body::before { animation: none; }
+  .project-row { transition: none; }
 }

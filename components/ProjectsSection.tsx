@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectStatusChip } from "@/components/ProjectStatusChip";
+import { CardTilt } from "@/components/CardTilt";
 import { Section } from "@/components/Section";
 import { getProjectCardImage } from "@/content/projectImages";
 import { projects } from "@/content/projects";
@@ -19,6 +20,7 @@ export function ProjectsSection() {
     <Section id="projects" number="02." title="Projects">
       <div className="relative">
         <div aria-hidden className="projects-glow" />
+        <CardTilt />
         <ul className="relative space-y-14 lg:grid lg:grid-cols-2 lg:gap-8 min-[1440px]:grid-cols-3 lg:space-y-0">
           {ordered.map((project, index) => {
             const cardImage = getProjectCardImage(project.slug);
@@ -35,7 +37,7 @@ export function ProjectsSection() {
                   {cardImage ? (
                     <div className={`project-media ${flip ? "from-right" : "from-left"}`}>
                       <div className="project-frame mb-5 lg:mb-4">
-                        <div className="project-thumb relative aspect-[16/10] w-full lg:aspect-video lg:max-h-[240px] overflow-hidden">
+                        <div style={{ "--thumb": `url(${cardImage.src.src})` } as React.CSSProperties} className="project-thumb relative aspect-[16/10] w-full lg:aspect-video lg:max-h-[240px] overflow-hidden">
                           <Image
                             src={cardImage.src}
                             alt={cardImage.alt}
@@ -45,6 +47,8 @@ export function ProjectsSection() {
                           />
                           <span aria-hidden className="project-thumb-tint" />
                           <span aria-hidden className="project-thumb-scan" />
+                          <span aria-hidden className="thumb-split thumb-split-a" />
+                          <span aria-hidden className="thumb-split thumb-split-b" />
                         </div>
                       </div>
                     </div>

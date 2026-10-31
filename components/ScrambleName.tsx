@@ -16,7 +16,7 @@ export function ScrambleName({ text }: { text: string }) {
       return;
     }
     const duration = 600;
-    const start = performance.now();
+    let start = performance.now();
     let frame = 0;
     const tick = (now: number) => {
       const progress = Math.min(1, (now - start) / duration);
@@ -30,8 +30,20 @@ export function ScrambleName({ text }: { text: string }) {
       if (progress < 1) frame = requestAnimationFrame(tick);
       else setDone(true);
     };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
+    // Wait for the boot screen (first visit) to finish before scrambling.
+    const begin = () => {
+      start = performance.now();
+      frame = requestAnimationFrame(tick);
+    };
+    if (document.documentElement.classList.contains("boot")) {
+      window.addEventListener("mark:booted", begin, { once: true });
+    } else {
+      begin();
+    }
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("mark:booted", begin);
+    };
   }, [text]);
 
   return (
