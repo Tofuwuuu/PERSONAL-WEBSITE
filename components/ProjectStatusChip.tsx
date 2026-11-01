@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import { GitHubIcon } from "@/components/SocialIcons";
 import { VideoWalkthroughDialog } from "@/components/VideoWalkthroughDialog";
 import {
+  badgeChipClass,
   chipLayoutClass,
   liveChipClass,
   previewChipClass,
@@ -22,6 +23,16 @@ function PlayIcon() {
 }
 
 export function ProjectStatusChip({ project }: { project: Project }) {
+  if (!project.badge) return <StatusChip project={project} />;
+  return (
+    <span className="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <span className={`${chipLayoutClass.replace("neon-btn ", "")} ${badgeChipClass} uppercase`}>{project.badge}</span>
+      <StatusChip project={project} />
+    </span>
+  );
+}
+
+function StatusChip({ project }: { project: Project }) {
   const status = getProjectStatus(project);
   const [videoOpen, setVideoOpen] = useState(false);
   const dialogId = useId();
