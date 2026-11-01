@@ -11,17 +11,7 @@ import { HyperledgerCaseStudy } from "@/components/HyperledgerCaseStudy";
 import { ProcurementCaseStudy } from "@/components/ProcurementCaseStudy";
 import { CollaborativeCaseStudy } from "@/components/CollaborativeCaseStudy";
 import { PlaceholderCaseStudy } from "@/components/PlaceholderCaseStudy";
-import ecommerceStorefrontImage from "@/src/Ecommerce/1.jpg";
-import ecommerceAdminImage from "@/src/Ecommerce/2.jpg";
-import smartdocUploadImage from "@/src/SmartDocAnalyzer/1.png";
-import smartdocInsightsImage from "@/src/SmartDocAnalyzer/2.png";
-import todoListPreviewImage from "@/src/todolist/1.jpg";
-import calculatorPreviewImage from "@/src/calculator/calculator.jpg";
-import onChainWallet1Image from "@/src/OnChainWallet/1.png";
-import onChainWallet2Image from "@/src/OnChainWallet/2.png";
-import onChainWallet3Image from "@/src/OnChainWallet/3.png";
-import defiTrackerPreviewImage from "@/src/defiTracker/Screenshot 2026-08-20 142908.png";
-import todoListDappPreviewImage from "@/src/toDoListD/Screenshot 2026-08-19 204344.png";
+import { caseStudyScreens } from "@/content/caseStudyScreens";
 import { getProjectCardImage } from "@/content/projectImages";
 
 export function generateStaticParams() {
@@ -61,6 +51,50 @@ export default async function ProjectDetailPage({
   const showPlaceholderCaseStudy = project.placeholder && !hasCardScreenshot;
   const disableHeaderLinks = showPlaceholderCaseStudy && !hasWorkingLinks;
 
+  const hero = getProjectCardImage(slug);
+  const screens = caseStudyScreens[slug] ?? [];
+  const index = projects.findIndex((p) => p.slug === slug);
+  const next = projects[(index + 1) % projects.length];
+
+  const panel = (
+    <aside className="case-panel lg:sticky lg:top-28">
+      {project.links.length ? (
+        <div className="flex flex-wrap items-center gap-3">
+          {disableHeaderLinks ? (
+            project.links.map((l) => (
+              <span
+                key={l.href + l.label}
+                className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
+              >
+                {l.label} (soon)
+              </span>
+            ))
+          ) : (
+            <>
+              <ProjectStatusChip project={project} />
+              {secondaryLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </>
+          )}
+        </div>
+      ) : null}
+      <div className="mt-5 flex flex-wrap gap-2">
+        {project.stack.map((s) => (
+          <Badge key={s}>{s}</Badge>
+        ))}
+      </div>
+    </aside>
+  );
+
   return (
     <div className="py-8 md:py-12">
       <div className="mb-6">
@@ -87,263 +121,104 @@ export default async function ProjectDetailPage({
             Placeholder case study — content and links will be updated soon.
           </p>
         ) : null}
-        <div className="mt-6 flex flex-wrap gap-2">
-          {project.stack.map((s) => (
-            <Badge key={s}>{s}</Badge>
-          ))}
-        </div>
-        {project.links.length ? (
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            {disableHeaderLinks ? (
-              project.links.map((l) => (
-                <span
-                  key={l.href + l.label}
-                  className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
-                >
-                  {l.label} (soon)
-                </span>
-              ))
-            ) : (
-              <>
-                <ProjectStatusChip project={project} />
-                {secondaryLinks.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </>
-            )}
-          </div>
-        ) : null}
       </header>
 
-      <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
-        <h2 className="text-lg font-semibold tracking-tight text-text">
-          Highlights
-        </h2>
-        <ul className="mt-4 space-y-3 text-sm text-muted">
-          {project.highlights.map((h) => (
-            <li key={h} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
-              <span className="text-pretty leading-relaxed">{h}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {showPlaceholderCaseStudy ? (
-        <PlaceholderCaseStudy title={project.title} />
-      ) : null}
-
-      {project.slug === "hyperledger-blockchain-verification" ? (
-        <HyperledgerCaseStudy />
-      ) : null}
-
-      {project.slug === "procurement-blockchain-system" ? (
-        <ProcurementCaseStudy />
-      ) : null}
-
-      {project.slug === "collaborative-realtime-document-editor" ? (
-        <CollaborativeCaseStudy />
-      ) : null}
-
-      {project.slug === "fashion-ecommerce-platform" ? (
-        <PreviewSection
-          title="Project Screens"
-          description="Key views from the fashion e-commerce platform."
-        >
-          <div className="grid gap-6 md:grid-cols-2">
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={ecommerceStorefrontImage}
-                alt="Fashion e-commerce storefront preview"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Storefront
-              </figcaption>
-            </figure>
-
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={ecommerceAdminImage}
-                alt="Fashion e-commerce admin dashboard preview"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Admin dashboard
-              </figcaption>
-            </figure>
-          </div>
-        </PreviewSection>
-      ) : null}
-
-      {project.slug === "smartdoc-analyzer" ? (
-        <PreviewSection
-          title="Project Screens"
-          description="Upload flow and document insights from SmartDoc Analyzer."
-        >
-          <div className="grid gap-6 md:grid-cols-2">
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={smartdocUploadImage}
-                alt="SmartDoc Analyzer dashboard and upload"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Dashboard & upload
-              </figcaption>
-            </figure>
-
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={smartdocInsightsImage}
-                alt="SmartDoc Analyzer document insights and entities"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Document insights
-              </figcaption>
-            </figure>
-          </div>
-        </PreviewSection>
-      ) : null}
-
-      {project.slug === "todo-list-vanilla-js" ? (
-        <PreviewSection
-          title="Project Screen"
-          description="Main view of the vanilla JavaScript to-do list."
-        >
-          <figure className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+      {hero ? (
+        <a href={hero.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame mt-8 block">
+          <span className="relative block aspect-video w-full overflow-hidden">
             <Image
-              src={todoListPreviewImage}
-              alt="Vanilla JavaScript to-do list app"
-              className="h-auto w-full object-cover object-top"
+              src={hero.src}
+              alt={hero.alt}
+              fill
+              priority
+              sizes="(min-width: 1280px) 1104px, 100vw"
+              className="object-cover object-top"
             />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              Task list UI
-            </figcaption>
-          </figure>
-        </PreviewSection>
+          </span>
+          <span className="sr-only"> (opens full size)</span>
+        </a>
       ) : null}
 
-      {project.slug === "defi-portfolio-tracker" ? (
-        <PreviewSection
-          title="Project Screen"
-          description="DeFi portfolio tracker dashboard."
-        >
-          <figure className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-            <Image
-              src={defiTrackerPreviewImage}
-              alt="DeFi portfolio tracker dashboard"
-              className="h-auto w-full object-cover object-top"
-            />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              Portfolio dashboard
-            </figcaption>
-          </figure>
-        </PreviewSection>
-      ) : null}
+      <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-10">
+        <div className="mb-8 lg:order-2 lg:mb-0">{panel}</div>
 
-      {project.slug === "todo-list-dapp" ? (
-        <PreviewSection
-          title="Project Screen"
-          description="Calendar to-do DApp with on-chain task storage."
-        >
-          <figure className="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-            <Image
-              src={todoListDappPreviewImage}
-              alt="To-do list DApp calendar view"
-              className="h-auto w-full object-cover object-top"
-            />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              Calendar to-do view
-            </figcaption>
-          </figure>
-        </PreviewSection>
-      ) : null}
+        <div className="min-w-0 lg:order-1">
+          {project.highlights.length > 0 ? (
+            <section className="surface-soft rounded-3xl p-6 md:p-8">
+              <h2 className="text-lg font-semibold tracking-tight text-text">Highlights</h2>
+              <ul className="mt-4 space-y-3 text-sm text-muted">
+                {project.highlights.map((h) => (
+                  <li key={h} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
+                    <span className="text-pretty leading-relaxed">{renderInlineCode(h)}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
-      {project.slug === "on-chain-wallet-risk-analyzer" ? (
-        <PreviewSection
-          title="Project Screens"
-          description="Wallet analysis, scoring, and report views from the risk analyzer."
-        >
-          <div className="grid gap-6 md:grid-cols-2">
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20 md:col-span-2">
-              <Image
-                src={onChainWallet1Image}
-                alt="On-chain wallet risk analyzer home"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Analyze wallet
-              </figcaption>
-            </figure>
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={onChainWallet2Image}
-                alt="Wallet risk score breakdown"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Risk score & factors
-              </figcaption>
-            </figure>
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-              <Image
-                src={onChainWallet3Image}
-                alt="Shareable wallet risk report"
-                className="h-auto w-full object-cover object-top"
-              />
-              <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-                Report view
-              </figcaption>
-            </figure>
-          </div>
-        </PreviewSection>
-      ) : null}
+          {screens.length > 0 ? (
+            <section className="mt-8">
+              <h2 className="text-lg font-semibold tracking-tight text-text">What it does</h2>
+              <ul className="mt-5 grid gap-6 md:grid-cols-2">
+                {screens.map((shot) => (
+                  <li key={shot.src.src}>
+                    <figure>
+                      <a href={shot.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame block">
+                        <span className="relative block aspect-[16/10] w-full overflow-hidden bg-navy">
+                          <Image
+                            src={shot.src}
+                            alt={shot.alt}
+                            fill
+                            sizes="(min-width: 1024px) 400px, 100vw"
+                            className={shot.portrait ? "object-contain" : "object-cover object-top"}
+                          />
+                        </span>
+                        <span className="sr-only"> (opens full size)</span>
+                      </a>
+                      {shot.caption ? (
+                        <figcaption className="mt-3 text-sm leading-relaxed text-muted">{shot.caption}</figcaption>
+                      ) : null}
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
-      {project.slug === "calculator" ? (
-        <PreviewSection
-          title="Project Screen"
-          description="Calculator UI built with HTML, CSS, and JavaScript."
-        >
-          <figure className="mx-auto max-w-md overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-            <Image
-              src={calculatorPreviewImage}
-              alt="Calculator web app"
-              className="h-auto w-full object-cover object-top"
-            />
-            <figcaption className="border-t border-white/10 px-4 py-3 text-xs text-muted">
-              Calculator
-            </figcaption>
-          </figure>
-        </PreviewSection>
+          {showPlaceholderCaseStudy ? <PlaceholderCaseStudy title={project.title} /> : null}
+          {project.slug === "hyperledger-blockchain-verification" ? <HyperledgerCaseStudy /> : null}
+          {project.slug === "procurement-blockchain-system" ? <ProcurementCaseStudy /> : null}
+          {project.slug === "collaborative-realtime-document-editor" ? <CollaborativeCaseStudy /> : null}
+        </div>
+      </div>
+
+      {next && next.slug !== project.slug ? (
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <Link
+            href={`/projects/${next.slug}`}
+            className="link-arrow inline-flex items-center gap-2 font-mono text-sm text-green underline-offset-4 hover:underline focus-visible:underline"
+          >
+            Next: {next.title}
+            <span aria-hidden className="arrow">&rarr;</span>
+          </Link>
+        </div>
       ) : null}
     </div>
   );
 }
 
-function PreviewSection({
-  title,
-  description,
-  children,
-}: {
-  title: string;
-  description: string;
-  children: ReactNode;
-}) {
-  return (
-    <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
-      <h2 className="text-lg font-semibold tracking-tight text-text">{title}</h2>
-      <p className="mt-2 text-sm text-muted">{description}</p>
-      <div className="mt-6">{children}</div>
-    </section>
+/** Text in backticks becomes an inline code chip; the backticks themselves are dropped. */
+function renderInlineCode(text: string): ReactNode {
+  const parts = text.split("`");
+  if (parts.length < 3) return text;
+  return parts.map((part, i) =>
+    i % 2 === 1 ? (
+      <code key={i} className="rounded border border-green/30 bg-green/10 px-1.5 py-0.5 font-mono text-[0.85em] text-green">
+        {part}
+      </code>
+    ) : (
+      part
+    ),
   );
 }
