@@ -10,6 +10,10 @@ export const videoChipClass =
 export const repoChipClass =
   "border-[#9aa8ba] bg-[#6b7280] text-[#ffffff] hover:border-[#e8eef6]";
 
+/** Non-link status badge, teal outline. */
+export const badgeChipClass =
+  "border-[#2fd3c4] bg-transparent text-[#2fd3c4]";
+
 export const previewChipClass =
   "border-[#9aa8ba] bg-transparent text-[#f1f0f5] hover:border-[#e8eef6] hover:bg-[#101019]";
 

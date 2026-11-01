@@ -123,6 +123,7 @@ export default async function ProjectDetailPage({
         ) : null}
       </header>
 
+      {project.highlights.length > 0 ? (
       <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
         <h2 className="text-lg font-semibold tracking-tight text-text">
           Highlights
@@ -136,6 +137,7 @@ export default async function ProjectDetailPage({
           ))}
         </ul>
       </section>
+      ) : null}
 
       {showPlaceholderCaseStudy ? (
         <PlaceholderCaseStudy title={project.title} />
