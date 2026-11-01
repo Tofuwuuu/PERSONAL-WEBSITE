@@ -165,13 +165,13 @@ export default async function ProjectDetailPage({
                   <li key={shot.src.src}>
                     <figure>
                       <a href={shot.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame block">
-                        <span className="relative block aspect-video w-full overflow-hidden bg-navy">
+                        <span className="relative block aspect-video w-full overflow-hidden bg-[#0b0c0a]">
                           <Image
                             src={shot.src}
                             alt={shot.alt}
                             fill
                             sizes="(min-width: 1024px) 400px, 100vw"
-                            className="object-cover object-top"
+                            className={shot.portrait ? "object-contain object-center" : "object-cover object-top"}
                           />
                         </span>
                         <span className="sr-only"> (opens full size)</span>

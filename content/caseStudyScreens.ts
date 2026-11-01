@@ -15,6 +15,8 @@ export type CaseStudyScreen = {
   alt: string;
   /** Only when it describes what is visibly on screen. */
   caption?: string;
+  /** Tall phone shot: shown whole (contain) at a scale matching the desktop tiles. */
+  portrait?: boolean;
 };
 
 /**
@@ -43,6 +45,7 @@ export const caseStudyScreens: Record<string, CaseStudyScreen[]> = {
       src: gymHistory,
       alt: "History list of completed sessions on a phone",
       caption: "Open any past session to see what you lifted.",
+      portrait: true,
     },
     {
       src: gymProgress,
