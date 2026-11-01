@@ -54,7 +54,7 @@ export const caseStudyScreens: Record<string, CaseStudyScreen[]> = {
     {
       src: aiAnalytics,
       alt: "AI Ops Archivist analytics insights",
-      caption: "See tickets handled, approval rate, and average confidence, built from real ticket data.",
+      caption: "See tickets handled, approval rate, and average confidence, computed live from the tickets in the app.",
     },
   ],
   "smartdoc-analyzer": [
