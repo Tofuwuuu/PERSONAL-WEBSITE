@@ -1,10 +1,9 @@
 import type { StaticImageData } from "next/image";
+import gymHero from "@/src/gym-app-tracker/hero.png";
 import gymWorkout from "@/src/gym-app-tracker/workout.png";
 import gymRoutines from "@/src/gym-app-tracker/routines.png";
 import gymHistory from "@/src/gym-app-tracker/history-phone.png";
 import gymProgress from "@/src/gym-app-tracker/progress.png";
-import aiInbox from "@/src/ai-ops-assistant/inbox.png";
-import aiTicket from "@/src/ai-ops-assistant/ticket-detail.png";
 import aiAnalytics from "@/src/ai-ops-assistant/analytics.png";
 import smartdocInsights from "@/src/SmartDocAnalyzer/2.png";
 import ecommerceAdmin from "@/src/Ecommerce/2.jpg";
@@ -16,8 +15,6 @@ export type CaseStudyScreen = {
   alt: string;
   /** Only when it describes what is visibly on screen. */
   caption?: string;
-  /** Tall phone shots are shown whole instead of cropped. */
-  portrait?: boolean;
 };
 
 /**
@@ -25,6 +22,11 @@ export type CaseStudyScreen = {
  * The hero shot is the project's card image. Projects with their own case study
  * component (Hyperledger, Procurement, Collaborative) keep their existing galleries.
  */
+/** Hero overrides where the card image does not crop cleanly to 16:9. */
+export const caseStudyHeroes: Record<string, { src: StaticImageData; alt: string }> = {
+  "gym-app-tracker": { src: gymHero, alt: "Gym App Tracker overview with stats, calendar and equipment" },
+};
+
 export const caseStudyScreens: Record<string, CaseStudyScreen[]> = {
   "gym-app-tracker": [
     {
@@ -41,19 +43,44 @@ export const caseStudyScreens: Record<string, CaseStudyScreen[]> = {
       src: gymHistory,
       alt: "History list of completed sessions on a phone",
       caption: "Open any past session to see what you lifted.",
-      portrait: true,
     },
-    { src: gymProgress, alt: "Progress page with training volume, estimated 1RM and personal records" },
+    {
+      src: gymProgress,
+      alt: "Progress page with training volume, estimated 1RM and personal records",
+      caption: "Track training volume, estimated one-rep max, and personal records over time.",
+    },
   ],
   "ai-ops-assistant": [
-    { src: aiInbox, alt: "AI Ops Archivist inbox" },
-    { src: aiTicket, alt: "AI Ops Archivist ticket detail" },
-    { src: aiAnalytics, alt: "AI Ops Archivist analytics" },
+    {
+      src: aiAnalytics,
+      alt: "AI Ops Archivist analytics insights",
+      caption: "See tickets handled, approval rate, and average confidence, built from real ticket data.",
+    },
   ],
-  "smartdoc-analyzer": [{ src: smartdocInsights, alt: "SmartDoc Analyzer document insights and entities" }],
-  "fashion-ecommerce-platform": [{ src: ecommerceAdmin, alt: "Fashion e-commerce admin dashboard preview" }],
+  "smartdoc-analyzer": [
+    {
+      src: smartdocInsights,
+      alt: "SmartDoc Analyzer document summary and compliance risk flags",
+      caption: "Upload a contract and get a summary plus risk flags, like missing termination or liability clauses.",
+    },
+  ],
+  "fashion-ecommerce-platform": [
+    {
+      src: ecommerceAdmin,
+      alt: "Atelier Commerce storefront with featured products and prices",
+      caption: "Browse the store like a shopper, with seeded products, variants and prices in pesos.",
+    },
+  ],
   "on-chain-wallet-risk-analyzer": [
-    { src: wallet2, alt: "Wallet risk score breakdown" },
-    { src: wallet3, alt: "Shareable wallet risk report" },
+    {
+      src: wallet2,
+      alt: "Wallet report with a low risk score",
+      caption: "A wallet report with a 0 to 100 risk score, flagged activity, and a breakdown of what raised it.",
+    },
+    {
+      src: wallet3,
+      alt: "Wallet report with a critical risk score",
+      caption: "A critical-risk wallet, flagged for blacklist ties and large sudden transfers. Share it or save it as a PDF.",
+    },
   ],
 };

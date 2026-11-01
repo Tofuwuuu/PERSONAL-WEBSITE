@@ -11,7 +11,7 @@ import { HyperledgerCaseStudy } from "@/components/HyperledgerCaseStudy";
 import { ProcurementCaseStudy } from "@/components/ProcurementCaseStudy";
 import { CollaborativeCaseStudy } from "@/components/CollaborativeCaseStudy";
 import { PlaceholderCaseStudy } from "@/components/PlaceholderCaseStudy";
-import { caseStudyScreens } from "@/content/caseStudyScreens";
+import { caseStudyHeroes, caseStudyScreens } from "@/content/caseStudyScreens";
 import { getProjectCardImage } from "@/content/projectImages";
 
 export function generateStaticParams() {
@@ -51,13 +51,13 @@ export default async function ProjectDetailPage({
   const showPlaceholderCaseStudy = project.placeholder && !hasCardScreenshot;
   const disableHeaderLinks = showPlaceholderCaseStudy && !hasWorkingLinks;
 
-  const hero = getProjectCardImage(slug);
+  const hero = caseStudyHeroes[slug] ?? getProjectCardImage(slug);
   const screens = caseStudyScreens[slug] ?? [];
   const index = projects.findIndex((p) => p.slug === slug);
   const next = projects[(index + 1) % projects.length];
 
   const panel = (
-    <aside className="case-panel lg:sticky lg:top-28">
+    <aside className="case-panel surface-soft rounded-3xl p-6">
       {project.links.length ? (
         <div className="flex flex-wrap items-center gap-3">
           {disableHeaderLinks ? (
@@ -140,7 +140,7 @@ export default async function ProjectDetailPage({
       ) : null}
 
       <div className="mt-8 lg:grid lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start lg:gap-10">
-        <div className="mb-8 lg:order-2 lg:mb-0">{panel}</div>
+        <div className="mb-8 lg:sticky lg:top-28 lg:order-2 lg:mb-0">{panel}</div>
 
         <div className="min-w-0 lg:order-1">
           {project.highlights.length > 0 ? (
@@ -165,13 +165,13 @@ export default async function ProjectDetailPage({
                   <li key={shot.src.src}>
                     <figure>
                       <a href={shot.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame block">
-                        <span className="relative block aspect-[16/10] w-full overflow-hidden bg-navy">
+                        <span className="relative block aspect-video w-full overflow-hidden bg-navy">
                           <Image
                             src={shot.src}
                             alt={shot.alt}
                             fill
                             sizes="(min-width: 1024px) 400px, 100vw"
-                            className={shot.portrait ? "object-contain" : "object-cover object-top"}
+                            className="object-cover object-top"
                           />
                         </span>
                         <span className="sr-only"> (opens full size)</span>
