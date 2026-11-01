@@ -11,6 +11,7 @@ import todoListCardImage from "@/src/todolist/1.jpg";
 import calculatorCardImage from "@/src/calculator/calculator.jpg";
 import onChainWalletCardImage from "@/src/OnChainWallet/1.png";
 import defiTrackerCardImage from "@/src/defiTracker/Screenshot 2026-08-20 142908.png";
+import gauntletCardImage from "@/src/gauntlet/readme.png";
 import todoListDappCardImage from "@/src/toDoListD/Screenshot 2026-08-19 204344.png";
 
 /** Card thumbnail per project slug (folder names under `src/`). */
@@ -53,6 +54,10 @@ export const projectCardImages: Record<
   "todo-list-vanilla-js": {
     src: todoListCardImage,
     alt: "To-do list app vanilla JavaScript preview",
+  },
+  gauntlet: {
+    src: gauntletCardImage,
+    alt: "Gauntlet README header in a terminal window",
   },
   calculator: {
     src: calculatorCardImage,

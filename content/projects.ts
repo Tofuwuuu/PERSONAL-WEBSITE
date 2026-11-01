@@ -411,6 +411,26 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "gauntlet",
+    title: "Gauntlet",
+    category: "AI & Automation",
+    year: "2026",
+    madeAt: "Thesis Project",
+    featured: true,
+    badge: "IN PROGRESS · THESIS",
+    summary:
+      "A benchmark that runs AI code checkers on the same buggy AI-written patches. Thesis project, in progress.",
+    stack: ["Python", "Benchmark", "AI"],
+    highlights: [],
+    links: [
+      {
+        kind: "repo",
+        label: "Repo",
+        href: "https://github.com/Tofuwuuu/gauntlet",
+      },
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string) {

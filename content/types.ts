@@ -19,6 +19,8 @@ export type Project = {
   links: ProjectLink[];
   featured?: boolean;
   placeholder?: boolean;
+  /** Optional non-link status label shown as a teal chip on the tag row. */
+  badge?: string;
 };
 
 export type Experience = {
