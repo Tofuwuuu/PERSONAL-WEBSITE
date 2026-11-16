@@ -117,7 +117,7 @@ export const projects: Project[] = [
     year: "2026",
     madeAt: "Personal Project",
     summary:
-      "Log sets, save routines and check your history. The demo account resets every night.",
+      "Log sets, save routines, and check your history. The demo account resets every night.",
     stack: [
       "Next.js",
       "TypeScript",
@@ -241,7 +241,7 @@ export const projects: Project[] = [
     year: "2025",
     madeAt: "Personal Project",
     summary:
-      "A React dashboard that connects a wallet and shows DeFi positions in one view. The site is on Vercel.",
+      "A React dashboard that connects a wallet and shows DeFi positions in one view.",
     stack: ["React", "TypeScript", "Web3", "Vite", "Vercel"],
     highlights: [
       "Connect a wallet and load balances and positions.",

@@ -10,6 +10,12 @@ type FeaturedEntry = {
 
 const featured: FeaturedEntry[] = [
   {
+    slug: "ai-ops-assistant",
+    showcase: true,
+    outcome:
+      "An agent sorts each support request, pulls context, and drafts a reply. Nothing goes out until a person approves it, and every step is logged.",
+  },
+  {
     slug: "procurement-blockchain-system",
     showcase: true,
     outcome:
@@ -17,14 +23,8 @@ const featured: FeaturedEntry[] = [
   },
   {
     slug: "hyperledger-blockchain-verification",
-    showcase: true,
     outcome:
       "The university needed alumni credentials that couldn't be quietly altered. I built it on Hyperledger Fabric with React and FastAPI and handed it off as my capstone.",
-  },
-  {
-    slug: "ai-ops-assistant",
-    outcome:
-      "An agent sorts each support request, pulls context, and drafts a reply. Nothing goes out until a person approves it, and every step is logged.",
   },
   {
     slug: "smartdoc-analyzer",

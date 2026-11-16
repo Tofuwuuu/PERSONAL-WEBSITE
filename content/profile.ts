@@ -3,9 +3,8 @@ import type { ExternalLink } from "./types";
 export const profile = {
   name: "Mark Roderick I. Salise",
   role: "Junior Software Engineer",
-  tagline: "React, TypeScript and Python.",
-  pitch:
-    "I build full-stack web apps with React, TypeScript, and Python, and you can try most of them live.",
+  tagline: "Full-stack web apps, built and shipped live.",
+  pitch: "Full-stack web apps, built and shipped live.",
   email: "rodericksalise812@gmail.com",
   resume: {
     href: "/resume.pdf",
