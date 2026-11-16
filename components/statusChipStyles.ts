@@ -1,34 +1,35 @@
 export const chipLayoutClass =
-  "neon-btn relative z-20 inline-flex w-fit min-h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 font-mono text-xs font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1f0f5] focus-visible:ring-offset-2 focus-visible:ring-offset-[#07070d]";
+  "relative z-20 inline-flex w-fit min-h-8 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1 text-xs font-medium leading-none transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg";
 
 export const liveChipClass =
-  "border-[#2fd3c4] bg-[#2fd3c4] text-[#07070d] hover:border-[#5fe0d4] hover:bg-[#5fe0d4]";
+  "border-[#1E40AF] bg-[#1E40AF] text-[#FAFAF9] hover:bg-[#1E3A8A] dark:border-[#8AB4F8] dark:bg-[#8AB4F8] dark:text-[#111113] dark:hover:bg-[#A8C7FA]";
 
 export const videoChipClass =
-  "border-[#2fd3c4] bg-transparent text-[#2fd3c4] hover:bg-[#0d2e2b]";
+  "border-[#1E40AF] bg-transparent text-[#1E40AF] dark:border-[#8AB4F8] dark:text-[#8AB4F8]";
 
 export const repoChipClass =
-  "border-[#9aa8ba] bg-[#6b7280] text-[#ffffff] hover:border-[#e8eef6]";
+  "border-[#52525B] bg-[#52525B] text-[#FFFFFF] dark:border-[#71717A] dark:bg-[#3F3F46]";
 
-/** Non-link status badge, teal outline. */
 export const badgeChipClass =
-  "border-[#2fd3c4] bg-transparent text-[#2fd3c4]";
+  "border-[#1E40AF] bg-transparent text-[#1E40AF] dark:border-[#8AB4F8] dark:text-[#8AB4F8]";
 
 export const previewChipClass =
-  "border-[#9aa8ba] bg-transparent text-[#f1f0f5] hover:border-[#e8eef6] hover:bg-[#101019]";
+  "border-[#71717A] bg-transparent text-[#18181B] hover:bg-[#F4F4F5] dark:text-[#FAFAF9] dark:hover:bg-[#1C1C1F]";
 
 export const chipContrastPairs: Array<[string, string, number]> = [
-  ["#07070d", "#2fd3c4", 4.5],
-  ["#07070d", "#5fe0d4", 4.5],
-  ["#2fd3c4", "#07070d", 4.5],
-  ["#2fd3c4", "#101019", 4.5],
-  ["#2fd3c4", "#0d2e2b", 4.5],
-  ["#ffffff", "#6b7280", 4.5],
-  ["#f1f0f5", "#07070d", 4.5],
-  ["#f1f0f5", "#101019", 4.5],
-  ["#f1f0f5", "#07070d", 3],
-  ["#2fd3c4", "#07070d", 3],
-  ["#9aa8ba", "#07070d", 3],
-  ["#6b7280", "#07070d", 3],
-  ["#6b7280", "#101019", 3],
+  ["#FAFAF9", "#1E40AF", 4.5],
+  ["#FAFAF9", "#1E3A8A", 4.5],
+  ["#111113", "#8AB4F8", 4.5],
+  ["#111113", "#A8C7FA", 4.5],
+  ["#1E40AF", "#FAFAF9", 4.5],
+  ["#8AB4F8", "#111113", 4.5],
+  ["#FFFFFF", "#52525B", 4.5],
+  ["#FFFFFF", "#3F3F46", 4.5],
+  ["#18181B", "#FAFAF9", 4.5],
+  ["#18181B", "#F4F4F5", 4.5],
+  ["#FAFAF9", "#111113", 4.5],
+  ["#FAFAF9", "#1C1C1F", 4.5],
+  ["#71717A", "#FAFAF9", 3],
+  ["#71717A", "#111113", 3],
+  ["#52525B", "#FAFAF9", 3],
 ];

@@ -81,7 +81,7 @@ export function VideoWalkthroughDialog({
   return createPortal(
     <div className="fixed inset-0 z-[70] flex items-end justify-center p-4 sm:items-center">
       <div
-        className="absolute inset-0 bg-[#0a192f]/80"
+        className="absolute inset-0 bg-text/60"
         onClick={() => onCloseRef.current()}
       />
       <div
@@ -90,17 +90,17 @@ export function VideoWalkthroughDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 w-full max-w-3xl rounded-2xl border border-[#233554] bg-[#112240] p-4 shadow-xl sm:p-6"
+        className="relative z-10 w-full max-w-3xl rounded-2xl border border-line bg-surface p-4 shadow-xl sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
-          <h2 id={titleId} className="text-lg font-semibold text-heading">
+          <h2 id={titleId} className="text-lg font-semibold text-text">
             Video walkthrough
           </h2>
           <button
             ref={closeRef}
             type="button"
             onClick={() => onCloseRef.current()}
-            className="inline-flex min-h-8 shrink-0 items-center rounded-full border border-[#9aa8ba] px-3 py-1 text-sm font-medium text-[#eef3f8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#eef3f8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#112240]"
+            className="inline-flex min-h-8 shrink-0 items-center rounded-full border border-line px-3 py-1 text-sm font-medium text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             Close
           </button>

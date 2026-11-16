@@ -7,7 +7,6 @@ export const projects: Project[] = [
     category: "AI & Automation",
     year: "2026",
     madeAt: "Personal Project",
-    featured: true,
     summary:
       "A support dashboard where an agent drafts each reply and a person approves it before it goes out.",
     stack: [
@@ -45,7 +44,6 @@ export const projects: Project[] = [
     category: "Blockchain",
     year: "2025",
     madeAt: "Capstone, CvSU Carmona",
-    featured: true,
     summary:
       "My CvSU Carmona capstone. Alumni document records live on a Hyperledger Fabric network.",
     stack: [
@@ -82,7 +80,6 @@ export const projects: Project[] = [
     category: "Blockchain",
     year: "2025",
     madeAt: "Freelance Client",
-    featured: true,
     summary:
       "Paid client work covering purchase requests through inventory, with inspections logged on Hyperledger Fabric.",
     stack: [
@@ -119,7 +116,6 @@ export const projects: Project[] = [
     category: "Full-stack",
     year: "2026",
     madeAt: "Personal Project",
-    featured: true,
     summary:
       "Log sets, save routines and check your history. The demo account resets every night.",
     stack: [
@@ -155,7 +151,6 @@ export const projects: Project[] = [
     category: "Web Development",
     year: "2026",
     madeAt: "Personal Project",
-    featured: true,
     summary:
       "Track spending by day and category, in pesos. It saves in your browser, with no account needed.",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Vitest"],
@@ -272,7 +267,6 @@ export const projects: Project[] = [
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
-    featured: true,
     summary:
       "Two people edit one document at the same time, synced live over WebSockets.",
     stack: [
@@ -346,7 +340,6 @@ export const projects: Project[] = [
     category: "Full-stack",
     year: "2025",
     madeAt: "Personal Project",
-    featured: true,
     summary:
       "Pull text, names and contract risks from a PDF or image. Your file never leaves your device.",
     stack: ["React", "TypeScript", "pdf.js", "Tesseract.js", "FastAPI"],
@@ -417,7 +410,6 @@ export const projects: Project[] = [
     category: "AI & Automation",
     year: "2026",
     madeAt: "Thesis Project",
-    featured: true,
     badge: "IN PROGRESS · THESIS",
     summary:
       "A benchmark that runs AI code checkers on the same buggy AI-written patches. Thesis project, in progress.",

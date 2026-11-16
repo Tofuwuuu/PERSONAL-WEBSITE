@@ -3,14 +3,18 @@ import type { ExternalLink } from "./types";
 export const profile = {
   name: "Mark Roderick I. Salise",
   role: "Junior Software Engineer",
-  tagline:
-    "React, TypeScript and Python.",
-  location: "San Pedro, Laguna, Philippines",
+  tagline: "React, TypeScript and Python.",
+  pitch:
+    "I build full-stack web apps with React, TypeScript, and Python, and you can try most of them live.",
   email: "rodericksalise812@gmail.com",
-  intro: [
-    "I'm Mark, a Junior Software Engineer in San Pedro, Laguna. I studied Computer Science at Cavite State University, and I'm looking for a role where I can ship full-stack work with a team.",
-    "I build React and TypeScript front ends, Python and FastAPI backends, and Docker setups I can start on my own machine. Capstone was a Hyperledger Fabric system for alumni document checks at CvSU Carmona. I also shipped a procurement platform for a paying freelance client.",
-    "A few projects below have a live site. The rest run locally with Docker, and each write-up says which.",
+  resume: {
+    href: "/resume.pdf",
+    fileName: "Mark_Salise_Resume.pdf",
+  },
+  about: [
+    "I'm a Computer Science graduate from Cavite State University, Carmona Campus (2025).",
+    "For the past two years I've built and deployed full-stack apps: a procurement platform for a paying client, an alumni credential system for my university, and AI tools I run and maintain myself.",
+    "I work across React, TypeScript, FastAPI, Laravel, SQL, and Docker, and I document what I build so someone else can run it.",
   ],
   links: [
     { label: "GitHub", href: "https://github.com/Tofuwuuu" },
