@@ -4,8 +4,7 @@ export const experience: Experience[] = [
   {
     id: "independent",
     role: "Independent Software Development",
-    company: "Self-directed",
-    start: "Sept 2025",
+    start: "Sep 2025",
     end: "Present",
     bullets: [
       "Design, build, and deploy full-stack apps end to end, including AI Ops Archivist and SmartDoc Analyzer, both with live demos.",
