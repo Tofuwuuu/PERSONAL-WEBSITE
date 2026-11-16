@@ -63,7 +63,7 @@ function FeatureShowcase() {
   }
 
   return (
-    <section className="surface-soft mt-8 rounded-3xl p-6 md:p-8">
+    <section className="surface-soft mt-8 rounded-xl p-6 md:p-8">
       <h2 className="text-lg font-semibold tracking-tight text-text">
         Feature Showcase
       </h2>
@@ -93,8 +93,8 @@ function FeatureShowcase() {
               className={[
                 "rounded-full px-4 py-2 text-sm font-semibold ring-1 transition focus:outline-none focus:ring-2 focus:ring-accent",
                 selected
-                  ? "bg-accent text-bg shadow-sm shadow-accent/20 ring-accent/50"
-                  : "bg-white/[0.045] text-muted ring-white/10 hover:bg-white/[0.08] hover:text-text",
+                  ? "bg-text text-bg ring-text"
+                  : "bg-text/[0.045] text-muted ring-text/10 hover:bg-text/[0.08] hover:text-text",
               ].join(" ")}
             >
               {screen.label}
@@ -114,7 +114,7 @@ function FeatureShowcase() {
           return (
             <div
               key={screen.id}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-black/20"
+              className="overflow-hidden rounded-2xl border border-text/10 bg-text/5"
             >
               <button
                 type="button"
@@ -124,7 +124,7 @@ function FeatureShowcase() {
                 className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left text-sm font-semibold text-text focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent"
               >
                 <span>{screen.label}</span>
-                <span className="text-lg leading-none text-accent/80">
+                <span className="text-lg leading-none text-muted">
                   {selected ? "-" : "+"}
                 </span>
               </button>
@@ -148,10 +148,10 @@ function FeatureShowcase() {
               type="button"
               onClick={() => setActiveId(screen.id)}
               className={[
-                "group min-w-36 overflow-hidden rounded-xl border bg-black/30 text-left transition focus:outline-none focus:ring-2 focus:ring-accent",
+                "group min-w-36 overflow-hidden rounded-xl border bg-text/5 text-left transition focus:outline-none focus:ring-2 focus:ring-accent",
                 selected
-                  ? "border-accent/70 shadow-lg shadow-accent/10"
-                  : "border-white/10 hover:border-white/20",
+                  ? "border-text/50"
+                  : "border-text/10 hover:border-text/20",
               ].join(" ")}
             >
               <Image
@@ -161,7 +161,7 @@ function FeatureShowcase() {
                 loading="lazy"
                 sizes="144px"
               />
-              <span className="block truncate border-t border-white/10 px-3 py-2 text-xs font-medium text-muted">
+              <span className="block truncate border-t border-text/10 px-3 py-2 text-xs font-medium text-muted">
                 {screen.label}
               </span>
             </button>
@@ -189,7 +189,7 @@ function FeaturePanel({
       role="tabpanel"
       aria-labelledby={`${baseId}-${screen.id}-tab`}
       className={[
-        "animate-[fadeIn_220ms_ease-out] overflow-hidden rounded-2xl border border-white/10 bg-black/25 shadow-2xl shadow-black/45",
+        "animate-[fadeIn_220ms_ease-out] overflow-hidden rounded-2xl border border-text/10 bg-text/5 shadow-2xl shadow-text/5",
         compact ? "" : "mx-auto max-w-6xl",
       ].join(" ")}
     >
@@ -202,7 +202,7 @@ function FeaturePanel({
         priority={priority}
         sizes="(max-width: 768px) 92vw, 1040px"
       />
-      <figcaption className="border-t border-white/10 px-4 py-4 text-sm leading-relaxed text-muted">
+      <figcaption className="border-t border-text/10 px-4 py-4 text-sm leading-relaxed text-muted">
         {screen.caption}
       </figcaption>
     </figure>

@@ -57,14 +57,14 @@ export default async function ProjectDetailPage({
   const next = projects[(index + 1) % projects.length];
 
   const panel = (
-    <aside className="case-panel surface-soft rounded-3xl p-6">
+    <aside className="surface-soft rounded-xl p-6">
       {project.links.length ? (
         <div className="flex flex-wrap items-center gap-3">
           {disableHeaderLinks ? (
             project.links.map((l) => (
               <span
                 key={l.href + l.label}
-                className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-white/10"
+                className="inline-flex min-h-10 cursor-not-allowed items-center justify-center rounded-full bg-text/[0.03] px-4 py-2 text-sm font-semibold text-muted ring-1 ring-text/10"
               >
                 {l.label} (soon)
               </span>
@@ -78,7 +78,7 @@ export default async function ProjectDetailPage({
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-white/10 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-accent"
+                  className="inline-flex min-h-10 items-center justify-center rounded-full bg-text/5 px-4 py-2 text-sm font-semibold text-text ring-1 ring-text/10 transition hover:bg-text/10 focus:outline-none focus:ring-2 focus:ring-accent"
                 >
                   {l.label}
                 </a>
@@ -100,14 +100,14 @@ export default async function ProjectDetailPage({
       <div className="mb-6">
         <Link
           href="/projects"
-          className="rounded-md text-sm text-muted underline decoration-white/10 underline-offset-4 hover:text-text hover:decoration-accent/60 focus:outline-none focus:ring-2 focus:ring-accent"
+          className="rounded-md text-sm text-muted underline decoration-text/10 underline-offset-4 hover:text-text hover:decoration-accent/60 focus:outline-none focus:ring-2 focus:ring-accent"
         >
           &larr; Back to projects
         </Link>
       </div>
 
-      <header className="surface rounded-3xl p-6 md:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent/80">
+      <header className="surface rounded-xl p-6 md:p-8">
+        <p className="text-xs font-semibold uppercase tracking-widest text-muted">
           Case study
         </p>
         <h1 className="mt-3 text-balance text-3xl font-semibold tracking-tight text-text md:text-5xl">
@@ -117,14 +117,14 @@ export default async function ProjectDetailPage({
           {project.summary}
         </p>
         {showPlaceholderCaseStudy ? (
-          <p className="mt-4 text-sm font-semibold text-accent">
+          <p className="mt-4 text-sm font-semibold text-text">
             Placeholder case study — content and links will be updated soon.
           </p>
         ) : null}
       </header>
 
       {hero ? (
-        <a href={hero.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame mt-8 block">
+        <a href={hero.src.src} target="_blank" rel="noopener noreferrer" className="project-frame mt-8 block">
           <span className="relative block aspect-video w-full overflow-hidden">
             <Image
               src={hero.src}
@@ -144,12 +144,12 @@ export default async function ProjectDetailPage({
 
         <div className="min-w-0 lg:order-1">
           {project.highlights.length > 0 ? (
-            <section className="surface-soft rounded-3xl p-6 md:p-8">
+            <section className="surface-soft rounded-xl p-6 md:p-8">
               <h2 className="text-lg font-semibold tracking-tight text-text">Highlights</h2>
               <ul className="mt-4 space-y-3 text-sm text-muted">
                 {project.highlights.map((h) => (
                   <li key={h} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/80" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-muted" />
                     <span className="text-pretty leading-relaxed">{renderInlineCode(h)}</span>
                   </li>
                 ))}
@@ -164,8 +164,8 @@ export default async function ProjectDetailPage({
                 {screens.map((shot) => (
                   <li key={shot.src.src}>
                     <figure>
-                      <a href={shot.src.src} target="_blank" rel="noopener noreferrer" className="case-shot project-frame block">
-                        <span className="relative block aspect-video w-full overflow-hidden bg-[#0b0c0a]">
+                      <a href={shot.src.src} target="_blank" rel="noopener noreferrer" className="project-frame block">
+                        <span className="relative block aspect-video w-full overflow-hidden bg-text/5">
                           <Image
                             src={shot.src}
                             alt={shot.alt}
@@ -194,13 +194,13 @@ export default async function ProjectDetailPage({
       </div>
 
       {next && next.slug !== project.slug ? (
-        <div className="mt-12 border-t border-white/10 pt-6">
+        <div className="mt-12 border-t border-text/10 pt-6">
           <Link
             href={`/projects/${next.slug}`}
-            className="link-arrow inline-flex items-center gap-2 font-mono text-sm text-green underline-offset-4 hover:underline focus-visible:underline"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent underline-offset-4 hover:underline focus-visible:underline"
           >
             Next: {next.title}
-            <span aria-hidden className="arrow">&rarr;</span>
+            <span aria-hidden>&rarr;</span>
           </Link>
         </div>
       ) : null}
@@ -214,7 +214,7 @@ function renderInlineCode(text: string): ReactNode {
   if (parts.length < 3) return text;
   return parts.map((part, i) =>
     i % 2 === 1 ? (
-      <code key={i} className="rounded border border-green/30 bg-green/10 px-1.5 py-0.5 font-mono text-[0.85em] text-green">
+      <code key={i} className="rounded border border-line bg-text/5 px-1.5 py-0.5 font-mono text-[0.85em] text-text">
         {part}
       </code>
     ) : (

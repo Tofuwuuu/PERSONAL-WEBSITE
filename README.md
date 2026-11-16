@@ -6,23 +6,21 @@ Software engineer portfolio: home-page sections for about, experience, projects,
 
 ## Features
 
-Home (`app/page.tsx`) is a single page. The sidebar (`content/navigation.ts`) links to these anchors.
+Home (`app/page.tsx`) is a single page in two columns on desktop: a sticky intro (`components/Intro.tsx`) with name, role, pitch, resume and contact buttons, section nav (`content/navigation.ts`), social links, and the light/dark toggle, next to the scrolling sections below. On phones it is one column with the intro on top.
 
 | Section | Route | What it uses |
 | --- | --- | --- |
-| About | [`/#about`](https://markroderick.vercel.app/#about) | `components/About.tsx`, intro copy in `content/profile.ts` |
-| Experience | [`/#experience`](https://markroderick.vercel.app/#experience) | `components/Experience.tsx`, roles in `content/experience.ts`; links to `/resume` |
-| Projects | [`/#projects`](https://markroderick.vercel.app/#projects) | `components/ProjectsSection.tsx` lists projects with `featured: true` in `content/projects.ts` and links each to `/projects/[slug]` |
-| Contact | [`/#contact`](https://markroderick.vercel.app/#contact) | `components/Contact.tsx` mailto using `profile.email` |
-
-Also on the home page: a mobile hero (`components/Hero.tsx`) with name, role, and tagline. On large screens that intro is in the sidebar, with GitHub and LinkedIn from `profile.links`.
+| About | [`/#about`](https://markroderick.vercel.app/#about) | `components/About.tsx`, `about` paragraphs in `content/profile.ts` |
+| Experience | [`/#experience`](https://markroderick.vercel.app/#experience) | `components/Experience.tsx`, roles in `content/experience.ts` |
+| Projects | [`/#projects`](https://markroderick.vercel.app/#projects) | `components/ProjectsSection.tsx`: featured cards from `content/featured.ts` (the first two as large showcases), then every other project in a "More projects" list. Each links to `/projects/[slug]` |
+| Contact | [`/#contact`](https://markroderick.vercel.app/#contact) | `components/Contact.tsx`: `profile.email` as a mailto link that copies the address when the clipboard is available, plus the resume button |
 
 | Route | Purpose |
 | --- | --- |
 | `/projects` | Full project archive (`app/projects/page.tsx`) |
 | `/projects/[slug]` | Case study (`app/projects/[slug]/page.tsx`, `getProjectBySlug`) |
-| `/resume` | Resume page with a download button (`app/resume/page.tsx`) |
-| `/resume.pdf` | Download handler (`app/resume.pdf/route.ts`). Reads `src/Mark_Salise_Resume.docx` and returns that Word file (`Content-Disposition: attachment; filename="Mark_Salise_Resume.docx"`) |
+| `/resume.pdf` | The resume PDF, served from `public/resume.pdf` |
+| `/resume` | Redirects to `/resume.pdf` (`next.config.ts`) |
 | `/sitemap.xml`, `/robots.txt` | Generated from `NEXT_PUBLIC_SITE_URL` (`app/sitemap.ts`, `app/robots.ts`) |
 
 ## Stack
@@ -57,6 +55,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | Production build | `npm run build` |
 | Serve the production build | `npm run start` |
 | Lint | `npm run lint` |
+| Tests | `npm test` (Vitest + Testing Library) |
 
 ## Editing content
 
@@ -64,18 +63,18 @@ Site copy is typed constants in `content/`. Shared shapes are in `content/types.
 
 | File | Edit this |
 | --- | --- |
-| `content/profile.ts` | `name`, `role`, `tagline`, `location`, `email`, `intro` paragraphs, `links` |
+| `content/profile.ts` | `name`, `role`, `tagline` (meta description and JSON-LD), `pitch` (intro line), `email`, `resume`, `about` paragraphs, `links` |
 | `content/experience.ts` | Each job: `id`, `company`, `role`, `start`, `end`, `bullets`, `tech` |
-| `content/projects.ts` | Project list and `getProjectBySlug`. Fields: `slug`, `title`, `category`, `year`, `summary`, `stack`, `highlights`, `links` (`kind`: `repo`, `demo`, or `case-study`), plus optional `featured`, `madeAt`, `placeholder` |
-| `content/navigation.ts` | Sidebar labels and section ids (`about`, `experience`, `projects`, `contact`) |
+| `content/projects.ts` | Project list and `getProjectBySlug`. Fields: `slug`, `title`, `category`, `year`, `summary`, `stack`, `highlights`, `links` (`kind`: `repo`, `demo`, or `case-study`), plus optional `madeAt`, `placeholder`, `badge` |
+| `content/navigation.ts` | Section nav labels and ids (`about`, `experience`, `projects`, `contact`) |
+| `content/featured.ts` | Which projects are featured on the home page, in order, with the one-line problem/result shown on each card and the `showcase` flag |
 | `content/projectImages.ts` | Card image per slug. Files live under `src/` and must be imported here |
-| `content/skills.ts` | Skill groups. `components/Skills.tsx` is not rendered by `app/page.tsx`, so this file does not show on the site until that section is mounted |
 
 Case-study images are imported inside the matching component (`components/HyperledgerCaseStudy.tsx`, `ProcurementCaseStudy.tsx`, `CollaborativeCaseStudy.tsx`, and the image imports in `app/projects/[slug]/page.tsx`) from folders under `src/`.
 
 ### Resume file
 
-Replace `src/Mark_Salise_Resume.docx`. Both `app/resume/page.tsx` and `app/resume.pdf/route.ts` refer to that path. If you rename the file, update those two references together.
+Replace `public/resume.pdf`. The download name comes from `profile.resume.fileName`.
 
 ## Environment variables
 

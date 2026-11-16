@@ -16,17 +16,17 @@ export function CopyEmail({ email, className }: { email: string; className?: str
     } catch {
       ok = false;
     }
-    setCopied(ok ? "COPIED" : `Couldn't copy. Email is ${email}`);
+    setCopied(ok ? "Copied" : `Couldn't copy. Email is ${email}`);
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => setCopied(""), ok ? 1400 : 5000);
   };
 
   return (
-    <span className="relative inline-flex items-center gap-3">
+    <span className="inline-flex flex-wrap items-center gap-3">
       <a href={`mailto:${email}`} onClick={onClick} className={className}>
         {email}
       </a>
-      <span role="status" className={`copied-flash font-mono text-xs tracking-[0.2em] text-yellow ${copied ? "is-on" : ""}`}>
+      <span role="status" className="text-xs text-muted">
         {copied}
       </span>
     </span>
