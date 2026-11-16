@@ -13,7 +13,7 @@ const featured: FeaturedEntry[] = [
     slug: "procurement-blockchain-system",
     showcase: true,
     outcome:
-      "A paying client needed one system for purchasing across six roles. I built the workflow from purchase request to inventory, with a log of who did what at each step.",
+      "A paying client needed one system for purchasing across multiple roles. I built the workflow from purchase request to inventory, with a log of who did what at each step.",
   },
   {
     slug: "hyperledger-blockchain-verification",
@@ -29,7 +29,7 @@ const featured: FeaturedEntry[] = [
   {
     slug: "smartdoc-analyzer",
     outcome:
-      "Reads text, names, and contract risks from a PDF or scan in the browser. The repo's FastAPI backend caches results by SHA-256 hash, so a repeat upload skips reprocessing.",
+      "Reads text, names, and contract risks from a PDF or scan in the browser. The repo's FastAPI backend caches results by SHA-256 hash, so repeat uploads reuse the cached result.",
   },
 ];
 

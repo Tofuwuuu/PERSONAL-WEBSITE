@@ -93,7 +93,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       "UI preview. The screens load, but login is turned off in this demo.",
-      "Roles in the app include admin, canvasser, validator, finance, auditor, and custodian.",
+      "Roles in the app include admin, canvasser, validator, finance, and auditor.",
       "Inspection reports go on Fabric. The other workflow records sit in MongoDB, with a simple stage dashboard.",
       "Fabric, the API, and the React app run from the Docker Compose setup in the repo.",
     ],
