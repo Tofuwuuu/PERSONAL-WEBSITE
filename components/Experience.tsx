@@ -1,30 +1,63 @@
 import { Section } from "@/components/Section";
-import { SkillChips } from "@/components/ui/SkillChips";
 import { experience } from "@/content/experience";
 
 export function Experience() {
   return (
-    <Section id="experience" title="Experience">
-      <ol className="space-y-12">
+    <Section id="experience" number="03." title="Experience">
+      <div className="timeline space-y-10">
+        <span aria-hidden className="timeline-fill" />
         {experience.map((job) => (
-          <li key={job.id} className="grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-6">
-            <p className="pt-0.5 text-xs font-semibold uppercase tracking-wide text-muted">
-              {job.start} – {job.end}
-            </p>
-            <div>
-              <h3 className="font-medium leading-snug text-text">
-                {job.role} · <span className="text-muted">{job.company}</span>
+          <article key={job.id} className="timeline-item relative lg:grid lg:grid-cols-[280px_1fr] lg:gap-x-10">
+            <span aria-hidden className="timeline-dot" />
+            {/* PC: dates, role and company stay in a sticky left column. */}
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <div className="font-mono text-xs uppercase tracking-[0.18em] text-green/80">
+                <span>
+                  {job.start} to {job.end}
+                </span>
+              </div>
+              <h3 className="mt-1 text-lg font-semibold text-heading">
+                {job.role} · {job.company}
               </h3>
-              <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-relaxed text-muted marker:text-line">
+            </div>
+            <div className="lg:max-w-[70ch] lg:pl-7">
+              <ul className="mt-2 space-y-1.5 lg:mt-0 text-base leading-relaxed text-slate">
                 {job.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
+                  <li key={bullet} className="relative pl-4 before:absolute before:left-0 before:top-2 before:h-1 before:w-1 before:rounded-full before:bg-slate">
+                    {bullet}
+                  </li>
                 ))}
               </ul>
-              <SkillChips skills={job.tech} className="mt-4" />
+              {job.links && job.links.length > 0 && (
+                <div className="mt-3">
+                  <p className="font-mono text-xs uppercase tracking-wide text-slate">Sites worked on</p>
+                  <ul className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-sm">
+                    {job.links.map((link) => (
+                      <li key={link.href}>
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block py-1.5 text-green underline-offset-4 hover:underline focus-visible:underline"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
+                {job.tech.map((tech) => (
+                  <li key={tech} className="bc-tech-tag">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
             </div>
-          </li>
+          </article>
         ))}
-      </ol>
+      </div>
     </Section>
   );
 }

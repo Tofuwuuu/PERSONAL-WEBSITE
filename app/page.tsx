@@ -1,8 +1,8 @@
 import { About } from "@/components/About";
+import { ScrollMotion } from "@/components/ScrollMotion";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
-import { Footer } from "@/components/Footer";
-import { Intro } from "@/components/Intro";
+import { Hero } from "@/components/Hero";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { SITE_URL, personJsonLd } from "@/content/personJsonLd";
 
@@ -18,15 +18,18 @@ export default function HomePage() {
           __html: JSON.stringify(personJsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <div className="lg:flex lg:justify-between lg:gap-12">
-        <Intro />
-        <main id="content" className="lg:w-[52%] lg:py-24">
-          <About />
-          <Experience />
-          <ProjectsSection />
-          <Contact />
-          <Footer />
-        </main>
+      <ScrollMotion />
+      <Hero />
+      <About />
+      <ProjectsSection />
+      <div className="relative">
+        {/* Decorative: blurred magenta striped sun and horizon lines behind Experience and Contact. */}
+        <div aria-hidden className="lower-band">
+          <div className="lower-band-sun" data-parallax="0.12" />
+          <div className="lower-band-lines" />
+        </div>
+        <Experience />
+        <Contact />
       </div>
     </>
   );

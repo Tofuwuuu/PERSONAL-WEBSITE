@@ -24,23 +24,25 @@ export default async function OpenGraphImage() {
           height: "630px",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
-          padding: "96px",
-          background: "#FAFAF9",
-          color: "#18181B",
+          textAlign: "center",
+          padding: "72px",
+          background:
+            "radial-gradient(800px circle at 88% 12%, rgba(100,255,218,0.16), rgba(10,25,47,0) 62%), #0a192f",
+          color: "#eef3f8",
           fontFamily: "Inter",
         }}
       >
-        <div style={{ fontSize: 72, fontWeight: 700, lineHeight: 1.1 }}>
+        <div style={{ fontSize: 77, fontWeight: 700, lineHeight: 1.1 }}>
           {profile.name}
         </div>
-        <div style={{ marginTop: 20, fontSize: 36, color: "#1E40AF" }}>{profile.role}</div>
         <div
           style={{
             marginTop: 20,
             fontSize: 34,
-            color: "#52525B",
-            maxWidth: 900,
+            color: "#d5dce6",
+            maxWidth: 760,
             lineHeight: 1.3,
           }}
         >

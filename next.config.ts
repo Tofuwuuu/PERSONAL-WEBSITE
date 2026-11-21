@@ -8,7 +8,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/resume",
-        destination: "/resume.pdf",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/resume.pdf",
+        destination: "/",
         permanent: false,
       },
     ];
@@ -16,3 +21,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+

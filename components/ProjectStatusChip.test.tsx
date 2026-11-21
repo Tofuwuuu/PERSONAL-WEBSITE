@@ -190,7 +190,7 @@ describe("SmartDoc Analyzer", () => {
 describe("status chip contrast", () => {
   it("meets WCAG AA for text and non-text pairs used by the chips", () => {
     const classNames = [chipLayoutClass, liveChipClass, videoChipClass, previewChipClass, repoChipClass].join(" ");
-    const pageSurfaces = new Set(["#FAFAF9", "#111113"]);
+    const pageSurfaces = new Set(["#0a192f", "#112240"]);
 
     for (const [foreground, background, minimum] of chipContrastPairs) {
       expect(
