@@ -114,7 +114,7 @@ describe("project data", () => {
       href: "https://gym-app-tracker-gamma.vercel.app",
     });
     expect(gym!.summary).toBe(
-      "Log sets, save routines, and check your history. The demo account resets every night.",
+      "Log sets, save routines and check your history. The demo account resets every night.",
     );
     expect(gym!.highlights[0]).toBe(
       "Live on Vercel with a Neon Postgres database. Sign in with the demo account on the sign-in page.",

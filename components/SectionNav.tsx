@@ -16,14 +16,14 @@ export function SectionNav({ className = "" }: { className?: string }) {
               <a
                 href={href}
                 aria-current={isActive ? "true" : undefined}
-                className={`flex items-center gap-4 py-2 text-xs font-semibold uppercase tracking-widest transition-colors duration-150 ${
+                className={`group flex items-center gap-4 py-2 text-xs font-semibold uppercase tracking-widest transition-colors duration-150 ${
                   isActive ? "text-text" : "text-muted hover:text-text"
                 }`}
               >
                 <span
                   aria-hidden
                   className={`h-px transition-all duration-150 ${
-                    isActive ? "w-16 bg-text" : "w-8 bg-muted"
+                    isActive ? "w-16 bg-text" : "w-8 bg-muted group-hover:w-16 group-hover:bg-text"
                   }`}
                 />
                 {label}

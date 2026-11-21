@@ -12,7 +12,7 @@ BLACK = RGBColor(0x1A, 0x1A, 0x1A)
 
 NAME = "Mark Roderick I. Salise"
 TITLE = "Software Engineer"
-LINE1 = "Cavite, Philippines  |  rodericksalise812@gmail.com"
+LINE1 = "Cavite, Philippines  |  0948 253 6598  |  rodericksalise812@gmail.com"
 LINE2 = "markroderick.vercel.app  |  github.com/Tofuwuuu"
 
 OUT = r"c:\Users\roder\Downloads\Mark_Salise_Resume_Software_Engineer.docx"
@@ -170,12 +170,12 @@ def build():
 
     section(doc, "Work Experience")
 
-    entry(doc, "Independent Software Development & Upskilling", "Sep 2025 - Present")
+    entry(doc, "Independent Software Development & Upskilling", "Sept 2025 - Present")
     bullet(
         doc,
         "Design, build, and deploy production-style applications end to end, including AI Ops "
-        "Assistant (LLM workflow with human approval) and SmartDoc Analyzer, both with a live "
-        "public demo, and On-Chain Wallet Risk Analyzer (repo only, no live site).",
+        "Assistant (LLM workflow with human approval), On-Chain Wallet Risk Analyzer, and "
+        "SmartDoc Analyzer - each with a live public demo.",
     )
     bullet(
         doc,
@@ -279,7 +279,7 @@ def build():
         "Built an AI document pipeline with OCR, spaCy NER, Redis caching, PostgreSQL storage, "
         "and SHA-256 deduplication that skips reprocessing of duplicate uploads.",
     )
-    meta(doc, "2025  -  Live: smartdoc-analyzer.vercel.app")
+    meta(doc, "2025  -  Live: smart-doc-analyzer-murex.vercel.app")
 
     section(doc, "Education")
     entry(doc, "Bachelor of Science in Computer Science", "Graduated September 2025")

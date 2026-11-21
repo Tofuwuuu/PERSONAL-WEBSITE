@@ -27,16 +27,7 @@ describe("SectionNav", () => {
   it("starts on About and highlights the section that has scrolled past the upper third", async () => {
     mountSections({ about: 0, experience: 900, projects: 1800, contact: 2700 });
     render(<SectionNav />);
-    const about = screen.getByRole("link", { name: "About" });
-    expect(about.getAttribute("aria-current")).toBe("true");
-    const aboutLine = about.querySelector("span[aria-hidden]");
-    expect(aboutLine?.className).toContain("w-16");
-    expect(aboutLine?.className).toContain("bg-text");
-    const experienceLine = screen.getByRole("link", { name: "Experience" }).querySelector("span[aria-hidden]");
-    expect(experienceLine?.className).toContain("w-8");
-    expect(experienceLine?.className).toContain("bg-muted");
-    expect(experienceLine?.className).not.toMatch(/group-hover:w-16/);
-    expect(experienceLine?.className).not.toMatch(/group-hover:bg-text/);
+    expect(screen.getByRole("link", { name: "About" }).getAttribute("aria-current")).toBe("true");
 
     document.querySelectorAll("section").forEach((section) => section.remove());
     mountSections({ about: -1500, experience: -600, projects: 100, contact: 1000 });

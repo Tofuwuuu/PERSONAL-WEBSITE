@@ -13,13 +13,7 @@ export function Experience() {
             </p>
             <div>
               <h3 className="font-medium leading-snug text-text">
-                {job.role}
-                {job.company ? (
-                  <>
-                    {" "}
-                    · <span className="text-muted">{job.company}</span>
-                  </>
-                ) : null}
+                {job.role} · <span className="text-muted">{job.company}</span>
               </h3>
               <ul className="mt-3 list-disc space-y-2 pl-4 text-sm leading-relaxed text-muted marker:text-line">
                 {job.bullets.map((bullet) => (

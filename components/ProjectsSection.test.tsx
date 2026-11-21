@@ -12,8 +12,8 @@ describe("ProjectsSection", () => {
       featuredProjects.map((f) => f.project.title),
     );
     expect(featuredProjects.filter((f) => f.showcase).map((f) => f.project.slug)).toEqual([
-      "ai-ops-assistant",
       "procurement-blockchain-system",
+      "hyperledger-blockchain-verification",
     ]);
   });
 
