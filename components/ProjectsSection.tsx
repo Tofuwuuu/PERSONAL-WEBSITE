@@ -1,84 +1,96 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ProjectLinks } from "@/components/ProjectLinks";
+import { ProjectStatusChip } from "@/components/ProjectStatusChip";
+import { CardTilt } from "@/components/CardTilt";
 import { Section } from "@/components/Section";
-import { SkillChips } from "@/components/ui/SkillChips";
-import { featuredProjects, moreProjects, type FeaturedProject } from "@/content/featured";
+import { getProjectCardImage } from "@/content/projectImages";
+import { projects } from "@/content/projects";
+
+/** Gym App Tracker leads the list. */
+const LEAD = "gym-app-tracker";
 
 export function ProjectsSection() {
+  const featured = projects.filter((project) => project.featured);
+  const ordered = [
+    ...featured.filter((p) => p.slug === LEAD),
+    ...featured.filter((p) => p.slug !== LEAD),
+  ];
+
   return (
-    <Section id="projects" title="Featured projects">
-      <ul className="space-y-6">
-        {featuredProjects.map((featured) => (
-          <li key={featured.project.slug}>
-            <ProjectCard {...featured} />
-          </li>
-        ))}
-      </ul>
+    <Section id="projects" number="02." title="Projects">
+      <div className="relative">
+        <div aria-hidden className="projects-glow" />
+        <CardTilt />
+        <ul className="relative space-y-14 lg:grid lg:grid-cols-2 lg:gap-8 min-[1440px]:grid-cols-3 lg:space-y-0">
+          {ordered.map((project, index) => {
+            const cardImage = getProjectCardImage(project.slug);
+            // PC: card grid (2 columns, 3 from 1440px); screenshots slide in from alternating sides.
+            const flip = index % 2 === 1;
 
-      <h3 className="mb-4 mt-16 text-sm font-semibold uppercase tracking-widest text-text">More projects</h3>
-      <ul className="divide-y divide-line border-y border-line" aria-label="More projects">
-        {moreProjects.map((project) => (
-          <li key={project.slug} className="grid gap-1 py-4 sm:grid-cols-[3.5rem_1fr] sm:gap-4">
-            <span className="pt-0.5 text-xs tabular-nums text-muted">{project.year}</span>
-            <div className="min-w-0">
-              <Link
-                href={`/projects/${project.slug}`}
-                className="font-medium text-text transition-colors duration-150 hover:text-accent"
-              >
-                {project.title}
-              </Link>
-              <p className="mb-2 mt-1 text-sm leading-relaxed text-muted">{project.summary}</p>
-              <ProjectLinks project={project} />
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      <Link
-        href="/projects"
-        className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent underline-offset-4 hover:underline"
-      >
-        View the full project archive <span aria-hidden>→</span>
-      </Link>
-    </Section>
-  );
-}
-
-function ProjectCard({ project, outcome, showcase, image }: FeaturedProject) {
-  return (
-    <article
-      className={`flex overflow-hidden rounded-lg border border-line bg-surface transition-[border-color,box-shadow,transform] duration-150 hover:-translate-y-0.5 hover:border-text/25 hover:shadow-md hover:shadow-text/5 ${
-        showcase ? "flex-col" : "flex-col sm:flex-row"
-      }`}
-    >
-      {image ? (
-        <div
-          className={`relative aspect-video shrink-0 bg-text/5 ${
-            showcase ? "border-b border-line" : "border-b border-line sm:w-[42%] sm:self-start sm:border-b-0 sm:border-r"
-          }`}
-        >
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            sizes={showcase ? "(min-width: 1024px) 560px, 100vw" : "(min-width: 1024px) 240px, (min-width: 640px) 42vw, 100vw"}
-            className="object-cover object-top"
-          />
-        </div>
-      ) : null}
-      <div className={`flex min-w-0 flex-1 flex-col ${showcase ? "p-6" : "p-5"}`}>
-        <h3 className={`font-semibold text-text ${showcase ? "text-xl" : "text-base"}`}>
-          <Link href={`/projects/${project.slug}`} className="transition-colors duration-150 hover:text-accent">
-            {project.title}
-          </Link>
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted">{outcome}</p>
-        <SkillChips skills={project.stack} className="mt-4" />
-        <div className="mt-auto pt-5">
-          <ProjectLinks project={project} />
-        </div>
+            return (
+              <li key={project.slug}>
+                <div
+                  data-reveal
+                  className="project-row group relative lg:flex lg:h-full lg:flex-col"
+                >
+                  <span aria-hidden className="row-brackets" />
+                  {cardImage ? (
+                    <div className={`project-media ${flip ? "from-right" : "from-left"}`}>
+                      <div className="project-frame mb-5 lg:mb-4">
+                        <div style={{ "--thumb": `url(${cardImage.src.src})` } as React.CSSProperties} className="project-thumb relative aspect-[16/10] w-full lg:aspect-video lg:max-h-[240px] overflow-hidden">
+                          <Image
+                            src={cardImage.src}
+                            alt={cardImage.alt}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(min-width: 1440px) 360px, (min-width: 1024px) 552px, (min-width: 680px) 632px, 100vw"
+                          />
+                          <span aria-hidden className="project-thumb-tint" />
+                          <span aria-hidden className="project-thumb-scan" />
+                          <span aria-hidden className="thumb-split thumb-split-a" />
+                          <span aria-hidden className="thumb-split thumb-split-b" />
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                  <div className="project-text min-w-0">
+                    <h3 className="text-lg font-semibold text-heading">
+                      <Link
+                        href={`/projects/${project.slug}`}
+                        className="project-title link-arrow inline-flex items-start gap-1.5 rounded-sm underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                      >
+                        <span>{project.title}</span>
+                        <span aria-hidden className="arrow text-slate">
+                          ↗
+                        </span>
+                      </Link>
+                    </h3>
+                    <p className="mt-2 line-clamp-2 text-base leading-relaxed text-slate">
+                      {project.summary}
+                    </p>
+                    {/* Stack tags and the Live / UI preview chip share one row that wraps naturally. */}
+                    <ul className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2" data-testid="tag-row">
+                      {project.stack.slice(0, 6).map((tech) => (
+                        <li key={tech} className="bc-tech-tag">
+                          {tech}
+                        </li>
+                      ))}
+                      <li className="flex">
+                        <ProjectStatusChip project={project} />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
-    </article>
+      <div className="mt-10">
+        <Link href="/projects" className="bc-link font-mono text-sm">
+          View Full Project Archive
+        </Link>
+      </div>
+    </Section>
   );
 }

@@ -17,16 +17,19 @@ export type Project = {
   stack: string[];
   highlights: string[];
   links: ProjectLink[];
+  featured?: boolean;
   placeholder?: boolean;
+  /** Optional non-link status label shown as a teal chip on the tag row. */
   badge?: string;
 };
 
 export type Experience = {
   id: string;
-  company?: string;
+  company: string;
   role: string;
   start: string;
   end: string;
   bullets: string[];
   tech: string[];
+  links?: { label: string; href: string }[];
 };

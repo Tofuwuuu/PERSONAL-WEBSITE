@@ -3,7 +3,7 @@ import aiOpsCardImage from "@/src/ai-ops-assistant/dashboard.png";
 import gymCardImage from "@/src/gym-app-tracker/overview.png";
 import expenseTrackerCardImage from "@/src/expense-tracker/live-light.png";
 import hyperledgerCardImage from "@/src/hyperledger/1.png";
-import procurementCardImage from "@/src/procurement/Purchase Request.png";
+import procurementCardImage from "@/src/procurement/Admin dashboard.png";
 import ecommerceCardImage from "@/src/Ecommerce/1.jpg";
 import collaborativeCardImage from "@/src/collaborative Real-Time Document Editor/Main page.png";
 import smartdocCardImage from "@/src/SmartDocAnalyzer/1.png";
@@ -37,7 +37,7 @@ export const projectCardImages: Record<
   },
   "procurement-blockchain-system": {
     src: procurementCardImage,
-    alt: "Procurement purchase requests register with a list of requests",
+    alt: "Procurement blockchain system admin dashboard preview",
   },
   "fashion-ecommerce-platform": {
     src: ecommerceCardImage,

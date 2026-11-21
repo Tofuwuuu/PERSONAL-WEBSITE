@@ -114,7 +114,7 @@ describe("project data", () => {
       href: "https://gym-app-tracker-gamma.vercel.app",
     });
     expect(gym!.summary).toBe(
-      "Log sets, save routines, and check your history. The demo account resets every night.",
+      "Log sets, save routines and check your history. The demo account resets every night.",
     );
     expect(gym!.highlights[0]).toBe(
       "Live on Vercel with a Neon Postgres database. Sign in with the demo account on the sign-in page.",
@@ -190,7 +190,7 @@ describe("SmartDoc Analyzer", () => {
 describe("status chip contrast", () => {
   it("meets WCAG AA for text and non-text pairs used by the chips", () => {
     const classNames = [chipLayoutClass, liveChipClass, videoChipClass, previewChipClass, repoChipClass].join(" ");
-    const pageSurfaces = new Set(["#FAFAF9", "#111113"]);
+    const pageSurfaces = new Set(["#0a192f", "#112240"]);
 
     for (const [foreground, background, minimum] of chipContrastPairs) {
       expect(
